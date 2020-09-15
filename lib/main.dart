@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:newpostman1/ui/RootWidget.dart';
-import 'package:newpostman1/ui/WelcomeScreen.dart';
 
 void main() {
   runApp(MyApp());

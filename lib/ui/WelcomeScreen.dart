@@ -1,9 +1,27 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:newpostman1/customWidgets/WelcomeScreenButtons.dart';
+import 'package:newpostman1/customWidgets/WelocmeScreenImage.dart';
 import 'package:newpostman1/globals.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({Key key}) : super(key: key);
+  WelcomeScreen({Key key}) : super(key: key);
+
+  List<Widget> welcomeScreenImages = [
+    WelcomeScreenImage(
+      bodyText: "hello",
+      imageAssetName: "assets/images/img1.png",
+    ),
+    WelcomeScreenImage(
+      bodyText: "hi",
+      imageAssetName: "assets/images/img2.png",
+    ),
+    WelcomeScreenImage(
+      bodyText: "hui",
+      imageAssetName: "assets/images/img3.png",
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -14,105 +32,40 @@ class WelcomeScreen extends StatelessWidget {
     if (Globals.blockHeight != null && Globals.blockWidth != null) {
       return SafeArea(
           child: Scaffold(
+        backgroundColor: Colors.white,
         body: Stack(
           children: [
             Container(
               height: blockHeight * 100,
               width: blockWidth * 100,
-              color: Colors.orange,
+              // color: Colors.grey,
+              alignment: Alignment.topCenter,
+              child: Container(
+                height: blockHeight * 85,
+                // color: Colors.yellow,
+                width: blockWidth * 100,
+                alignment: Alignment.center,
+                margin: EdgeInsets.only(
+                  bottom: blockHeight * 10,
+                ),
+                child: Swiper(
+                  itemBuilder: (BuildContext context, int index) {
+                    return welcomeScreenImages[index];
+                  },
+                  itemCount: 3,
+                  pagination: SwiperPagination(
+                      alignment: Alignment.bottomCenter,
+                      builder: DotSwiperPaginationBuilder(
+                        color: Colors.grey,
+                        activeColor: Globals.mainColor,
+                      )),
+                  // control: new SwiperControl(),
+                ),
+              ),
             ),
             Align(
               alignment: Alignment.bottomCenter,
-              child: Container(
-                height: blockHeight * 12,
-                decoration: BoxDecoration(
-                  color: Colors.green,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(
-                      20,
-                    ),
-                    topRight: Radius.circular(
-                      20,
-                    ),
-                  ),
-                ),
-                alignment: Alignment.center,
-                child: Container(
-                  height: blockHeight * 6,
-                  // color: Colors.blue,
-                  margin: EdgeInsets.symmetric(
-                    horizontal: blockWidth * 5,
-                  ),
-                  alignment: Alignment.center,
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: OutlineButton(
-                          highlightedBorderColor: Colors.green,
-                          borderSide: BorderSide(
-                              color: Colors.white, width: blockWidth / 2),
-                          shape: new RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(30.0)),
-                          padding: EdgeInsets.all(
-                            0,
-                          ),
-                          onPressed: () {},
-                          child: Container(
-                            // color: Colors.yellow,
-                            alignment: Alignment.center,
-                            child: Container(
-                              height: blockHeight * 3,
-                              // color: Colors.amberAccent,
-                              alignment: Alignment.center,
-                              child: AutoSizeText(
-                                "Log in".toUpperCase(),
-                                style: TextStyle(
-                                  fontSize: 19,
-                                  color: Colors.white,
-                                ),
-                                minFontSize: 14,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: blockWidth * 6,
-                      ),
-                      Expanded(
-                        child: OutlineButton(
-                          highlightedBorderColor: Colors.green,
-                          borderSide: BorderSide(
-                              color: Colors.white, width: blockWidth / 2),
-                          shape: new RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(30.0)),
-                          padding: EdgeInsets.all(
-                            0,
-                          ),
-                          onPressed: () {},
-                          child: Container(
-                            // color: Colors.yellow,
-                            alignment: Alignment.center,
-                            child: Container(
-                              height: blockHeight * 3,
-                              // color: Colors.amberAccent,
-                              alignment: Alignment.center,
-                              child: AutoSizeText(
-                                "sign up".toUpperCase(),
-                                style: TextStyle(
-                                  fontSize: 19,
-                                  color: Colors.white,
-                                ),
-                                minFontSize: 14,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              child: WelcomeScreensButtons(),
             )
           ],
         ),
