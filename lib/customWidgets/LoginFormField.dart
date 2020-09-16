@@ -12,26 +12,34 @@ class LoginFormField extends StatelessWidget {
     final double blockHeight = Globals.blockHeight;
     final double blockWidth = Globals.blockWidth;
 
-    return Container(
-      height: blockHeight * 10,
-      // color: Colors.grey,
-      alignment: Alignment.center,
+    return Card(
+      elevation: 10,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(
+        15,
+      )),
       margin: EdgeInsets.symmetric(
         horizontal: blockWidth * 5,
       ),
-      padding: EdgeInsets.symmetric(
-        horizontal: blockWidth * 2,
-      ),
-      child: TextFormField(
-        textAlignVertical: TextAlignVertical.center,
-        decoration: InputDecoration(
-          hintText: hintText,
-          prefixIcon: Icon(
-            icon,
+      child: Container(
+        height: blockHeight * 10,
+        // color: Colors.grey,
+        alignment: Alignment.center,
+
+        padding: EdgeInsets.symmetric(
+          horizontal: blockWidth * 2,
+        ),
+        child: TextFormField(
+          textAlignVertical: TextAlignVertical.center,
+          decoration: InputDecoration(
+            hintText: hintText,
+            prefixIcon: Icon(
+              icon,
+            ),
+            // suffixIcon: Icon(
+            //   Icons.ac_unit,
+            // ),
           ),
-          // suffixIcon: Icon(
-          //   Icons.ac_unit,
-          // ),
         ),
       ),
     );
