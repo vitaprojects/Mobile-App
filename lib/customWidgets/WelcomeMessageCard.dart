@@ -75,6 +75,7 @@ class WelcomeMessageCard extends StatelessWidget {
                 title1.toUpperCase(),
                 style: TextStyle(
                   fontSize: 20,
+                  fontWeight: FontWeight.bold,
                 ),
                 minFontSize: 16,
               ),
@@ -87,6 +88,7 @@ class WelcomeMessageCard extends StatelessWidget {
                 title2,
                 style: TextStyle(
                   fontSize: 16,
+                  fontWeight: FontWeight.w500,
                 ),
                 minFontSize: 12,
               ),
