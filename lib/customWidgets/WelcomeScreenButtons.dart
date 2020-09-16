@@ -1,5 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:newpostman1/ui/LoginPage.dart';
+import 'package:newpostman1/ui/SignUpPage.dart';
 
 import '../globals.dart';
 
@@ -45,7 +48,9 @@ class WelcomeScreensButtons extends StatelessWidget {
                   padding: EdgeInsets.all(
                     0,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(LoginPage());
+                  },
                   child: Container(
                     // color: Colors.yellow,
                     alignment: Alignment.center,
@@ -78,7 +83,9 @@ class WelcomeScreensButtons extends StatelessWidget {
                   padding: EdgeInsets.all(
                     0,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(SignUpPage());
+                  },
                   child: Container(
                     // color: Colors.yellow,
                     alignment: Alignment.center,
