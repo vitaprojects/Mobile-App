@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newpostman1/customWidgets/LoginFormField.dart';
 import 'package:newpostman1/customWidgets/WelcomeMessageCard.dart';
+import 'package:newpostman1/ui/HomePage.dart';
 import 'package:newpostman1/ui/SignUpPage.dart';
 
 import '../globals.dart';
@@ -97,7 +98,9 @@ class _LoginPageState extends State<LoginPage> {
                             padding: EdgeInsets.all(
                               0,
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              Get.to(HomePage());
+                            },
                             child: Container(
                               height: blockHeight * 8,
                               // color: Colors.green,

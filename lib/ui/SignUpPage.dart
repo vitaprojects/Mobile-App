@@ -1,8 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:newpostman1/customWidgets/LoginFormField.dart';
 import 'package:newpostman1/customWidgets/WelcomeMessageCard.dart';
 import 'package:newpostman1/customWidgets/WelcomeScreenButtons.dart';
+import 'package:newpostman1/ui/HomePage.dart';
 
 import '../globals.dart';
 
@@ -96,7 +98,9 @@ class _SignUpPageState extends State<SignUpPage> {
                           padding: EdgeInsets.all(
                             0,
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.to(HomePage());
+                          },
                           child: Container(
                             height: blockHeight * 8,
                             // color: Colors.green,
