@@ -102,7 +102,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             Get.to(HomePage());
                           },
                           child: Container(
-                            height: blockHeight * 8,
+                            height: blockHeight * 6,
                             // color: Colors.green,
                             alignment: Alignment.center,
                             child: Container(
