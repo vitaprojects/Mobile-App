@@ -31,6 +31,7 @@ dependencies:
   flutter_swiper: ^1.1.6
   get: ^3.10.2
   liquid_swipe: ^1.5.0
+  flutter_form_builder: ^3.13.5
 
 dev_dependencies:
   flutter_test:
