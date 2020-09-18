@@ -36,7 +36,21 @@ class WelcomeScreenImage extends StatelessWidget {
           ),
           Container(
             height: blockHeight * 20,
-            color: Colors.yellow,
+            // color: Colors.yellow,
+            alignment: Alignment.center,
+            child: Container(
+              height: blockHeight * 8,
+              // color: Colors.redAccent,
+              alignment: Alignment.center,
+              child: Text(
+                bodyText,
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
           )
         ],
       ),

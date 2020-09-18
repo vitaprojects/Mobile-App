@@ -10,15 +10,15 @@ class WelcomeScreen extends StatelessWidget {
 
   List<Widget> welcomeScreenImages = [
     WelcomeScreenImage(
-      bodyText: "hello",
+      bodyText: "Track your packages easily",
       imageAssetName: "assets/images/img1.png",
     ),
     WelcomeScreenImage(
-      bodyText: "hi",
+      bodyText: "Earn money while travelling",
       imageAssetName: "assets/images/img2.png",
     ),
     WelcomeScreenImage(
-      bodyText: "hui",
+      bodyText: "Send packages to your loved ones easily",
       imageAssetName: "assets/images/img3.png",
     ),
   ];

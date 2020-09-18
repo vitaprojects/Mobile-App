@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "515814555723",
+    "firebase_url": "https://new-postman-f7033.firebaseio.com",
+    "project_id": "new-postman-f7033",
+    "storage_bucket": "new-postman-f7033.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:515814555723:android:d9ca5bd43560160540cdce",
+        "android_client_info": {
+          "package_name": "com.exzitan.newpostman1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "515814555723-du8aiom65on1p7mn6isiibatbcjp598o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYUS6bk7vS2far68Es9yagIm767LmyN-Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "515814555723-du8aiom65on1p7mn6isiibatbcjp598o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
