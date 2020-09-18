@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:newpostman1/customWidgets/LoginFormField.dart';
 import 'package:newpostman1/customWidgets/WelcomeMessageCard.dart';
@@ -23,6 +24,9 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Color(
+          0xffd8fdf1,
+        ),
         body: SingleChildScrollView(
           child: Stack(
             children: [
@@ -45,38 +49,217 @@ class _SignUpPageState extends State<SignUpPage> {
                     SizedBox(
                       height: blockHeight * 2,
                     ),
-                    LoginFormField(
-                      hintText: "Enter your first name",
-                      icon: Icons.person,
+                    Card(
+                      elevation: 10,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                        15,
+                      )),
+                      margin: EdgeInsets.symmetric(
+                        horizontal: blockWidth * 5,
+                      ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Color(
+                              0xffaffde4,
+                            ),
+                            borderRadius: BorderRadius.circular(
+                              15,
+                            )),
+                        height: blockHeight * 10,
+                        alignment: Alignment.center,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: blockWidth * 5,
+                        ),
+                        child: FormBuilderTextField(
+                          attribute: "fname",
+                          validators: [
+                            // FormBuilderValidators.email(),
+                            FormBuilderValidators.required(),
+                          ],
+                          textAlignVertical: TextAlignVertical.center,
+                          decoration: InputDecoration(
+                            // filled: true,
+                            // fillColor: Colors.yellow,
+                            hintText: "Enter your first name",
+                            prefixIcon: Icon(
+                              Icons.person,
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                     SizedBox(
                       height: blockHeight * 1,
                     ),
-                    LoginFormField(
-                      hintText: "Enter your last name",
-                      icon: Icons.person,
+                    Card(
+                      elevation: 10,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                        15,
+                      )),
+                      margin: EdgeInsets.symmetric(
+                        horizontal: blockWidth * 5,
+                      ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Color(
+                              0xffaffde4,
+                            ),
+                            borderRadius: BorderRadius.circular(
+                              15,
+                            )),
+                        height: blockHeight * 10,
+                        alignment: Alignment.center,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: blockWidth * 5,
+                        ),
+                        child: FormBuilderTextField(
+                          attribute: "lname",
+                          validators: [
+                            // FormBuilderValidators.email(),
+                            FormBuilderValidators.required(),
+                          ],
+                          textAlignVertical: TextAlignVertical.center,
+                          decoration: InputDecoration(
+                            // filled: true,
+                            // fillColor: Colors.yellow,
+                            hintText: "Enter your last name",
+                            prefixIcon: Icon(
+                              Icons.email,
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                     SizedBox(
                       height: blockHeight * 1,
                     ),
-                    LoginFormField(
-                      hintText: "Enter your mobile number",
-                      icon: Icons.phone,
+                    Card(
+                      elevation: 10,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                        15,
+                      )),
+                      margin: EdgeInsets.symmetric(
+                        horizontal: blockWidth * 5,
+                      ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Color(
+                              0xffaffde4,
+                            ),
+                            borderRadius: BorderRadius.circular(
+                              15,
+                            )),
+                        height: blockHeight * 10,
+                        alignment: Alignment.center,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: blockWidth * 5,
+                        ),
+                        child: FormBuilderTextField(
+                          attribute: "phone",
+                          validators: [
+                            FormBuilderValidators.email(),
+                            FormBuilderValidators.required(),
+                          ],
+                          textAlignVertical: TextAlignVertical.center,
+                          decoration: InputDecoration(
+                            // filled: true,
+                            // fillColor: Colors.yellow,
+                            hintText: "Enter your phone number",
+                            prefixIcon: Icon(
+                              Icons.call,
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                     SizedBox(
                       height: blockHeight * 1,
                     ),
-                    LoginFormField(
-                      hintText: "Enter your email address",
-                      icon: Icons.email,
+                    Card(
+                      elevation: 10,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                        15,
+                      )),
+                      margin: EdgeInsets.symmetric(
+                        horizontal: blockWidth * 5,
+                      ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Color(
+                              0xffaffde4,
+                            ),
+                            borderRadius: BorderRadius.circular(
+                              15,
+                            )),
+                        height: blockHeight * 10,
+                        alignment: Alignment.center,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: blockWidth * 5,
+                        ),
+                        child: FormBuilderTextField(
+                          attribute: "email",
+                          validators: [
+                            FormBuilderValidators.email(),
+                            FormBuilderValidators.required(),
+                          ],
+                          textAlignVertical: TextAlignVertical.center,
+                          decoration: InputDecoration(
+                            // filled: true,
+                            // fillColor: Colors.yellow,
+                            hintText: "Enter your email",
+                            prefixIcon: Icon(
+                              Icons.email,
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                     SizedBox(
                       height: blockHeight * 1,
                     ),
-                    LoginFormField(
-                      hintText: "Enter your password",
-                      icon: Icons.lock,
-                      isPassword: true,
+                    Card(
+                      elevation: 10,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                        15,
+                      )),
+                      margin: EdgeInsets.symmetric(
+                        horizontal: blockWidth * 5,
+                      ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Color(
+                              0xffaffde4,
+                            ),
+                            borderRadius: BorderRadius.circular(
+                              15,
+                            )),
+                        height: blockHeight * 10,
+                        alignment: Alignment.center,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: blockWidth * 5,
+                        ),
+                        child: FormBuilderTextField(
+                          attribute: "password",
+                          validators: [
+                            // FormBuilderValidators.email(),
+                            FormBuilderValidators.required(),
+                          ],
+                          textAlignVertical: TextAlignVertical.center,
+                          decoration: InputDecoration(
+                            // filled: true,
+                            // fillColor: Colors.yellow,
+                            hintText: "Enter your password",
+                            prefixIcon: Icon(
+                              Icons.lock,
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                     SizedBox(
                       height: blockHeight * 3,

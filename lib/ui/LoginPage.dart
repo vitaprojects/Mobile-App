@@ -19,6 +19,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final GlobalKey<FormBuilderState> _formBuilderKey =
       GlobalKey<FormBuilderState>();
+  bool hidePassword = true;
   @override
   Widget build(BuildContext context) {
     final double blockHeight = Globals.blockHeight;
@@ -26,6 +27,9 @@ class _LoginPageState extends State<LoginPage> {
 
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Color(
+          0xffd8fdf1,
+        ),
         body: Stack(
           children: [
             Container(
@@ -61,10 +65,15 @@ class _LoginPageState extends State<LoginPage> {
                           horizontal: blockWidth * 5,
                         ),
                         child: Container(
-                          height: blockHeight * 12,
-                          // color: Colors.grey,
+                          decoration: BoxDecoration(
+                              color: Color(
+                                0xffaffde4,
+                              ),
+                              borderRadius: BorderRadius.circular(
+                                15,
+                              )),
+                          height: blockHeight * 10,
                           alignment: Alignment.center,
-
                           padding: EdgeInsets.symmetric(
                             horizontal: blockWidth * 5,
                           ),
@@ -76,6 +85,8 @@ class _LoginPageState extends State<LoginPage> {
                             ],
                             textAlignVertical: TextAlignVertical.center,
                             decoration: InputDecoration(
+                              // filled: true,
+                              // fillColor: Colors.yellow,
                               hintText: "Enter your email",
                               prefixIcon: Icon(
                                 Icons.email,
@@ -97,7 +108,14 @@ class _LoginPageState extends State<LoginPage> {
                           horizontal: blockWidth * 5,
                         ),
                         child: Container(
-                          height: blockHeight * 12,
+                          decoration: BoxDecoration(
+                              color: Color(
+                                0xffaffde4,
+                              ),
+                              borderRadius: BorderRadius.circular(
+                                15,
+                              )),
+                          height: blockHeight * 10,
                           // color: Colors.grey,
                           alignment: Alignment.center,
 
@@ -105,15 +123,25 @@ class _LoginPageState extends State<LoginPage> {
                             horizontal: blockWidth * 5,
                           ),
                           child: FormBuilderTextField(
+                            obscureText: hidePassword,
                             attribute: "password",
                             validators: [FormBuilderValidators.required()],
                             textAlignVertical: TextAlignVertical.center,
                             decoration: InputDecoration(
-                              hintText: "Enter your password",
-                              prefixIcon: Icon(
-                                Icons.lock,
-                              ),
-                            ),
+                                hintText: "Enter your password",
+                                prefixIcon: Icon(
+                                  Icons.lock,
+                                ),
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    Icons.remove_red_eye,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      hidePassword = !hidePassword;
+                                    });
+                                  },
+                                )),
                           ),
                         ),
                       ),
@@ -121,7 +149,7 @@ class _LoginPageState extends State<LoginPage> {
                         height: blockHeight * 5,
                       ),
                       Container(
-                        height: blockHeight * 42,
+                        height: blockHeight * 38,
                         // color: Colors.yellow,
                         alignment: Alignment.center,
                         child: Column(
