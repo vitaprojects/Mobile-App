@@ -24,9 +24,7 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(
-          0xffd8fdf1,
-        ),
+        backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child: Stack(
             children: [

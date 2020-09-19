@@ -4,19 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newpostman1/globals.dart';
 import 'package:newpostman1/ui/HomePage.dart';
+import 'package:newpostman1/ui/PostYourItenary.dart';
 
 class ModeSelectionWidget extends StatelessWidget {
   const ModeSelectionWidget({
     this.assetName,
     this.bodyText,
     this.buttonText,
-    this.methodInButton,
+    // this.methodInButton,
     this.isFirstPage,
   });
   final String assetName;
   final String bodyText;
   final String buttonText;
-  final Function methodInButton;
+  // final Function methodInButton;
   final bool isFirstPage;
 
   @override
@@ -90,7 +91,16 @@ class ModeSelectionWidget extends StatelessWidget {
                 padding: EdgeInsets.all(
                   0,
                 ),
-                onPressed: methodInButton,
+                onPressed: () {
+                  if (isFirstPage == true) {
+                    // Get.to(PostYourItenary());
+                    Navigator.push(context, MaterialPageRoute(builder: (_) {
+                      return PostYourItenary();
+                    }));
+                  } else {
+                    print("go to send package");
+                  }
+                },
                 child: Container(
                   height: blockHeight * 6,
                   // color: Colors.green,

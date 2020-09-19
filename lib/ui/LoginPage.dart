@@ -27,9 +27,7 @@ class _LoginPageState extends State<LoginPage> {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Color(
-          0xffd8fdf1,
-        ),
+        backgroundColor: Colors.white,
         body: Stack(
           children: [
             Container(
