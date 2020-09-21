@@ -44,6 +44,7 @@ class _UploadPlaneTicketWidgetState extends State<UploadPlaneTicketWidget> {
                 style: TextStyle(
                   fontSize:
                       15, //TODO check the font size of each formfiled title
+                  color: Globals.mainColor,
                 ),
               ),
             ),

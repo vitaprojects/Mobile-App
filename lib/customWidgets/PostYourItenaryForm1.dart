@@ -1,6 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:newpostman1/customWidgets/AreYouADPC.dart';
+import 'package:newpostman1/customWidgets/CustomInputField.dart';
 import 'package:newpostman1/customWidgets/SelectTravelType.dart';
 import 'package:newpostman1/customWidgets/UploadPlaneTicket.dart';
 
@@ -48,7 +50,39 @@ class _PostYourItenaryForm1State extends State<PostYourItenaryForm1> {
                 },
               );
             } else if (travelType == 3) {
-              return UploadPlaneTicketWidget();
+              return Column(
+                children: [
+                  UploadPlaneTicketWidget(), //TODO implemente a callback function to get the image file uploaded by the user
+                  SizedBox(
+                    height: blockHeight * 2,
+                  ),
+                  Container(
+                    height: blockHeight * 24,
+                    // color: Colors.yellow,
+                    margin: EdgeInsets.symmetric(
+                      horizontal: blockWidth * 5,
+                    ),
+                    alignment: Alignment.center,
+                    child: Column(
+                      children: [
+                        CustomInputField(
+                          attribute: "flightNo",
+                          labelText: "enter flight number",
+                          textEditingController: TextEditingController(),
+                        ),
+                        SizedBox(
+                          height: blockHeight * 2,
+                        ),
+                        CustomInputField(
+                          attribute: "airlineno",
+                          labelText: "enter airline number",
+                          textEditingController: TextEditingController(),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              );
             } else {
               return Container();
             }

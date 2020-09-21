@@ -80,6 +80,7 @@ class _SelectTravelTypeState extends State<SelectTravelType> {
                       "select travel type".toUpperCase(),
                       style: TextStyle(
                         fontSize: 16,
+                        color: Globals.mainColor,
                       ),
                       minFontSize: 12,
                     ),
