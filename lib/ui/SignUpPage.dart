@@ -47,214 +47,245 @@ class _SignUpPageState extends State<SignUpPage> {
                     SizedBox(
                       height: blockHeight * 2,
                     ),
-                    Card(
-                      elevation: 10,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                        15,
-                      )),
-                      margin: EdgeInsets.symmetric(
-                        horizontal: blockWidth * 5,
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: blockWidth * 10,
                       ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Color(
-                              0xffaffde4,
+                      child: FormBuilderTextField(
+                        attribute: "fname",
+                        validators: [
+                          // FormBuilderValidators.email(),
+                          FormBuilderValidators.required(),
+                        ],
+                        textAlignVertical: TextAlignVertical.center,
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Color(
+                            0xffaffde4,
+                          ),
+                          hintText: "Enter your first name",
+                          prefixIcon: Icon(
+                            Icons.person,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(12.0)),
+                            borderSide:
+                                BorderSide(color: Globals.mainColor, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(12.0)),
+                            borderSide: BorderSide(
+                              color: Globals.mainColor,
                             ),
-                            borderRadius: BorderRadius.circular(
-                              15,
-                            )),
-                        height: blockHeight * 10,
-                        alignment: Alignment.center,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: blockWidth * 5,
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(12.0)),
+                            borderSide: BorderSide(color: Colors.red),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(12.0)),
+                            borderSide: BorderSide(color: Colors.red),
+                          ),
                         ),
-                        child: FormBuilderTextField(
-                          attribute: "fname",
-                          validators: [
-                            // FormBuilderValidators.email(),
-                            FormBuilderValidators.required(),
-                          ],
-                          textAlignVertical: TextAlignVertical.center,
-                          decoration: InputDecoration(
-                            // filled: true,
-                            // fillColor: Colors.yellow,
-                            hintText: "Enter your first name",
-                            prefixIcon: Icon(
-                              Icons.person,
+                      ),
+                    ),
+                    Container(
+                      // color: Colors.red,
+                      height: blockHeight * 2,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: blockWidth * 10,
+                      ),
+                      child: FormBuilderTextField(
+                        attribute: "lname",
+                        validators: [
+                          // FormBuilderValidators.email(),
+                          FormBuilderValidators.required(),
+                        ],
+                        textAlignVertical: TextAlignVertical.center,
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Color(
+                            0xffaffde4,
+                          ),
+                          hintText: "Enter your last name",
+                          prefixIcon: Icon(
+                            Icons.person,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(12.0)),
+                            borderSide:
+                                BorderSide(color: Globals.mainColor, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(12.0)),
+                            borderSide: BorderSide(
+                              color: Globals.mainColor,
                             ),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(12.0)),
+                            borderSide: BorderSide(color: Colors.red),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(12.0)),
+                            borderSide: BorderSide(color: Colors.red),
                           ),
                         ),
                       ),
                     ),
                     SizedBox(
-                      height: blockHeight * 1,
+                      height: blockHeight * 2,
                     ),
-                    Card(
-                      elevation: 10,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                        15,
-                      )),
-                      margin: EdgeInsets.symmetric(
-                        horizontal: blockWidth * 5,
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: blockWidth * 10,
                       ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Color(
-                              0xffaffde4,
+                      child: FormBuilderTextField(
+                        attribute: "phone",
+                        validators: [
+                          // FormBuilderValidators.email(),
+                          FormBuilderValidators.required(),
+                        ],
+                        textAlignVertical: TextAlignVertical.center,
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Color(
+                            0xffaffde4,
+                          ),
+                          hintText: "Enter your phone number",
+                          prefixIcon: Icon(
+                            Icons.call,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(12.0)),
+                            borderSide:
+                                BorderSide(color: Globals.mainColor, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(12.0)),
+                            borderSide: BorderSide(
+                              color: Globals.mainColor,
                             ),
-                            borderRadius: BorderRadius.circular(
-                              15,
-                            )),
-                        height: blockHeight * 10,
-                        alignment: Alignment.center,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: blockWidth * 5,
-                        ),
-                        child: FormBuilderTextField(
-                          attribute: "lname",
-                          validators: [
-                            // FormBuilderValidators.email(),
-                            FormBuilderValidators.required(),
-                          ],
-                          textAlignVertical: TextAlignVertical.center,
-                          decoration: InputDecoration(
-                            // filled: true,
-                            // fillColor: Colors.yellow,
-                            hintText: "Enter your last name",
-                            prefixIcon: Icon(
-                              Icons.email,
-                            ),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(12.0)),
+                            borderSide: BorderSide(color: Colors.red),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(12.0)),
+                            borderSide: BorderSide(color: Colors.red),
                           ),
                         ),
                       ),
                     ),
                     SizedBox(
-                      height: blockHeight * 1,
+                      height: blockHeight * 2,
                     ),
-                    Card(
-                      elevation: 10,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                        15,
-                      )),
-                      margin: EdgeInsets.symmetric(
-                        horizontal: blockWidth * 5,
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: blockWidth * 10,
                       ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Color(
-                              0xffaffde4,
+                      child: FormBuilderTextField(
+                        attribute: "email",
+                        validators: [
+                          // FormBuilderValidators.email(),
+                          FormBuilderValidators.required(),
+                        ],
+                        textAlignVertical: TextAlignVertical.center,
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Color(
+                            0xffaffde4,
+                          ),
+                          hintText: "Enter your email",
+                          prefixIcon: Icon(
+                            Icons.email,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(12.0)),
+                            borderSide:
+                                BorderSide(color: Globals.mainColor, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(12.0)),
+                            borderSide: BorderSide(
+                              color: Globals.mainColor,
                             ),
-                            borderRadius: BorderRadius.circular(
-                              15,
-                            )),
-                        height: blockHeight * 10,
-                        alignment: Alignment.center,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: blockWidth * 5,
-                        ),
-                        child: FormBuilderTextField(
-                          attribute: "phone",
-                          validators: [
-                            FormBuilderValidators.email(),
-                            FormBuilderValidators.required(),
-                          ],
-                          textAlignVertical: TextAlignVertical.center,
-                          decoration: InputDecoration(
-                            // filled: true,
-                            // fillColor: Colors.yellow,
-                            hintText: "Enter your phone number",
-                            prefixIcon: Icon(
-                              Icons.call,
-                            ),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(12.0)),
+                            borderSide: BorderSide(color: Colors.red),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(12.0)),
+                            borderSide: BorderSide(color: Colors.red),
                           ),
                         ),
                       ),
                     ),
                     SizedBox(
-                      height: blockHeight * 1,
+                      height: blockHeight * 2,
                     ),
-                    Card(
-                      elevation: 10,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                        15,
-                      )),
-                      margin: EdgeInsets.symmetric(
-                        horizontal: blockWidth * 5,
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: blockWidth * 10,
                       ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Color(
-                              0xffaffde4,
-                            ),
-                            borderRadius: BorderRadius.circular(
-                              15,
-                            )),
-                        height: blockHeight * 10,
-                        alignment: Alignment.center,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: blockWidth * 5,
-                        ),
-                        child: FormBuilderTextField(
-                          attribute: "email",
-                          validators: [
-                            FormBuilderValidators.email(),
-                            FormBuilderValidators.required(),
-                          ],
-                          textAlignVertical: TextAlignVertical.center,
-                          decoration: InputDecoration(
-                            // filled: true,
-                            // fillColor: Colors.yellow,
-                            hintText: "Enter your email",
-                            prefixIcon: Icon(
-                              Icons.email,
+                      child: FormBuilderTextField(
+                        attribute: "password",
+                        validators: [
+                          // FormBuilderValidators.email(),
+                          FormBuilderValidators.required(),
+                        ],
+                        textAlignVertical: TextAlignVertical.center,
+                        decoration: InputDecoration(
+                          filled: true,
+                          fillColor: Color(
+                            0xffaffde4,
+                          ),
+                          hintText: "Enter your password",
+                          prefixIcon: Icon(
+                            Icons.lock,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(12.0)),
+                            borderSide:
+                                BorderSide(color: Globals.mainColor, width: 2),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(12.0)),
+                            borderSide: BorderSide(
+                              color: Globals.mainColor,
                             ),
                           ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: blockHeight * 1,
-                    ),
-                    Card(
-                      elevation: 10,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                        15,
-                      )),
-                      margin: EdgeInsets.symmetric(
-                        horizontal: blockWidth * 5,
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Color(
-                              0xffaffde4,
-                            ),
-                            borderRadius: BorderRadius.circular(
-                              15,
-                            )),
-                        height: blockHeight * 10,
-                        alignment: Alignment.center,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: blockWidth * 5,
-                        ),
-                        child: FormBuilderTextField(
-                          attribute: "password",
-                          validators: [
-                            // FormBuilderValidators.email(),
-                            FormBuilderValidators.required(),
-                          ],
-                          textAlignVertical: TextAlignVertical.center,
-                          decoration: InputDecoration(
-                            // filled: true,
-                            // fillColor: Colors.yellow,
-                            hintText: "Enter your password",
-                            prefixIcon: Icon(
-                              Icons.lock,
-                            ),
+                          errorBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(12.0)),
+                            borderSide: BorderSide(color: Colors.red),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(12.0)),
+                            borderSide: BorderSide(color: Colors.red),
                           ),
                         ),
                       ),

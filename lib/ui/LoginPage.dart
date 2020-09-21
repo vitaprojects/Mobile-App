@@ -53,42 +53,60 @@ class _LoginPageState extends State<LoginPage> {
                       SizedBox(
                         height: blockHeight * 2,
                       ),
-                      Card(
-                        elevation: 10,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                          15,
-                        )),
+                      Container(
                         margin: EdgeInsets.symmetric(
                           horizontal: blockWidth * 5,
                         ),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: Color(
-                                0xffaffde4,
+                        decoration: BoxDecoration(
+                            // color: Color(
+                            //   0xffaffde4,
+                            // ),
+                            borderRadius: BorderRadius.circular(
+                          15,
+                        )),
+                        height: blockHeight * 12,
+                        alignment: Alignment.center,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: blockWidth * 5,
+                        ),
+                        child: FormBuilderTextField(
+                          attribute: "email",
+                          validators: [
+                            FormBuilderValidators.email(),
+                            FormBuilderValidators.required(),
+                          ],
+                          textAlignVertical: TextAlignVertical.center,
+                          decoration: InputDecoration(
+                            filled: true,
+                            fillColor: Color(
+                              0xffaffde4,
+                            ),
+                            hintText: "Enter your email",
+                            prefixIcon: Icon(
+                              Icons.email,
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(12.0)),
+                              borderSide: BorderSide(
+                                  color: Globals.mainColor, width: 2),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(12.0)),
+                              borderSide: BorderSide(
+                                color: Globals.mainColor,
                               ),
-                              borderRadius: BorderRadius.circular(
-                                15,
-                              )),
-                          height: blockHeight * 10,
-                          alignment: Alignment.center,
-                          padding: EdgeInsets.symmetric(
-                            horizontal: blockWidth * 5,
-                          ),
-                          child: FormBuilderTextField(
-                            attribute: "email",
-                            validators: [
-                              FormBuilderValidators.email(),
-                              FormBuilderValidators.required(),
-                            ],
-                            textAlignVertical: TextAlignVertical.center,
-                            decoration: InputDecoration(
-                              // filled: true,
-                              // fillColor: Colors.yellow,
-                              hintText: "Enter your email",
-                              prefixIcon: Icon(
-                                Icons.email,
-                              ),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(12.0)),
+                              borderSide: BorderSide(color: Colors.red),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(12.0)),
+                              borderSide: BorderSide(color: Colors.red),
                             ),
                           ),
                         ),
@@ -96,51 +114,71 @@ class _LoginPageState extends State<LoginPage> {
                       SizedBox(
                         height: blockHeight * 1,
                       ),
-                      Card(
-                        elevation: 10,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(
-                          15,
-                        )),
+                      Container(
                         margin: EdgeInsets.symmetric(
                           horizontal: blockWidth * 5,
                         ),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: Color(
+                        decoration: BoxDecoration(
+                            // color: Color(
+                            //   0xffaffde4,
+                            // ),
+                            borderRadius: BorderRadius.circular(
+                          15,
+                        )),
+                        height: blockHeight * 12,
+                        // color: Colors.grey,
+                        alignment: Alignment.center,
+
+                        padding: EdgeInsets.symmetric(
+                          horizontal: blockWidth * 5,
+                        ),
+                        child: FormBuilderTextField(
+                          obscureText: hidePassword,
+                          attribute: "password",
+                          validators: [FormBuilderValidators.required()],
+                          textAlignVertical: TextAlignVertical.center,
+                          decoration: InputDecoration(
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(12.0)),
+                                borderSide: BorderSide(
+                                    color: Globals.mainColor, width: 2),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(12.0)),
+                                borderSide: BorderSide(
+                                  color: Globals.mainColor,
+                                ),
+                              ),
+                              errorBorder: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(12.0)),
+                                borderSide: BorderSide(color: Colors.red),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(12.0)),
+                                borderSide: BorderSide(color: Colors.red),
+                              ),
+                              filled: true,
+                              fillColor: Color(
                                 0xffaffde4,
                               ),
-                              borderRadius: BorderRadius.circular(
-                                15,
-                              )),
-                          height: blockHeight * 10,
-                          // color: Colors.grey,
-                          alignment: Alignment.center,
-
-                          padding: EdgeInsets.symmetric(
-                            horizontal: blockWidth * 5,
-                          ),
-                          child: FormBuilderTextField(
-                            obscureText: hidePassword,
-                            attribute: "password",
-                            validators: [FormBuilderValidators.required()],
-                            textAlignVertical: TextAlignVertical.center,
-                            decoration: InputDecoration(
-                                hintText: "Enter your password",
-                                prefixIcon: Icon(
-                                  Icons.lock,
+                              hintText: "Enter your password",
+                              prefixIcon: Icon(
+                                Icons.lock,
+                              ),
+                              suffixIcon: IconButton(
+                                icon: Icon(
+                                  Icons.remove_red_eye,
                                 ),
-                                suffixIcon: IconButton(
-                                  icon: Icon(
-                                    Icons.remove_red_eye,
-                                  ),
-                                  onPressed: () {
-                                    setState(() {
-                                      hidePassword = !hidePassword;
-                                    });
-                                  },
-                                )),
-                          ),
+                                onPressed: () {
+                                  setState(() {
+                                    hidePassword = !hidePassword;
+                                  });
+                                },
+                              )),
                         ),
                       ),
                       SizedBox(
