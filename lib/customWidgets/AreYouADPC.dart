@@ -83,7 +83,7 @@ class _AreYouADPCState extends State<AreYouADPC> {
                               // print("Radio Tile pressed $val");
                               setSelectedRadioTile(val);
                             },
-                            activeColor: Colors.red,
+                            activeColor: Globals.mainColor,
                             selected: selectedType == 0,
                           ),
                         ),
@@ -102,7 +102,7 @@ class _AreYouADPCState extends State<AreYouADPC> {
                               // print("Radio Tile pressed $val");
                               setSelectedRadioTile(val);
                             },
-                            activeColor: Colors.red,
+                            activeColor: Globals.mainColor,
                             selected: selectedType == 1,
                           ),
                         ),
@@ -121,7 +121,7 @@ class _AreYouADPCState extends State<AreYouADPC> {
                               // print("Radio Tile pressed $val");
                               setSelectedRadioTile(val);
                             },
-                            activeColor: Colors.red,
+                            activeColor: Globals.mainColor,
                             selected: selectedType == 2,
                           ),
                         ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:newpostman1/customWidgets/AreYouADPC.dart';
 import 'package:newpostman1/customWidgets/CustomInputField.dart';
+import 'package:newpostman1/customWidgets/ICanPickUpWidget.dart';
 import 'package:newpostman1/customWidgets/SelectTravelType.dart';
 import 'package:newpostman1/customWidgets/UploadPlaneTicket.dart';
 
@@ -21,6 +22,7 @@ class _PostYourItenaryForm1State extends State<PostYourItenaryForm1> {
   Color chipColor = Colors.white;
   int travelType;
   int driverPassengerOrCon; //the type of the user
+  bool canPickUp; //whether the user can pcikup or not
 
   @override
   Widget build(BuildContext context) {
@@ -131,9 +133,22 @@ class _PostYourItenaryForm1State extends State<PostYourItenaryForm1> {
             }
           },
         ),
-        Container(
-          height: blockHeight * 50,
-          color: Colors.orange,
+        LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) {
+            if (travelType == 0 || travelType == 3) {
+              return Container();
+            } else {
+              return ICanPickUpWidget(
+                onChoiceSelected: (bool val) {
+                  canPickUp = val;
+                  print(driverPassengerOrCon);
+                },
+              );
+            }
+          },
+        ),
+        SizedBox(
+          height: blockHeight * 2,
         ),
         Container(
           height: blockHeight * 50,
