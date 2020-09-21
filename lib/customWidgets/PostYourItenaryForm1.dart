@@ -88,8 +88,48 @@ class _PostYourItenaryForm1State extends State<PostYourItenaryForm1> {
             }
           },
         ),
-        SizedBox(
-          height: blockHeight * 2,
+        (travelType == 0)
+            ? SizedBox(
+                height: blockHeight * 2,
+              )
+            : Container(),
+        LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) {
+            if (travelType != 3) {
+              return Container(
+                height: blockHeight * 36,
+                // color: Colors.red,
+                alignment: Alignment.center,
+                margin: EdgeInsets.symmetric(
+                  horizontal: blockWidth * 5,
+                ),
+                child: Column(
+                  children: [
+                    CustomInputField(
+                      attribute: "vehiNo",
+                      labelText: "vehicle identification",
+                    ),
+                    SizedBox(
+                      height: blockHeight * 2,
+                    ),
+                    CustomInputField(
+                      attribute: "transportComp",
+                      labelText: "transport company",
+                    ),
+                    SizedBox(
+                      height: blockHeight * 2,
+                    ),
+                    CustomInputField(
+                      attribute: "licencePlate",
+                      labelText: "enter licence plate number",
+                    ),
+                  ],
+                ),
+              );
+            } else {
+              return Container();
+            }
+          },
         ),
         Container(
           height: blockHeight * 50,
