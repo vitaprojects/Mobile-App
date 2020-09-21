@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:newpostman1/customWidgets/AreYouADPC.dart';
 import 'package:newpostman1/customWidgets/SelectTravelType.dart';
 
 import '../globals.dart';
@@ -16,6 +17,7 @@ class _PostYourItenaryForm1State extends State<PostYourItenaryForm1> {
   final double blockWidth = Globals.blockWidth;
   Color chipColor = Colors.white;
   int travelType;
+  int driverPassengerOrCon; //the type of the user
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +32,17 @@ class _PostYourItenaryForm1State extends State<PostYourItenaryForm1> {
             travelType = val;
           },
         ),
-        Container(
-          height: blockHeight * 50,
-          color: Colors.green,
+        SizedBox(
+          height: blockHeight * 2,
+        ),
+        AreYouADPC(
+          onChoiceSelected: (int val) {
+            driverPassengerOrCon = val;
+            print(driverPassengerOrCon);
+          },
+        ),
+        SizedBox(
+          height: blockHeight * 2,
         ),
         Container(
           height: blockHeight * 50,
