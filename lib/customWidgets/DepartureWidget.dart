@@ -1,5 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:newpostman1/customWidgets/CustomInputField.dart';
 
 import '../globals.dart';
 import 'ICanPickUpWidget.dart';
@@ -23,8 +25,8 @@ class _DepartureWidgetState extends State<DepartureWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: blockHeight * 50,
-      color: Colors.red,
+      // height: blockHeight * 50,
+      // color: Colors.red,
       alignment: Alignment.center,
       margin: EdgeInsets.symmetric(
         horizontal: blockWidth * 5,
@@ -33,7 +35,7 @@ class _DepartureWidgetState extends State<DepartureWidget> {
         children: [
           Container(
             height: blockHeight * 5,
-            color: Colors.yellow,
+            // color: Colors.yellow,
             alignment: Alignment.centerLeft,
             padding: EdgeInsets.only(
               left: blockWidth * 3,
@@ -63,9 +65,49 @@ class _DepartureWidgetState extends State<DepartureWidget> {
                     widget.onChoiceSelected(val);
                   },
                 ),
-          Container(
-            height: blockHeight * 10,
-            color: Colors.yellow,
+          SizedBox(
+            height: blockHeight * 2,
+          ),
+          Card(
+            elevation: 20,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(
+              10,
+            )),
+            margin: EdgeInsets.all(
+              0,
+            ),
+            child: Container(
+              height: blockHeight * 10,
+              // color: Colors.red,
+              padding: EdgeInsets.symmetric(
+                horizontal: blockWidth * 3,
+              ),
+              alignment: Alignment.center,
+              child: FormBuilderDateTimePicker(
+                fieldHintText: "date and time",
+                attribute: "departureDate",
+                decoration: InputDecoration(
+                    //     contentPadding: EdgeInsets.only(
+                    //   top: 0,
+                    //   bottom: 0,
+                    //   left: blockWidth * 3,
+                    // )
+
+                    labelStyle: TextStyle(
+                      color: Globals.mainColor,
+                    ),
+                    labelText: "date and time".toUpperCase()),
+                // fieldLabelText: "date and time".toUpperCase(),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: blockHeight * 2,
+          ),
+          CustomInputField(
+            attribute: "departurePoint",
+            labelText: "Select Departure Point",
           ),
         ],
       ),
