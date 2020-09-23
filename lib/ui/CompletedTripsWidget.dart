@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:newpostman1/customWidgets/TripDetailsCard.dart';
+
+import '../globals.dart';
 
 class CompletedTripsWidget extends StatefulWidget {
   CompletedTripsWidget({Key key}) : super(key: key);
@@ -10,8 +13,23 @@ class CompletedTripsWidget extends StatefulWidget {
 class _CompletedTripsWidgetState extends State<CompletedTripsWidget> {
   @override
   Widget build(BuildContext context) {
+    final double blockHeight = Globals.blockHeight;
+    final double blockWidth = Globals.blockWidth;
+
     return Scaffold(
-      body: Container(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(
+              height: blockHeight * 2,
+            ),
+            TripDetailsCard(),
+            TripDetailsCard(),
+            TripDetailsCard(),
+            TripDetailsCard(),
+          ],
+        ),
+      ),
     );
   }
 }
