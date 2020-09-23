@@ -197,7 +197,7 @@ class _PostYourItenaryForm1State extends State<PostYourItenaryForm1> {
                 // color: Colors.yellow,
                 alignment: Alignment.center,
                 child: AutoSizeText(
-                  "next - go love".toUpperCase(),
+                  "next - go live".toUpperCase(),
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.white,

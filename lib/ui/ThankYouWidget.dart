@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:newpostman1/ui/MyTripsWidget.dart';
 
 import '../globals.dart';
 
@@ -153,7 +154,7 @@ class ThankYouWidget extends StatelessWidget {
                         20,
                       )),
                       onPressed: () {
-                        Get.off(ThankYouWidget());
+                        Get.off(MyTripsWidget());
                       },
                       padding: EdgeInsets.all(0),
                       child: Container(
