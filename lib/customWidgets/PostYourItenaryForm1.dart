@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:get/get.dart';
 import 'package:newpostman1/customWidgets/AreYouADPC.dart';
 import 'package:newpostman1/customWidgets/CustomInputField.dart';
 import 'package:newpostman1/customWidgets/DepartureWidget.dart';
@@ -8,6 +9,7 @@ import 'package:newpostman1/customWidgets/DestinationWidget.dart';
 import 'package:newpostman1/customWidgets/ICanPickUpWidget.dart';
 import 'package:newpostman1/customWidgets/SelectTravelType.dart';
 import 'package:newpostman1/customWidgets/UploadPlaneTicket.dart';
+import 'package:newpostman1/ui/ThankYouWidget.dart';
 
 import '../globals.dart';
 
@@ -182,7 +184,9 @@ class _PostYourItenaryForm1State extends State<PostYourItenaryForm1> {
                 borderRadius: BorderRadius.circular(
               20,
             )),
-            onPressed: () {},
+            onPressed: () {
+              Get.off(ThankYouWidget());
+            },
             padding: EdgeInsets.all(0),
             child: Container(
               height: blockHeight * 6,
