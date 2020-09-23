@@ -4,6 +4,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:newpostman1/customWidgets/AreYouADPC.dart';
 import 'package:newpostman1/customWidgets/CustomInputField.dart';
 import 'package:newpostman1/customWidgets/DepartureWidget.dart';
+import 'package:newpostman1/customWidgets/DestinationWidget.dart';
 import 'package:newpostman1/customWidgets/ICanPickUpWidget.dart';
 import 'package:newpostman1/customWidgets/SelectTravelType.dart';
 import 'package:newpostman1/customWidgets/UploadPlaneTicket.dart';
@@ -24,6 +25,7 @@ class _PostYourItenaryForm1State extends State<PostYourItenaryForm1> {
   int travelType;
   int driverPassengerOrCon; //the type of the user
   bool canPickUp; //whether the user can pcikup or not
+  bool canDeliver;
 
   @override
   Widget build(BuildContext context) {
@@ -159,9 +161,52 @@ class _PostYourItenaryForm1State extends State<PostYourItenaryForm1> {
         SizedBox(
           height: blockHeight * 2,
         ),
+        DestinationWidget(
+          travelType: travelType,
+          onChoiceSelected: (bool val) {
+            canDeliver = val;
+            print(canDeliver);
+          },
+        ),
+
+        SizedBox(
+          height: blockHeight * 5,
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: blockWidth * 5,
+          ),
+          child: RaisedButton(
+            color: Globals.mainColor,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(
+              20,
+            )),
+            onPressed: () {},
+            padding: EdgeInsets.all(0),
+            child: Container(
+              height: blockHeight * 6,
+              // color: Colors.red,
+              alignment: Alignment.center,
+              child: Container(
+                height: blockHeight * 3,
+                // color: Colors.yellow,
+                alignment: Alignment.center,
+                child: AutoSizeText(
+                  "next - go love".toUpperCase(),
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                  minFontSize: 14,
+                ),
+              ),
+            ),
+          ),
+        ),
         Container(
-          height: blockHeight * 50,
-          color: Colors.yellow,
+          height: blockHeight * 10,
+          // color: Colors.yellow,
         ),
       ],
     );

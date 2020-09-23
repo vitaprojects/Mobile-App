@@ -6,8 +6,8 @@ import 'package:newpostman1/customWidgets/CustomInputField.dart';
 import '../globals.dart';
 import 'ICanPickUpWidget.dart';
 
-class DepartureWidget extends StatefulWidget {
-  DepartureWidget({
+class DestinationWidget extends StatefulWidget {
+  DestinationWidget({
     this.travelType,
     this.onChoiceSelected,
   });
@@ -15,10 +15,10 @@ class DepartureWidget extends StatefulWidget {
   final Function(bool) onChoiceSelected;
 
   @override
-  _DepartureWidgetState createState() => _DepartureWidgetState();
+  _DestinationWidgetState createState() => _DestinationWidgetState();
 }
 
-class _DepartureWidgetState extends State<DepartureWidget> {
+class _DestinationWidgetState extends State<DestinationWidget> {
   final double blockHeight = Globals.blockHeight;
   final double blockWidth = Globals.blockWidth;
 
@@ -47,7 +47,7 @@ class _DepartureWidgetState extends State<DepartureWidget> {
               height: blockHeight * 2.5,
               // color: Colors.blueAccent,
               child: AutoSizeText(
-                "Departure".toUpperCase(),
+                "destination".toUpperCase(),
                 style: TextStyle(
                   fontSize: 16,
                   color: Globals.mainColor,
@@ -59,7 +59,7 @@ class _DepartureWidgetState extends State<DepartureWidget> {
           (widget.travelType == 0 || widget.travelType == 3)
               ? Container()
               : ICanPickUpWidget(
-                  pickUp: true,
+                  pickUp: false,
                   onChoiceSelected: (bool val) {
                     // canPickUp = val;
                     // print(canPickUp);
@@ -107,8 +107,8 @@ class _DepartureWidgetState extends State<DepartureWidget> {
             height: blockHeight * 2,
           ),
           CustomInputField(
-            attribute: "departurePoint",
-            labelText: "Select Departure Point",
+            attribute: "destinationPoint",
+            labelText: "Select Destination Point",
           ),
           SizedBox(
             height: blockHeight * 2,
@@ -119,15 +119,15 @@ class _DepartureWidgetState extends State<DepartureWidget> {
                 return Column(
                   children: [
                     CustomInputField(
-                      attribute: "departureTerminal",
-                      labelText: "enter departure terminal".toUpperCase(),
+                      attribute: "arrivalTerminal",
+                      labelText: "enter arrival terminal".toUpperCase(),
                     ),
                     SizedBox(
                       height: blockHeight * 2,
                     ),
                     CustomInputField(
-                      attribute: "departureAirport",
-                      labelText: "enter departure airport".toUpperCase(),
+                      attribute: "arrivalAirport",
+                      labelText: "enter arrival airport".toUpperCase(),
                     )
                   ],
                 );

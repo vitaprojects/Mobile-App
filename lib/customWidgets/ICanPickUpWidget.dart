@@ -5,8 +5,11 @@ import '../globals.dart';
 class ICanPickUpWidget extends StatefulWidget {
   ICanPickUpWidget({
     this.onChoiceSelected,
+    this.pickUp,
   });
   final Function(bool) onChoiceSelected;
+  final bool
+      pickUp; //we use the same widget for picking and deliver so it is easy when we use a flag
 
   @override
   _ICanPickUpWidgetState createState() => _ICanPickUpWidgetState();
@@ -46,7 +49,9 @@ class _ICanPickUpWidgetState extends State<ICanPickUpWidget> {
                 checkColor: Globals.mainColor,
                 selected: _isSelected == true,
                 title: Text(
-                  "I can pickup",
+                  (widget.pickUp) == true
+                      ? "I can pickup".toUpperCase()
+                      : "I Can deliver".toUpperCase(),
                   style: TextStyle(
                     color: Colors.black,
                   ),
