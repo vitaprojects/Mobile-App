@@ -26,35 +26,15 @@ class _ICanPickUpWidgetState extends State<ICanPickUpWidget> {
           borderRadius: BorderRadius.circular(
         10,
       )),
-      margin: EdgeInsets.symmetric(
-        horizontal: blockWidth * 5,
+      margin: EdgeInsets.all(
+        0,
       ),
       child: Container(
-        height: blockHeight * 11,
+        height: blockHeight * 8,
         // color: Colors.orange,
         alignment: Alignment.center,
         child: Column(
           children: [
-            Container(
-              height: blockHeight * 4,
-              // color: Colors.yellow,
-              alignment: Alignment.center,
-              child: Container(
-                height: blockHeight * 4,
-                // color: Colors.green,
-                padding: EdgeInsets.only(
-                  left: blockWidth * 3,
-                ),
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Departure",
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Globals.mainColor,
-                  ),
-                ),
-              ),
-            ),
             Container(
               height: blockHeight * 6,
               // color: Colors.red,
