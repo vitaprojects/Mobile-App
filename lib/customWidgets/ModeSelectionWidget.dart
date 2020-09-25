@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:newpostman1/globals.dart';
 import 'package:newpostman1/ui/HomePage.dart';
 import 'package:newpostman1/ui/PostYourItenary.dart';
+import 'package:newpostman1/ui/SendPackage.dart';
 
 class ModeSelectionWidget extends StatelessWidget {
   const ModeSelectionWidget({
@@ -99,6 +100,9 @@ class ModeSelectionWidget extends StatelessWidget {
                     }));
                   } else {
                     print("go to send package");
+                    Navigator.push(context, MaterialPageRoute(builder: (_) {
+                      return SendPackage();
+                    }));
                   }
                 },
                 child: Container(
