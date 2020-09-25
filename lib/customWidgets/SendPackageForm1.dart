@@ -1,6 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:newpostman1/customWidgets/CustomInputField.dart';
+import 'package:newpostman1/customWidgets/EnterWeightAndDimensions.dart';
+import 'package:newpostman1/customWidgets/ItemBasicDetails.dart';
 import 'package:newpostman1/customWidgets/NeedInsuranceProtectionWidget.dart';
 import 'package:newpostman1/customWidgets/UploadPhotosForSendPackage.dart';
 
@@ -29,40 +31,56 @@ class _SendPackageForm1State extends State<SendPackageForm1> {
         SizedBox(
           height: blockHeight * 2,
         ),
-        Container(
-          // height: blockHeight * 30,
-          color: Colors.yellow,
-          margin: EdgeInsets.symmetric(
+        ItemBasicDetails(), //pass the text controllers and a callback function to pass the variable to the main widget
+        SizedBox(
+          height: blockHeight * 2,
+        ),
+        EnterWeightAndDimenstions(
+          onChoiceSelected: (val) {
+            print(val);
+          },
+        ),
+        SizedBox(
+          height: blockHeight * 5,
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(
             horizontal: blockWidth * 5,
           ),
-          alignment: Alignment.center,
-          child: Column(
-            children: [
-              CustomInputField(
-                attribute: "Item Name",
-                labelText: "Enter item name",
+          child: RaisedButton(
+            color: Globals.mainColor,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(
+              20,
+            )),
+            onPressed: () {
+              // Get.off(ThankYouWidget());
+            },
+            padding: EdgeInsets.all(0),
+            child: Container(
+              height: blockHeight * 6,
+              // color: Colors.red,
+              alignment: Alignment.center,
+              child: Container(
+                height: blockHeight * 3,
+                // color: Colors.yellow,
+                alignment: Alignment.center,
+                child: AutoSizeText(
+                  "next".toUpperCase(),
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                  minFontSize: 14,
+                ),
               ),
-              SizedBox(
-                height: blockHeight * 2,
-              ),
-              CustomInputField(
-                attribute: "item value",
-                labelText: "Enter item value",
-              ),
-              SizedBox(
-                height: blockHeight * 2,
-              ),
-              NeedInsuranceProtection(
-                onChoiceSelected: (val) {
-                  print(val);
-                },
-              ),
-              SizedBox(
-                height: blockHeight * 2,
-              ),
-            ],
+            ),
           ),
-        )
+        ),
+        Container(
+          height: blockHeight * 10,
+          // color: Colors.yellow,
+        ),
       ],
     );
   }
