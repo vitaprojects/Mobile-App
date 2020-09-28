@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:newpostman1/customWidgets/SendPackageForm2.dart';
+import 'package:newpostman1/customWidgets/SendPackage/SendPackageForm2.dart';
 
 import '../globals.dart';
 

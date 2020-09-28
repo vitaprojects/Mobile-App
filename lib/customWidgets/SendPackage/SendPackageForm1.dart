@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newpostman1/customWidgets/CustomInputField.dart';
 import 'package:newpostman1/customWidgets/EnterWeightAndDimensions.dart';
+import 'package:newpostman1/customWidgets/FormButton.dart';
 import 'package:newpostman1/customWidgets/ItemBasicDetails.dart';
 import 'package:newpostman1/customWidgets/NeedInsuranceProtectionWidget.dart';
 import 'package:newpostman1/customWidgets/SendPackageSecondPage.dart';
 import 'package:newpostman1/customWidgets/UploadPhotosForSendPackage.dart';
 
-import '../globals.dart';
+import '../../globals.dart';
 
 class SendPackageForm1 extends StatefulWidget {
   SendPackageForm1({Key key}) : super(key: key);
@@ -45,40 +46,11 @@ class _SendPackageForm1State extends State<SendPackageForm1> {
         SizedBox(
           height: blockHeight * 5,
         ),
-        Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: blockWidth * 5,
-          ),
-          child: RaisedButton(
-            color: Globals.mainColor,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(
-              20,
-            )),
-            onPressed: () {
-              // Get.toS(ThankYouWidget());
-              Get.to(SendPackageSecondPage());
-            },
-            padding: EdgeInsets.all(0),
-            child: Container(
-              height: blockHeight * 6,
-              // color: Colors.red,
-              alignment: Alignment.center,
-              child: Container(
-                height: blockHeight * 3,
-                // color: Colors.yellow,
-                alignment: Alignment.center,
-                child: AutoSizeText(
-                  "next".toUpperCase(),
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
-                  ),
-                  minFontSize: 14,
-                ),
-              ),
-            ),
-          ),
+        FormButton(
+          buttonText: "next",
+          ontapFun: () {
+            Get.to(SendPackageSecondPage());
+          },
         ),
         Container(
           height: blockHeight * 10,

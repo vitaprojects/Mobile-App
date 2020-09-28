@@ -1,8 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
-import '../globals.dart';
-import 'CustomInputField.dart';
+import '../../globals.dart';
+import '../CustomInputField.dart';
 
 class PackageDepartureDetails extends StatelessWidget {
   const PackageDepartureDetails({Key key}) : super(key: key);
