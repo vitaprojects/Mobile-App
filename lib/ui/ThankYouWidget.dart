@@ -122,19 +122,19 @@ class ThankYouWidget extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "You will be notified once a customer selects you for delivery",
+                      "Watchout for customer requests !",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 16,
                       ),
                     ),
-                    Text(
-                      "Have a wonderful trip and keep using postman",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
-                    )
+                    // Text(
+                    //   "Have a wonderful trip and keep using postman",
+                    //   textAlign: TextAlign.center,
+                    //   style: TextStyle(
+                    //     fontSize: 16,
+                    //   ),
+                    // )
                   ],
                 )),
             Container(

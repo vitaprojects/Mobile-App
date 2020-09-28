@@ -24,16 +24,17 @@ class _PostYourItenaryState extends State<PostYourItenary> {
             physics: BouncingScrollPhysics(),
             slivers: [
               SliverAppBar(
-                stretchTriggerOffset: 200,
+                stretchTriggerOffset: 100,
                 backgroundColor: Colors.white,
                 stretch: true,
-                expandedHeight: blockHeight * 40,
+                expandedHeight: blockHeight * 20,
                 flexibleSpace: FlexibleSpaceBar(
                   title: Text(
                     "Post Your Itenary",
                     style: TextStyle(
                       // fontSize: 2,
-                      color: Colors.black,
+                      color: Globals.mainColor,
+                      fontSize: 25,
                     ),
                   ),
                   centerTitle: true,
@@ -42,12 +43,12 @@ class _PostYourItenaryState extends State<PostYourItenary> {
                     StretchMode.fadeTitle,
                     StretchMode.blurBackground,
                   ],
-                  background: Image.asset(
-                    "assets/images/travel.png",
-                    height: blockHeight * 32,
-                    width: blockWidth * 70,
-                    fit: BoxFit.contain,
-                  ),
+                  // background: Image.asset(
+                  //   "assets/images/travel.png",
+                  //   height: blockHeight * 32,
+                  //   width: blockWidth * 70,
+                  //   fit: BoxFit.contain,
+                  // ),
                 ),
               ),
               SliverList(

@@ -23,16 +23,17 @@ class _SendPackageState extends State<SendPackage> {
           physics: BouncingScrollPhysics(),
           slivers: [
             SliverAppBar(
-              stretchTriggerOffset: 200,
+              stretchTriggerOffset: 100,
               backgroundColor: Colors.white,
               stretch: true,
-              expandedHeight: blockHeight * 40,
+              expandedHeight: blockHeight * 20,
               flexibleSpace: FlexibleSpaceBar(
                 title: Text(
                   "Send Package",
                   style: TextStyle(
                     // fontSize: 2,
-                    color: Colors.black,
+                    color: Globals.mainColor,
+                    fontSize: 25,
                   ),
                 ),
                 centerTitle: true,
@@ -41,12 +42,12 @@ class _SendPackageState extends State<SendPackage> {
                   StretchMode.fadeTitle,
                   StretchMode.blurBackground,
                 ],
-                background: Image.asset(
-                  "assets/images/sendPackage.png",
-                  height: blockHeight * 32,
-                  width: blockWidth * 70,
-                  fit: BoxFit.contain,
-                ),
+                // background: Image.asset(
+                //   "assets/images/sendPackage.png",
+                //   height: blockHeight * 32,
+                //   width: blockWidth * 70,
+                //   fit: BoxFit.contain,
+                // ),
               ),
             ),
             SliverList(
