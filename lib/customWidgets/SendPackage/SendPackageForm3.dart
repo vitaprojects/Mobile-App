@@ -5,18 +5,21 @@ import 'package:newpostman1/customWidgets/CustomInputField.dart';
 import 'package:newpostman1/customWidgets/FormButton.dart';
 import 'package:newpostman1/customWidgets/SendPackage/PackageDepartureDetails.dart';
 import 'package:newpostman1/customWidgets/SendPackage/PackageFinalDestDetails.dart';
-import 'package:newpostman1/customWidgets/SendPackage/SendPackageThirdPage.dart';
+import 'package:newpostman1/customWidgets/SendPackage/PackageListedMessage.dart';
+import 'package:newpostman1/customWidgets/SendPackage/ReceiverDetailsWidget.dart';
+import 'package:newpostman1/customWidgets/SendPackage/SenderDetailsWidget.dart';
+import 'package:newpostman1/ui/ThankYouWidget.dart';
 
 import '../../globals.dart';
 
-class SendPackageForm2 extends StatefulWidget {
-  SendPackageForm2({Key key}) : super(key: key);
+class SendPackageForm3 extends StatefulWidget {
+  SendPackageForm3({Key key}) : super(key: key);
 
   @override
-  _SendPackageForm2State createState() => _SendPackageForm2State();
+  _SendPackageForm3State createState() => _SendPackageForm3State();
 }
 
-class _SendPackageForm2State extends State<SendPackageForm2> {
+class _SendPackageForm3State extends State<SendPackageForm3> {
   final double blockHeight = Globals.blockHeight;
   final double blockWidth = Globals.blockWidth;
 
@@ -28,11 +31,11 @@ class _SendPackageForm2State extends State<SendPackageForm2> {
           height: blockHeight * 5,
           // color: Colors.green,
         ),
-        PackageDepartureDetails(),
+        SenderDetails(),
         SizedBox(
           height: blockHeight * 2,
         ),
-        PackageFinalDestDetails(),
+        ReceiverDetailsWidget(),
         SizedBox(
           height: blockHeight * 2,
         ),
@@ -41,17 +44,18 @@ class _SendPackageForm2State extends State<SendPackageForm2> {
             horizontal: blockWidth * 5,
           ),
           child: CustomInputField(
-            attribute: "postageCost",
-            labelText: "Enter postage cost",
+            attribute: "deliveryNote",
+            labelText: "Enter note for postman",
+            isDescription: true,
           ),
         ),
         SizedBox(
           height: blockHeight * 5,
         ),
         FormButton(
-          buttonText: "next",
+          buttonText: "find trip",
           ontapFun: () {
-            Get.to(SendPackageThirdPage());
+            Get.to(PackageListedMessage());
           },
         ),
         SizedBox(

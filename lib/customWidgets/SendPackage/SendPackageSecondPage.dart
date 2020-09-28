@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:newpostman1/customWidgets/SendPackage/SendPackageForm2.dart';
 
-import '../globals.dart';
+import '../../globals.dart';
 
 class SendPackageSecondPage extends StatefulWidget {
   SendPackageSecondPage({Key key}) : super(key: key);

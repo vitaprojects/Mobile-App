@@ -6,7 +6,11 @@ import 'package:newpostman1/ui/MyTripsWidget.dart';
 import '../globals.dart';
 
 class ThankYouWidget extends StatelessWidget {
-  const ThankYouWidget({Key key}) : super(key: key);
+  ThankYouWidget({
+    this.typeOfThankYou,
+  });
+
+  final int typeOfThankYou;
 
   @override
   Widget build(BuildContext context) {
@@ -114,19 +118,49 @@ class ThankYouWidget extends StatelessWidget {
                             )),
                       ],
                     )),
-                    Text(
-                      "Your itenary posted successfully",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
-                    ),
-                    Text(
-                      "Watchout for customer requests !",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
+                    LayoutBuilder(
+                      builder:
+                          (BuildContext context, BoxConstraints constraints) {
+                        if (typeOfThankYou == 1) {
+                          return Column(
+                            children: [
+                              Text(
+                                "Your request posted successfully",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                              Text(
+                                "You will get an alert when someone accept your request !",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ],
+                          );
+                        } else {
+                          return Column(
+                            children: [
+                              Text(
+                                "Your itenary posted successfully",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                              Text(
+                                "Watchout for customer requests !",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ],
+                          );
+                        }
+                      },
                     ),
                     // Text(
                     //   "Have a wonderful trip and keep using postman",

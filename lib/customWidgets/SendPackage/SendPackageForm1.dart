@@ -6,7 +6,7 @@ import 'package:newpostman1/customWidgets/EnterWeightAndDimensions.dart';
 import 'package:newpostman1/customWidgets/FormButton.dart';
 import 'package:newpostman1/customWidgets/ItemBasicDetails.dart';
 import 'package:newpostman1/customWidgets/NeedInsuranceProtectionWidget.dart';
-import 'package:newpostman1/customWidgets/SendPackageSecondPage.dart';
+import 'package:newpostman1/customWidgets/SendPackage/SendPackageSecondPage.dart';
 import 'package:newpostman1/customWidgets/UploadPhotosForSendPackage.dart';
 
 import '../../globals.dart';
