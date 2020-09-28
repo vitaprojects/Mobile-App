@@ -1,9 +1,11 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:newpostman1/customWidgets/CustomInputField.dart';
 import 'package:newpostman1/customWidgets/EnterWeightAndDimensions.dart';
 import 'package:newpostman1/customWidgets/ItemBasicDetails.dart';
 import 'package:newpostman1/customWidgets/NeedInsuranceProtectionWidget.dart';
+import 'package:newpostman1/customWidgets/SendPackageSecondPage.dart';
 import 'package:newpostman1/customWidgets/UploadPhotosForSendPackage.dart';
 
 import '../globals.dart';
@@ -54,7 +56,8 @@ class _SendPackageForm1State extends State<SendPackageForm1> {
               20,
             )),
             onPressed: () {
-              // Get.off(ThankYouWidget());
+              // Get.toS(ThankYouWidget());
+              Get.to(SendPackageSecondPage());
             },
             padding: EdgeInsets.all(0),
             child: Container(

@@ -10,6 +10,7 @@ class CustomInputField extends StatefulWidget {
     this.textEditingController,
     this.isDescription,
     this.isInternalField,
+    this.isDate,
   });
   final String attribute;
   final String labelText;
@@ -17,6 +18,7 @@ class CustomInputField extends StatefulWidget {
   final bool
       isDescription; //this is set to true if this field is to add a description
   final bool isInternalField;
+  final bool isDate; //to check whether we are enter a date
   @override
   _CustomInputFieldState createState() => _CustomInputFieldState();
 }
@@ -30,30 +32,55 @@ class _CustomInputFieldState extends State<CustomInputField> {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         if (widget.isInternalField == true) {
-          return Container(
-            height: (widget.isDescription == true)
-                ? blockHeight * 15
-                : blockHeight * 10,
-            // color: Colors.red,
-            alignment: Alignment.center,
-            child: FormBuilderTextField(
-              controller: widget.textEditingController,
-              attribute: widget.attribute,
-              textAlignVertical: TextAlignVertical.center,
-              maxLines: (widget.isDescription == true) ? null : 2,
-              decoration: InputDecoration(
-                  // filled: true,
-                  // fillColor: Colors.green,
-                  labelStyle: TextStyle(
-                    color: Globals.mainColor,
-                  ),
-                  border: InputBorder.none,
-                  labelText: widget.labelText.toUpperCase(),
-                  contentPadding: EdgeInsets.only(
-                    left: blockWidth * 3,
-                  )),
-            ),
-          );
+          if (widget.isDate == true) {
+            return Container(
+              height: blockHeight * 10,
+              // color: Colors.red,
+              alignment: Alignment.center,
+              child: FormBuilderDateTimePicker(
+                controller: widget.textEditingController,
+                attribute: widget.attribute,
+                // textAlignVertical: TextAlignVertical.center,
+                // maxLines: (widget.isDescription == true) ? null : 2,
+                decoration: InputDecoration(
+                    // filled: true,
+                    // fillColor: Colors.green,
+                    labelStyle: TextStyle(
+                      color: Globals.mainColor,
+                    ),
+                    border: InputBorder.none,
+                    labelText: widget.labelText.toUpperCase(),
+                    contentPadding: EdgeInsets.only(
+                      left: blockWidth * 3,
+                    )),
+              ),
+            );
+          } else {
+            return Container(
+              height: (widget.isDescription == true)
+                  ? blockHeight * 15
+                  : blockHeight * 10,
+              // color: Colors.red,
+              alignment: Alignment.center,
+              child: FormBuilderTextField(
+                controller: widget.textEditingController,
+                attribute: widget.attribute,
+                textAlignVertical: TextAlignVertical.center,
+                maxLines: (widget.isDescription == true) ? null : 2,
+                decoration: InputDecoration(
+                    // filled: true,
+                    // fillColor: Colors.green,
+                    labelStyle: TextStyle(
+                      color: Globals.mainColor,
+                    ),
+                    border: InputBorder.none,
+                    labelText: widget.labelText.toUpperCase(),
+                    contentPadding: EdgeInsets.only(
+                      left: blockWidth * 3,
+                    )),
+              ),
+            );
+          }
         } else {
           return Card(
             elevation: 20,
