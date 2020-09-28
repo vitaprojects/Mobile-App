@@ -1,5 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:newpostman1/customWidgets/SendPackage/SendPackageConfirmationPage.dart';
 
 import '../../globals.dart';
 
@@ -62,7 +64,9 @@ class PackageListedMessage extends StatelessWidget {
               padding: EdgeInsets.all(
                 0,
               ),
-              onPressed: () {},
+              onPressed: () {
+                Get.to(SendPackageConfirmationPage());
+              },
               child: Container(
                 height: blockHeight * 10,
                 // color: Colors.redAccent,
