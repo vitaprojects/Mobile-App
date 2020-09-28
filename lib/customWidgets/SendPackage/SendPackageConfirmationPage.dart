@@ -1,8 +1,14 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:newpostman1/customWidgets/CustomInputField.dart';
+import 'package:newpostman1/customWidgets/FormButton.dart';
 import 'package:newpostman1/customWidgets/SendPackage/FinalPackageDetailsWidget.dart';
+import 'package:newpostman1/customWidgets/SendPackage/SenderInformationCard.dart';
+import 'package:newpostman1/customWidgets/SendPackage/SenderReceiverInformationWidget.dart';
+import 'package:newpostman1/customWidgets/SendPackage/UploadedImagesOfPackage.dart';
+import 'package:newpostman1/ui/ThankYouWidget.dart';
 import 'package:newpostman1/ui/TripDetailRowCard.dart';
 
 import '../../globals.dart';
@@ -54,6 +60,28 @@ class SendPackageConfirmationPage extends StatelessWidget {
               Column(
                 children: [
                   FinalPackageDetailsWidget(),
+                  SizedBox(
+                    height: blockHeight * 2,
+                  ),
+                  UploadedImagesOfPackage(),
+                  SizedBox(
+                    height: blockHeight * 2,
+                  ),
+                  SenderReceiverInformationWidget(),
+                  SizedBox(
+                    height: blockHeight * 2,
+                  ),
+                  FormButton(
+                    buttonText: "confirm shipment",
+                    ontapFun: () {
+                      Get.to(ThankYouWidget(
+                        typeOfThankYou: 1,
+                      ));
+                    },
+                  ),
+                  SizedBox(
+                    height: blockHeight * 5,
+                  )
                 ],
               ),
             ]))

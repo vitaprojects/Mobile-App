@@ -188,7 +188,10 @@ class ThankYouWidget extends StatelessWidget {
                         20,
                       )),
                       onPressed: () {
-                        Get.off(MyTripsWidget());
+                        if (typeOfThankYou == 1) {
+                        } else {
+                          Get.off(MyTripsWidget());
+                        }
                       },
                       padding: EdgeInsets.all(0),
                       child: Container(
@@ -200,7 +203,9 @@ class ThankYouWidget extends StatelessWidget {
                           // color: Colors.yellow,
                           alignment: Alignment.center,
                           child: AutoSizeText(
-                            "view itenary".toUpperCase(),
+                            typeOfThankYou == 1
+                                ? "view request".toUpperCase()
+                                : "view itenary".toUpperCase(),
                             style: TextStyle(
                               fontSize: 20,
                               color: Colors.white,
