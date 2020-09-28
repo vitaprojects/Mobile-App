@@ -1,8 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 import 'package:newpostman1/customWidgets/ModeSelectionWidget.dart';
 import 'package:newpostman1/globals.dart';
+import 'package:newpostman1/ui/PostYourItenary.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -22,24 +24,26 @@ class _HomePageState extends State<HomePage> {
 
   final pages = [
     Container(
-        child: ModeSelectionWidget(
-      assetName: "assets/images/travel.png",
-      bodyText: "Earn money while travelling",
-      buttonText: "post itenary",
-      isFirstPage: true,
-      methodInButton: () {
-        print("post");
-      },
-    )),
+      child: ModeSelectionWidget(
+        assetName: "assets/images/travel.png",
+        bodyText: "Earn money while travelling",
+        buttonText: "post itenary",
+        isFirstPage: true,
+        // methodInButton: () {
+        //   print("post");
+        //   Get.to(PostYourItenary());
+        // },
+      ),
+    ),
     Container(
         child: ModeSelectionWidget(
       assetName: "assets/images/sendPackage.png",
       bodyText: "Send your package with ease",
       buttonText: "send package",
       isFirstPage: false,
-      methodInButton: () {
-        print("send");
-      },
+      // methodInButton: () {
+      //   print("send");
+      // },
     ))
   ];
   @override
