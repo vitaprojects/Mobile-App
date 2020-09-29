@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:newpostman1/ui/HomePage.dart';
 import 'package:newpostman1/ui/MyTripsWidget.dart';
 import 'package:newpostman1/ui/TrackPackage.dart';
 
@@ -228,6 +229,7 @@ class ThankYouWidget extends StatelessWidget {
                     child: GestureDetector(
                       onTap: () {
                         print("back to home");
+                        Get.offAll(HomePage());
                       },
                       child: Container(
                         width: blockWidth * 70,

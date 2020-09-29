@@ -1,7 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_inner_drawer/inner_drawer.dart';
 import 'package:get/get.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
+import 'package:newpostman1/customWidgets/DrawerWidget.dart';
 import 'package:newpostman1/customWidgets/ModeSelectionWidget.dart';
 import 'package:newpostman1/globals.dart';
 import 'package:newpostman1/ui/PostYourItenary.dart';
@@ -46,13 +48,47 @@ class _HomePageState extends State<HomePage> {
       // },
     ))
   ];
+
+  final GlobalKey<InnerDrawerState> _innerDrawerKey =
+      GlobalKey<InnerDrawerState>();
+
+  void _toggle() {
+    _innerDrawerKey.currentState.toggle(
+        // direction is optional
+        // if not set, the last direction will be used
+        //InnerDrawerDirection.start OR InnerDrawerDirection.end
+        direction: InnerDrawerDirection.end);
+  }
+
   @override
   Widget build(BuildContext context) {
     final double blockHeight = Globals.blockHeight;
     final double blockWidth = Globals.blockWidth;
 
     return SafeArea(
-      child: Scaffold(
+        child: InnerDrawer(
+      key: _innerDrawerKey,
+      onTapClose: true,
+      leftChild: Container(
+        color: Colors.white,
+        alignment: Alignment.center,
+        child: DrawerWidget(),
+      ),
+      colorTransitionChild: Globals.mainColor,
+      colorTransitionScaffold: Colors.black54, // default Color.black54
+      borderRadius: 50, // default 0
+      leftAnimationType: InnerDrawerAnimation.static, // default static
+      rightAnimationType: InnerDrawerAnimation.quadratic,
+      // offset: IDOffset.only(right: 0.0, left: 0.0),
+      backgroundDecoration: BoxDecoration(color: Colors.white),
+
+      rightChild: Container(
+        color: Colors.white,
+        alignment: Alignment.center,
+        child: DrawerWidget(),
+      ),
+      swipe: true,
+      scaffold: Scaffold(
         backgroundColor: Colors.white,
         // appBar: AppBar(
         //   backgroundColor: Colors.white,
@@ -121,6 +157,6 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-    );
+    ));
   }
 }
