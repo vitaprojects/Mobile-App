@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newpostman1/ui/MyTripsWidget.dart';
+import 'package:newpostman1/ui/TrackPackage.dart';
 
 import '../globals.dart';
 
@@ -189,6 +190,7 @@ class ThankYouWidget extends StatelessWidget {
                       )),
                       onPressed: () {
                         if (typeOfThankYou == 1) {
+                          Get.off(TrackPackage());
                         } else {
                           Get.off(MyTripsWidget());
                         }

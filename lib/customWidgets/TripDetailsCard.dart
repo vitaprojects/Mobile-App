@@ -6,7 +6,10 @@ import 'package:newpostman1/ui/TripDetailRowCard.dart';
 import '../globals.dart';
 
 class TripDetailsCard extends StatelessWidget {
-  const TripDetailsCard({Key key}) : super(key: key);
+  const TripDetailsCard({
+    this.isPackage,
+  });
+  final bool isPackage;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +45,7 @@ class TripDetailsCard extends StatelessWidget {
                 // color: Colors.redAccent,
                 alignment: Alignment.centerLeft,
                 child: AutoSizeText(
-                  "Posted  on 04 Sep 2020",
+                  "Posted on 04 Sep 2020",
                   style: TextStyle(
                     fontSize: 20,
                   ),
@@ -55,25 +58,61 @@ class TripDetailsCard extends StatelessWidget {
               // color: Colors.redAccent,
               alignment: Alignment.centerLeft,
               child: Container(
-                  height: blockHeight * 4.5,
-                  // color: Colors.yellow,
-                  alignment: Alignment.centerLeft,
-                  child: Row(
-                    children: [
-                      Icon(
-                        FontAwesomeIcons.bus,
-                      ),
-                      SizedBox(
-                        width: blockWidth * 3,
-                      ),
-                      Text(
-                        "Bus".toUpperCase(),
-                        style: TextStyle(
-                          fontSize: 18,
-                        ),
+                height: blockHeight * 4.5,
+                // color: Colors.yellow,
+                alignment: Alignment.centerLeft,
+                child: (isPackage == true)
+                    ? Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            width: blockWidth * 15,
+                            // color: Colors.green,
+                            alignment: Alignment.center,
+                            child: Container(
+                              width: blockWidth * 10,
+                              // color: Colors.yellow,
+                              alignment: Alignment.center,
+                              child: Text(
+                                "74",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            // width: blockWidth * 40,
+                            // color: Colors.green,
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              "Postage cost : CAD\$20",
+                              style: TextStyle(
+                                color: Globals.mainColor,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                        ],
                       )
-                    ],
-                  )),
+                    : Row(
+                        children: [
+                          Icon(
+                            FontAwesomeIcons.bus,
+                          ),
+                          SizedBox(
+                            width: blockWidth * 3,
+                          ),
+                          Text(
+                            "Bus".toUpperCase(),
+                            style: TextStyle(
+                              fontSize: 18,
+                            ),
+                          )
+                        ],
+                      ),
+              ),
             ),
             TripDetailRowCard(
               address: "130/a colombo colombo",
