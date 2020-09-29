@@ -11,7 +11,9 @@ class CustomInputField extends StatefulWidget {
     this.isDescription,
     this.isInternalField,
     this.isDate,
+    this.isPhone,
   });
+
   final String attribute;
   final String labelText;
   final TextEditingController textEditingController;
@@ -19,6 +21,7 @@ class CustomInputField extends StatefulWidget {
       isDescription; //this is set to true if this field is to add a description
   final bool isInternalField;
   final bool isDate; //to check whether we are enter a date
+  final bool isPhone;
   @override
   _CustomInputFieldState createState() => _CustomInputFieldState();
 }
@@ -38,6 +41,30 @@ class _CustomInputFieldState extends State<CustomInputField> {
               // color: Colors.red,
               alignment: Alignment.center,
               child: FormBuilderDateTimePicker(
+                controller: widget.textEditingController,
+                attribute: widget.attribute,
+                // textAlignVertical: TextAlignVertical.center,
+                // maxLines: (widget.isDescription == true) ? null : 2,
+                decoration: InputDecoration(
+                    // filled: true,
+                    // fillColor: Colors.green,
+                    labelStyle: TextStyle(
+                      color: Globals.mainColor,
+                    ),
+                    border: InputBorder.none,
+                    labelText: widget.labelText.toUpperCase(),
+                    contentPadding: EdgeInsets.only(
+                      left: blockWidth * 3,
+                    )),
+              ),
+            );
+          } else if (widget.isPhone == true) {
+            return Container(
+              height: blockHeight * 10,
+              // color: Colors.red,
+              alignment: Alignment.center,
+              child: FormBuilderTextField(
+                keyboardType: TextInputType.number,
                 controller: widget.textEditingController,
                 attribute: widget.attribute,
                 // textAlignVertical: TextAlignVertical.center,

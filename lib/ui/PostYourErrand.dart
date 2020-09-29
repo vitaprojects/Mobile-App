@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newpostman1/customWidgets/PostErrand/PostErrandForm1.dart';
 
 import '../globals.dart';
 
@@ -51,7 +52,7 @@ class _PostYourErrandState extends State<PostYourErrand> {
               ),
               SliverList(
                   delegate: SliverChildListDelegate([
-                // PostYourErrandForm1(),
+                PostYourErrandForm1(),
               ]))
             ],
           )),
