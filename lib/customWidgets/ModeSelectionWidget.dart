@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newpostman1/globals.dart';
 import 'package:newpostman1/ui/HomePage.dart';
+import 'package:newpostman1/ui/PostYourErrand.dart';
 import 'package:newpostman1/ui/PostYourItenary.dart';
 import 'package:newpostman1/ui/SendPackage.dart';
 
@@ -13,13 +14,14 @@ class ModeSelectionWidget extends StatelessWidget {
     this.bodyText,
     this.buttonText,
     // this.methodInButton,
-    this.isFirstPage,
+    this.pageNum,
   });
   final String assetName;
   final String bodyText;
   final String buttonText;
   // final Function methodInButton;
-  final bool isFirstPage;
+  // final bool isFirstPage;
+  final int pageNum;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +50,7 @@ class ModeSelectionWidget extends StatelessWidget {
                 ),
               ),
               Align(
-                alignment: (isFirstPage == true)
+                alignment: (pageNum % 2 == 0)
                     ? Alignment.bottomCenter
                     : Alignment.topCenter,
                 child: Container(
@@ -93,15 +95,20 @@ class ModeSelectionWidget extends StatelessWidget {
                   0,
                 ),
                 onPressed: () {
-                  if (isFirstPage == true) {
+                  if (pageNum == 0) {
                     // Get.to(PostYourItenary());
                     Navigator.push(context, MaterialPageRoute(builder: (_) {
                       return PostYourItenary();
                     }));
-                  } else {
+                  } else if (pageNum == 1) {
                     print("go to send package");
                     Navigator.push(context, MaterialPageRoute(builder: (_) {
                       return SendPackage();
+                    }));
+                  } else {
+                    print("go to errand page");
+                    Navigator.push(context, MaterialPageRoute(builder: (_) {
+                      return PostYourErrand();
                     }));
                   }
                 },

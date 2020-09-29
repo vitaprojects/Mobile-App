@@ -30,23 +30,31 @@ class _HomePageState extends State<HomePage> {
         assetName: "assets/images/travel.png",
         bodyText: "Earn money while travelling",
         buttonText: "post itenary",
-        isFirstPage: true,
+        pageNum: 0,
+      ),
+    ),
+    Container(
+      child: ModeSelectionWidget(
+        assetName: "assets/images/sendPackage.png",
+        bodyText: "Send your package with ease",
+        buttonText: "send package",
+        pageNum: 1,
         // methodInButton: () {
-        //   print("post");
-        //   Get.to(PostYourItenary());
+        //   print("send");
         // },
       ),
     ),
     Container(
-        child: ModeSelectionWidget(
-      assetName: "assets/images/sendPackage.png",
-      bodyText: "Send your package with ease",
-      buttonText: "send package",
-      isFirstPage: false,
-      // methodInButton: () {
-      //   print("send");
-      // },
-    ))
+      child: ModeSelectionWidget(
+        assetName: "assets/images/errand.png",
+        bodyText: "Post your errand easily",
+        buttonText: "post your errand",
+        pageNum: 2,
+        // methodInButton: () {
+        //   print("send");
+        // },
+      ),
+    ),
   ];
 
   final GlobalKey<InnerDrawerState> _innerDrawerKey =
