@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:newpostman1/customWidgets/ItemWidgetInDrawer.dart';
 import 'package:newpostman1/customWidgets/TitleWidgetInDrawer.dart';
+import 'package:newpostman1/ui/AboutUsPage.dart';
 import 'package:newpostman1/ui/FindLocalErrands.dart';
 import 'package:newpostman1/ui/MyTripsWidget.dart';
 import 'package:newpostman1/ui/PostYourItenary.dart';
@@ -360,6 +361,7 @@ class DrawerWidget extends StatelessWidget {
                     margin: margin,
                     ontapFunc: () {
                       closeDrawer();
+                      Get.to(AboutUSPage());
                     },
                   ),
                   Divider(
