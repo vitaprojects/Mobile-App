@@ -57,7 +57,8 @@ class _HomePageState extends State<HomePage> {
         // direction is optional
         // if not set, the last direction will be used
         //InnerDrawerDirection.start OR InnerDrawerDirection.end
-        direction: InnerDrawerDirection.end);
+        // direction: InnerDrawerDirection.end,
+        );
   }
 
   @override
@@ -72,7 +73,11 @@ class _HomePageState extends State<HomePage> {
       leftChild: Container(
         color: Colors.white,
         alignment: Alignment.center,
-        child: DrawerWidget(),
+        child: DrawerWidget(
+          closeDrawer: () {
+            _toggle();
+          },
+        ),
       ),
       colorTransitionChild: Globals.mainColor,
       colorTransitionScaffold: Colors.black54, // default Color.black54
@@ -85,7 +90,11 @@ class _HomePageState extends State<HomePage> {
       rightChild: Container(
         color: Colors.white,
         alignment: Alignment.center,
-        child: DrawerWidget(),
+        child: DrawerWidget(
+          closeDrawer: () {
+            _toggle();
+          },
+        ),
       ),
       swipe: true,
       scaffold: Scaffold(
