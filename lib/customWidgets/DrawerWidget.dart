@@ -8,6 +8,7 @@ import 'package:newpostman1/ui/FindLocalErrands.dart';
 import 'package:newpostman1/ui/MyTripsWidget.dart';
 import 'package:newpostman1/ui/PostYourItenary.dart';
 import 'package:newpostman1/ui/SendPackage.dart';
+import 'package:newpostman1/ui/TotalEarningsWidget.dart';
 import 'package:newpostman1/ui/TrackPackage.dart';
 
 import '../globals.dart';
@@ -300,6 +301,7 @@ class DrawerWidget extends StatelessWidget {
                     margin: margin,
                     ontapFunc: () {
                       closeDrawer();
+                      Get.to(TotalEarningsWidget());
                     },
                   ),
                   Divider(
