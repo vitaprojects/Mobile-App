@@ -8,8 +8,10 @@ import '../globals.dart';
 class TripDetailsCard extends StatelessWidget {
   const TripDetailsCard({
     this.isPackage,
+    this.isErrand,
   });
   final bool isPackage;
+  final bool isErrand;
 
   @override
   Widget build(BuildContext context) {
@@ -61,8 +63,10 @@ class TripDetailsCard extends StatelessWidget {
                 height: blockHeight * 4.5,
                 // color: Colors.yellow,
                 alignment: Alignment.centerLeft,
-                child: (isPackage == true)
-                    ? Row(
+                child: LayoutBuilder(
+                  builder: (BuildContext context, BoxConstraints constraints) {
+                    if (isPackage == true) {
+                      return Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
@@ -95,8 +99,44 @@ class TripDetailsCard extends StatelessWidget {
                             ),
                           ),
                         ],
-                      )
-                    : Row(
+                      );
+                    } else if (isErrand == true) {
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            width: blockWidth * 15,
+                            // color: Colors.green,
+                            alignment: Alignment.center,
+                            child: Container(
+                              width: blockWidth * 10,
+                              // color: Colors.yellow,
+                              alignment: Alignment.center,
+                              // child: Text(
+                              //   "74",
+                              //   style: TextStyle(
+                              //     fontSize: 20,
+                              //   ),
+                              // ),
+                            ),
+                          ),
+                          Container(
+                            // width: blockWidth * 40,
+                            // color: Colors.green,
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              "Offer amount : CAD\$20",
+                              style: TextStyle(
+                                color: Globals.mainColor,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                    } else {
+                      return Row(
                         children: [
                           Icon(
                             FontAwesomeIcons.bus,
@@ -111,13 +151,17 @@ class TripDetailsCard extends StatelessWidget {
                             ),
                           )
                         ],
-                      ),
+                      );
+                    }
+                  },
+                ),
               ),
             ),
             TripDetailRowCard(
               address: "130/a colombo colombo",
               date: "04 sep 2020",
               isDeparture: true,
+              isErrand: isErrand == true,
             ),
             Divider(
               height: blockHeight,
@@ -128,11 +172,44 @@ class TripDetailsCard extends StatelessWidget {
                   "19923 new york city abdsdlkskdl flfdlkfddddddddddddddddddddddddddddddddddddddxxx",
               date: "10 sep 2020",
               isDeparture: false,
+              isErrand: isErrand == true,
             ),
             Divider(
               height: blockHeight,
               thickness: blockHeight / 2,
             ),
+            SizedBox(
+              height: blockHeight * 2,
+            ),
+            RaisedButton(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(
+                10,
+              )),
+              color: Globals.mainColor,
+              onPressed: () {},
+              padding: EdgeInsets.all(
+                0,
+              ),
+              child: Container(
+                height: blockHeight * 4,
+                // color: Colors.orange,
+                alignment: Alignment.center,
+                child: Container(
+                  height: blockHeight * 2.5,
+                  // color: Colors.yellow,
+                  alignment: Alignment.center,
+                  child: AutoSizeText(
+                    "Commit to run errand",
+                    style: TextStyle(
+                      fontSize: 17,
+                      color: Colors.white,
+                    ),
+                    minFontSize: 14,
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),

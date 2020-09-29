@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:newpostman1/customWidgets/ItemWidgetInDrawer.dart';
 import 'package:newpostman1/customWidgets/TitleWidgetInDrawer.dart';
+import 'package:newpostman1/ui/FindLocalErrands.dart';
 import 'package:newpostman1/ui/MyTripsWidget.dart';
 import 'package:newpostman1/ui/PostYourItenary.dart';
 import 'package:newpostman1/ui/SendPackage.dart';
@@ -223,6 +224,54 @@ class DrawerWidget extends StatelessWidget {
                       Get.to(TrackPackage());
                     },
                   ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: blockHeight * 2,
+            ),
+            TitleWidgetInDrawer(
+              title: "Errand",
+              margin: margin,
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(
+                horizontal: margin,
+              ),
+              padding: EdgeInsets.symmetric(
+                horizontal: margin,
+              ),
+              alignment: Alignment.center,
+              child: Column(
+                children: [
+                  ItemWidgetInDrawer(
+                    icon: Icon(
+                      FontAwesomeIcons.searchLocation,
+                    ),
+                    title: "Find local errands",
+                    margin: margin,
+                    ontapFunc: () {
+                      closeDrawer();
+                      Get.to(FindLocalErrands());
+                    },
+                  ),
+                  // Divider(
+                  //   height: blockHeight / 2,
+                  //   thickness: blockHeight / 4,
+                  // ),
+                  // ItemWidgetInDrawer(
+                  //   icon: Icon(
+                  //     FontAwesomeIcons.mapMarkerAlt,
+                  //   ),
+                  //   title: "Track Package",
+                  //   margin: margin,
+                  //   ontapFunc: () {
+                  //     closeDrawer();
+
+                  //     print("go to track package");
+                  //     Get.to(TrackPackage());
+                  //   },
+                  // ),
                 ],
               ),
             ),

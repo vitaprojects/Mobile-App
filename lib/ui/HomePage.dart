@@ -47,8 +47,8 @@ class _HomePageState extends State<HomePage> {
     Container(
       child: ModeSelectionWidget(
         assetName: "assets/images/errand.png",
-        bodyText: "Post your errand easily",
-        buttonText: "post your errand",
+        bodyText: "Get a postman",
+        buttonText: "run your errand",
         pageNum: 2,
         // methodInButton: () {
         //   print("send");

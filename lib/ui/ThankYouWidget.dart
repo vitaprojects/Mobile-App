@@ -142,6 +142,25 @@ class ThankYouWidget extends StatelessWidget {
                               ),
                             ],
                           );
+                        } else if (typeOfThankYou == 2) {
+                          return Column(
+                            children: [
+                              Text(
+                                "Your errand posted successfully",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                              Text(
+                                "You will get an alert when someone accept your request !",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ],
+                          );
                         } else {
                           return Column(
                             children: [

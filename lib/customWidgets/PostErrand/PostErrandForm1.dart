@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:newpostman1/customWidgets/CustomInputField.dart';
 import 'package:newpostman1/customWidgets/FormButton.dart';
 import 'package:newpostman1/customWidgets/SendPackage/UploadedImagesOfPackage.dart';
+import 'package:newpostman1/ui/ThankYouWidget.dart';
 
 import '../../globals.dart';
 
@@ -118,7 +120,11 @@ class PostYourErrandForm1 extends StatelessWidget {
         ),
         FormButton(
           buttonText: "post your errand",
-          ontapFun: () {},
+          ontapFun: () {
+            Get.off(ThankYouWidget(
+              typeOfThankYou: 2,
+            ));
+          },
         ),
         SizedBox(
           height: blockHeight * 5,
