@@ -1,6 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
+import 'package:newpostman1/ui/RunErrandWidget.dart';
 import 'package:newpostman1/ui/TripDetailRowCard.dart';
 
 import '../globals.dart';
@@ -187,7 +189,9 @@ class TripDetailsCard extends StatelessWidget {
                 10,
               )),
               color: Globals.mainColor,
-              onPressed: () {},
+              onPressed: () {
+                Get.to(RunErrandWidget());
+              },
               padding: EdgeInsets.all(
                 0,
               ),
