@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
     Container(
       child: ModeSelectionWidget(
         assetName: "assets/images/travel.png",
-        bodyText: "Earn money while travelling",
+        bodyText: "Make money anywhere you go",
         buttonText: "post itenary",
         pageNum: 0,
       ),
@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
     Container(
       child: ModeSelectionWidget(
         assetName: "assets/images/sendPackage.png",
-        bodyText: "Send your package with ease",
+        bodyText: "Provide package details and find  a postman",
         buttonText: "send package",
         pageNum: 1,
         // methodInButton: () {
@@ -46,8 +46,8 @@ class _HomePageState extends State<HomePage> {
     ),
     Container(
       child: ModeSelectionWidget(
-        assetName: "assets/images/errand.png",
-        bodyText: "Get a postman",
+        assetName: "assets/images/errand2.png",
+        bodyText: "Pay postman to do your local chores fast",
         buttonText: "run your errand",
         pageNum: 2,
         // methodInButton: () {

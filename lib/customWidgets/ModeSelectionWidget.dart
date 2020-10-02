@@ -40,7 +40,6 @@ class ModeSelectionWidget extends StatelessWidget {
             children: [
               Container(
                 height: blockHeight * 65,
-
                 // color: Colors.orange,
                 alignment: Alignment.center,
                 child: Image.asset(
@@ -57,18 +56,20 @@ class ModeSelectionWidget extends StatelessWidget {
                   margin: EdgeInsets.symmetric(
                     horizontal: blockWidth * 5,
                   ),
-                  height: blockHeight * 10,
+                  height: blockHeight * 15,
                   // color: Colors.green,
                   alignment: Alignment.center,
                   child: Container(
-                    height: blockHeight * 5,
+                    height: blockHeight * 10,
                     // color: Colors.yellow,
                     alignment: Alignment.center,
                     child: AutoSizeText(
                       bodyText,
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
+                        color: Colors.black87,
                       ),
                       minFontSize: 18,
                     ),

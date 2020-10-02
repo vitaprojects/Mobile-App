@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:newpostman1/globals.dart';
 
@@ -42,12 +43,13 @@ class WelcomeScreenImage extends StatelessWidget {
               height: blockHeight * 8,
               // color: Colors.redAccent,
               alignment: Alignment.center,
-              child: Text(
+              child: AutoSizeText(
                 bodyText,
                 style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
                 ),
+                minFontSize: 16,
                 textAlign: TextAlign.center,
               ),
             ),
