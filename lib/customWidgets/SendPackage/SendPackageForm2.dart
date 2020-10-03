@@ -33,18 +33,18 @@ class _SendPackageForm2State extends State<SendPackageForm2> {
           height: blockHeight * 2,
         ),
         PackageFinalDestDetails(),
-        SizedBox(
-          height: blockHeight * 2,
-        ),
-        Container(
-          margin: EdgeInsets.symmetric(
-            horizontal: blockWidth * 5,
-          ),
-          child: CustomInputField(
-            attribute: "postageCost",
-            labelText: "Enter postage cost",
-          ),
-        ),
+        // SizedBox(
+        //   height: blockHeight * 2,
+        // ),
+        // Container(
+        //   margin: EdgeInsets.symmetric(
+        //     horizontal: blockWidth * 5,
+        //   ),
+        //   child: CustomInputField(
+        //     attribute: "postageCost",
+        //     labelText: "Enter postage cost",
+        //   ),
+        // ),
         SizedBox(
           height: blockHeight * 5,
         ),

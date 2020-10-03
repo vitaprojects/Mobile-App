@@ -65,7 +65,7 @@ class _UploadPhotosForSendPackageState
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
                     height: blockHeight * 10,
-                    color: Colors.yellow,
+                    color: Colors.grey,
                     width: blockHeight * 8,
                     margin: EdgeInsets.only(
                       right: blockWidth,

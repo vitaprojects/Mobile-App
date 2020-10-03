@@ -29,10 +29,11 @@ class _SendPackageSecondPageState extends State<SendPackageSecondPage> {
               expandedHeight: blockHeight * 20,
               flexibleSpace: FlexibleSpaceBar(
                 title: Text(
-                  "Send Package",
+                  "Package Location",
                   style: TextStyle(
                     // fontSize: 2,
-                    color: Globals.mainColor,
+                    // color: Globals.mainColor,
+                    color: Colors.black,
                     fontSize: 25,
                   ),
                 ),

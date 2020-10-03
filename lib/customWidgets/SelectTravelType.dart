@@ -99,7 +99,7 @@ class _SelectTravelTypeState extends State<SelectTravelType> {
                         labelStyle: TextStyle(
                           color: Colors.black,
                         ),
-                        label: Text("Train"),
+                        label: Text("Bus"),
                         selected: transPortationChoices[0] == true,
                         selectedColor: Globals.mainColor,
                         onSelected: (value) {
@@ -117,7 +117,7 @@ class _SelectTravelTypeState extends State<SelectTravelType> {
                           // color: Colors.red,
                           alignment: Alignment.center,
                           child: FaIcon(
-                            FontAwesomeIcons.train,
+                            FontAwesomeIcons.bus,
                             size: blockHeight * 3,
                           ),
                         ),
