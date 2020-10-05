@@ -183,33 +183,36 @@ class TripDetailsCard extends StatelessWidget {
             SizedBox(
               height: blockHeight * 2,
             ),
-            RaisedButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(
-                10,
-              )),
-              color: Globals.mainColor,
-              onPressed: () {
-                Get.to(RunErrandWidget());
-              },
-              padding: EdgeInsets.all(
-                0,
-              ),
-              child: Container(
-                height: blockHeight * 4,
-                // color: Colors.orange,
-                alignment: Alignment.center,
+            Visibility(
+              visible: isErrand == true,
+              child: RaisedButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(
+                  10,
+                )),
+                color: Globals.mainColor,
+                onPressed: () {
+                  Get.to(RunErrandWidget());
+                },
+                padding: EdgeInsets.all(
+                  0,
+                ),
                 child: Container(
-                  height: blockHeight * 2.5,
-                  // color: Colors.yellow,
+                  height: blockHeight * 4,
+                  // color: Colors.orange,
                   alignment: Alignment.center,
-                  child: AutoSizeText(
-                    "Commit to run errand",
-                    style: TextStyle(
-                      fontSize: 17,
-                      color: Colors.white,
+                  child: Container(
+                    height: blockHeight * 2.5,
+                    // color: Colors.yellow,
+                    alignment: Alignment.center,
+                    child: AutoSizeText(
+                      "Commit to run errand",
+                      style: TextStyle(
+                        fontSize: 17,
+                        color: Colors.white,
+                      ),
+                      minFontSize: 14,
                     ),
-                    minFontSize: 14,
                   ),
                 ),
               ),

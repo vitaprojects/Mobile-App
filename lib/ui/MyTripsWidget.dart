@@ -29,7 +29,7 @@ class _MyTripsWidgetState extends State<MyTripsWidget> {
                 Tab(
                   // icon: Icon(Font),
                   child: Text(
-                    "Upcoming".toUpperCase(),
+                    "Pending".toUpperCase(),
                   ),
                 ),
                 Tab(
