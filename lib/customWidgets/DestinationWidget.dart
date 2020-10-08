@@ -108,7 +108,7 @@ class _DestinationWidgetState extends State<DestinationWidget> {
           ),
           CustomInputField(
             attribute: "destinationPoint",
-            labelText: "Select Destination Point",
+            labelText: "Final stop",
           ),
           SizedBox(
             height: blockHeight * 2,

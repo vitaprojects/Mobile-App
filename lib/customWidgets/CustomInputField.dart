@@ -52,7 +52,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
                       color: Globals.mainColor,
                     ),
                     border: InputBorder.none,
-                    labelText: widget.labelText.toUpperCase(),
+                    labelText: widget.labelText,
                     contentPadding: EdgeInsets.only(
                       left: blockWidth * 3,
                     )),
@@ -76,7 +76,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
                       color: Globals.mainColor,
                     ),
                     border: InputBorder.none,
-                    labelText: widget.labelText.toUpperCase(),
+                    labelText: widget.labelText,
                     contentPadding: EdgeInsets.only(
                       left: blockWidth * 3,
                     )),
@@ -101,7 +101,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
                       color: Globals.mainColor,
                     ),
                     border: InputBorder.none,
-                    labelText: widget.labelText.toUpperCase(),
+                    labelText: widget.labelText,
                     contentPadding: EdgeInsets.only(
                       left: blockWidth * 3,
                     )),
@@ -136,7 +136,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
                       color: Globals.mainColor,
                     ),
                     border: InputBorder.none,
-                    labelText: widget.labelText.toUpperCase(),
+                    labelText: widget.labelText,
                     contentPadding: EdgeInsets.only(
                       left: blockWidth * 3,
                     )),

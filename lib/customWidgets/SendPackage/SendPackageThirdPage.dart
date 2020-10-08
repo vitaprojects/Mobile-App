@@ -30,10 +30,10 @@ class _SendPackageThirdPageState extends State<SendPackageThirdPage> {
               expandedHeight: blockHeight * 20,
               flexibleSpace: FlexibleSpaceBar(
                 title: Text(
-                  "Send Package",
+                  "Receiver Details",
                   style: TextStyle(
                     // fontSize: 2,
-                    color: Globals.mainColor,
+                    color: Colors.black,
                     fontSize: 25,
                   ),
                 ),

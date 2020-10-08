@@ -206,7 +206,7 @@ class TripDetailsCard extends StatelessWidget {
                     // color: Colors.yellow,
                     alignment: Alignment.center,
                     child: AutoSizeText(
-                      "Commit to run errand",
+                      "Track Package",
                       style: TextStyle(
                         fontSize: 17,
                         color: Colors.white,

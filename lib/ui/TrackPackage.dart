@@ -42,7 +42,7 @@ class _TrackPackageState extends State<TrackPackage> {
               ],
             ),
             title: Text(
-              'Track Package',
+              'All Shipments',
               textAlign: TextAlign.center,
             ),
           ),

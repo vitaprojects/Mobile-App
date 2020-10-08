@@ -231,67 +231,67 @@ class FinalPackageDetailsWidget extends StatelessWidget {
               isInternalField: true,
               labelText: "Item Description",
             ),
-            Divider(
-              height: blockHeight,
-              thickness: blockHeight / 2,
-            ),
-            Container(
-              height: blockHeight * 10,
-              // color: Colors.greenAccent,
-              alignment: Alignment.center,
-              padding: EdgeInsets.symmetric(
-                horizontal: blockWidth * 3,
-              ),
-              child: Container(
-                height: blockHeight * 6,
-                // color: Colors.green,
-                alignment: Alignment.center,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      // width: blockWidth * 30,
-                      // color: Colors.red,
-                      alignment: Alignment.center,
-                      child: Container(
-                        height: blockHeight * 3,
-                        // color: Colors.yellow,
-                        alignment: Alignment.center,
-                        child: AutoSizeText(
-                          "Postage cost",
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: Globals.mainColor,
-                          ),
-                          minFontSize: 14,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      // width: blockWidth * 30,
-                      // color: Colors.red,
-                      alignment: Alignment.center,
-                      child: Container(
-                        height: blockHeight * 3,
-                        // color: Colors.yellow,
-                        alignment: Alignment.center,
-                        child: AutoSizeText(
-                          "CAD \$20.00",
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: Globals.mainColor,
-                          ),
-                          minFontSize: 14,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(
-              height: blockHeight * 2,
-            ),
+            // Divider(
+            //   height: blockHeight,
+            //   thickness: blockHeight / 2,
+            // ),
+            // Container(
+            //   height: blockHeight * 10,
+            //   // color: Colors.greenAccent,
+            //   alignment: Alignment.center,
+            //   padding: EdgeInsets.symmetric(
+            //     horizontal: blockWidth * 3,
+            //   ),
+            //   child: Container(
+            //     height: blockHeight * 6,
+            //     // color: Colors.green,
+            //     alignment: Alignment.center,
+            //     child: Row(
+            //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //       children: [
+            //         Container(
+            //           // width: blockWidth * 30,
+            //           // color: Colors.red,
+            //           alignment: Alignment.center,
+            //           child: Container(
+            //             height: blockHeight * 3,
+            //             // color: Colors.yellow,
+            //             alignment: Alignment.center,
+            //             child: AutoSizeText(
+            //               "Postage cost",
+            //               style: TextStyle(
+            //                 fontSize: 18,
+            //                 color: Globals.mainColor,
+            //               ),
+            //               minFontSize: 14,
+            //             ),
+            //           ),
+            //         ),
+            //         Container(
+            //           // width: blockWidth * 30,
+            //           // color: Colors.red,
+            //           alignment: Alignment.center,
+            //           child: Container(
+            //             height: blockHeight * 3,
+            //             // color: Colors.yellow,
+            //             alignment: Alignment.center,
+            //             child: AutoSizeText(
+            //               "CAD \$20.00",
+            //               style: TextStyle(
+            //                 fontSize: 18,
+            //                 color: Globals.mainColor,
+            //               ),
+            //               minFontSize: 14,
+            //             ),
+            //           ),
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
+            // SizedBox(
+            //   height: blockHeight * 2,
+            // ),
           ],
         ),
       ),

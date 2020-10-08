@@ -57,7 +57,7 @@ class UploadedImagesOfPackage extends StatelessWidget {
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
                     height: blockHeight * 12,
-                    color: Colors.red,
+                    color: Colors.grey.shade300,
                     margin: EdgeInsets.only(
                       right: blockWidth * 2,
                     ),

@@ -7,6 +7,7 @@ import 'package:newpostman1/customWidgets/TitleWidgetInDrawer.dart';
 import 'package:newpostman1/ui/AboutUsPage.dart';
 import 'package:newpostman1/ui/FindLocalErrands.dart';
 import 'package:newpostman1/ui/MyTripsWidget.dart';
+import 'package:newpostman1/ui/PostYourErrand.dart';
 import 'package:newpostman1/ui/PostYourItenary.dart';
 import 'package:newpostman1/ui/SendPackage.dart';
 import 'package:newpostman1/ui/SupportWidget.dart';
@@ -142,7 +143,7 @@ class DrawerWidget extends StatelessWidget {
                     icon: Icon(
                       FontAwesomeIcons.search,
                     ),
-                    title: "Find Package",
+                    title: "Available Shipments",
                     margin: margin,
                     ontapFunc: () {
                       closeDrawer();
@@ -160,9 +161,10 @@ class DrawerWidget extends StatelessWidget {
                     ),
                     margin: margin,
                     ontapFunc: () {
+                      Get.to(MyTripsWidget());
                       closeDrawer();
                     },
-                    title: "My Requests",
+                    title: "My Offers",
                   ),
                   Divider(
                     height: blockHeight / 2,
@@ -177,7 +179,37 @@ class DrawerWidget extends StatelessWidget {
                       closeDrawer();
                       Get.to(MyTripsWidget());
                     },
-                    title: "My Trips",
+                    title: "Trips",
+                  ),
+                  Divider(
+                    height: blockHeight / 2,
+                    thickness: blockHeight / 4,
+                  ),
+                  ItemWidgetInDrawer(
+                    icon: Icon(
+                      FontAwesomeIcons.moneyBill,
+                    ),
+                    margin: margin,
+                    ontapFunc: () {
+                      closeDrawer();
+                      Get.to(TotalEarningsWidget());
+                    },
+                    title: "Earnings",
+                  ),
+                  Divider(
+                    height: blockHeight / 2,
+                    thickness: blockHeight / 4,
+                  ),
+                  ItemWidgetInDrawer(
+                    icon: Icon(
+                      FontAwesomeIcons.facebookMessenger,
+                    ),
+                    margin: margin,
+                    ontapFunc: () {
+                      closeDrawer();
+                      // Get.to(MyTripsWidget());
+                    },
+                    title: "Chats",
                   ),
                 ],
               ),
@@ -186,7 +218,7 @@ class DrawerWidget extends StatelessWidget {
               height: blockHeight * 2,
             ),
             TitleWidgetInDrawer(
-              title: "Package",
+              title: "Customer Packages",
               margin: margin,
             ),
             Container(
@@ -203,7 +235,7 @@ class DrawerWidget extends StatelessWidget {
                     icon: Icon(
                       FontAwesomeIcons.archive,
                     ),
-                    title: "Send a new package",
+                    title: "Ship a new package",
                     margin: margin,
                     ontapFunc: () {
                       closeDrawer();
@@ -218,7 +250,7 @@ class DrawerWidget extends StatelessWidget {
                     icon: Icon(
                       FontAwesomeIcons.mapMarkerAlt,
                     ),
-                    title: "Track Package",
+                    title: "Posted Shipments",
                     margin: margin,
                     ontapFunc: () {
                       closeDrawer();
@@ -227,6 +259,36 @@ class DrawerWidget extends StatelessWidget {
                       Get.to(TrackPackage());
                     },
                   ),
+                  Divider(
+                    height: blockHeight / 2,
+                    thickness: blockHeight / 4,
+                  ),
+                  ItemWidgetInDrawer(
+                    icon: Icon(
+                      FontAwesomeIcons.moneyBillAlt,
+                    ),
+                    margin: margin,
+                    ontapFunc: () {
+                      closeDrawer();
+                      // Get.to(MyTripsWidget());
+                    },
+                    title: "Payment Requests",
+                  ),
+                  Divider(
+                    height: blockHeight / 2,
+                    thickness: blockHeight / 4,
+                  ),
+                  ItemWidgetInDrawer(
+                    icon: Icon(
+                      FontAwesomeIcons.locationArrow,
+                    ),
+                    margin: margin,
+                    ontapFunc: () {
+                      closeDrawer();
+                      Get.to(TrackPackage());
+                    },
+                    title: "Track Package",
+                  ),
                 ],
               ),
             ),
@@ -234,7 +296,7 @@ class DrawerWidget extends StatelessWidget {
               height: blockHeight * 2,
             ),
             TitleWidgetInDrawer(
-              title: "Errand",
+              title: "Errands",
               margin: margin,
             ),
             Container(
@@ -249,32 +311,47 @@ class DrawerWidget extends StatelessWidget {
                 children: [
                   ItemWidgetInDrawer(
                     icon: Icon(
-                      FontAwesomeIcons.searchLocation,
+                      FontAwesomeIcons.box,
                     ),
-                    title: "Find local errands",
+                    title: "Place a new Errand",
+                    margin: margin,
+                    ontapFunc: () {
+                      closeDrawer();
+
+                      print("go to track package");
+                      Get.to(PostYourErrand());
+                    },
+                  ),
+                  Divider(
+                    height: blockHeight / 2,
+                    thickness: blockHeight / 4,
+                  ),
+                  ItemWidgetInDrawer(
+                    icon: Icon(
+                      FontAwesomeIcons.box,
+                    ),
+                    title: "Posted Errands",
                     margin: margin,
                     ontapFunc: () {
                       closeDrawer();
                       Get.to(FindLocalErrands());
                     },
                   ),
-                  // Divider(
-                  //   height: blockHeight / 2,
-                  //   thickness: blockHeight / 4,
-                  // ),
-                  // ItemWidgetInDrawer(
-                  //   icon: Icon(
-                  //     FontAwesomeIcons.mapMarkerAlt,
-                  //   ),
-                  //   title: "Track Package",
-                  //   margin: margin,
-                  //   ontapFunc: () {
-                  //     closeDrawer();
-
-                  //     print("go to track package");
-                  //     Get.to(TrackPackage());
-                  //   },
-                  // ),
+                  Divider(
+                    height: blockHeight / 2,
+                    thickness: blockHeight / 4,
+                  ),
+                  ItemWidgetInDrawer(
+                    icon: Icon(
+                      FontAwesomeIcons.box,
+                    ),
+                    title: "Completed Errands",
+                    margin: margin,
+                    ontapFunc: () {
+                      closeDrawer();
+                      Get.to(FindLocalErrands());
+                    },
+                  ),
                 ],
               ),
             ),
@@ -297,27 +374,13 @@ class DrawerWidget extends StatelessWidget {
                 children: [
                   ItemWidgetInDrawer(
                     icon: Icon(
-                      FontAwesomeIcons.coins,
+                      FontAwesomeIcons.headset,
                     ),
-                    title: "Total Earnings",
+                    title: "Support",
                     margin: margin,
                     ontapFunc: () {
                       closeDrawer();
-                      Get.to(TotalEarningsWidget());
-                    },
-                  ),
-                  Divider(
-                    height: blockHeight / 2,
-                    thickness: blockHeight / 4,
-                  ),
-                  ItemWidgetInDrawer(
-                    icon: Icon(
-                      FontAwesomeIcons.comments,
-                    ),
-                    title: "Chat",
-                    margin: margin,
-                    ontapFunc: () {
-                      closeDrawer();
+                      Get.to(SupportWidget());
                     },
                   ),
                   Divider(
@@ -338,36 +401,21 @@ class DrawerWidget extends StatelessWidget {
                     height: blockHeight / 2,
                     thickness: blockHeight / 4,
                   ),
-                  ItemWidgetInDrawer(
-                    icon: Icon(
-                      FontAwesomeIcons.headset,
-                    ),
-                    title: "Support",
-                    margin: margin,
-                    ontapFunc: () {
-                      closeDrawer();
-                      Get.to(SupportWidget());
-                    },
-                  ),
-                  Divider(
-                    height: blockHeight / 2,
-                    thickness: blockHeight / 4,
-                  ),
-                  ItemWidgetInDrawer(
-                    icon: Icon(
-                      FontAwesomeIcons.infoCircle,
-                    ),
-                    title: "About US",
-                    margin: margin,
-                    ontapFunc: () {
-                      closeDrawer();
-                      Get.to(AboutUSPage());
-                    },
-                  ),
-                  Divider(
-                    height: blockHeight / 2,
-                    thickness: blockHeight / 4,
-                  ),
+                  // ItemWidgetInDrawer(
+                  //   icon: Icon(
+                  //     FontAwesomeIcons.infoCircle,
+                  //   ),
+                  //   title: "About US",
+                  //   margin: margin,
+                  //   ontapFunc: () {
+                  //     closeDrawer();
+                  //     Get.to(AboutUSPage());
+                  //   },
+                  // ),
+                  // Divider(
+                  //   height: blockHeight / 2,
+                  //   thickness: blockHeight / 4,
+                  // ),
                   ItemWidgetInDrawer(
                     icon: Icon(
                       FontAwesomeIcons.shareAlt,

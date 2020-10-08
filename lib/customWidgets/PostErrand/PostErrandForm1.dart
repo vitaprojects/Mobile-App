@@ -39,7 +39,7 @@ class PostYourErrandForm1 extends StatelessWidget {
                 CustomInputField(
                   attribute: "pickupPlace",
                   isInternalField: true,
-                  labelText: "Enter pickup store , place , company",
+                  labelText: "Pickup from e.g Walmart",
                 ),
                 Divider(
                   height: blockHeight / 2,
@@ -48,7 +48,7 @@ class PostYourErrandForm1 extends StatelessWidget {
                 CustomInputField(
                   attribute: "pickupType",
                   isInternalField: true,
-                  labelText: "Enter pickup type",
+                  labelText: "Pickup type e.g Grocery",
                 ),
                 Divider(
                   height: blockHeight / 2,
@@ -57,7 +57,7 @@ class PostYourErrandForm1 extends StatelessWidget {
                 CustomInputField(
                   attribute: "pickupLocation",
                   isInternalField: true,
-                  labelText: "Enter full address of pickup location",
+                  labelText: "Pickup address",
                 ),
                 Divider(
                   height: blockHeight / 2,
@@ -67,7 +67,7 @@ class PostYourErrandForm1 extends StatelessWidget {
                   attribute: "pickupPhone",
                   isInternalField: true,
                   isPhone: true,
-                  labelText: "Enter phone number of pickup place",
+                  labelText: "Pickup or Store phone#",
                 ),
                 Divider(
                   height: blockHeight / 2,
@@ -76,7 +76,7 @@ class PostYourErrandForm1 extends StatelessWidget {
                 CustomInputField(
                   attribute: "orderID",
                   isInternalField: true,
-                  labelText: "Enter order id if avaialable",
+                  labelText: "Order Number (optional)",
                 ),
                 Divider(
                   height: blockHeight / 2,
@@ -85,7 +85,7 @@ class PostYourErrandForm1 extends StatelessWidget {
                 CustomInputField(
                   attribute: "dropAddress",
                   isInternalField: true,
-                  labelText: "Enter drop off address",
+                  labelText: "Drop off address",
                 ),
                 Divider(
                   height: blockHeight / 2,
@@ -95,7 +95,7 @@ class PostYourErrandForm1 extends StatelessWidget {
                   attribute: "pickup",
                   isInternalField: true,
                   isDescription: true,
-                  labelText: "Enter additional note for driver",
+                  labelText: "Add instruction for driver",
                 ),
                 Divider(
                   height: blockHeight / 2,
@@ -105,7 +105,17 @@ class PostYourErrandForm1 extends StatelessWidget {
                   attribute: "myoffer",
                   isInternalField: true,
                   isPhone: true,
-                  labelText: "Enter your offer",
+                  labelText: "I Will pay (Min \$9.99)  + (Min Tip \$3.25)",
+                ),
+                Divider(
+                  height: blockHeight / 2,
+                  thickness: blockHeight / 4,
+                ),
+                CustomInputField(
+                  attribute: "myoffer",
+                  isInternalField: true,
+                  isPhone: true,
+                  labelText: "My total offer (\$13.24)",
                 ),
               ],
             ),

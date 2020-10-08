@@ -29,10 +29,10 @@ class _PostYourErrandState extends State<PostYourErrand> {
                 expandedHeight: blockHeight * 20,
                 flexibleSpace: FlexibleSpaceBar(
                   title: Text(
-                    "Post Your Errand",
+                    "Errand Details",
                     style: TextStyle(
                       // fontSize: 2,
-                      color: Globals.mainColor,
+                      color: Colors.black,
                       fontSize: 25,
                     ),
                   ),

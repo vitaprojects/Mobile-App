@@ -108,7 +108,7 @@ class _DepartureWidgetState extends State<DepartureWidget> {
           ),
           CustomInputField(
             attribute: "departurePoint",
-            labelText: "Select Departure Point",
+            labelText: "Departing from ?",
           ),
           SizedBox(
             height: blockHeight * 2,
