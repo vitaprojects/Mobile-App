@@ -7,6 +7,7 @@ import 'package:newpostman1/ui/HomePage.dart';
 import 'package:newpostman1/ui/PostYourErrand.dart';
 import 'package:newpostman1/ui/PostYourItenary.dart';
 import 'package:newpostman1/ui/SendPackage.dart';
+// import '';
 
 class ModeSelectionWidget extends StatelessWidget {
   const ModeSelectionWidget({
@@ -22,6 +23,8 @@ class ModeSelectionWidget extends StatelessWidget {
   // final Function methodInButton;
   // final bool isFirstPage;
   final int pageNum;
+
+  // final SnackbarService
 
   @override
   Widget build(BuildContext context) {
@@ -82,57 +85,152 @@ class ModeSelectionWidget extends StatelessWidget {
             height: blockHeight * 20,
             // color: Colors.yellow,
             alignment: Alignment.center,
-            child: Container(
-              margin: EdgeInsets.symmetric(
-                horizontal: blockWidth * 5,
-              ),
-              child: RaisedButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(
-                  25,
-                )),
-                color: Globals.mainColor,
-                padding: EdgeInsets.all(
-                  0,
-                ),
-                onPressed: () {
-                  if (pageNum == 0) {
-                    // Get.to(PostYourItenary());
-                    Navigator.push(context, MaterialPageRoute(builder: (_) {
-                      return PostYourItenary();
-                    }));
-                  } else if (pageNum == 1) {
-                    print("go to send package");
-                    Navigator.push(context, MaterialPageRoute(builder: (_) {
-                      return SendPackage();
-                    }));
-                  } else {
-                    print("go to errand page");
-                    Navigator.push(context, MaterialPageRoute(builder: (_) {
-                      return PostYourErrand();
-                    }));
-                  }
-                },
-                child: Container(
-                  height: blockHeight * 6,
-                  // color: Colors.green,
-                  alignment: Alignment.center,
-                  child: Container(
-                    height: blockHeight * 4,
-                    // color: Colors.redAccent,
-                    alignment: Alignment.center,
-                    child: AutoSizeText(
-                      buttonText.toUpperCase(),
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
+            child: LayoutBuilder(
+              builder: (BuildContext context, BoxConstraints constraints) {
+                if (pageNum == 0) {
+                  return Column(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.symmetric(
+                          horizontal: blockWidth * 5,
+                        ),
+                        child: RaisedButton(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                            25,
+                          )),
+                          color: Globals.mainColor,
+                          padding: EdgeInsets.all(
+                            0,
+                          ),
+                          onPressed: () {
+                            // Get.to(PostYourItenary());
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (_) {
+                              return PostYourItenary();
+                            }));
+                          },
+                          child: Container(
+                            height: blockHeight * 6,
+                            // color: Colors.green,
+                            alignment: Alignment.center,
+                            child: Container(
+                              height: blockHeight * 4,
+                              // color: Colors.redAccent,
+                              alignment: Alignment.center,
+                              child: AutoSizeText(
+                                buttonText.toUpperCase(),
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                minFontSize: 14,
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
-                      minFontSize: 14,
+                      SizedBox(
+                        height: blockHeight * 1,
+                      ),
+                      Container(
+                        margin: EdgeInsets.symmetric(
+                          horizontal: blockWidth * 5,
+                        ),
+                        child: RaisedButton(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                            25,
+                          )),
+                          color: Globals.mainColor,
+                          padding: EdgeInsets.all(
+                            0,
+                          ),
+                          onPressed: () {
+                            Get.snackbar("You are now available",
+                                "You are now available for local errands",
+                                backgroundColor: Colors.white,
+                                icon: Icon(
+                                  Icons.done,
+                                  color: Colors.green,
+                                ));
+                          },
+                          child: Container(
+                            height: blockHeight * 6,
+                            // color: Colors.green,
+                            alignment: Alignment.center,
+                            child: Container(
+                              height: blockHeight * 4,
+                              // color: Colors.redAccent,
+                              alignment: Alignment.center,
+                              child: AutoSizeText(
+                                "run local errands".toUpperCase(),
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                minFontSize: 14,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                } else {
+                  return Container(
+                    margin: EdgeInsets.symmetric(
+                      horizontal: blockWidth * 5,
                     ),
-                  ),
-                ),
-              ),
+                    child: RaisedButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                        25,
+                      )),
+                      color: Globals.mainColor,
+                      padding: EdgeInsets.all(
+                        0,
+                      ),
+                      onPressed: () {
+                        if (pageNum == 1) {
+                          print("go to send package");
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (_) {
+                            return SendPackage();
+                          }));
+                        } else {
+                          print("go to errand page");
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (_) {
+                            return PostYourErrand();
+                          }));
+                        }
+                      },
+                      child: Container(
+                        height: blockHeight * 6,
+                        // color: Colors.green,
+                        alignment: Alignment.center,
+                        child: Container(
+                          height: blockHeight * 4,
+                          // color: Colors.redAccent,
+                          alignment: Alignment.center,
+                          child: AutoSizeText(
+                            buttonText.toUpperCase(),
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            minFontSize: 14,
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                }
+              },
             ),
           )
         ],

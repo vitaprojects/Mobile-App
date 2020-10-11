@@ -14,11 +14,11 @@ class WelcomeScreen extends StatelessWidget {
       imageAssetName: "assets/images/img1.png",
     ),
     WelcomeScreenImage(
-      bodyText: "Become a member today and start your hustle here",
+      bodyText: "Perform local errands",
       imageAssetName: "assets/images/img2.png",
     ),
     WelcomeScreenImage(
-      bodyText: "Become a member today and start your hustle here",
+      bodyText: "Medication delivery",
       imageAssetName: "assets/images/img3.png",
     ),
   ];

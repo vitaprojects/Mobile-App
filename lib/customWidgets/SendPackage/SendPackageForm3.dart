@@ -8,6 +8,7 @@ import 'package:newpostman1/customWidgets/SendPackage/PackageFinalDestDetails.da
 import 'package:newpostman1/customWidgets/SendPackage/PackageListedMessage.dart';
 import 'package:newpostman1/customWidgets/SendPackage/ReceiverDetailsWidget.dart';
 import 'package:newpostman1/customWidgets/SendPackage/SenderDetailsWidget.dart';
+import 'package:newpostman1/ui/PaymentPage.dart';
 import 'package:newpostman1/ui/ThankYouWidget.dart';
 
 import '../../globals.dart';
@@ -53,9 +54,10 @@ class _SendPackageForm3State extends State<SendPackageForm3> {
           height: blockHeight * 5,
         ),
         FormButton(
-          buttonText: "find trip",
+          buttonText: "find Postman",
           ontapFun: () {
-            Get.to(PackageListedMessage());
+            // Get.to(PackageListedMessage());
+            Get.to(PaymentPage());
           },
         ),
         SizedBox(
