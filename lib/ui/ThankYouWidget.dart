@@ -133,6 +133,58 @@ class ThankYouWidget extends StatelessWidget {
               },
               child: Text("show alert"),
             ),
+            // SizedBox(
+            //   height: blockHeight * 2,
+            // ),
+            RaisedButton(
+              onPressed: () {
+                Alert(
+                  closeFunction: () => {},
+                  context: context,
+                  type: AlertType.info,
+                  title: "Psotman accepted your request",
+                  desc: "Postman accepted your request and sent his offer",
+                  content: Column(
+                    children: [
+                      Container(
+                        height: blockHeight * 10,
+                        // color: Colors.redAccent,
+                        alignment: Alignment.center,
+                        child: Container(
+                          height: blockHeight * 6,
+                          alignment: Alignment.center,
+                          child: Text("Offer amount: 2.50\$"),
+                        ),
+                      )
+                    ],
+                  ),
+                  buttons: [
+                    DialogButton(
+                      color: Globals.mainColor,
+                      child: Text(
+                        "accept".toUpperCase(),
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                        Get.to(ViewCustomerRequest());
+                      },
+                      width: 120,
+                    ),
+                    DialogButton(
+                      color: Colors.red,
+                      child: Text(
+                        "reject".toUpperCase(),
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                      onPressed: () => Navigator.pop(context),
+                      width: 120,
+                    ),
+                  ],
+                ).show();
+              },
+              child: Text("show alert for customer"),
+            ),
             Container(
                 height: blockHeight * 20,
                 // color: Colors.yellow,
