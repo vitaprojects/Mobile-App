@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:newpostman1/customWidgets/ItemWidgetInDrawer.dart';
 import 'package:newpostman1/customWidgets/TitleWidgetInDrawer.dart';
 import 'package:newpostman1/ui/AboutUsPage.dart';
+import 'package:newpostman1/ui/AvailablePostman.dart';
 import 'package:newpostman1/ui/FindLocalErrands.dart';
 import 'package:newpostman1/ui/MyTripsWidget.dart';
 import 'package:newpostman1/ui/PostYourErrand.dart';
@@ -240,6 +241,21 @@ class DrawerWidget extends StatelessWidget {
                     ontapFunc: () {
                       closeDrawer();
                       Get.to(SendPackage());
+                    },
+                  ),
+                  Divider(
+                    height: blockHeight / 2,
+                    thickness: blockHeight / 4,
+                  ),
+                  ItemWidgetInDrawer(
+                    icon: Icon(
+                      FontAwesomeIcons.personBooth,
+                    ),
+                    title: "Find Postman",
+                    margin: margin,
+                    ontapFunc: () {
+                      closeDrawer();
+                      Get.to(AvailablePostman());
                     },
                   ),
                   Divider(

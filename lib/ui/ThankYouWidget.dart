@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:newpostman1/ui/HomePage.dart';
 import 'package:newpostman1/ui/MyTripsWidget.dart';
 import 'package:newpostman1/ui/TrackPackage.dart';
+import 'package:newpostman1/ui/ViewCustomerRequest.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 import '../globals.dart';
 
@@ -95,6 +97,41 @@ class ThankYouWidget extends StatelessWidget {
                   ),
                 ),
               ),
+            ),
+            RaisedButton(
+              onPressed: () {
+                Alert(
+                  closeFunction: () => {},
+                  context: context,
+                  type: AlertType.info,
+                  title: "You got a new request",
+                  desc: "A customer sent you a request",
+                  buttons: [
+                    DialogButton(
+                      color: Globals.mainColor,
+                      child: Text(
+                        "Check".toUpperCase(),
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                        Get.to(ViewCustomerRequest());
+                      },
+                      width: 120,
+                    ),
+                    DialogButton(
+                      color: Colors.red,
+                      child: Text(
+                        "Cancel".toUpperCase(),
+                        style: TextStyle(color: Colors.white, fontSize: 20),
+                      ),
+                      onPressed: () => Navigator.pop(context),
+                      width: 120,
+                    ),
+                  ],
+                ).show();
+              },
+              child: Text("show alert"),
             ),
             Container(
                 height: blockHeight * 20,

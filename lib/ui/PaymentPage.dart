@@ -1,8 +1,10 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:get/get.dart';
 import 'package:newpostman1/customWidgets/FormButton.dart';
 import 'package:newpostman1/customWidgets/PaymentSelectionButton.dart';
+import 'package:newpostman1/customWidgets/SendPackage/PackageListedMessage.dart';
 
 import '../globals.dart';
 
@@ -218,6 +220,9 @@ class _PaymentPageState extends State<PaymentPage> {
                 alignment: Alignment.center,
                 child: FormButton(
                   buttonText: "Confirm payment",
+                  ontapFun: () {
+                    Get.to(PackageListedMessage());
+                  },
                 ),
               )
             ],
