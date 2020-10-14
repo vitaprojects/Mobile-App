@@ -105,7 +105,17 @@ class PostYourErrandForm1 extends StatelessWidget {
                   attribute: "myoffer",
                   isInternalField: true,
                   isPhone: true,
-                  labelText: "I Will pay (Min \$9.99)  + (Min Tip \$3.25)",
+                  labelText: "I Will pay (Min \$9.99)",
+                ),
+                Divider(
+                  height: blockHeight / 2,
+                  thickness: blockHeight / 4,
+                ),
+                CustomInputField(
+                  attribute: "mytip",
+                  isInternalField: true,
+                  isPhone: true,
+                  labelText: "My Tip (Min \$2.99)",
                 ),
                 Divider(
                   height: blockHeight / 2,

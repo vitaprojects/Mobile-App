@@ -8,6 +8,7 @@ import 'package:newpostman1/ui/AboutUsPage.dart';
 import 'package:newpostman1/ui/AvailablePostman.dart';
 import 'package:newpostman1/ui/FindLocalErrands.dart';
 import 'package:newpostman1/ui/MyTripsWidget.dart';
+import 'package:newpostman1/ui/OngoingErrands.dart';
 import 'package:newpostman1/ui/PostYourErrand.dart';
 import 'package:newpostman1/ui/PostYourItenary.dart';
 import 'package:newpostman1/ui/SendPackage.dart';
@@ -325,6 +326,23 @@ class DrawerWidget extends StatelessWidget {
               alignment: Alignment.center,
               child: Column(
                 children: [
+                  ItemWidgetInDrawer(
+                    icon: Icon(
+                      FontAwesomeIcons.walking,
+                    ),
+                    title: "Ongoing Errands",
+                    margin: margin,
+                    ontapFunc: () {
+                      closeDrawer();
+
+                      print("ongoing errands");
+                      Get.to(OngoingErrands());
+                    },
+                  ),
+                  Divider(
+                    height: blockHeight / 2,
+                    thickness: blockHeight / 4,
+                  ),
                   ItemWidgetInDrawer(
                     icon: Icon(
                       FontAwesomeIcons.box,
