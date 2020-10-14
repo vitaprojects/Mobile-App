@@ -54,11 +54,12 @@ class WelcomeScreen extends StatelessWidget {
                   },
                   itemCount: 3,
                   pagination: SwiperPagination(
-                      alignment: Alignment.bottomCenter,
-                      builder: DotSwiperPaginationBuilder(
-                        color: Colors.grey,
-                        activeColor: Globals.mainColor,
-                      )),
+                    alignment: Alignment.bottomCenter,
+                    builder: DotSwiperPaginationBuilder(
+                      color: Colors.grey,
+                      activeColor: Globals.mainColor,
+                    ),
+                  ),
                   // control: new SwiperControl(),
                 ),
               ),

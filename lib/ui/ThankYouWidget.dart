@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newpostman1/ui/HomePage.dart';
 import 'package:newpostman1/ui/MyTripsWidget.dart';
+import 'package:newpostman1/ui/PaymentPage.dart';
 import 'package:newpostman1/ui/TrackPackage.dart';
 import 'package:newpostman1/ui/ViewCustomerRequest.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
@@ -110,7 +111,7 @@ class ThankYouWidget extends StatelessWidget {
                     DialogButton(
                       color: Globals.mainColor,
                       child: Text(
-                        "Check".toUpperCase(),
+                        "View".toUpperCase(),
                         style: TextStyle(color: Colors.white, fontSize: 20),
                       ),
                       onPressed: () {
@@ -167,7 +168,7 @@ class ThankYouWidget extends StatelessWidget {
                       ),
                       onPressed: () {
                         Navigator.pop(context);
-                        Get.to(ViewCustomerRequest());
+                        Get.to(PaymentPage());
                       },
                       width: 120,
                     ),

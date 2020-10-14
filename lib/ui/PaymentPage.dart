@@ -2,9 +2,11 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
+import 'package:newpostman1/customWidgets/CustomInputField.dart';
 import 'package:newpostman1/customWidgets/FormButton.dart';
 import 'package:newpostman1/customWidgets/PaymentSelectionButton.dart';
 import 'package:newpostman1/customWidgets/SendPackage/PackageListedMessage.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 import '../globals.dart';
 
@@ -20,6 +22,44 @@ class _PaymentPageState extends State<PaymentPage> {
   final double blockWidth = Globals.blockWidth;
   double margin;
 
+  confirmPaymentAlert() {
+    Alert(
+      context: context,
+      type: AlertType.info,
+      title: "CONFIRM PAYMENT",
+      desc: "Please confirm the payment of \$22",
+      buttons: [
+        DialogButton(
+          child: Text(
+            "confirm".toUpperCase(),
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+            Get.back();
+
+            Future.delayed(Duration(seconds: 1)).then((value) {
+              Get.snackbar("Payment successful", "Your payment was successfuly",
+                  icon: Icon(
+                    Icons.done,
+                    color: Colors.green,
+                  ));
+            });
+          },
+          color: Globals.mainColor,
+        ),
+        DialogButton(
+          child: Text(
+            "cancel".toUpperCase(),
+            style: TextStyle(color: Colors.white, fontSize: 20),
+          ),
+          onPressed: () => Navigator.pop(context),
+          color: Colors.red,
+        )
+      ],
+    ).show();
+  }
+
   @override
   Widget build(BuildContext context) {
     margin = blockWidth * 5;
@@ -28,9 +68,9 @@ class _PaymentPageState extends State<PaymentPage> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Container(
-                height: blockHeight * 5,
-              ),
+              // Container(
+              //   height: blockHeight * 5,
+              // ),
               Container(
                 margin: EdgeInsets.symmetric(
                   horizontal: margin,
@@ -70,8 +110,31 @@ class _PaymentPageState extends State<PaymentPage> {
                       minFontSize: 14,
                     )),
               ),
-              SizedBox(
-                height: blockHeight * 5,
+              Container(
+                // color: Colors.red,
+                // height: blockHeight * 16,
+                margin: EdgeInsets.symmetric(
+                  horizontal: blockWidth * 5,
+                  vertical: blockHeight,
+                ),
+                alignment: Alignment.center,
+                child: Column(
+                  children: [
+                    CustomInputField(
+                      attribute: "payment",
+                      labelText: "Fee of the Postman",
+                      readOnly: true,
+                      initalText: "100.00",
+                    ),
+                    SizedBox(
+                      height: blockHeight,
+                    ),
+                    CustomInputField(
+                      attribute: "tip",
+                      labelText: "Tip for the Postman",
+                    ),
+                  ],
+                ),
               ),
               Card(
                 elevation: 10,
@@ -219,9 +282,10 @@ class _PaymentPageState extends State<PaymentPage> {
                 // color: Colors.green,
                 alignment: Alignment.center,
                 child: FormButton(
-                  buttonText: "Confirm payment",
+                  buttonText: "pay",
                   ontapFun: () {
-                    Get.to(PackageListedMessage());
+                    // Get.to(PackageListedMessage());
+                    confirmPaymentAlert();
                   },
                 ),
               )

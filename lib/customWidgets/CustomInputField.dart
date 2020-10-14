@@ -12,6 +12,8 @@ class CustomInputField extends StatefulWidget {
     this.isInternalField,
     this.isDate,
     this.isPhone,
+    this.readOnly,
+    this.initalText,
   });
 
   final String attribute;
@@ -22,6 +24,10 @@ class CustomInputField extends StatefulWidget {
   final bool isInternalField;
   final bool isDate; //to check whether we are enter a date
   final bool isPhone;
+  final bool
+      readOnly; //if we want to make the textfield read only we pass this as true
+  final String
+      initalText; //if we want to show a inital value in the text field pass the value here
   @override
   _CustomInputFieldState createState() => _CustomInputFieldState();
 }
@@ -125,6 +131,10 @@ class _CustomInputFieldState extends State<CustomInputField> {
               // color: Colors.red,
               alignment: Alignment.center,
               child: FormBuilderTextField(
+                // textAlign: TextAlign.center,
+                initialValue:
+                    (widget.initalText == null) ? '' : widget.initalText,
+                readOnly: widget.readOnly == true,
                 controller: widget.textEditingController,
                 attribute: widget.attribute,
                 textAlignVertical: TextAlignVertical.center,

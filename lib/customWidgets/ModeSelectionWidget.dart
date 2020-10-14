@@ -165,7 +165,7 @@ class ModeSelectionWidget extends StatelessWidget {
                               // color: Colors.redAccent,
                               alignment: Alignment.center,
                               child: AutoSizeText(
-                                "run local errands".toUpperCase(),
+                                "post for  errands".toUpperCase(),
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 22,

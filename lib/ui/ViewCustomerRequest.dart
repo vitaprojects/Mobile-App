@@ -245,7 +245,7 @@ class ViewCustomerRequest extends StatelessWidget {
                     // color: Colors.yellow,
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      "Destination",
+                      "Drop off location",
                       style: TextStyle(
                         fontSize: 18,
                       ),
@@ -269,7 +269,7 @@ class ViewCustomerRequest extends StatelessWidget {
                 child: FormBuilderTextField(
                   attribute: "offer",
                   decoration: InputDecoration(
-                      labelText: "Enter your Offer",
+                      labelText: "Offer amount",
                       labelStyle: TextStyle(
                         color: Globals.mainColor,
                       )),
