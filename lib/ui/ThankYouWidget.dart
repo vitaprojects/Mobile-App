@@ -143,7 +143,7 @@ class ThankYouWidget extends StatelessWidget {
                   closeFunction: () => {},
                   context: context,
                   type: AlertType.info,
-                  title: "Psotman accepted your request",
+                  title: "",
                   desc: "Postman accepted your request and sent his offer",
                   content: Column(
                     children: [

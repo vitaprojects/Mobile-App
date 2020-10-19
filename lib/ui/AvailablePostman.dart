@@ -22,27 +22,14 @@ class _AvailablePostmanState extends State<AvailablePostman> {
     margin = blockWidth * 5;
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Globals.mainColor,
+          title: Text("Available Postmans"),
+        ),
         body: Column(
           children: [
             Container(
-              height: blockHeight * 10,
-              // color: Colors.redAccent,
-              margin: EdgeInsets.symmetric(
-                horizontal: margin,
-              ),
-              alignment: Alignment.center,
-              child: Container(
-                height: blockHeight * 5,
-                // color: Colors.greenAccent,
-                alignment: Alignment.centerLeft,
-                child: AutoSizeText(
-                  "Available Postmans",
-                  style: TextStyle(
-                    fontSize: 30,
-                  ),
-                  minFontSize: 20,
-                ),
-              ),
+              height: blockHeight * 2,
             ),
             Expanded(
               child: Container(
@@ -74,7 +61,7 @@ class _AvailablePostmanState extends State<AvailablePostman> {
                           children: [
                             Container(
                               width: blockHeight * 15,
-                              // color: Colors.orangeAccent,
+                              color: Globals.mainColor,
                               padding: EdgeInsets.all(
                                 blockHeight * 2,
                               ),
@@ -87,7 +74,8 @@ class _AvailablePostmanState extends State<AvailablePostman> {
                                 radius: blockHeight * 7,
                               ),
                             ),
-                            SizedBox(
+                            Container(
+                              color: Colors.greenAccent,
                               width: blockWidth * 2,
                             ),
                             Expanded(
@@ -98,7 +86,7 @@ class _AvailablePostmanState extends State<AvailablePostman> {
                                 children: [
                                   Container(
                                     height: blockHeight * 4,
-                                    // color: Colors.greenAccent,
+                                    color: Colors.greenAccent,
                                     alignment: Alignment.centerLeft,
                                     child: Text(
                                       "Harry Potter",
@@ -147,7 +135,7 @@ class _AvailablePostmanState extends State<AvailablePostman> {
                                             // color: Colors.yellow,
                                             alignment: Alignment.centerLeft,
                                             child: Text(
-                                              "Departure",
+                                              "Final Destination",
                                               style: TextStyle(
                                                 fontSize: 16,
                                               ),

@@ -184,13 +184,13 @@ class _PaymentPageState extends State<PaymentPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               PaymentSelectionButton(
-                                assetUrl: "assets/images/card.jpg",
+                                assetUrl: "assets/images/paypal.png",
                               ),
                               PaymentSelectionButton(
                                 assetUrl: "assets/images/paystack.png",
                               ),
                               PaymentSelectionButton(
-                                assetUrl: "assets/images/card.jpg",
+                                assetUrl: "assets/images/stripe.jpg",
                               )
                             ],
                           ),
