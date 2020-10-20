@@ -122,7 +122,7 @@ class _PaymentPageState extends State<PaymentPage> {
                   children: [
                     CustomInputField(
                       attribute: "payment",
-                      labelText: "Fee of the Postman",
+                      labelText: "Amount Due",
                       readOnly: true,
                       initalText: "100.00",
                     ),
@@ -131,11 +131,19 @@ class _PaymentPageState extends State<PaymentPage> {
                     ),
                     CustomInputField(
                       attribute: "tip",
-                      labelText: "Tip for the Postman",
+                      labelText: "Tip",
+                    ),
+                    SizedBox(
+                      height: blockHeight,
+                    ),
+                    CustomInputField(
+                      attribute: "total",
+                      labelText: "Total",
                     ),
                   ],
                 ),
               ),
+
               Card(
                 elevation: 10,
                 margin: EdgeInsets.symmetric(
