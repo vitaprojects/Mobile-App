@@ -25,4 +25,9 @@ class RequestModel {
     this.hasSeenbyPostman,
     this.hasSeenbyUser,
   });
+
+  // factory RequestModel.fromJson(Map<String, dynamic> json) =>
+  //     _$RequestModelFromJson(json);
+
+  // Map<String, dynamic> toJson() => _$RequestModelToJson(this);
 }
