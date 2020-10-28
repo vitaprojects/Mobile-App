@@ -135,7 +135,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
                 initialValue:
                     (widget.initalText == null) ? '' : widget.initalText,
                 readOnly: widget.readOnly == true,
-                controller: widget.textEditingController,
+                // controller: widget.textEditingController,
                 attribute: widget.attribute,
                 textAlignVertical: TextAlignVertical.center,
                 maxLines: (widget.isDescription == true) ? null : 2,
