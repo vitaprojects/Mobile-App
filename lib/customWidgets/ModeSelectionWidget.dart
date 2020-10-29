@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 import 'package:newpostman1/globals.dart';
 import 'package:newpostman1/ui/HomePage.dart';
 import 'package:newpostman1/ui/PostYourErrand.dart';
-import 'package:newpostman1/ui/PostYourItenary.dart';
-import 'package:newpostman1/ui/SendPackage.dart';
+import 'package:newpostman1/features/post_itenary/presentation/PostYourItenary.dart';
+import 'package:newpostman1/features/send_package/presentation/SendPackage.dart';
 // import '';
 
 class ModeSelectionWidget extends StatelessWidget {

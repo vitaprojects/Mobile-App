@@ -1,16 +1,17 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:newpostman1/features/post_errand/presentation/PostErrandForm1.dart';
+import 'package:newpostman1/features/post_itenary/presentation/PostYourItenaryForm1.dart';
 
-import '../globals.dart';
+import '../../../globals.dart';
 
-class PostYourErrand extends StatefulWidget {
-  PostYourErrand({Key key}) : super(key: key);
+class PostYourItenary extends StatefulWidget {
+  PostYourItenary({Key key}) : super(key: key);
 
   @override
-  _PostYourErrandState createState() => _PostYourErrandState();
+  _PostYourItenaryState createState() => _PostYourItenaryState();
 }
 
-class _PostYourErrandState extends State<PostYourErrand> {
+class _PostYourItenaryState extends State<PostYourItenary> {
   @override
   Widget build(BuildContext context) {
     final double blockHeight = Globals.blockHeight;
@@ -29,9 +30,10 @@ class _PostYourErrandState extends State<PostYourErrand> {
                 expandedHeight: blockHeight * 20,
                 flexibleSpace: FlexibleSpaceBar(
                   title: Text(
-                    "Errand Details",
+                    "Travel Details",
                     style: TextStyle(
                       // fontSize: 2,
+                      // color: Globals.mainColor,
                       color: Colors.black,
                       fontSize: 25,
                     ),
@@ -52,7 +54,7 @@ class _PostYourErrandState extends State<PostYourErrand> {
               ),
               SliverList(
                   delegate: SliverChildListDelegate([
-                PostYourErrandForm1(),
+                PostYourItenaryForm1(),
               ]))
             ],
           )),

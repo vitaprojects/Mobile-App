@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:newpostman1/globals.dart';
-import 'package:newpostman1/ui/WelcomeScreen.dart';
+import 'package:newpostman1/features/welcome/presentation/WelcomeScreen.dart';
 
 import '../sizeConfig.dart';
 

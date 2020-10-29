@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_inner_drawer/inner_drawer.dart';
 import 'package:get/get.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
-import 'package:newpostman1/customWidgets/DrawerWidget.dart';
+import 'package:newpostman1/features/drawer/presentation/DrawerWidget.dart';
 import 'package:newpostman1/customWidgets/ModeSelectionWidget.dart';
 import 'package:newpostman1/globals.dart';
-import 'package:newpostman1/ui/PostYourItenary.dart';
+import 'package:newpostman1/features/post_itenary/presentation/PostYourItenary.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
