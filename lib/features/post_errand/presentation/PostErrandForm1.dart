@@ -5,7 +5,7 @@ import 'package:newpostman1/customWidgets/FormButton.dart';
 import 'package:newpostman1/features/send_package/presentation/UploadedImagesOfPackage.dart';
 import 'package:newpostman1/ui/ThankYouWidget.dart';
 
-import '../../../globals.dart';
+import '../../../useful/globals.dart';
 
 class PostYourErrandForm1 extends StatelessWidget {
   PostYourErrandForm1({Key key}) : super(key: key);

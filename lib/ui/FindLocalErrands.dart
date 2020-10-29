@@ -4,7 +4,7 @@ import 'package:newpostman1/customWidgets/DisplayErrandsWidget.dart';
 import 'package:newpostman1/ui/CompletedTripsWidget.dart';
 import 'package:newpostman1/ui/UpcomingTripsWidget.dart';
 
-import '../globals.dart';
+import '../useful/globals.dart';
 
 class FindLocalErrands extends StatefulWidget {
   FindLocalErrands({Key key}) : super(key: key);

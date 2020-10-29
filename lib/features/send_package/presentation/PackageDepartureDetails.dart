@@ -2,7 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:newpostman1/customWidgets/CustomInputField.dart';
 
-import '../../../globals.dart';
+import '../../../useful/globals.dart';
 
 class PackageDepartureDetails extends StatelessWidget {
   const PackageDepartureDetails({Key key}) : super(key: key);

@@ -5,7 +5,7 @@ import 'package:newpostman1/features/TotalEarnings/presentation/EarningsInfoCard
 import 'package:newpostman1/features/TotalEarnings/presentation/TotalEarningsAppBar.dart';
 import 'package:newpostman1/features/TotalEarnings/presentation/TotalEarningsOverviewSelectionWidget.dart';
 
-import '../../../globals.dart';
+import '../../../useful/globals.dart';
 
 class TotalEarningsWidget extends StatelessWidget {
   TotalEarningsWidget({Key key}) : super(key: key);

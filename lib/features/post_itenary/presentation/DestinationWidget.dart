@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:newpostman1/customWidgets/CustomInputField.dart';
 
-import '../../../globals.dart';
+import '../../../useful/globals.dart';
 import 'ICanPickUpWidget.dart';
 
 class DestinationWidget extends StatefulWidget {

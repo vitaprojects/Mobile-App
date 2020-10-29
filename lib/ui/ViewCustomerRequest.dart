@@ -5,7 +5,7 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:get/get.dart';
 import 'package:newpostman1/customWidgets/FormButton.dart';
 
-import '../globals.dart';
+import '../useful/globals.dart';
 
 class ViewCustomerRequest extends StatelessWidget {
   ViewCustomerRequest();

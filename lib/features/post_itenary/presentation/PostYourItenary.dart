@@ -2,7 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:newpostman1/features/post_itenary/presentation/PostYourItenaryForm1.dart';
 
-import '../../../globals.dart';
+import '../../../useful/globals.dart';
 
 class PostYourItenary extends StatefulWidget {
   PostYourItenary({Key key}) : super(key: key);

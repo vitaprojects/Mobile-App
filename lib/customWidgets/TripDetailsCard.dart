@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:newpostman1/ui/RunErrandWidget.dart';
 import 'package:newpostman1/ui/TripDetailRowCard.dart';
 
-import '../globals.dart';
+import '../useful/globals.dart';
 
 class TripDetailsCard extends StatelessWidget {
   const TripDetailsCard({

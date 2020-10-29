@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:newpostman1/customWidgets/CustomInputField.dart';
 import 'package:newpostman1/features/send_package/presentation/NeedInsuranceProtectionWidget.dart';
 
-import '../../../globals.dart';
+import '../../../useful/globals.dart';
 
 class ItemBasicDetails extends StatefulWidget {
   ItemBasicDetails({Key key}) : super(key: key);

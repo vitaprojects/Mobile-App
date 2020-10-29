@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-import '../globals.dart';
+import '../useful/globals.dart';
 
 class CustomInputField extends StatefulWidget {
   CustomInputField({

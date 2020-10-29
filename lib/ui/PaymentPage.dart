@@ -7,7 +7,7 @@ import 'package:newpostman1/customWidgets/FormButton.dart';
 import 'package:newpostman1/customWidgets/PaymentSelectionButton.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
-import '../globals.dart';
+import '../useful/globals.dart';
 
 class PaymentPage extends StatefulWidget {
   PaymentPage({Key key}) : super(key: key);

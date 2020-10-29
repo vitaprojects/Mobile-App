@@ -8,7 +8,7 @@ import 'package:newpostman1/ui/TrackPackage.dart';
 import 'package:newpostman1/ui/ViewCustomerRequest.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
-import '../globals.dart';
+import '../useful/globals.dart';
 
 class ThankYouWidget extends StatelessWidget {
   ThankYouWidget({

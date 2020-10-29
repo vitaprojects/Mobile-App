@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:newpostman1/customWidgets/AboutUsInfoCard.dart';
 
-import '../globals.dart';
+import '../useful/globals.dart';
 
 class AboutUSPage extends StatelessWidget {
   AboutUSPage({Key key}) : super(key: key);

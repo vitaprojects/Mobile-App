@@ -6,7 +6,7 @@ import 'package:newpostman1/features/welcome/presentation/WelcomeMessageCard.dar
 import 'package:newpostman1/ui/HomePage.dart';
 import 'package:newpostman1/features/authentication/presentation/SignUpPage.dart';
 
-import '../../../globals.dart';
+import '../../../useful/globals.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 class LoginPage extends StatefulWidget {

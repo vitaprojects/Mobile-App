@@ -7,7 +7,7 @@ import 'package:newpostman1/features/welcome/presentation/WelcomeMessageCard.dar
 import 'package:newpostman1/features/welcome/presentation/WelcomeScreenButtons.dart';
 import 'package:newpostman1/ui/HomePage.dart';
 
-import '../../../globals.dart';
+import '../../../useful/globals.dart';
 
 class SignUpPage extends StatefulWidget {
   SignUpPage({Key key}) : super(key: key);

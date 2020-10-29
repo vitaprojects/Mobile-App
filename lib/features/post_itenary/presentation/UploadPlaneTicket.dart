@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../globals.dart';
+import '../../../useful/globals.dart';
 
 class UploadPlaneTicketWidget extends StatefulWidget {
   UploadPlaneTicketWidget({Key key}) : super(key: key);

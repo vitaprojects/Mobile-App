@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:newpostman1/customWidgets/FormButton.dart';
 import 'package:newpostman1/ui/HomePage.dart';
 
-import '../globals.dart';
+import '../useful/globals.dart';
 
 class RunErrandWidget extends StatefulWidget {
   RunErrandWidget({Key key}) : super(key: key);

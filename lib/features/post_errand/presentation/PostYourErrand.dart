@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:newpostman1/features/post_errand/presentation/PostErrandForm1.dart';
 
-import '../globals.dart';
+import '../../../useful/globals.dart';
 
 class PostYourErrand extends StatefulWidget {
   PostYourErrand({Key key}) : super(key: key);

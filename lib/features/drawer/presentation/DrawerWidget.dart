@@ -9,14 +9,14 @@ import 'package:newpostman1/ui/AvailablePostman.dart';
 import 'package:newpostman1/ui/FindLocalErrands.dart';
 import 'package:newpostman1/ui/MyTripsWidget.dart';
 import 'package:newpostman1/ui/OngoingErrands.dart';
-import 'package:newpostman1/ui/PostYourErrand.dart';
+import 'package:newpostman1/features/post_errand/presentation/PostYourErrand.dart';
 import 'package:newpostman1/features/post_itenary/presentation/PostYourItenary.dart';
 import 'package:newpostman1/features/send_package/presentation/SendPackage.dart';
 import 'package:newpostman1/ui/SupportWidget.dart';
 import 'package:newpostman1/features/TotalEarnings/presentation/TotalEarningsWidget.dart';
 import 'package:newpostman1/ui/TrackPackage.dart';
 
-import '../../../globals.dart';
+import '../../../useful/globals.dart';
 
 class DrawerWidget extends StatelessWidget {
   DrawerWidget({

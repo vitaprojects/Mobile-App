@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newpostman1/errands/OngoingErrandFullPage.dart';
 
-import '../globals.dart';
+import '../useful/globals.dart';
 
 class OngoingErrandsCard extends StatelessWidget {
   OngoingErrandsCard({Key key}) : super(key: key);

@@ -2,7 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:newpostman1/errands/OngoingErrandsCard.dart';
 
-import '../globals.dart';
+import '../useful/globals.dart';
 
 class OngoingErrands extends StatelessWidget {
   OngoingErrands({Key key}) : super(key: key);

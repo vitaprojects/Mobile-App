@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../globals.dart';
+import '../../../useful/globals.dart';
 import 'SendPackageForm2.dart';
 
 class SendPackageSecondPage extends StatefulWidget {

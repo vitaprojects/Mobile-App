@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:newpostman1/customWidgets/CustomInputField.dart';
 import 'package:newpostman1/ui/TripDetailRowCard.dart';
 
-import '../../../globals.dart';
+import '../../../useful/globals.dart';
 
 class FinalPackageDetailsWidget extends StatelessWidget {
   FinalPackageDetailsWidget({Key key}) : super(key: key);

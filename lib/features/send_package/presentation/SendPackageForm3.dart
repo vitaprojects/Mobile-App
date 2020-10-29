@@ -7,7 +7,7 @@ import 'package:newpostman1/ui/AvailablePostman.dart';
 import 'package:newpostman1/ui/PaymentPage.dart';
 import 'package:newpostman1/ui/ThankYouWidget.dart';
 
-import '../../../globals.dart';
+import '../../../useful/globals.dart';
 import 'ReceiverDetailsWidget.dart';
 import 'SenderDetailsWidget.dart';
 

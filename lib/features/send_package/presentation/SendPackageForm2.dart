@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:newpostman1/customWidgets/CustomInputField.dart';
 import 'package:newpostman1/customWidgets/FormButton.dart';
 
-import '../../../globals.dart';
+import '../../../useful/globals.dart';
 import 'PackageDepartureDetails.dart';
 import 'PackageFinalDestDetails.dart';
 import 'SendPackageThirdPage.dart';

@@ -1,6 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:newpostman1/globals.dart';
+import 'package:newpostman1/useful/globals.dart';
 
 class WelcomeScreenImage extends StatelessWidget {
   const WelcomeScreenImage({

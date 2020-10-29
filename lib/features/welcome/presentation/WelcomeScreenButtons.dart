@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:newpostman1/features/authentication/presentation/LoginPage.dart';
 import 'package:newpostman1/features/authentication/presentation/SignUpPage.dart';
 
-import '../../../globals.dart';
+import '../../../useful/globals.dart';
 
 class WelcomeScreensButtons extends StatelessWidget {
   const WelcomeScreensButtons({Key key}) : super(key: key);

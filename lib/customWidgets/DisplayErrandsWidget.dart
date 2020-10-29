@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:newpostman1/customWidgets/TripDetailsCard.dart';
 
-import '../globals.dart';
+import '../useful/globals.dart';
 
 class DisplayErrandsWidget extends StatefulWidget {
   DisplayErrandsWidget({Key key}) : super(key: key);

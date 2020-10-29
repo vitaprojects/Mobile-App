@@ -11,7 +11,7 @@ import 'package:newpostman1/features/post_itenary/presentation/SelectTravelType.
 import 'package:newpostman1/features/post_itenary/presentation/UploadPlaneTicket.dart';
 import 'package:newpostman1/ui/ThankYouWidget.dart';
 
-import '../../../globals.dart';
+import '../../../useful/globals.dart';
 
 class PostYourItenaryForm1 extends StatefulWidget {
   PostYourItenaryForm1({Key key}) : super(key: key);

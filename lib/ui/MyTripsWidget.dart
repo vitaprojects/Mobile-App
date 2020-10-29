@@ -3,7 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:newpostman1/ui/CompletedTripsWidget.dart';
 import 'package:newpostman1/ui/UpcomingTripsWidget.dart';
 
-import '../globals.dart';
+import '../useful/globals.dart';
 
 class MyTripsWidget extends StatefulWidget {
   MyTripsWidget({Key key}) : super(key: key);

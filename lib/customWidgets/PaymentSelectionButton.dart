@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:newpostman1/globals.dart';
+import 'package:newpostman1/useful/globals.dart';
 
 class PaymentSelectionButton extends StatelessWidget {
   PaymentSelectionButton({

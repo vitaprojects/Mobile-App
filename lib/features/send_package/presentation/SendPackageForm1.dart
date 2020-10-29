@@ -8,7 +8,7 @@ import 'package:newpostman1/features/send_package/presentation/ItemBasicDetails.
 import 'package:newpostman1/features/send_package/presentation/NeedInsuranceProtectionWidget.dart';
 import 'package:newpostman1/features/send_package/presentation/UploadPhotosForSendPackage.dart';
 
-import '../../../globals.dart';
+import '../../../useful/globals.dart';
 import 'SendPackageSecondPage.dart';
 
 class SendPackageForm1 extends StatefulWidget {

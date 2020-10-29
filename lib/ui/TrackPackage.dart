@@ -4,7 +4,7 @@ import 'package:newpostman1/customWidgets/PostedPackagesWidget.dart';
 import 'package:newpostman1/ui/CompletedTripsWidget.dart';
 import 'package:newpostman1/ui/UpcomingTripsWidget.dart';
 
-import '../globals.dart';
+import '../useful/globals.dart';
 
 class TrackPackage extends StatefulWidget {
   TrackPackage({Key key}) : super(key: key);

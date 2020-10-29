@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:newpostman1/customWidgets/TripDetailsCard.dart';
 
-import '../globals.dart';
+import '../useful/globals.dart';
 
 class CompletedTripsWidget extends StatefulWidget {
   CompletedTripsWidget({Key key}) : super(key: key);

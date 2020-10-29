@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:newpostman1/features/welcome/presentation/WelcomeScreenButtons.dart';
 import 'package:newpostman1/features/welcome/presentation/WelocmeScreenImage.dart';
-import 'package:newpostman1/globals.dart';
+import 'package:newpostman1/useful/globals.dart';
 
 class WelcomeScreen extends StatelessWidget {
   WelcomeScreen({Key key}) : super(key: key);

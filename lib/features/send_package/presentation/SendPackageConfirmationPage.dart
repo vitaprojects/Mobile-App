@@ -6,7 +6,7 @@ import 'package:newpostman1/customWidgets/CustomInputField.dart';
 import 'package:newpostman1/customWidgets/FormButton.dart';
 import 'package:newpostman1/ui/ThankYouWidget.dart';
 
-import '../../../globals.dart';
+import '../../../useful/globals.dart';
 import 'FinalPackageDetailsWidget.dart';
 import 'SenderReceiverInformationWidget.dart';
 import 'UploadedImagesOfPackage.dart';

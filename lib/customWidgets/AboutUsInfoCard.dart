@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../globals.dart';
+import '../useful/globals.dart';
 
 class AboutUsInfoCard extends StatelessWidget {
   AboutUsInfoCard({

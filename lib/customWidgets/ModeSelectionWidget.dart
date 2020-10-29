@@ -2,9 +2,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:newpostman1/globals.dart';
+import 'package:newpostman1/useful/globals.dart';
 import 'package:newpostman1/ui/HomePage.dart';
-import 'package:newpostman1/ui/PostYourErrand.dart';
+import 'package:newpostman1/features/post_errand/presentation/PostYourErrand.dart';
 import 'package:newpostman1/features/post_itenary/presentation/PostYourItenary.dart';
 import 'package:newpostman1/features/send_package/presentation/SendPackage.dart';
 // import '';
