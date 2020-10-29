@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:newpostman1/models/LocationModel.dart';
-import 'package:newpostman1/models/VehicleDetailsModel.dart';
+import 'package:newpostman1/models/Itenary/VehicleDetailsModel.dart';
 import 'package:newpostman1/models/travelTypes/TravelType.dart';
 import 'package:json_annotation/json_annotation.dart';
 

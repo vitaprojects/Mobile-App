@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:newpostman1/models/LocationModel.dart';
-import 'package:newpostman1/models/UserModelInPackage.dart';
+import 'package:newpostman1/models/send_package/UserModelInPackage.dart';
 
 // part 'PackageModel.g.dart';
 
