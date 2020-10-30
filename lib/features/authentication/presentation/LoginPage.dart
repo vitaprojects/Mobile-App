@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:newpostman1/features/authentication/presentation/LoginFormField.dart';
 import 'package:newpostman1/features/welcome/presentation/WelcomeMessageCard.dart';
 import 'package:newpostman1/ui/HomePage.dart';
-import 'package:newpostman1/features/authentication/presentation/SignUpPage.dart';
+import 'package:newpostman1/features/authentication/presentation/SignUpView.dart';
 
 import '../../../useful/globals.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -278,7 +278,7 @@ class _LoginPageState extends State<LoginPage> {
                                         GestureDetector(
                                           onTap: () {
                                             //create new account
-                                            Get.to(SignUpPage());
+                                            Get.to(SignUpView());
                                           },
                                           child: Container(
                                               margin: EdgeInsets.only(

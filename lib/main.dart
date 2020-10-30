@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newpostman1/ui/RootWidget.dart';
+import 'useful/service_locator.dart';
 
 void main() {
+  setupServiceLocator();
   runApp(MyApp());
 }
 
