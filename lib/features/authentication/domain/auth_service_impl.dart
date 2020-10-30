@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
 import 'package:newpostman1/features/authentication/domain/auth_service.dart';
+import 'package:newpostman1/models/user/UserModel.dart';
 import 'package:newpostman1/services/push_notification_service.dart';
 import 'package:newpostman1/services/snackbar_service.dart';
 import 'package:newpostman1/useful/service_locator.dart';
@@ -206,31 +207,21 @@ class AuthenticationServiceImplementation extends AuthenticationService {
   }
 
   @override
-  Future<void> signUpEmail(String email, String password, String userName,
-      String phoneNumber) async {
+  Future<void> signUpEmail(UserModel userModel, String password) async {
     DateTime now = DateTime.now();
     String formattedDate = DateFormat('yyyy.MM.dd').format(now);
 
     try {
       UserCredential result =
           await _firebaseAuth.createUserWithEmailAndPassword(
-              email: email.trim().toLowerCase(), password: password.trim());
+              email: userModel.email.trim().toLowerCase(),
+              password: password.trim());
       if (result.user != null) {
         await firestoreDb
             .collection("users")
-            .doc(email.toLowerCase().trim())
-            .set({
-          'email': email.trim().toLowerCase(),
-          'username': userName,
-          'phoneNum': phoneNumber,
-          'new_user': true,
-          'contacts': [],
-          'deviceIds': [],
-          'isInDanger': false,
-          'pp': null,
-          'latitiude': 0,
-          'longitude': 0,
-        }).then((value) {
+            .doc(userModel.email.toLowerCase().trim())
+            .set(userModel.toJson())
+            .then((value) {
           result.user.sendEmailVerification();
 
           firestoreDb.collection("data").doc(formattedDate).set({

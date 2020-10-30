@@ -13,7 +13,7 @@ class SnackBarServiceImpl extends SnackBarService {
     Get.snackbar(
       title,
       body,
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey.shade100,
       icon: (isDanger == true)
           ? Icon(
               Icons.error,
