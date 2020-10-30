@@ -1,4 +1,7 @@
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:newpostman1/features/authentication/domain/auth_service.dart';
+import 'package:newpostman1/features/loading/presentation/LoadingPage.dart';
 import 'package:newpostman1/models/user/UserModel.dart';
 import 'package:newpostman1/services/snackbar_service.dart';
 import 'package:newpostman1/useful/service_locator.dart';
@@ -21,6 +24,8 @@ class SignUpViewModel extends ChangeNotifier {
 
   final SnackBarService snackBarService = locator<SnackBarService>();
   // final SnackbarService snackbarService = locator<SnackbarService>();
+  final AuthenticationService authenticationService =
+      locator<AuthenticationService>();
 
   void validateUserInput() {
     if (fnametextEditingController.text.isNotEmpty) {
@@ -47,6 +52,11 @@ class SignUpViewModel extends ChangeNotifier {
                   phone: phonetextEditingController.text,
                   deviceIds: [],
                   totalEarnings: 0,
+                );
+                Get.to(
+                  LoadingPage(
+                    text: "Please wait while we are creating your account",
+                  ),
                 );
               } else {
                 snackBarService.showSnackBar(

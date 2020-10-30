@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:newpostman1/models/user/UserModel.dart';
 
 abstract class AuthenticationService {
-  Future<void> signUpEmail(
-      String email, String password, String userName, String phoneNumber);
+  Future<void> signUpEmail(UserModel userModel, String password);
 
   Future<User> getCurrentUser();
 

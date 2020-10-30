@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-// part 'UserModel.g.dart';
+part 'UserModel.g.dart';
 
 @JsonSerializable()
 class UserModel {
@@ -19,8 +19,8 @@ class UserModel {
     this.totalEarnings,
   });
 
-  // factory UserModel.fromJson(Map<String, dynamic> json) =>
-  //     _$UserModelFromJson(json);
+  factory UserModel.fromJson(Map<String, dynamic> json) =>
+      _$UserModelFromJson(json);
 
-  // Map<String, dynamic> toJson() => _$UserModelToJson(this);
+  Map<String, dynamic> toJson() => _$UserModelToJson(this);
 }
