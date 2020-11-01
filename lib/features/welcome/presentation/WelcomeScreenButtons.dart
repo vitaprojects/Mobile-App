@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:newpostman1/features/authentication/presentation/LoginPage.dart';
+import 'package:newpostman1/features/authentication/presentation/LoginPageView.dart';
 import 'package:newpostman1/features/authentication/presentation/SignUpView.dart';
 
 import '../../../useful/globals.dart';
@@ -49,7 +49,7 @@ class WelcomeScreensButtons extends StatelessWidget {
                     0,
                   ),
                   onPressed: () {
-                    Get.to(LoginPage());
+                    Get.to(LoginPageView());
                   },
                   child: Container(
                     // color: Colors.yellow,

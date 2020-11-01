@@ -29,7 +29,7 @@ class SnackBarServiceImpl extends SnackBarService {
   @override
   goBackAfterTimePeriod(String title, String body, bool isDanger) {
     Get.back();
-    Future.delayed(Duration(seconds: 2)).then((value) {
+    Future.delayed(Duration(milliseconds: 500)).then((value) {
       showSnackBar(title, body, isDanger);
     }).catchError((onError) {});
   }

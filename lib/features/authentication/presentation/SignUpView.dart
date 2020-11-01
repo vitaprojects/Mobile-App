@@ -1,5 +1,6 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:newpostman1/features/authentication/presentation/LoginFormField.dart';
@@ -150,6 +151,7 @@ class SignUpView extends StatelessWidget {
                               horizontal: blockWidth * 10,
                             ),
                             child: FormBuilderTextField(
+                              keyboardType: TextInputType.phone,
                               controller: model.phonetextEditingController,
                               attribute: "phone",
                               validators: [
@@ -200,6 +202,7 @@ class SignUpView extends StatelessWidget {
                               horizontal: blockWidth * 10,
                             ),
                             child: FormBuilderTextField(
+                              keyboardType: TextInputType.emailAddress,
                               controller: model.emailtextEditingController,
                               attribute: "email",
                               validators: [

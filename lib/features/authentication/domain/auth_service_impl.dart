@@ -9,6 +9,7 @@ import 'package:newpostman1/features/authentication/domain/auth_service.dart';
 import 'package:newpostman1/models/user/UserModel.dart';
 import 'package:newpostman1/services/push_notification_service.dart';
 import 'package:newpostman1/services/snackbar_service.dart';
+import 'package:newpostman1/ui/HomePage.dart';
 import 'package:newpostman1/useful/service_locator.dart';
 
 class AuthenticationServiceImplementation extends AuthenticationService {
@@ -57,15 +58,12 @@ class AuthenticationServiceImplementation extends AuthenticationService {
               .then((value) {
             if (value.exists) {
               Hive.box('user')
-                  .put('uname', value.data()['username'])
+                  .put('uname',
+                      value.data()['fname'] + " " + value.data()['lname'])
                   .then((value) {
                 print("user data added to the box successfully");
               }).catchError((onError) {
                 print(onError.toString());
-              });
-
-              Hive.box('user').put('showMessage', true).then((value) {
-                print("showMessage added to box");
               });
 
               setDeviceTokenDuringLogin(user.email);
@@ -77,51 +75,42 @@ class AuthenticationServiceImplementation extends AuthenticationService {
                   })
                   .then((value) {})
                   .whenComplete(() {
-                    // Get.offAll(MiddleWidget());
+                    Get.offAll(HomePage());
                   });
-
-              // if (value.data()['new_user'] == true) {
-              //   //then this is a new user so we have to navaigate him to a weclome page
-              //   //TODO impletement a welome page to show for the user
-              //   // Get.to(VerificationPage());
-              // } else {
-              //   Get.offAll(MiddleWidget());
-              // }
             } else {
-              Get.back();
-              Future.delayed(Duration(seconds: 2)).then((value) {
-                Get.snackbar(
-                  "Error occured",
-                  "Please try again",
-                  icon: Icon(
-                    Icons.error,
-                    color: Colors.red,
-                  ),
-                  backgroundColor: Colors.white,
-                );
-              });
+              snackBarService.goBackAfterTimePeriod(
+                  "Error occured", "Please try again", true);
 
               _firebaseAuth.signOut();
             }
           }).catchError((onError) {
-            print(onError);
+            // print(onError);
+            snackBarService.goBackAfterTimePeriod(
+                "Error occured", "Please try again", true);
+
+            _firebaseAuth.signOut();
           });
         } else {
-          Get.back();
+          // Get.back();
           result.user.sendEmailVerification().catchError((onError) {
-            Future.delayed(Duration(seconds: 2)).then((value) {
-              Get.snackbar(
-                "Error occured",
-                onError.toString(),
-                icon: Icon(
-                  Icons.error,
-                  color: Colors.red,
-                ),
-                backgroundColor: Colors.white,
-              );
-            });
+            // Future.delayed(Duration(seconds: 2)).then((value) {
+            //   Get.snackbar(
+            //     "Error occured",
+            //     onError.toString(),
+            //     icon: Icon(
+            //       Icons.error,
+            //       color: Colors.red,
+            //     ),
+            //     backgroundColor: Colors.white,
+            //   );
+            // });
+            snackBarService.goBackAfterTimePeriod(
+                "Error occured", onError, true);
+
+            // _firebaseAuth.signOut();
           }).then((value) {
             print("verification email sent successfully");
+            Get.back();
           });
 
           _firebaseAuth.signOut();
@@ -138,46 +127,17 @@ class AuthenticationServiceImplementation extends AuthenticationService {
             );
           });
         }
-      } else {}
+      } else {
+        snackBarService.goBackAfterTimePeriod(
+            "Error occured", "Please try again", true);
+      }
     } on PlatformException catch (e) {
-      Get.back();
-      Future.delayed(Duration(seconds: 2)).then((value) {
-        Get.snackbar(
-          "Error occured",
-          e.message,
-          icon: Icon(
-            Icons.error,
-            color: Colors.red,
-          ),
-          backgroundColor: Colors.white,
-        );
-      });
+      snackBarService.goBackAfterTimePeriod("Error occured", e.message, true);
     } on FirebaseAuthException catch (e) {
-      Get.back();
-      Future.delayed(Duration(seconds: 2)).then((value) {
-        Get.snackbar(
-          "Error occured",
-          e.message,
-          icon: Icon(
-            Icons.error,
-            color: Colors.red,
-          ),
-          backgroundColor: Colors.white,
-        );
-      });
+      snackBarService.goBackAfterTimePeriod("Error occured", e.message, true);
     } catch (e) {
-      Get.back();
-      Future.delayed(Duration(seconds: 2)).then((value) {
-        Get.snackbar(
-          "Error occured",
-          e.toString(),
-          icon: Icon(
-            Icons.error,
-            color: Colors.red,
-          ),
-          backgroundColor: Colors.white,
-        );
-      });
+      snackBarService.goBackAfterTimePeriod(
+          "Error occured", e.toString(), true);
     }
   }
 
@@ -224,80 +184,36 @@ class AuthenticationServiceImplementation extends AuthenticationService {
             .then((value) {
           result.user.sendEmailVerification();
 
-          firestoreDb.collection("data").doc(formattedDate).set({
+          firestoreDb.collection("dates").doc(formattedDate).set({
             'new_user_count': FieldValue.increment(1),
           }, SetOptions(merge: true)).catchError((onError) {
             print(onError);
           });
-
-          Get.back();
-          Future.delayed(Duration(seconds: 2)).then((value) {
-            Get.snackbar("Success",
-                "New account created successfully,Please verify your email to continue",
-                // duration: Duration(days: 1),
-                // onTap: goBackAfterSignUp(),
-                icon: Icon(
-                  Icons.done,
-                  color: Colors.green,
-                ));
+          firestoreDb.collection("data").doc("userData").set({
+            'user_count': FieldValue.increment(1),
+          }, SetOptions(merge: true)).catchError((onError) {
+            print(onError);
           });
+
+          snackBarService.goBackAfterTimePeriod(
+              "Success",
+              "New account created successfully,Please verify your email to continue",
+              false);
           _firebaseAuth.signOut();
         }).catchError((onError) {
           _firebaseAuth.signOut();
 
-          Get.back();
-          Future.delayed(Duration(seconds: 2)).then((value) {
-            Get.snackbar(
-              "Error Occured",
-              onError.toString(),
-              icon: Icon(
-                Icons.error,
-                color: Colors.red,
-              ),
-              backgroundColor: Colors.white,
-            );
-          });
+          snackBarService.goBackAfterTimePeriod(
+              "Error Occured", onError.toString(), true);
         });
       }
     } on FirebaseAuthException catch (e) {
-      Get.back();
-      Future.delayed(Duration(seconds: 2)).then((value) {
-        Get.snackbar(
-          "Error",
-          e.message,
-          icon: Icon(
-            Icons.error,
-            color: Colors.red,
-          ),
-          backgroundColor: Colors.white,
-        );
-      });
+      snackBarService.goBackAfterTimePeriod("Error occured", e.message, true);
     } on PlatformException catch (e) {
-      Get.back();
-      Future.delayed(Duration(seconds: 2)).then((value) {
-        Get.snackbar(
-          "Error",
-          e.message,
-          icon: Icon(
-            Icons.error,
-            color: Colors.red,
-          ),
-          backgroundColor: Colors.white,
-        );
-      });
+      snackBarService.goBackAfterTimePeriod("Error occured", e.message, true);
     } catch (e) {
-      Get.back();
-      Future.delayed(Duration(seconds: 2)).then((value) {
-        Get.snackbar(
-          "Error",
-          e.toString(),
-          icon: Icon(
-            Icons.error,
-            color: Colors.red,
-          ),
-          backgroundColor: Colors.white,
-        );
-      });
+      snackBarService.goBackAfterTimePeriod(
+          "Error occured", e.toString(), true);
     }
   }
 

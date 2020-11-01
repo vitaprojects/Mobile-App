@@ -58,6 +58,9 @@ class SignUpViewModel extends ChangeNotifier {
                     text: "Please wait while we are creating your account",
                   ),
                 );
+                authenticationService.signUpEmail(
+                    userModel, passwordtextEditingController.text);
+                clearFieldsAfterSignUp();
               } else {
                 snackBarService.showSnackBar(
                     "Input Error",
@@ -85,5 +88,13 @@ class SignUpViewModel extends ChangeNotifier {
       snackBarService.showSnackBar(
           "Input Error", "Please enter a valid first name", true);
     }
+  }
+
+  void clearFieldsAfterSignUp() {
+    fnametextEditingController.text = "";
+    lnametextEditingController.text = "";
+    phonetextEditingController.text = "";
+    emailtextEditingController.text = "";
+    passwordtextEditingController.text = "";
   }
 }
