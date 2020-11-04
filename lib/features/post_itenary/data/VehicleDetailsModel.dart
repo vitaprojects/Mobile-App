@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-// part 'VehicleDetailsModel.g.dart';
+part 'VehicleDetailsModel.g.dart';
 
 @JsonSerializable()
 class VehicleDetailsModel {
@@ -13,8 +13,8 @@ class VehicleDetailsModel {
     this.licensePlateNumber,
   });
 
-  //   factory VehicleDetailsModel.fromJson(Map<String, dynamic> json) =>
-  //     _$VehicleDetailsModelFromJson(json);
+  factory VehicleDetailsModel.fromJson(Map<String, dynamic> json) =>
+      _$VehicleDetailsModelFromJson(json);
 
-  // Map<String, dynamic> toJson() => _$VehicleDetailsModelToJson(this);
+  Map<String, dynamic> toJson() => _$VehicleDetailsModelToJson(this);
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
-import 'package:newpostman1/models/Itenary/ItenaryDetailsModel.dart';
+import 'package:newpostman1/features/post_itenary/data/ItenaryDetailsModel.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-// part 'ItenaryModel.g.dart';
+part 'ItenaryModel.g.dart';
 
 @JsonSerializable()
 class ItenaryModel {
@@ -15,8 +15,8 @@ class ItenaryModel {
     @required this.email,
   });
 
-  // factory ItenaryModel.fromJson(Map<String, dynamic> json) =>
-  //     _$ItenaryModelFromJson(json);
+  factory ItenaryModel.fromJson(Map<String, dynamic> json) =>
+      _$ItenaryModelFromJson(json);
 
-  // Map<String, dynamic> toJson() => _$ItenaryModelToJson(this);
+  Map<String, dynamic> toJson() => _$ItenaryModelToJson(this);
 }

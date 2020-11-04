@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:newpostman1/models/travelTypes/TravelType.dart';
+import 'package:newpostman1/features/post_itenary/data/travelTypes/TravelType.dart';
 
 //TODO cannot add the tojson because this class has a field called file
 //find a solution for it

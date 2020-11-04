@@ -1,7 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:newpostman1/models/travelTypes/TravelType.dart';
+import 'package:newpostman1/features/post_itenary/data/travelTypes/TravelType.dart';
 
-// part 'BusTravelType.g.dart';
+part 'BusTravelType.g.dart';
+
 @JsonSerializable()
 class BusTravelType extends TravelType {
   int type;
