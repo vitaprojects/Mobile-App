@@ -4,7 +4,7 @@ import 'package:flutter_inner_drawer/inner_drawer.dart';
 import 'package:get/get.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 import 'package:newpostman1/features/drawer/presentation/DrawerWidget.dart';
-import 'package:newpostman1/customWidgets/ModeSelectionWidget.dart';
+import 'package:newpostman1/features/home/presentation/ModeSelectionView.dart';
 import 'package:newpostman1/useful/globals.dart';
 import 'package:newpostman1/features/post_itenary/presentation/PostYourItenary.dart';
 
@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
 
   final pages = [
     Container(
-      child: ModeSelectionWidget(
+      child: ModeSelectionView(
         assetName: "assets/images/travel.png",
         bodyText: "Make money anywhere you go",
         buttonText: "post itenary",
@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
       ),
     ),
     Container(
-      child: ModeSelectionWidget(
+      child: ModeSelectionView(
         assetName: "assets/images/sendPackage.png",
         bodyText: "Provide package details and find  a postman",
         buttonText: "send package",
@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
       ),
     ),
     Container(
-      child: ModeSelectionWidget(
+      child: ModeSelectionView(
         assetName: "assets/images/errand2.png",
         bodyText: "Pay postman to do your local chores fast",
         buttonText: "run your errand",

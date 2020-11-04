@@ -7,7 +7,7 @@ import 'package:newpostman1/features/authentication/presentation/LoginFormField.
 import 'package:newpostman1/features/authentication/presentation/SignUpViewModel.dart';
 import 'package:newpostman1/features/welcome/presentation/WelcomeMessageCard.dart';
 import 'package:newpostman1/features/welcome/presentation/WelcomeScreenButtons.dart';
-import 'package:newpostman1/ui/HomePage.dart';
+import 'package:newpostman1/features/home/presentation/HomePage.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../useful/globals.dart';
