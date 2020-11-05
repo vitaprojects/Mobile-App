@@ -68,7 +68,7 @@ class PostYourItenaryFormView extends StatelessWidget {
                               CustomInputField(
                                 attribute: "flightNo",
                                 labelText: "enter flight number",
-                                textEditingController: TextEditingController(),
+                                textEditingController: model.getFlightNumber,
                               ),
                               SizedBox(
                                 height: blockHeight * 2,
@@ -76,7 +76,7 @@ class PostYourItenaryFormView extends StatelessWidget {
                               CustomInputField(
                                 attribute: "airlineno",
                                 labelText: "enter airline number",
-                                textEditingController: TextEditingController(),
+                                textEditingController: model.getAirlineNumber,
                               ),
                             ],
                           ),
@@ -106,6 +106,7 @@ class PostYourItenaryFormView extends StatelessWidget {
                       child: Column(
                         children: [
                           CustomInputField(
+                            textEditingController: model.vehicleIdentification,
                             attribute: "vehiNo",
                             labelText: "vehicle identification",
                           ),
@@ -113,6 +114,7 @@ class PostYourItenaryFormView extends StatelessWidget {
                             height: blockHeight * 2,
                           ),
                           CustomInputField(
+                            textEditingController: model.transportCompany,
                             attribute: "transportComp",
                             labelText: "transport company",
                           ),
@@ -120,6 +122,7 @@ class PostYourItenaryFormView extends StatelessWidget {
                             height: blockHeight * 2,
                           ),
                           CustomInputField(
+                            textEditingController: model.licencePlateNumber,
                             attribute: "licencePlate",
                             labelText: "enter licence plate number",
                           ),
@@ -133,11 +136,11 @@ class PostYourItenaryFormView extends StatelessWidget {
               ),
               DepartureWidget(
                 travelType: model.getTravelType,
-                onChoiceSelected: (bool val) {
-                  // canPickUp = val;
-                  // print(canPickUp);
-                  model.setCanPickUp(val);
-                },
+                // onChoiceSelected: (bool val) {
+                //   // canPickUp = val;
+                //   // print(canPickUp);
+                //   // model.setCanPickUp(val);
+                // },
               ),
               SizedBox(
                 height: blockHeight * 2,
@@ -164,7 +167,7 @@ class PostYourItenaryFormView extends StatelessWidget {
                     20,
                   )),
                   onPressed: () {
-                    Get.off(ThankYouWidget());
+                    // Get.off(ThankYouWidget());
                   },
                   padding: EdgeInsets.all(0),
                   child: Container(

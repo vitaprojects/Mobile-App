@@ -2,11 +2,13 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:newpostman1/customWidgets/CustomInputField.dart';
+import 'package:stacked/stacked.dart';
 
 import '../../../useful/globals.dart';
 import 'ICanPickUpWidget.dart';
+import 'PostYourItenaryFormViewModel.dart';
 
-class DestinationWidget extends StatefulWidget {
+class DestinationWidget extends ViewModelWidget<PostYourItenaryFormViewModel> {
   DestinationWidget({
     this.travelType,
     this.onChoiceSelected,
@@ -14,16 +16,11 @@ class DestinationWidget extends StatefulWidget {
   final int travelType;
   final Function(bool) onChoiceSelected;
 
-  @override
-  _DestinationWidgetState createState() => _DestinationWidgetState();
-}
-
-class _DestinationWidgetState extends State<DestinationWidget> {
   final double blockHeight = Globals.blockHeight;
   final double blockWidth = Globals.blockWidth;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, PostYourItenaryFormViewModel model) {
     return Container(
       // height: blockHeight * 50,
       // color: Colors.red,
@@ -56,14 +53,15 @@ class _DestinationWidgetState extends State<DestinationWidget> {
               ),
             ),
           ),
-          (widget.travelType == 0 || widget.travelType == 3)
+          (travelType == 0 || travelType == 3)
               ? Container()
               : ICanPickUpWidget(
                   pickUp: false,
                   onChoiceSelected: (bool val) {
                     // canPickUp = val;
                     // print(canPickUp);
-                    widget.onChoiceSelected(val);
+                    // onChoiceSelected(val);
+                    model.setCanDeliver(val);
                   },
                 ),
           SizedBox(
@@ -86,6 +84,7 @@ class _DestinationWidgetState extends State<DestinationWidget> {
               ),
               alignment: Alignment.center,
               child: FormBuilderDateTimePicker(
+                controller: model.getDestinationDateAndTime,
                 fieldHintText: "date and time",
                 attribute: "departureDate",
                 decoration: InputDecoration(
@@ -107,6 +106,7 @@ class _DestinationWidgetState extends State<DestinationWidget> {
             height: blockHeight * 2,
           ),
           CustomInputField(
+            textEditingController: model.getDestinationLocation,
             attribute: "destinationPoint",
             labelText: "Final stop",
           ),
@@ -115,10 +115,11 @@ class _DestinationWidgetState extends State<DestinationWidget> {
           ),
           LayoutBuilder(
             builder: (BuildContext context, BoxConstraints constraints) {
-              if (widget.travelType == 3) {
+              if (travelType == 3) {
                 return Column(
                   children: [
                     CustomInputField(
+                      textEditingController: model.getDestinationTerminal,
                       attribute: "arrivalTerminal",
                       labelText: "enter arrival terminal".toUpperCase(),
                     ),
@@ -126,6 +127,7 @@ class _DestinationWidgetState extends State<DestinationWidget> {
                       height: blockHeight * 2,
                     ),
                     CustomInputField(
+                      textEditingController: model.getDestinationAirport,
                       attribute: "arrivalAirport",
                       labelText: "enter arrival airport".toUpperCase(),
                     )
