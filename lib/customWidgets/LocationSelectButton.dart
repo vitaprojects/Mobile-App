@@ -56,7 +56,8 @@ class LocationSelectButton extends StatelessWidget {
                   onPressed: () async {
                     LocationResult result = await showLocationPicker(
                         context, "AIzaSyCYUS6bk7vS2far68Es9yagIm767LmyN-Y");
-                    if (result.latLng.latitude != null &&
+                    if (result != null &&
+                        result.latLng.longitude != null &&
                         result.latLng.longitude != null) {
                       print(result.address);
                       LocationModel newLocationModel = LocationModel(

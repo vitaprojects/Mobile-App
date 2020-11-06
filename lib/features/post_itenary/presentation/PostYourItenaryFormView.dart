@@ -166,6 +166,7 @@ class PostYourItenaryFormView extends StatelessWidget {
                   )),
                   onPressed: () {
                     // Get.off(ThankYouWidget());
+                    model.submitForm();
                   },
                   padding: EdgeInsets.all(0),
                   child: Container(

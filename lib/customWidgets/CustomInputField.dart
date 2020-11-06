@@ -132,10 +132,12 @@ class _CustomInputFieldState extends State<CustomInputField> {
               alignment: Alignment.center,
               child: FormBuilderTextField(
                 // textAlign: TextAlign.center,
-                initialValue:
-                    (widget.initalText == null) ? '' : widget.initalText,
+                initialValue: (widget.initalText == null)
+                    ? null
+                    : widget
+                        .initalText, //TODO when passing the intial value pass it via the controller
                 readOnly: widget.readOnly == true,
-                // controller: widget.textEditingController,
+                controller: widget.textEditingController,
                 attribute: widget.attribute,
                 textAlignVertical: TextAlignVertical.center,
                 maxLines: (widget.isDescription == true) ? null : 2,
