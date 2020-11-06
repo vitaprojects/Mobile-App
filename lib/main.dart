@@ -7,6 +7,7 @@ import 'package:hive/hive.dart';
 import 'package:newpostman1/features/loading/presentation/LoadingPage.dart';
 import 'package:newpostman1/features/welcome/presentation/WelcomeScreen.dart';
 import 'package:newpostman1/ui/RootWidget.dart';
+import 'package:newpostman1/useful/rootPage.dart';
 import 'useful/service_locator.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 
@@ -73,9 +74,7 @@ class _MyAppState extends State<MyApp> {
           if (snapshot.connectionState == ConnectionState.done) {
             print("box opened");
             print("firebase project initialized");
-            return RootWidget(
-              child: WelcomeScreen(),
-            );
+            return RootPage();
           } else {
             return RootWidget(
               child: LoadingPage(

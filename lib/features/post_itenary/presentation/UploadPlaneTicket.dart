@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newpostman1/features/post_itenary/presentation/PlaneTicketPreviewWidget.dart';
 import 'package:newpostman1/features/post_itenary/presentation/PostYourItenaryFormViewModel.dart';
 import 'package:stacked/stacked.dart';
 
@@ -23,7 +24,10 @@ class UploadPlaneTicketWidget
       ),
       elevation: 20,
       child: Container(
-        height: blockHeight * 15,
+        padding: EdgeInsets.all(
+          blockHeight,
+        ),
+        // height: blockHeight * 15,
         // color: Colors.green,
 
         alignment: Alignment.center,
@@ -48,7 +52,7 @@ class UploadPlaneTicketWidget
             (model.getflightTicket == null)
                 ? Container(
                     height: blockHeight * 10,
-                    color: Colors.green,
+                    // color: Colors.green,
                     alignment: Alignment.center,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -117,8 +121,9 @@ class UploadPlaneTicketWidget
                     ))
                 : Container(
                     height: blockHeight * 10,
-                    color: Colors.orange,
-                  )
+                    // color: Colors.orange,
+                    alignment: Alignment.center,
+                    child: PlaneTicketPreview())
           ],
         ),
       ),

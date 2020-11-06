@@ -119,18 +119,11 @@ class PostYourItenaryFormViewModel extends ChangeNotifier {
     if (_flightTicket != null) {
       notifyListeners();
     }
+  }
 
-    // setState(() {
-    //   if (croppedImage != null) {
-    //     // _image = File(croppedImage.path);
-    //     // showPhotoError = false;
-    //     final bytes = IO.File(croppedImage.path).readAsBytesSync();
-    //     // profileImageInBase64 = base64.encode(bytes);
-    //     selectedImages.add(base64.encode(bytes));
-    //     croppedImage = null;
-    //     widget.onNewImageAdded(base64.encode(bytes));
-    //   }
-    // });
+  removeImage() {
+    _flightTicket = null;
+    notifyListeners();
   }
 
   ///
