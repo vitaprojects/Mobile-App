@@ -1,6 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:newpostman1/features/post_itenary/presentation/AreYouADPC.dart';
 import 'package:newpostman1/customWidgets/CustomInputField.dart';
 import 'package:newpostman1/features/post_itenary/presentation/DepartureWidget.dart';
@@ -8,7 +7,6 @@ import 'package:newpostman1/features/post_itenary/presentation/DestinationWidget
 import 'package:newpostman1/features/post_itenary/presentation/PostYourItenaryFormViewModel.dart';
 import 'package:newpostman1/features/post_itenary/presentation/SelectTravelType.dart';
 import 'package:newpostman1/features/post_itenary/presentation/UploadPlaneTicket.dart';
-import 'package:newpostman1/ui/ThankYouWidget.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../useful/globals.dart';

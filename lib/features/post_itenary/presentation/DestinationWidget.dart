@@ -2,6 +2,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:newpostman1/customWidgets/CustomInputField.dart';
+import 'package:newpostman1/customWidgets/LocationSelectButton.dart';
+import 'package:newpostman1/models/LocationModel.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../useful/globals.dart';
@@ -105,10 +107,17 @@ class DestinationWidget extends ViewModelWidget<PostYourItenaryFormViewModel> {
           SizedBox(
             height: blockHeight * 2,
           ),
-          CustomInputField(
-            textEditingController: model.getDestinationLocation,
+          LocationSelectButton(
+            labelText: "Destination ?",
+            removeLocation: () {
+              model.clearDestinationLocation();
+            },
             attribute: "destinationPoint",
-            labelText: "Final stop",
+            locationModel: model.destinationlocationModel,
+            onLocationSelected: (LocationModel locationModel) {
+              model.setValuesForDestinationLocation(locationModel.latitude,
+                  locationModel.longitude, locationModel.address);
+            },
           ),
           SizedBox(
             height: blockHeight * 2,

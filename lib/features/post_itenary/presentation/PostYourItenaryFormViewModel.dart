@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:newpostman1/models/LocationModel.dart';
 
 class PostYourItenaryFormViewModel extends ChangeNotifier {
   Color chipColor = Colors.white;
@@ -28,19 +29,39 @@ class PostYourItenaryFormViewModel extends ChangeNotifier {
 
   //this section will contain the setters and getters for departure
   List<TextEditingController> _depatureDetailsControllers =
-      List.filled(4, TextEditingController());
+      List.filled(3, TextEditingController());
 
   TextEditingController get getDepartureDateAndTime =>
       _depatureDetailsControllers[0];
 
-  TextEditingController get getDepartingLocation =>
-      _depatureDetailsControllers[1];
+  LocationModel departurelocationModel = LocationModel(
+    address: null,
+    // dateTime: "",
+    latitude: null,
+    longitude: null,
+  );
+
+  clearDepartingLocation() {
+    departurelocationModel.latitude = departurelocationModel.longitude =
+        departurelocationModel.address = null;
+
+    notifyListeners();
+  }
+
+  setValuesForDepartingLocation(
+      double latitude, double longitude, String address) {
+    departurelocationModel.latitude = latitude;
+    departurelocationModel.longitude = longitude;
+    departurelocationModel.address = address;
+
+    notifyListeners();
+  }
 
   TextEditingController get getDepartureTerminal =>
-      _depatureDetailsControllers[2];
+      _depatureDetailsControllers[1];
 
   TextEditingController get getDepartingAirport =>
-      _depatureDetailsControllers[3];
+      _depatureDetailsControllers[2];
 
   setCanPickUp(bool val) {
     _canPickUp = val;
@@ -49,21 +70,43 @@ class PostYourItenaryFormViewModel extends ChangeNotifier {
 
 //
 
-//this section will contain the setters and getters for destionation
+//this section will contain the setters and getters for destination
   List<TextEditingController> _destinationeDetailsControllers =
-      List.filled(4, TextEditingController());
+      List.filled(3, TextEditingController());
 
   TextEditingController get getDestinationDateAndTime =>
       _destinationeDetailsControllers[0];
 
-  TextEditingController get getDestinationLocation =>
-      _destinationeDetailsControllers[1];
+  // TextEditingController get getDestinationLocation =>
+  //     _destinationeDetailsControllers[1];
+  LocationModel destinationlocationModel = LocationModel(
+    address: null,
+    // dateTime: "",
+    latitude: null,
+    longitude: null,
+  );
+
+  clearDestinationLocation() {
+    destinationlocationModel.latitude = destinationlocationModel.longitude =
+        destinationlocationModel.address = null;
+
+    notifyListeners();
+  }
+
+  setValuesForDestinationLocation(
+      double latitude, double longitude, String address) {
+    destinationlocationModel.latitude = latitude;
+    destinationlocationModel.longitude = longitude;
+    destinationlocationModel.address = address;
+
+    notifyListeners();
+  }
 
   TextEditingController get getDestinationTerminal =>
-      _destinationeDetailsControllers[2];
+      _destinationeDetailsControllers[1];
 
   TextEditingController get getDestinationAirport =>
-      _destinationeDetailsControllers[3];
+      _destinationeDetailsControllers[2];
 
   setCanDeliver(bool val) {
     _canDeliver = val;

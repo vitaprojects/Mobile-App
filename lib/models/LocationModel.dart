@@ -4,10 +4,10 @@ part 'LocationModel.g.dart';
 
 @JsonSerializable()
 class LocationModel {
-  final DateTime dateTime;
-  final String address;
-  final double latitude;
-  final double longitude;
+  DateTime dateTime;
+  String address;
+  double latitude;
+  double longitude;
 
   LocationModel({this.dateTime, this.address, this.latitude, this.longitude});
 
