@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:newpostman1/customWidgets/TripDetailsCard.dart';
@@ -43,15 +44,41 @@ class UpcomingTripsWidget extends ViewModelWidget<MyTripsViewModel> {
                   print(snapshot.data?.length.toString() + "length of data");
                   // return Text("hiii");
                   List<ItenaryModel> trips = snapshot.data;
-                  return ListView.builder(
-                    itemCount: trips.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return TripDetailsCard(
-                        isItenary: true,
-                        itenaryModel: trips[index],
-                      );
-                    },
-                  );
+                  if (trips.length != 0) {
+                    return ListView.builder(
+                      itemCount: trips.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return TripDetailsCard(
+                          isItenary: true,
+                          itenaryModel: trips[index],
+                        );
+                      },
+                    );
+                  } else {
+                    return Center(
+                      child: Container(
+                        margin: EdgeInsets.symmetric(
+                          horizontal: blockWidth * 5,
+                        ),
+                        height: blockHeight * 15,
+                        // color: Colors.red,
+                        alignment: Alignment.center,
+                        child: Container(
+                          height: blockHeight * 10,
+                          // color: Colors.yellow,
+                          alignment: Alignment.center,
+                          child: AutoSizeText(
+                            "You don't have any pending trips",
+                            style: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w600,
+                            ),
+                            minFontSize: 15,
+                          ),
+                        ),
+                      ),
+                    );
+                  }
                 } else {
                   return Center(
                     child: CircularProgressIndicator(),

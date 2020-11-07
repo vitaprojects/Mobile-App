@@ -54,8 +54,9 @@ class TripServiceImpl extends TripService {
             return itenary;
           },
           clientSidefilters: [
-            (ItenaryModel itenary) =>
-                now.isBefore(itenary.details.departureLocation.dateTime)
+            (ItenaryModel itenary) => (type == 0)
+                ? now.isBefore(itenary.details.departureLocation.dateTime)
+                : now.isAfter(itenary.details.departureLocation.dateTime)
           ] // only future events
           // orderComparer: (event1, event2) => event1.name.compareTo(event2.name)
           );
