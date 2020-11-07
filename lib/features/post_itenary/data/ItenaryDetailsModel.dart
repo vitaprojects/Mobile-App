@@ -37,3 +37,9 @@ class ItenaryDetailsModel {
 
   Map<String, dynamic> toJson() => _$ItenaryDetailsModelToJson(this);
 }
+// 'vehicleDetailsModel': instance.vehicleDetailsModel?.toJson(),
+// 'flightDetailsModel': instance.flightDetailsModel?.toJson(),
+// 'canPickup': instance.canPickup,
+// 'canDeliver': instance.canDeliver,
+// 'departureLocation': instance.departureLocation.toJson(),
+// 'destinationLocation': instance.destinationLocation.toJson(),
