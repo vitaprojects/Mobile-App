@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:newpostman1/customWidgets/TripDetailsCard.dart';
 import 'package:newpostman1/features/MyTrips/presentation/MyTripsViewModel.dart';
+import 'package:newpostman1/features/post_itenary/data/ItenaryModel.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../useful/globals.dart';
@@ -40,7 +41,17 @@ class UpcomingTripsWidget extends ViewModelWidget<MyTripsViewModel> {
                   print("printing data");
                   // QuerySnapshot querySnapshot = snapshot.data;
                   print(snapshot.data?.length.toString() + "length of data");
-                  return Text("hiii");
+                  // return Text("hiii");
+                  List<ItenaryModel> trips = snapshot.data;
+                  return ListView.builder(
+                    itemCount: trips.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return TripDetailsCard(
+                        isItenary: true,
+                        itenaryModel: trips[index],
+                      );
+                    },
+                  );
                 } else {
                   return Center(
                     child: CircularProgressIndicator(),

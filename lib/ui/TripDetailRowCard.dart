@@ -84,7 +84,7 @@ class TripDetailRowCard extends StatelessWidget {
                         // color: Colors.green,
                         alignment: Alignment.topLeft,
                         child: Text(
-                          address,
+                          (address) != null ? address : "",
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
@@ -162,7 +162,7 @@ class TripDetailRowCard extends StatelessWidget {
                         // color: Colors.green,
                         alignment: Alignment.topLeft,
                         child: Text(
-                          address,
+                          (address) != null ? address : "",
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,

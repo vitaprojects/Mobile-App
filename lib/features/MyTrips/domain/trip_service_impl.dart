@@ -30,7 +30,7 @@ class TripServiceImpl extends TripService {
     //   }
     // } catch (e) {}
     DateTime now = new DateTime.now();
-    DateTime date = new DateTime(now.year, now.month, now.day);
+    // DateTime date = new DateTime(now.year, now.month, now.day);
 
     try {
       // print(Hive.box('user').get('email'));

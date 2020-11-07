@@ -12,11 +12,11 @@ class ItenaryModel {
   ItenaryModel({
     @required this.travelType,
     @required this.details,
-    // @required this.email,
+    @required this.dateAdded,
     // @required this.departureDate,
   });
 
-  // DateTime departureDate;
+  DateTime dateAdded;
 
   factory ItenaryModel.fromJson(Map<String, dynamic> json) =>
       _$ItenaryModelFromJson(json);

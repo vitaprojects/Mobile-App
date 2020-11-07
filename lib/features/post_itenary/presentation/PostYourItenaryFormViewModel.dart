@@ -254,7 +254,8 @@ class PostYourItenaryFormViewModel extends ChangeNotifier {
                 );
 
                 ItenaryModel itenaryModel = ItenaryModel(
-                  // departureDate: DateTime.parse(getDepartureDateAndTime.text),
+                  dateAdded: DateTime.now(),
+
                   travelType: _travelType,
                   details: itenaryDetailsModel,
                   // email: Hive.box("user").get('email'),
@@ -310,7 +311,7 @@ class PostYourItenaryFormViewModel extends ChangeNotifier {
                   flightDetailsModel: flightDetailsModel);
 
               ItenaryModel itenaryModel = ItenaryModel(
-                // departureDate: DateTime.parse(getDepartureDateAndTime.text),
+                dateAdded: DateTime.now(),
                 travelType: _travelType,
                 details: itenaryDetailsModel,
                 // email: Hive.box("user").get('email'),
@@ -360,7 +361,8 @@ class PostYourItenaryFormViewModel extends ChangeNotifier {
               );
 
               ItenaryModel itenaryModel = ItenaryModel(
-                // departureDate: DateTime.parse(getDepartureDateAndTime.text),
+                dateAdded: DateTime.now(),
+
                 travelType: _travelType,
                 details: itenaryDetailsModel,
                 // email: Hive.box("user").get('email'),
