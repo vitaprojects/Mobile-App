@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:intl/intl.dart';
 import 'package:newpostman1/customWidgets/CustomInputField.dart';
 import 'package:newpostman1/customWidgets/LocationSelectButton.dart';
 import 'package:newpostman1/models/LocationModel.dart';
@@ -88,6 +89,9 @@ class DepartureWidget extends ViewModelWidget<PostYourItenaryFormViewModel> {
               child: FormBuilderDateTimePicker(
                 controller: model.getDepartureDateAndTime,
                 fieldHintText: "date and time",
+                // inputType: InputType.date,
+                format: DateFormat("yyyy-MM-dd HH:mm:ss"),
+
                 attribute: "departureDate",
                 decoration: InputDecoration(
                     //     contentPadding: EdgeInsets.only(

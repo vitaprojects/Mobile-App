@@ -3,8 +3,14 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:newpostman1/features/loading/presentation/LoadingPage.dart';
+import 'package:newpostman1/features/post_itenary/data/ItenaryDetailsModel.dart';
+import 'package:newpostman1/features/post_itenary/data/ItenaryModel.dart';
+import 'package:newpostman1/features/post_itenary/data/VehicleDetailsModel.dart';
+import 'package:newpostman1/features/post_itenary/domain/ItenaryService.dart';
 import 'package:newpostman1/models/LocationModel.dart';
 import 'package:newpostman1/services/snackbar_service.dart';
 // import 'package:newpostman1/services/snackbar_service.dart';
@@ -14,6 +20,7 @@ import 'package:newpostman1/useful/service_locator.dart';
 class PostYourItenaryFormViewModel extends ChangeNotifier {
   Color chipColor = Colors.white;
   SnackBarService snackBarService = locator<SnackBarService>();
+  ItenaryService itenaryService = locator<ItenaryService>();
 
   int _travelType;
   int _driverPassengerOrCon; //the type of the user
@@ -236,6 +243,44 @@ class PostYourItenaryFormViewModel extends ChangeNotifier {
             if (destinationValidation()) {
               print("all details for others is valid");
               isValid = true;
+
+              //now we have to prepare the models required
+
+              VehicleDetailsModel vehicleDetailsModel = VehicleDetailsModel(
+                licensePlateNumber: licencePlateNumber.text,
+                transportcompany: transportCompany.text,
+                vehicleId: vehicleIdentification.text,
+              );
+
+              LocationModel departureLocation = LocationModel(
+                dateTime: DateTime.parse(getDepartureDateAndTime.text),
+                address: departurelocationModel.address,
+                latitude: departurelocationModel.latitude,
+                longitude: departurelocationModel.longitude,
+              );
+
+              LocationModel destinationLocation = LocationModel(
+                dateTime: DateTime.parse(getDestinationDateAndTime.text),
+                address: destinationlocationModel.address,
+                latitude: destinationlocationModel.latitude,
+                longitude: destinationlocationModel.longitude,
+              );
+
+              ItenaryDetailsModel itenaryDetailsModel = ItenaryDetailsModel(
+                vehicleDetailsModel: vehicleDetailsModel,
+                canPickup: (_canPickUp != null) ? _canPickUp : false,
+                canDeliver: (_canDeliver != null) ? _canDeliver : false,
+                departureLocation: departureLocation,
+                destinationLocation: destinationLocation,
+              );
+
+              ItenaryModel itenaryModel = ItenaryModel(
+                travelType: _travelType,
+                details: itenaryDetailsModel,
+                email: Hive.box("user").get('email'),
+              );
+              Get.off(LoadingPage(text: "Please wait"));
+              itenaryService.postItenary(itenaryModel);
             }
           }
         }

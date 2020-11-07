@@ -47,6 +47,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
               // color: Colors.red,
               alignment: Alignment.center,
               child: FormBuilderDateTimePicker(
+                textInputAction: TextInputAction.next,
                 controller: widget.textEditingController,
                 attribute: widget.attribute,
                 // textAlignVertical: TextAlignVertical.center,
@@ -70,6 +71,8 @@ class _CustomInputFieldState extends State<CustomInputField> {
               // color: Colors.red,
               alignment: Alignment.center,
               child: FormBuilderTextField(
+                textInputAction: TextInputAction.next,
+
                 keyboardType: TextInputType.number,
                 controller: widget.textEditingController,
                 attribute: widget.attribute,
@@ -96,6 +99,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
               // color: Colors.red,
               alignment: Alignment.center,
               child: FormBuilderTextField(
+                textInputAction: TextInputAction.next,
                 controller: widget.textEditingController,
                 attribute: widget.attribute,
                 textAlignVertical: TextAlignVertical.center,
@@ -131,6 +135,8 @@ class _CustomInputFieldState extends State<CustomInputField> {
               // color: Colors.red,
               alignment: Alignment.center,
               child: FormBuilderTextField(
+                textInputAction: TextInputAction.next,
+
                 // textAlign: TextAlign.center,
                 initialValue: (widget.initalText == null)
                     ? null

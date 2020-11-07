@@ -28,9 +28,9 @@ ItenaryDetailsModel _$ItenaryDetailsModelFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$ItenaryDetailsModelToJson(
         ItenaryDetailsModel instance) =>
     <String, dynamic>{
-      'vehicleDetailsModel': instance.vehicleDetailsModel,
+      'vehicleDetailsModel': instance.vehicleDetailsModel.toJson(),
       'canPickup': instance.canPickup,
       'canDeliver': instance.canDeliver,
-      'departureLocation': instance.departureLocation,
-      'destinationLocation': instance.destinationLocation,
+      'departureLocation': instance.departureLocation.toJson(),
+      'destinationLocation': instance.destinationLocation.toJson(),
     };

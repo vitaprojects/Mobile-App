@@ -3,6 +3,8 @@ import 'package:newpostman1/features/authentication/domain/auth_service.dart';
 import 'package:newpostman1/features/authentication/domain/auth_service_impl.dart';
 import 'package:newpostman1/features/post_errand/domain/ErrandService.dart';
 import 'package:newpostman1/features/post_errand/domain/ErrandServiceImpl.dart';
+import 'package:newpostman1/features/post_itenary/domain/ItenaryService.dart';
+import 'package:newpostman1/features/post_itenary/domain/ItenaryServiceImpl.dart';
 import 'package:newpostman1/services/LocationService.dart';
 import 'package:newpostman1/services/LocationServiceImpl.dart';
 import 'package:newpostman1/services/push_notification_service.dart';
@@ -32,4 +34,7 @@ setupServiceLocator() {
 
   //the service to get location and other location relavant things
   locator.registerLazySingleton<LocationService>(() => LocationServiceImpl());
+
+  //this service is regarding the itenaries
+  locator.registerLazySingleton<ItenaryService>(() => ItenaryServiceImpl());
 }

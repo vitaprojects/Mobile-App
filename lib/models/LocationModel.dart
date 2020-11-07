@@ -8,8 +8,16 @@ class LocationModel {
   String address;
   double latitude;
   double longitude;
+  String terminal;
+  String airport;
 
-  LocationModel({this.dateTime, this.address, this.latitude, this.longitude});
+  LocationModel(
+      {this.dateTime,
+      this.address,
+      this.latitude,
+      this.longitude,
+      this.terminal,
+      this.airport});
 
   factory LocationModel.fromJson(Map<String, dynamic> json) =>
       _$LocationModelFromJson(json);

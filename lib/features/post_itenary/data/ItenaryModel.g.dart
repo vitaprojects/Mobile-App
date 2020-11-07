@@ -19,6 +19,6 @@ ItenaryModel _$ItenaryModelFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$ItenaryModelToJson(ItenaryModel instance) =>
     <String, dynamic>{
       'travelType': instance.travelType,
-      'details': instance.details,
+      'details': instance.details.toJson(),
       'email': instance.email,
     };

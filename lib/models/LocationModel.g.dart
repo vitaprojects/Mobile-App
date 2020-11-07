@@ -14,6 +14,8 @@ LocationModel _$LocationModelFromJson(Map<String, dynamic> json) {
     address: json['address'] as String,
     latitude: (json['latitude'] as num)?.toDouble(),
     longitude: (json['longitude'] as num)?.toDouble(),
+    terminal: json['terminal'] as String,
+    airport: json['airport'] as String,
   );
 }
 
@@ -23,4 +25,6 @@ Map<String, dynamic> _$LocationModelToJson(LocationModel instance) =>
       'address': instance.address,
       'latitude': instance.latitude,
       'longitude': instance.longitude,
+      'terminal': instance.terminal,
+      'airport': instance.airport,
     };
