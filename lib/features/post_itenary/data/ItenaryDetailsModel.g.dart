@@ -22,13 +22,18 @@ ItenaryDetailsModel _$ItenaryDetailsModelFromJson(Map<String, dynamic> json) {
         ? null
         : LocationModel.fromJson(
             json['destinationLocation'] as Map<String, dynamic>),
+    flightDetailsModel: json['flightDetailsModel'] == null
+        ? null
+        : FlightDetailsModel.fromJson(
+            json['flightDetailsModel'] as Map<String, dynamic>),
   );
 }
 
 Map<String, dynamic> _$ItenaryDetailsModelToJson(
         ItenaryDetailsModel instance) =>
     <String, dynamic>{
-      'vehicleDetailsModel': instance.vehicleDetailsModel.toJson(),
+      'vehicleDetailsModel': instance.vehicleDetailsModel?.toJson(),
+      'flightDetailsModel': instance.flightDetailsModel?.toJson(),
       'canPickup': instance.canPickup,
       'canDeliver': instance.canDeliver,
       'departureLocation': instance.departureLocation.toJson(),

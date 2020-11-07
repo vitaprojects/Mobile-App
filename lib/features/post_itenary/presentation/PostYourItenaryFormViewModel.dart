@@ -10,6 +10,7 @@ import 'package:newpostman1/features/loading/presentation/LoadingPage.dart';
 import 'package:newpostman1/features/post_itenary/data/ItenaryDetailsModel.dart';
 import 'package:newpostman1/features/post_itenary/data/ItenaryModel.dart';
 import 'package:newpostman1/features/post_itenary/data/VehicleDetailsModel.dart';
+import 'package:newpostman1/features/post_itenary/data/travelTypes/FlightDetailsModel.dart';
 import 'package:newpostman1/features/post_itenary/domain/ItenaryService.dart';
 import 'package:newpostman1/models/LocationModel.dart';
 import 'package:newpostman1/services/snackbar_service.dart';
@@ -219,6 +220,46 @@ class PostYourItenaryFormViewModel extends ChangeNotifier {
               if (destinationValidation()) {
                 print("all details for bus is valid");
                 isValid = true;
+
+                //now we have to prepare the models required
+
+                VehicleDetailsModel vehicleDetailsModel = VehicleDetailsModel(
+                  licensePlateNumber: licencePlateNumber.text,
+                  transportcompany: transportCompany.text,
+                  vehicleId: vehicleIdentification.text,
+                  driverPassenderOrCon: _driverPassengerOrCon,
+                );
+
+                LocationModel departureLocation = LocationModel(
+                  dateTime: DateTime.parse(getDepartureDateAndTime.text),
+                  address: departurelocationModel.address,
+                  latitude: departurelocationModel.latitude,
+                  longitude: departurelocationModel.longitude,
+                );
+
+                LocationModel destinationLocation = LocationModel(
+                  dateTime: DateTime.parse(getDestinationDateAndTime.text),
+                  address: destinationlocationModel.address,
+                  latitude: destinationlocationModel.latitude,
+                  longitude: destinationlocationModel.longitude,
+                );
+
+                ItenaryDetailsModel itenaryDetailsModel = ItenaryDetailsModel(
+                  flightDetailsModel: null,
+                  vehicleDetailsModel: vehicleDetailsModel,
+                  canPickup: false,
+                  canDeliver: false,
+                  departureLocation: departureLocation,
+                  destinationLocation: destinationLocation,
+                );
+
+                ItenaryModel itenaryModel = ItenaryModel(
+                  travelType: _travelType,
+                  details: itenaryDetailsModel,
+                  email: Hive.box("user").get('email'),
+                );
+                Get.off(LoadingPage(text: "Please wait"));
+                itenaryService.postItenary(itenaryModel);
               }
             }
           }
@@ -233,6 +274,47 @@ class PostYourItenaryFormViewModel extends ChangeNotifier {
             if (destinationValidation()) {
               print("all details for plane is valid");
               isValid = true;
+
+              //now we have to prepare the models required
+
+              FlightDetailsModel flightDetailsModel = FlightDetailsModel(
+                airLineNumber: getAirlineNumber.text,
+                flightNumber: getFlightNumber.text,
+                ticketUrl: null,
+              );
+
+              LocationModel departureLocation = LocationModel(
+                  dateTime: DateTime.parse(getDepartureDateAndTime.text),
+                  address: departurelocationModel.address,
+                  latitude: departurelocationModel.latitude,
+                  longitude: departurelocationModel.longitude,
+                  airport: getDepartingAirport.text,
+                  terminal: getDepartureTerminal.text);
+
+              LocationModel destinationLocation = LocationModel(
+                dateTime: DateTime.parse(getDestinationDateAndTime.text),
+                address: destinationlocationModel.address,
+                latitude: destinationlocationModel.latitude,
+                longitude: destinationlocationModel.longitude,
+                airport: getDestinationAirport.text,
+                terminal: getDestinationTerminal.text,
+              );
+
+              ItenaryDetailsModel itenaryDetailsModel = ItenaryDetailsModel(
+                  vehicleDetailsModel: null,
+                  canPickup: false,
+                  canDeliver: false,
+                  departureLocation: departureLocation,
+                  destinationLocation: destinationLocation,
+                  flightDetailsModel: flightDetailsModel);
+
+              ItenaryModel itenaryModel = ItenaryModel(
+                travelType: _travelType,
+                details: itenaryDetailsModel,
+                email: Hive.box("user").get('email'),
+              );
+              Get.off(LoadingPage(text: "Please wait"));
+              itenaryService.postFlightItenary(itenaryModel, _flightTicket);
             }
           }
         }
@@ -267,6 +349,7 @@ class PostYourItenaryFormViewModel extends ChangeNotifier {
               );
 
               ItenaryDetailsModel itenaryDetailsModel = ItenaryDetailsModel(
+                flightDetailsModel: null,
                 vehicleDetailsModel: vehicleDetailsModel,
                 canPickup: (_canPickUp != null) ? _canPickUp : false,
                 canDeliver: (_canDeliver != null) ? _canDeliver : false,

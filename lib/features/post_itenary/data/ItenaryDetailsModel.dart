@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:newpostman1/features/post_itenary/data/travelTypes/FlightDetailsModel.dart';
 import 'package:newpostman1/features/post_itenary/data/travelTypes/TravelType.dart';
 import 'package:newpostman1/models/LocationModel.dart';
 import 'package:newpostman1/features/post_itenary/data/VehicleDetailsModel.dart';
@@ -15,6 +16,9 @@ class ItenaryDetailsModel {
   VehicleDetailsModel
       vehicleDetailsModel; //if the travel type is plane then this field should be null
 
+  FlightDetailsModel
+      flightDetailsModel; //if the travel type is plane this field should be filled
+
   bool canPickup;
   bool canDeliver;
   LocationModel departureLocation;
@@ -25,6 +29,7 @@ class ItenaryDetailsModel {
     @required this.canDeliver,
     @required this.departureLocation,
     @required this.destinationLocation,
+    @required this.flightDetailsModel,
   });
 
   factory ItenaryDetailsModel.fromJson(Map<String, dynamic> json) =>
