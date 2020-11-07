@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:newpostman1/customWidgets/PostedPackagesWidget.dart';
-import 'package:newpostman1/ui/CompletedTripsWidget.dart';
-import 'package:newpostman1/ui/UpcomingTripsWidget.dart';
+import 'package:newpostman1/features/MyTrips/presentation/CompletedTripsWidget.dart';
+import 'package:newpostman1/features/MyTrips/presentation/UpcomingTripsWidget.dart';
 
 import '../useful/globals.dart';
 

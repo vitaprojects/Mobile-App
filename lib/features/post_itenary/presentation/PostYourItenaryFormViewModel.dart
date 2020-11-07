@@ -254,9 +254,10 @@ class PostYourItenaryFormViewModel extends ChangeNotifier {
                 );
 
                 ItenaryModel itenaryModel = ItenaryModel(
+                  // departureDate: DateTime.parse(getDepartureDateAndTime.text),
                   travelType: _travelType,
                   details: itenaryDetailsModel,
-                  email: Hive.box("user").get('email'),
+                  // email: Hive.box("user").get('email'),
                 );
                 Get.off(LoadingPage(text: "Please wait"));
                 itenaryService.postItenary(itenaryModel);
@@ -309,9 +310,10 @@ class PostYourItenaryFormViewModel extends ChangeNotifier {
                   flightDetailsModel: flightDetailsModel);
 
               ItenaryModel itenaryModel = ItenaryModel(
+                // departureDate: DateTime.parse(getDepartureDateAndTime.text),
                 travelType: _travelType,
                 details: itenaryDetailsModel,
-                email: Hive.box("user").get('email'),
+                // email: Hive.box("user").get('email'),
               );
               Get.off(LoadingPage(text: "Please wait"));
               itenaryService.postFlightItenary(itenaryModel, _flightTicket);
@@ -358,9 +360,10 @@ class PostYourItenaryFormViewModel extends ChangeNotifier {
               );
 
               ItenaryModel itenaryModel = ItenaryModel(
+                // departureDate: DateTime.parse(getDepartureDateAndTime.text),
                 travelType: _travelType,
                 details: itenaryDetailsModel,
-                email: Hive.box("user").get('email'),
+                // email: Hive.box("user").get('email'),
               );
               Get.off(LoadingPage(text: "Please wait"));
               itenaryService.postItenary(itenaryModel);

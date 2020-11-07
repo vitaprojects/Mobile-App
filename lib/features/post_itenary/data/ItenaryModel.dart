@@ -8,12 +8,15 @@ part 'ItenaryModel.g.dart';
 class ItenaryModel {
   int travelType; //whether the type is bus , car , truck ,plane
   ItenaryDetailsModel details;
-  String email; //this email of the user;
+  // String email; //this email of the user;
   ItenaryModel({
     @required this.travelType,
     @required this.details,
-    @required this.email,
+    // @required this.email,
+    // @required this.departureDate,
   });
+
+  // DateTime departureDate;
 
   factory ItenaryModel.fromJson(Map<String, dynamic> json) =>
       _$ItenaryModelFromJson(json);

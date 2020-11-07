@@ -1,4 +1,6 @@
 import 'package:get_it/get_it.dart';
+import 'package:newpostman1/features/MyTrips/domain/trip_service.dart';
+import 'package:newpostman1/features/MyTrips/domain/trip_service_impl.dart';
 import 'package:newpostman1/features/authentication/domain/auth_service.dart';
 import 'package:newpostman1/features/authentication/domain/auth_service_impl.dart';
 import 'package:newpostman1/features/post_errand/domain/ErrandService.dart';
@@ -37,4 +39,7 @@ setupServiceLocator() {
 
   //this service is regarding the itenaries
   locator.registerLazySingleton<ItenaryService>(() => ItenaryServiceImpl());
+
+  //this service is for getting information about the trips(itenaries) of the user
+  locator.registerLazySingleton<TripService>(() => TripServiceImpl());
 }

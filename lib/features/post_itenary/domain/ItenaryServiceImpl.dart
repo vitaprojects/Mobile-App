@@ -21,7 +21,9 @@ class ItenaryServiceImpl extends ItenaryService {
     try {
       await firebaseFirestore.collection("itineraries").add({
         'data': itenaryModel.toJson(),
-        'date': FieldValue.serverTimestamp()
+        'dateAdded': FieldValue.serverTimestamp(),
+        'email': Hive.box('user').get('email'),
+        'departureDate': itenaryModel.details.departureLocation.dateTime
       }).then((value) {
         Get.off(ThankYouWidget());
         Future.delayed(Duration(milliseconds: 500)).then((value) {

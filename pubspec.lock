@@ -337,6 +337,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.1"
+  firestore_helpers:
+    dependency: "direct main"
+    description:
+      name: firestore_helpers
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.2.2"
   fixnum:
     dependency: transitive
     description:

@@ -7,7 +7,7 @@ import 'package:newpostman1/features/drawer/presentation/TitleWidgetInDrawer.dar
 import 'package:newpostman1/ui/AboutUsPage.dart';
 import 'package:newpostman1/ui/AvailablePostman.dart';
 import 'package:newpostman1/ui/FindLocalErrands.dart';
-import 'package:newpostman1/ui/MyTripsWidget.dart';
+import 'package:newpostman1/features/MyTrips/presentation/MyTripsView.dart';
 import 'package:newpostman1/ui/OngoingErrands.dart';
 import 'package:newpostman1/features/post_errand/presentation/PostYourErrand.dart';
 import 'package:newpostman1/features/post_itenary/presentation/PostYourItenary.dart';
@@ -163,7 +163,7 @@ class DrawerWidget extends StatelessWidget {
                     ),
                     margin: margin,
                     ontapFunc: () {
-                      Get.to(MyTripsWidget());
+                      Get.to(MyTripsView());
                       closeDrawer();
                     },
                     title: "My Offers",
@@ -179,7 +179,7 @@ class DrawerWidget extends StatelessWidget {
                     margin: margin,
                     ontapFunc: () {
                       closeDrawer();
-                      Get.to(MyTripsWidget());
+                      Get.to(MyTripsView());
                     },
                     title: "Trips",
                   ),

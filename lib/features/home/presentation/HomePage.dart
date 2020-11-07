@@ -69,6 +69,12 @@ class _HomePageState extends State<HomePage> {
         );
   }
 
+  openDrawer() {
+    _innerDrawerKey.currentState.open(
+      direction: InnerDrawerDirection.start,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final double blockHeight = Globals.blockHeight;
@@ -124,26 +130,64 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    height: blockHeight * 8,
-                    // color: Colors.orange,
-                    alignment: Alignment.center,
-                    child: Container(
-                      height: blockHeight * 7,
-                      width: blockHeight * 7,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        // color: Colors.red,
-                      ),
+                      height: blockHeight * 8,
+                      // color: Colors.orange,
                       alignment: Alignment.center,
-                      child: CircleAvatar(
-                        backgroundImage: AssetImage(
-                          "assets/images/user.png",
-                        ),
-                        radius: blockHeight * 3.5,
-                        backgroundColor: Colors.white,
-                      ),
-                    ),
-                  ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            height: blockHeight * 8,
+                            width: blockWidth * 20,
+                            // color: Colors.yellow,
+                            alignment: Alignment.center,
+                            child: Container(
+                              height: blockHeight * 6,
+                              width: blockHeight * 6,
+                              // color: Colors.orange,
+                              decoration: BoxDecoration(
+                                  color: Colors.grey,
+                                  borderRadius: BorderRadius.circular(
+                                    10,
+                                  )),
+                              alignment: Alignment.center,
+                              child: IconButton(
+                                padding: EdgeInsets.all(
+                                  0,
+                                ),
+                                icon: Icon(
+                                  Icons.menu,
+                                  size: blockHeight * 5,
+                                ),
+                                onPressed: () {
+                                  openDrawer();
+                                },
+                              ),
+                            ),
+                          ),
+                          Container(
+                            height: blockHeight * 7,
+                            width: blockHeight * 7,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              // color: Colors.red,
+                            ),
+                            alignment: Alignment.center,
+                            child: CircleAvatar(
+                              backgroundImage: AssetImage(
+                                "assets/images/user.png",
+                              ),
+                              radius: blockHeight * 3.5,
+                              backgroundColor: Colors.white,
+                            ),
+                          ),
+                          Container(
+                            height: blockHeight * 8,
+                            width: blockWidth * 20,
+                            // color: Colors.yellow,
+                          ),
+                        ],
+                      )),
                   Container(
                     height: blockHeight * 5,
                     // color: Colors.blue,
