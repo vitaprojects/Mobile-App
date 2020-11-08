@@ -23,6 +23,6 @@ Map<String, dynamic> _$FullPackageModelToJson(FullPackageModel instance) =>
     <String, dynamic>{
       'datePosted': instance.datePosted?.toIso8601String(),
       'postedBy': instance.postedBy,
-      'packageModel': instance.packageModel,
+      'packageModel': instance.packageModel.toJson(),
       'status': instance.status,
     };
