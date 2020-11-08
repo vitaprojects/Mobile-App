@@ -1,4 +1,6 @@
 import 'package:get_it/get_it.dart';
+import 'package:newpostman1/features/MyPackages/domain/posted_packages_service.dart';
+import 'package:newpostman1/features/MyPackages/domain/posted_packages_service_impl.dart';
 import 'package:newpostman1/features/MyTrips/domain/trip_service.dart';
 import 'package:newpostman1/features/MyTrips/domain/trip_service_impl.dart';
 import 'package:newpostman1/features/authentication/domain/auth_service.dart';
@@ -48,4 +50,9 @@ setupServiceLocator() {
   //this service is for the send package
   locator.registerLazySingleton<SendPackageService>(
       () => SendPackageServiceImpl());
+
+  //this service is to get the posted packages of the user
+
+  locator.registerLazySingleton<PostedPackagesService>(
+      () => PostedPackagesServiceImpl());
 }

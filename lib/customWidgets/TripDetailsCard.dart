@@ -5,22 +5,28 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:newpostman1/customWidgets/VehicleTypeDisplay.dart';
 import 'package:newpostman1/features/post_itenary/data/ItenaryModel.dart';
+import 'package:newpostman1/features/send_package/data/FullPackageModel.dart';
 import 'package:newpostman1/ui/RunErrandWidget.dart';
 import 'package:newpostman1/ui/TripDetailRowCard.dart';
 
 import '../useful/globals.dart';
 
 class TripDetailsCard extends StatelessWidget {
-  const TripDetailsCard({
-    this.isPackage,
-    this.isErrand,
-    this.itenaryModel,
-    this.isItenary,
-  });
+  const TripDetailsCard(
+      {this.isPackage,
+      this.isErrand,
+      this.itenaryModel,
+      this.isItenary,
+      this.fullPackageModel,
+      this.indexOftheCard});
   final bool isPackage;
   final bool isErrand;
   final ItenaryModel itenaryModel;
   final bool isItenary;
+  final int
+      indexOftheCard; //this is passed when we want to show the number of the current card
+
+  final FullPackageModel fullPackageModel;
 
   @override
   Widget build(BuildContext context) {
@@ -91,6 +97,153 @@ class TripDetailsCard extends StatelessWidget {
                     address: itenaryModel.details.destinationLocation.address,
                     date: DateFormat.yMMMMd('en_US').format(
                         itenaryModel.details.destinationLocation.dateTime),
+                    isDeparture: false,
+                    isErrand: isErrand == true,
+                  ),
+                  Divider(
+                    height: blockHeight,
+                    thickness: blockHeight / 2,
+                  ),
+                  SizedBox(
+                    height: blockHeight * 2,
+                  ),
+                  Visibility(
+                    visible: isErrand == true,
+                    child: RaisedButton(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                        10,
+                      )),
+                      color: Globals.mainColor,
+                      onPressed: () {
+                        Get.to(RunErrandWidget());
+                      },
+                      padding: EdgeInsets.all(
+                        0,
+                      ),
+                      child: Container(
+                        height: blockHeight * 4,
+                        // color: Colors.orange,
+                        alignment: Alignment.center,
+                        child: Container(
+                          height: blockHeight * 2.5,
+                          // color: Colors.yellow,
+                          alignment: Alignment.center,
+                          child: AutoSizeText(
+                            "Track Package",
+                            style: TextStyle(
+                              fontSize: 17,
+                              color: Colors.white,
+                            ),
+                            minFontSize: 14,
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          );
+        } else if (isPackage == true && fullPackageModel != null) {
+          return Card(
+            margin: EdgeInsets.symmetric(
+              horizontal: blockWidth * 5,
+              vertical: blockHeight * 2,
+            ),
+            elevation: 20,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(
+              15,
+            )),
+            child: Container(
+              margin: EdgeInsets.all(
+                blockHeight * 2,
+              ),
+              // height: blockHeight * 20,
+              // color: Colors.yellow,
+
+              alignment: Alignment.center,
+              child: Column(
+                children: [
+                  Container(
+                    height: blockHeight * 6,
+                    // color: Colors.green,
+                    alignment: Alignment.center,
+                    child: Container(
+                      height: blockHeight * 4,
+                      // color: Colors.redAccent,
+                      alignment: Alignment.centerLeft,
+                      child: AutoSizeText(
+                        "Posted on  ${DateFormat('yyyy-MM-dd').format(fullPackageModel.datePosted)}",
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                        minFontSize: 14,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: blockHeight * 6,
+                    // color: Colors.redAccent,
+                    alignment: Alignment.centerLeft,
+                    child: Container(
+                      height: blockHeight * 4.5,
+                      // color: Colors.yellow,
+                      alignment: Alignment.centerLeft,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            width: blockWidth * 15,
+                            // color: Colors.green,
+                            alignment: Alignment.center,
+                            child: Container(
+                              width: blockWidth * 10,
+                              // color: Colors.yellow,
+                              alignment: Alignment.center,
+                              child: Text(
+                                "$indexOftheCard",
+                                style: TextStyle(
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            // width: blockWidth * 40,
+                            // color: Colors.green,
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              "Postage cost : \$${fullPackageModel?.packageModel?.value}",
+                              style: TextStyle(
+                                color: Globals.mainColor,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  TripDetailRowCard(
+                    address:
+                        "${fullPackageModel.packageModel.dLocation.address}",
+                    date: DateFormat.yMMMMd('en_US').format(
+                        fullPackageModel.packageModel.dLocation.dateTime),
+                    isDeparture: true,
+                    isErrand: isErrand == true,
+                  ),
+                  Divider(
+                    height: blockHeight,
+                    thickness: blockHeight / 2,
+                  ),
+                  TripDetailRowCard(
+                    address:
+                        "${fullPackageModel.packageModel.fLocation.address}",
+                    date: DateFormat.yMMMMd('en_US').format(
+                        fullPackageModel.packageModel.fLocation.dateTime),
                     isDeparture: false,
                     isErrand: isErrand == true,
                   ),
