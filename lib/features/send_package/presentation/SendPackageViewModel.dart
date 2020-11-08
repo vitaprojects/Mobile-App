@@ -2,10 +2,14 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:newpostman1/features/send_package/data/PackageModel.dart';
+import 'package:newpostman1/features/send_package/domain/bloc/SendPackageBloc.dart';
+import 'package:newpostman1/features/send_package/domain/events/SendPackageEvent.dart';
+import 'package:newpostman1/features/send_package/presentation/SendPackageForm2.dart';
 import 'package:newpostman1/services/snackbar_service.dart';
 import 'package:newpostman1/useful/service_locator.dart';
 import 'package:string_validator/string_validator.dart';
@@ -107,7 +111,7 @@ class SendPackageViewModel extends ChangeNotifier {
 
   //this section will be for submitting the values in the form 1 page
 
-  submitValuesInForm1() {
+  submitValuesInForm1(context) {
     //this method is to submit the values we get in from 1 and create a object and pass it to the second form
     //first we have to validate the data entered by users in form1
 
@@ -130,7 +134,15 @@ class SendPackageViewModel extends ChangeNotifier {
             width: double.parse(getItemWidth.text),
           );
 
-          // Get.to(page);
+          BlocProvider.of<SendPackageBloc>(context)
+              .add(SendPackageEvent.addForm1Data(packageModel));
+
+          Get.to(
+            BlocProvider.value(
+              value: BlocProvider.of<SendPackageBloc>(context),
+              child: SendPackageForm2(),
+            ),
+          );
         }
       }
     } else {

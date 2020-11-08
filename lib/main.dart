@@ -2,10 +2,12 @@ import 'package:async/async.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
 import 'package:newpostman1/features/loading/presentation/LoadingPage.dart';
+import 'package:newpostman1/features/send_package/domain/bloc/SendPackageObserver.dart';
 import 'package:newpostman1/features/welcome/presentation/WelcomeScreen.dart';
 import 'package:newpostman1/ui/RootWidget.dart';
 import 'package:newpostman1/useful/rootPage.dart';
@@ -13,10 +15,12 @@ import 'useful/service_locator.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
 
 void main() async {
-  print(DateFormat.yMMMd().format(DateTime.now()));
+  // print(DateFormat.yMMMd().format(DateTime.now()));
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
+
+  Bloc.observer = SendPackageObserver();
 
   final appDocumentDir = await path_provider.getApplicationDocumentsDirectory();
   Hive.init(appDocumentDir.path);
