@@ -1,11 +1,8 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:newpostman1/customWidgets/CustomInputField.dart';
 import 'package:newpostman1/features/send_package/presentation/EnterWeightAndDimensions.dart';
 import 'package:newpostman1/customWidgets/FormButton.dart';
 import 'package:newpostman1/features/send_package/presentation/ItemBasicDetails.dart';
-import 'package:newpostman1/features/send_package/presentation/NeedInsuranceProtectionWidget.dart';
 import 'package:newpostman1/features/send_package/presentation/UploadPhotosForSendPackage.dart';
 
 import '../../../useful/globals.dart';

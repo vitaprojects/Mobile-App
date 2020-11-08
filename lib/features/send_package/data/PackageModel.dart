@@ -1,8 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:newpostman1/models/LocationModel.dart';
-import 'package:newpostman1/models/send_package/UserModelInPackage.dart';
+import 'package:newpostman1/features/send_package/data/UserModelInPackage.dart';
 
-// part 'PackageModel.g.dart';
+part 'PackageModel.g.dart';
 
 @JsonSerializable()
 class PackageModel {
@@ -15,8 +15,8 @@ class PackageModel {
   double length;
   double height;
   double width;
-  UserInPackage sDetails; //details of the sender
-  UserInPackage rDetails; //details of the receiver
+  UserModelInPackage sDetails; //details of the sender
+  UserModelInPackage rDetails; //details of the receiver
   LocationModel dLocation; //departure location
   LocationModel fLocation; //final location
   String note;
@@ -39,8 +39,8 @@ class PackageModel {
     this.images,
   });
 
-  // factory PackageModel.fromJson(Map<String, dynamic> json) =>
-  //     _$PackageModelFromJson(json);
+  factory PackageModel.fromJson(Map<String, dynamic> json) =>
+      _$PackageModelFromJson(json);
 
-  // Map<String, dynamic> toJson() => _$PackageModelToJson(this);
+  Map<String, dynamic> toJson() => _$PackageModelToJson(this);
 }
