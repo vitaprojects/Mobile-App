@@ -1,20 +1,16 @@
+import 'dart:ui';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:newpostman1/features/send_package/presentation/SendPackageViewModel.dart';
+import 'package:stacked/stacked.dart';
 
 import '../../../useful/globals.dart';
 
-class UploadPhotosForSendPackage extends StatefulWidget {
+class UploadPhotosForSendPackage extends ViewModelWidget<SendPackageViewModel> {
   UploadPhotosForSendPackage({Key key}) : super(key: key);
-
   @override
-  _UploadPhotosForSendPackageState createState() =>
-      _UploadPhotosForSendPackageState();
-}
-
-class _UploadPhotosForSendPackageState
-    extends State<UploadPhotosForSendPackage> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, SendPackageViewModel model) {
     final double blockHeight = Globals.blockHeight;
     final double blockWidth = Globals.blockWidth;
 
@@ -59,20 +55,40 @@ class _UploadPhotosForSendPackageState
               height: blockHeight * 10,
               // color: Colors.greenAccent,
               alignment: Alignment.center,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: 10,
-                itemBuilder: (BuildContext context, int index) {
-                  return Container(
-                    height: blockHeight * 10,
-                    color: Colors.grey,
-                    width: blockHeight * 8,
-                    margin: EdgeInsets.only(
-                      right: blockWidth,
+              child: (model.imagesOfThePackage.length == 0)
+                  ? Container(
+                      height: blockHeight * 6,
+                      // color: Colors.redAccent,
+                      alignment: Alignment.center,
+                      child: Text(
+                        "Upload images of the package",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    )
+                  : ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: model.imagesOfThePackage.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Container(
+                          height: blockHeight * 10,
+                          color: Colors.grey,
+                          width: blockHeight * 8,
+                          margin: EdgeInsets.only(
+                            right: blockWidth,
+                          ),
+                          alignment: Alignment.center,
+                          child: Image.file(
+                            model.imagesOfThePackage[index],
+                            height: blockHeight * 10,
+                            width: blockHeight * 8,
+                            fit: BoxFit.cover,
+                          ),
+                        );
+                      },
                     ),
-                  );
-                },
-              ),
             ),
             Container(
               height: blockHeight * 8,
@@ -91,7 +107,9 @@ class _UploadPhotosForSendPackageState
                         10,
                       )),
                       color: Globals.mainColor,
-                      onPressed: () {},
+                      onPressed: () {
+                        model.getImage(0);
+                      },
                       padding: EdgeInsets.all(
                         0,
                       ),
@@ -120,7 +138,9 @@ class _UploadPhotosForSendPackageState
                         10,
                       )),
                       color: Globals.mainColor,
-                      onPressed: () {},
+                      onPressed: () {
+                        model.getImage(1);
+                      },
                       padding: EdgeInsets.all(
                         0,
                       ),

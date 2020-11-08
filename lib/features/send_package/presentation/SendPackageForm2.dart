@@ -3,61 +3,65 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newpostman1/customWidgets/CustomInputField.dart';
 import 'package:newpostman1/customWidgets/FormButton.dart';
+import 'package:newpostman1/features/send_package/data/PackageModel.dart';
+import 'package:newpostman1/features/send_package/presentation/SendPackageViewModel.dart';
+import 'package:stacked/stacked.dart';
 
 import '../../../useful/globals.dart';
 import 'PackageDepartureDetails.dart';
 import 'PackageFinalDestDetails.dart';
 import 'SendPackageThirdPage.dart';
 
-class SendPackageForm2 extends StatefulWidget {
-  SendPackageForm2({Key key}) : super(key: key);
+class SendPackageForm2 extends StatelessWidget {
+  SendPackageForm2({this.packageModelFromForm1});
 
-  @override
-  _SendPackageForm2State createState() => _SendPackageForm2State();
-}
-
-class _SendPackageForm2State extends State<SendPackageForm2> {
   final double blockHeight = Globals.blockHeight;
   final double blockWidth = Globals.blockWidth;
+  final PackageModel packageModelFromForm1;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          height: blockHeight * 5,
-          // color: Colors.green,
-        ),
-        PackageDepartureDetails(),
-        SizedBox(
-          height: blockHeight * 2,
-        ),
-        PackageFinalDestDetails(),
-        // SizedBox(
-        //   height: blockHeight * 2,
-        // ),
-        // Container(
-        //   margin: EdgeInsets.symmetric(
-        //     horizontal: blockWidth * 5,
-        //   ),
-        //   child: CustomInputField(
-        //     attribute: "postageCost",
-        //     labelText: "Enter postage cost",
-        //   ),
-        // ),
-        SizedBox(
-          height: blockHeight * 5,
-        ),
-        FormButton(
-          buttonText: "next",
-          ontapFun: () {
-            Get.to(SendPackageThirdPage());
-          },
-        ),
-        SizedBox(
-          height: blockHeight * 10,
-        ),
-      ],
-    );
+    return ViewModelBuilder<SendPackageViewModel>.nonReactive(
+        disposeViewModel: false,
+        builder: (context, model, child) {
+          return Column(
+            children: [
+              Container(
+                height: blockHeight * 5,
+                // color: Colors.green,
+              ),
+              PackageDepartureDetails(),
+              SizedBox(
+                height: blockHeight * 2,
+              ),
+              PackageFinalDestDetails(),
+              // SizedBox(
+              //   height: blockHeight * 2,
+              // ),
+              // Container(
+              //   margin: EdgeInsets.symmetric(
+              //     horizontal: blockWidth * 5,
+              //   ),
+              //   child: CustomInputField(
+              //     attribute: "postageCost",
+              //     labelText: "Enter postage cost",
+              //   ),
+              // ),
+              SizedBox(
+                height: blockHeight * 5,
+              ),
+              FormButton(
+                buttonText: "next",
+                ontapFun: () {
+                  Get.to(SendPackageThirdPage());
+                },
+              ),
+              SizedBox(
+                height: blockHeight * 10,
+              ),
+            ],
+          );
+        },
+        viewModelBuilder: () => SendPackageViewModel());
   }
 }

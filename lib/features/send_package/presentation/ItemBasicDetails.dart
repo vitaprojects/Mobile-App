@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:newpostman1/customWidgets/CustomInputField.dart';
 import 'package:newpostman1/features/send_package/presentation/NeedInsuranceProtectionWidget.dart';
+import 'package:newpostman1/features/send_package/presentation/SendPackageViewModel.dart';
+import 'package:stacked/stacked.dart';
 
 import '../../../useful/globals.dart';
 
-class ItemBasicDetails extends StatefulWidget {
+class ItemBasicDetails extends ViewModelWidget<SendPackageViewModel> {
   ItemBasicDetails({Key key}) : super(key: key);
-
   @override
-  _ItemBasicDetailsState createState() => _ItemBasicDetailsState();
-}
-
-class _ItemBasicDetailsState extends State<ItemBasicDetails> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, SendPackageViewModel model) {
     final double blockHeight = Globals.blockHeight;
     final double blockWidth = Globals.blockWidth;
 

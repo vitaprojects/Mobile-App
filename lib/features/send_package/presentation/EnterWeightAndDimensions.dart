@@ -2,34 +2,30 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:newpostman1/customWidgets/CustomInputField.dart';
+import 'package:newpostman1/features/send_package/presentation/SendPackageViewModel.dart';
+import 'package:stacked/stacked.dart';
 
 import '../../../useful/globals.dart';
 
-class EnterWeightAndDimenstions extends StatefulWidget {
+class EnterWeightAndDimenstions extends ViewModelWidget<SendPackageViewModel> {
   EnterWeightAndDimenstions({
     this.onChoiceSelected,
   });
   final Function(int) onChoiceSelected;
 
-  @override
-  _EnterWeightAndDimenstionsState createState() =>
-      _EnterWeightAndDimenstionsState();
-}
-
-class _EnterWeightAndDimenstionsState extends State<EnterWeightAndDimenstions> {
   final double blockHeight = Globals.blockHeight;
   final double blockWidth = Globals.blockWidth;
-  int parcelWeightType; //if this is 0 parcel type is== standard //else parcel type is ==parcel
+  // int parcelWeightType; //if this is 0 parcel type is== standard //else parcel type is ==parcel
 
-  setSelectedRadioTile(int val) {
-    setState(() {
-      parcelWeightType = val;
-    });
-    widget.onChoiceSelected(parcelWeightType);
-  }
+  // setSelectedRadioTile(int val) {
+  //   setState(() {
+  //     parcelWeightType = val;
+  //   });
+  //   widget.onChoiceSelected(parcelWeightType);
+  // }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, SendPackageViewModel model) {
     return Card(
       margin: EdgeInsets.symmetric(
         horizontal: blockWidth * 5,
@@ -101,7 +97,7 @@ class _EnterWeightAndDimenstionsState extends State<EnterWeightAndDimenstions> {
                 child: RadioListTile(
                   dense: false,
                   value: 0,
-                  groupValue: parcelWeightType,
+                  // groupValue: parcelWeightType,
                   title: Text(
                     "Standard (0-5 kg)",
                     style: TextStyle(
@@ -110,10 +106,10 @@ class _EnterWeightAndDimenstionsState extends State<EnterWeightAndDimenstions> {
                   ),
                   onChanged: (val) {
                     // print("Radio Tile pressed $val");
-                    setSelectedRadioTile(val);
+                    // setSelectedRadioTile(val);
                   },
                   activeColor: Globals.mainColor,
-                  selected: parcelWeightType == 0,
+                  // selected: parcelWeightType == 0,
                 ),
               ),
             ),
@@ -128,7 +124,7 @@ class _EnterWeightAndDimenstionsState extends State<EnterWeightAndDimenstions> {
                 child: RadioListTile(
                   dense: false,
                   value: 1,
-                  groupValue: parcelWeightType,
+                  // groupValue: parcelWeightType,
                   title: Text(
                     "Parcel (5 kg plus)",
                     style: TextStyle(
@@ -137,10 +133,10 @@ class _EnterWeightAndDimenstionsState extends State<EnterWeightAndDimenstions> {
                   ),
                   onChanged: (val) {
                     // print("Radio Tile pressed $val");
-                    setSelectedRadioTile(val);
+                    // setSelectedRadioTile(val);
                   },
                   activeColor: Globals.mainColor,
-                  selected: parcelWeightType == 1,
+                  // selected: parcelWeightType == 1,
                 ),
               ),
             ),
@@ -148,7 +144,7 @@ class _EnterWeightAndDimenstionsState extends State<EnterWeightAndDimenstions> {
               height: blockHeight,
             ),
             Visibility(
-              visible: parcelWeightType == 1,
+              // visible: parcelWeightType == 1,
               child: CustomInputField(
                 attribute: "preciseWeight",
                 labelText: "Enter precise weight",
