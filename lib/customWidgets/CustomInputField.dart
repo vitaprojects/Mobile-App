@@ -135,6 +135,9 @@ class _CustomInputFieldState extends State<CustomInputField> {
               // color: Colors.red,
               alignment: Alignment.center,
               child: FormBuilderTextField(
+                keyboardType: (widget.isPhone == true)
+                    ? TextInputType.phone
+                    : TextInputType.text,
                 textInputAction: TextInputAction.next,
 
                 // textAlign: TextAlign.center,

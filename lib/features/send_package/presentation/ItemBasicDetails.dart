@@ -25,6 +25,7 @@ class ItemBasicDetails extends ViewModelWidget<SendPackageViewModel> {
           CustomInputField(
             attribute: "Item Name",
             labelText: "Enter item name",
+            textEditingController: model.getItemName,
           ),
           SizedBox(
             height: blockHeight * 2,
@@ -32,6 +33,8 @@ class ItemBasicDetails extends ViewModelWidget<SendPackageViewModel> {
           CustomInputField(
             attribute: "item value",
             labelText: "Enter item value",
+            textEditingController: model.getItemValue,
+            isPhone: true,
           ),
           SizedBox(
             height: blockHeight * 2,
@@ -39,6 +42,7 @@ class ItemBasicDetails extends ViewModelWidget<SendPackageViewModel> {
           NeedInsuranceProtection(
             onChoiceSelected: (val) {
               print(val);
+              model.setInsuranceProtected(val);
             },
           ),
           SizedBox(
@@ -48,6 +52,7 @@ class ItemBasicDetails extends ViewModelWidget<SendPackageViewModel> {
             attribute: "itemDes",
             isDescription: true,
             labelText: "Enter item description",
+            textEditingController: model.getItemDescription,
           ),
         ],
       ),

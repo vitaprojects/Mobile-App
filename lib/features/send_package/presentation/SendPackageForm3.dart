@@ -15,11 +15,11 @@ import 'ReceiverDetailsWidget.dart';
 import 'SenderDetailsWidget.dart';
 
 class SendPackageForm3 extends StatelessWidget {
-  SendPackageForm3({this.packageModelFromForm2});
+  SendPackageForm3();
 
   final double blockHeight = Globals.blockHeight;
   final double blockWidth = Globals.blockWidth;
-  final PackageModel packageModelFromForm2;
+  // final PackageModel packageModelFromForm2;
 
   @override
   Widget build(BuildContext context) {

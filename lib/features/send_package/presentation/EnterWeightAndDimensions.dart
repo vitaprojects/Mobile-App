@@ -8,10 +8,12 @@ import 'package:stacked/stacked.dart';
 import '../../../useful/globals.dart';
 
 class EnterWeightAndDimenstions extends ViewModelWidget<SendPackageViewModel> {
-  EnterWeightAndDimenstions({
-    this.onChoiceSelected,
-  });
-  final Function(int) onChoiceSelected;
+  EnterWeightAndDimenstions(
+      //   {
+      //   // this.onChoiceSelected,
+      // }
+      );
+  // final Function(int) onChoiceSelected;
 
   final double blockHeight = Globals.blockHeight;
   final double blockWidth = Globals.blockWidth;
@@ -97,7 +99,7 @@ class EnterWeightAndDimenstions extends ViewModelWidget<SendPackageViewModel> {
                 child: RadioListTile(
                   dense: false,
                   value: 0,
-                  // groupValue: parcelWeightType,
+                  groupValue: model.parcelWeightType,
                   title: Text(
                     "Standard (0-5 kg)",
                     style: TextStyle(
@@ -105,11 +107,11 @@ class EnterWeightAndDimenstions extends ViewModelWidget<SendPackageViewModel> {
                     ),
                   ),
                   onChanged: (val) {
-                    // print("Radio Tile pressed $val");
-                    // setSelectedRadioTile(val);
+                    print("Radio Tile pressed $val");
+                    model.setSelectedRadioTile(val);
                   },
                   activeColor: Globals.mainColor,
-                  // selected: parcelWeightType == 0,
+                  selected: model.parcelWeightType == 0,
                 ),
               ),
             ),
@@ -124,7 +126,7 @@ class EnterWeightAndDimenstions extends ViewModelWidget<SendPackageViewModel> {
                 child: RadioListTile(
                   dense: false,
                   value: 1,
-                  // groupValue: parcelWeightType,
+                  groupValue: model.parcelWeightType,
                   title: Text(
                     "Parcel (5 kg plus)",
                     style: TextStyle(
@@ -132,11 +134,11 @@ class EnterWeightAndDimenstions extends ViewModelWidget<SendPackageViewModel> {
                     ),
                   ),
                   onChanged: (val) {
-                    // print("Radio Tile pressed $val");
-                    // setSelectedRadioTile(val);
+                    print("Radio Tile pressed $val");
+                    model.setSelectedRadioTile(val);
                   },
                   activeColor: Globals.mainColor,
-                  // selected: parcelWeightType == 1,
+                  selected: model.parcelWeightType == 1,
                 ),
               ),
             ),
@@ -144,11 +146,12 @@ class EnterWeightAndDimenstions extends ViewModelWidget<SendPackageViewModel> {
               height: blockHeight,
             ),
             Visibility(
-              // visible: parcelWeightType == 1,
+              visible: model.parcelWeightType == 1,
               child: CustomInputField(
                 attribute: "preciseWeight",
                 labelText: "Enter precise weight",
                 isInternalField: true,
+                textEditingController: model.getItemPreciseWeight,
               ),
             ),
             Divider(
@@ -208,6 +211,7 @@ class EnterWeightAndDimenstions extends ViewModelWidget<SendPackageViewModel> {
                                   color: Globals.mainColor,
                                 )),
                                 child: FormBuilderTextField(
+                                  controller: model.getItemLength,
                                   attribute: "length",
                                   textAlign: TextAlign.center,
                                   decoration:
@@ -226,6 +230,7 @@ class EnterWeightAndDimenstions extends ViewModelWidget<SendPackageViewModel> {
                                   color: Globals.mainColor,
                                 )),
                                 child: FormBuilderTextField(
+                                  controller: model.getItemWidth,
                                   textAlign: TextAlign.center,
                                   attribute: "width",
                                   decoration:
@@ -245,6 +250,7 @@ class EnterWeightAndDimenstions extends ViewModelWidget<SendPackageViewModel> {
                                   color: Globals.mainColor,
                                 )),
                                 child: FormBuilderTextField(
+                                  controller: model.getItemHeight,
                                   textAlign: TextAlign.center,
                                   attribute: "height",
                                   decoration:

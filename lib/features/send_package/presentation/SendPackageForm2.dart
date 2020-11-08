@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,11 +15,12 @@ import 'PackageFinalDestDetails.dart';
 import 'SendPackageThirdPage.dart';
 
 class SendPackageForm2 extends StatelessWidget {
-  SendPackageForm2({this.packageModelFromForm1});
+  SendPackageForm2();
 
   final double blockHeight = Globals.blockHeight;
   final double blockWidth = Globals.blockWidth;
-  final PackageModel packageModelFromForm1;
+  // final PackageModel packageModelFromForm1;
+  // final List<File> imagesOfTheItem;
 
   @override
   Widget build(BuildContext context) {

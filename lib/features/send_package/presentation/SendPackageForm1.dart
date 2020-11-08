@@ -35,18 +35,19 @@ class SendPackageForm1 extends StatelessWidget {
               SizedBox(
                 height: blockHeight * 2,
               ),
-              // EnterWeightAndDimenstions(
-              //   onChoiceSelected: (val) {
-              //     print(val);
-              //   },
-              // ),
+              EnterWeightAndDimenstions(
+                  // onChoiceSelected: (val) {
+                  //   print(val);
+                  // },
+                  ),
               SizedBox(
                 height: blockHeight * 5,
               ),
               FormButton(
                 buttonText: "next",
                 ontapFun: () {
-                  Get.to(SendPackageSecondPage());
+                  // Get.to(SendPackageSecondPage());
+                  model.submitValuesInForm1();
                 },
               ),
               Container(
