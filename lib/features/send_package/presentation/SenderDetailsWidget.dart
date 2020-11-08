@@ -1,14 +1,16 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:newpostman1/customWidgets/CustomInputField.dart';
+import 'package:newpostman1/features/send_package/presentation/SendPackageViewModel.dart';
+import 'package:stacked/stacked.dart';
 
 import '../../../useful/globals.dart';
 
-class SenderDetails extends StatelessWidget {
+class SenderDetails extends ViewModelWidget<SendPackageViewModel> {
   const SenderDetails({Key key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, SendPackageViewModel model) {
     final double blockHeight = Globals.blockHeight;
     final double blockWidth = Globals.blockWidth;
 
@@ -54,6 +56,7 @@ class SenderDetails extends StatelessWidget {
               thickness: blockHeight / 2,
             ),
             CustomInputField(
+              textEditingController: model.getSenderName,
               attribute: "senderName",
               isInternalField: true,
               labelText: "Enter sender name",
@@ -64,6 +67,8 @@ class SenderDetails extends StatelessWidget {
               thickness: blockHeight / 2,
             ),
             CustomInputField(
+              textEditingController: model.getSenderPhone,
+              isPhone: true,
               attribute: "senderMobile",
               labelText: "Enter sender mobile",
               // isInternalField: true,

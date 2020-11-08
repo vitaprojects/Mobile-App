@@ -17,10 +17,12 @@ import 'PackageFinalDestDetails.dart';
 import 'SendPackageThirdPage.dart';
 
 class SendPackageForm2 extends StatelessWidget {
-  SendPackageForm2();
+  SendPackageForm2({@required this.packageImages});
 
   final double blockHeight = Globals.blockHeight;
   final double blockWidth = Globals.blockWidth;
+  final List<File> packageImages;
+
   // final PackageModel packageModelFromForm1;
   // final List<File> imagesOfTheItem;
 
@@ -60,7 +62,7 @@ class SendPackageForm2 extends StatelessWidget {
                 buttonText: "next",
                 ontapFun: () {
                   // Get.to(SendPackageThirdPage());
-                  model.submitValuesInForm2(context);
+                  model.submitValuesInForm2(context, packageImages);
                 },
               ),
               SizedBox(

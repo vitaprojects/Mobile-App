@@ -1,10 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import '../../../useful/globals.dart';
 import 'SendPackageForm3.dart';
 
 class SendPackageThirdPage extends StatefulWidget {
-  SendPackageThirdPage({Key key}) : super(key: key);
+  SendPackageThirdPage({@required this.packageImages});
+  final List<File> packageImages;
 
   @override
   _SendPackageThirdPageState createState() => _SendPackageThirdPageState();
@@ -52,7 +55,9 @@ class _SendPackageThirdPageState extends State<SendPackageThirdPage> {
             ),
             SliverList(
                 delegate: SliverChildListDelegate([
-              SendPackageForm3(),
+              SendPackageForm3(
+                packageImages: widget.packageImages,
+              ),
             ]))
           ],
         ),

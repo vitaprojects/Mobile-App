@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:newpostman1/features/send_package/data/PackageModel.dart';
+import 'package:newpostman1/features/send_package/data/UserModelInPackage.dart';
 import 'package:newpostman1/features/send_package/domain/bloc/SendPackageBloc.dart';
 import 'package:newpostman1/features/send_package/domain/events/SendPackageEvent.dart';
 import 'package:newpostman1/features/send_package/presentation/SendPackageForm2.dart';
@@ -143,7 +144,9 @@ class SendPackageViewModel extends ChangeNotifier {
           Get.to(
             BlocProvider.value(
               value: BlocProvider.of<SendPackageBloc>(context),
-              child: SendPackageSecondPage(),
+              child: SendPackageSecondPage(
+                packageImages: imagesOfThePackage,
+              ),
             ),
           );
           print("hui");
@@ -298,7 +301,7 @@ class SendPackageViewModel extends ChangeNotifier {
 
   //submit values in form 2
 
-  submitValuesInForm2(contextP) {
+  submitValuesInForm2(contextP, List<File> packageImages) {
     if (validateDepartureDetails() && validateDestinationDetails()) {
       print("data in form 2 is valid");
 
@@ -321,7 +324,9 @@ class SendPackageViewModel extends ChangeNotifier {
           MaterialPageRoute(
             builder: (context) => BlocProvider.value(
               value: BlocProvider.of<SendPackageBloc>(contextP),
-              child: SendPackageThirdPage(),
+              child: SendPackageThirdPage(
+                packageImages: packageImages,
+              ),
             ),
           ));
       // Get.to(SendPackageThirdPage());
@@ -360,6 +365,81 @@ class SendPackageViewModel extends ChangeNotifier {
     } else {
       snackBarService.showSnackBar("Destination date error",
           "Please add a valid date and time for the destination", true);
+    }
+
+    return isValid;
+  }
+
+  //this section is to add data for the third form page in send pacakge
+
+  List<TextEditingController> senderDetailsControllers = [
+    TextEditingController(),
+    TextEditingController(),
+  ];
+
+  List<TextEditingController> receiverDetailsControllers = [
+    TextEditingController(),
+    TextEditingController(),
+  ];
+
+  TextEditingController get getSenderName => senderDetailsControllers[0];
+  TextEditingController get getSenderPhone => senderDetailsControllers[1];
+
+  TextEditingController get getReceiverName => receiverDetailsControllers[0];
+  TextEditingController get getReceiverPhone => receiverDetailsControllers[1];
+
+  TextEditingController notetextEditingController = TextEditingController();
+  TextEditingController get noteController => notetextEditingController;
+
+  submitValuesInForm3(PackageModel packageModel, List<File> packageImages) {
+    if (validateSenderdata() && validateReceiverData()) {
+      print("all data is valid in form 3");
+
+      UserModelInPackage senderuserModelInPackage = UserModelInPackage(
+          mobile: getSenderPhone.text, name: getSenderName.text);
+
+      UserModelInPackage receiveruserModelInPackage = UserModelInPackage(
+          mobile: getReceiverPhone.text, name: getReceiverName.text);
+
+      packageModel.rDetails = receiveruserModelInPackage;
+      packageModel.sDetails = senderuserModelInPackage;
+      packageModel.note = noteController.text;
+
+      print(packageImages.length);
+    }
+  }
+
+  validateSenderdata() {
+    bool isValid = false;
+
+    if (getSenderName.text.isNotEmpty) {
+      if (getSenderPhone.text.isNotEmpty) {
+        isValid = true;
+      } else {
+        snackBarService.showSnackBar("Sender phone number is empty",
+            "Please add a valid phone number of the sender", true);
+      }
+    } else {
+      snackBarService.showSnackBar("Sender name is empty",
+          "Please add a valid name for the sender", true);
+    }
+
+    return isValid;
+  }
+
+  validateReceiverData() {
+    bool isValid = false;
+
+    if (getReceiverName.text.isNotEmpty) {
+      if (getReceiverPhone.text.isNotEmpty) {
+        isValid = true;
+      } else {
+        snackBarService.showSnackBar("Receiver phone number is empty",
+            "Please add a valid phone number of the receiver", true);
+      }
+    } else {
+      snackBarService.showSnackBar("Receiver name is empty",
+          "Please add a valid name for the receiver", true);
     }
 
     return isValid;

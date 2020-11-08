@@ -1,10 +1,16 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import '../../../useful/globals.dart';
 import 'SendPackageForm2.dart';
 
 class SendPackageSecondPage extends StatefulWidget {
-  SendPackageSecondPage({Key key}) : super(key: key);
+  SendPackageSecondPage({
+    @required this.packageImages,
+  });
+
+  final List<File> packageImages;
 
   @override
   _SendPackageSecondPageState createState() => _SendPackageSecondPageState();
@@ -53,7 +59,9 @@ class _SendPackageSecondPageState extends State<SendPackageSecondPage> {
             ),
             SliverList(
                 delegate: SliverChildListDelegate([
-              SendPackageForm2(),
+              SendPackageForm2(
+                packageImages: widget.packageImages,
+              ),
             ]))
           ],
         ),
