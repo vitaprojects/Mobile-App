@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:intl/intl.dart';
 
 import '../useful/globals.dart';
 
@@ -47,6 +48,8 @@ class _CustomInputFieldState extends State<CustomInputField> {
               // color: Colors.red,
               alignment: Alignment.center,
               child: FormBuilderDateTimePicker(
+                format: DateFormat("yyyy-MM-dd HH:mm:ss"),
+
                 textInputAction: TextInputAction.next,
                 controller: widget.textEditingController,
                 attribute: widget.attribute,

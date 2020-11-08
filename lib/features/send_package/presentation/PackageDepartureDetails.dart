@@ -1,14 +1,18 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:newpostman1/customWidgets/CustomInputField.dart';
+import 'package:newpostman1/customWidgets/LocationSelectButton.dart';
+import 'package:newpostman1/features/send_package/presentation/SendPackageViewModel.dart';
+import 'package:newpostman1/models/LocationModel.dart';
+import 'package:stacked/stacked.dart';
 
 import '../../../useful/globals.dart';
 
-class PackageDepartureDetails extends StatelessWidget {
+class PackageDepartureDetails extends ViewModelWidget<SendPackageViewModel> {
   const PackageDepartureDetails({Key key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, SendPackageViewModel model) {
     final double blockHeight = Globals.blockHeight;
     final double blockWidth = Globals.blockWidth;
 
@@ -54,6 +58,7 @@ class PackageDepartureDetails extends StatelessWidget {
               thickness: blockHeight / 2,
             ),
             CustomInputField(
+              textEditingController: model.getDepartureDateTimeController,
               attribute: "departureDateTime",
               isInternalField: true,
               labelText: "Enter date and Time",
@@ -63,10 +68,17 @@ class PackageDepartureDetails extends StatelessWidget {
               height: blockHeight,
               thickness: blockHeight / 2,
             ),
-            CustomInputField(
-              attribute: "departureAddress",
-              labelText: "Select departure address",
-              isInternalField: true,
+            LocationSelectButton(
+              labelText: "Departing from ?",
+              removeLocation: () {
+                model.clearDepartingLocation();
+              },
+              attribute: "departurePoint",
+              locationModel: model.departurelocationModel,
+              onLocationSelected: (LocationModel locationModel) {
+                model.setValuesForDepartingLocation(locationModel.latitude,
+                    locationModel.longitude, locationModel.address);
+              },
             ),
           ],
         ),

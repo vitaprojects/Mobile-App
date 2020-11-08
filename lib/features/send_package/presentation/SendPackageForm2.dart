@@ -59,7 +59,8 @@ class SendPackageForm2 extends StatelessWidget {
               FormButton(
                 buttonText: "next",
                 ontapFun: () {
-                  Get.to(SendPackageThirdPage());
+                  // Get.to(SendPackageThirdPage());
+                  model.submitValuesInForm2(context);
                 },
               ),
               SizedBox(

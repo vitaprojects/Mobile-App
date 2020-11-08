@@ -10,6 +10,9 @@ import 'package:newpostman1/features/send_package/data/PackageModel.dart';
 import 'package:newpostman1/features/send_package/domain/bloc/SendPackageBloc.dart';
 import 'package:newpostman1/features/send_package/domain/events/SendPackageEvent.dart';
 import 'package:newpostman1/features/send_package/presentation/SendPackageForm2.dart';
+import 'package:newpostman1/features/send_package/presentation/SendPackageSecondPage.dart';
+import 'package:newpostman1/features/send_package/presentation/SendPackageThirdPage.dart';
+import 'package:newpostman1/models/LocationModel.dart';
 import 'package:newpostman1/services/snackbar_service.dart';
 import 'package:newpostman1/useful/service_locator.dart';
 import 'package:string_validator/string_validator.dart';
@@ -140,9 +143,10 @@ class SendPackageViewModel extends ChangeNotifier {
           Get.to(
             BlocProvider.value(
               value: BlocProvider.of<SendPackageBloc>(context),
-              child: SendPackageForm2(),
+              child: SendPackageSecondPage(),
             ),
           );
+          print("hui");
         }
       }
     } else {
@@ -230,6 +234,132 @@ class SendPackageViewModel extends ChangeNotifier {
     } else {
       snackBarService.showSnackBar("Parcel length error",
           "Please add a valid length of the parcel", true);
+    }
+
+    return isValid;
+  }
+
+  ///get data from the second from in send package
+  LocationModel departurelocationModel = LocationModel(
+    address: null,
+    // dateTime: "",
+    latitude: null,
+    longitude: null,
+  );
+  TextEditingController departureDateTimeController = TextEditingController();
+
+  TextEditingController get getDepartureDateTimeController =>
+      departureDateTimeController;
+
+  clearDepartingLocation() {
+    departurelocationModel.latitude = departurelocationModel.longitude =
+        departurelocationModel.address = null;
+
+    notifyListeners();
+  }
+
+  setValuesForDepartingLocation(
+      double latitude, double longitude, String address) {
+    departurelocationModel.latitude = latitude;
+    departurelocationModel.longitude = longitude;
+    departurelocationModel.address = address;
+
+    notifyListeners();
+  }
+
+  ///get data from the second from in send package
+  LocationModel destinationlocationModel = LocationModel(
+    address: null,
+    // dateTime: "",
+    latitude: null,
+    longitude: null,
+  );
+  TextEditingController destinationeDateTimeController =
+      TextEditingController();
+
+  TextEditingController get getDestinationDateTimeController =>
+      destinationeDateTimeController;
+
+  clearDestinationLocation() {
+    destinationlocationModel.latitude = destinationlocationModel.longitude =
+        destinationlocationModel.address = null;
+
+    notifyListeners();
+  }
+
+  setValuesForDestinationLocation(
+      double latitude, double longitude, String address) {
+    destinationlocationModel.latitude = latitude;
+    destinationlocationModel.longitude = longitude;
+    destinationlocationModel.address = address;
+
+    notifyListeners();
+  }
+
+  //submit values in form 2
+
+  submitValuesInForm2(contextP) {
+    if (validateDepartureDetails() && validateDestinationDetails()) {
+      print("data in form 2 is valid");
+
+      departurelocationModel.dateTime =
+          DateTime.parse(getDepartureDateTimeController.text);
+
+      destinationlocationModel.dateTime =
+          DateTime.parse(getDestinationDateTimeController.text);
+
+      PackageModel packageModel = PackageModel(
+        dLocation: departurelocationModel,
+        fLocation: destinationlocationModel,
+      );
+
+      BlocProvider.of<SendPackageBloc>(contextP)
+          .add(SendPackageEvent.addForm2Data(packageModel));
+
+      Navigator.push(
+          contextP,
+          MaterialPageRoute(
+            builder: (context) => BlocProvider.value(
+              value: BlocProvider.of<SendPackageBloc>(contextP),
+              child: SendPackageThirdPage(),
+            ),
+          ));
+      // Get.to(SendPackageThirdPage());
+      print("hi");
+    }
+  }
+
+  validateDepartureDetails() {
+    bool isValid = false;
+    if (getDepartureDateTimeController.text.isNotEmpty) {
+      if (departurelocationModel.latitude != null &&
+          departurelocationModel.longitude != null) {
+        isValid = true;
+      } else {
+        snackBarService.showSnackBar("Departing location error",
+            "Please add the location of departure", true);
+      }
+    } else {
+      snackBarService.showSnackBar("Departing date error",
+          "Please add a valid date and time for the departure", true);
+    }
+
+    return isValid;
+  }
+
+  validateDestinationDetails() {
+    bool isValid = false;
+    if (getDestinationDateTimeController.text.isNotEmpty) {
+      if (destinationlocationModel.latitude != null &&
+          destinationlocationModel.longitude != null) {
+        isValid = true;
+      } else {
+        snackBarService.showSnackBar("Destination location error",
+            "Please add the location of destination", true);
+      }
+    } else {
+      snackBarService.showSnackBar("Destination date error",
+          "Please add a valid date and time for the destination", true);
     }
 
     return isValid;
