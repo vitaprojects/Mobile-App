@@ -7,6 +7,8 @@ import 'package:newpostman1/features/post_errand/domain/ErrandService.dart';
 import 'package:newpostman1/features/post_errand/domain/ErrandServiceImpl.dart';
 import 'package:newpostman1/features/post_itenary/domain/ItenaryService.dart';
 import 'package:newpostman1/features/post_itenary/domain/ItenaryServiceImpl.dart';
+import 'package:newpostman1/features/send_package/domain/services/send_package_service.dart';
+import 'package:newpostman1/features/send_package/domain/services/send_package_service_impl.dart';
 import 'package:newpostman1/services/LocationService.dart';
 import 'package:newpostman1/services/LocationServiceImpl.dart';
 import 'package:newpostman1/services/push_notification_service.dart';
@@ -42,4 +44,8 @@ setupServiceLocator() {
 
   //this service is for getting information about the trips(itenaries) of the user
   locator.registerLazySingleton<TripService>(() => TripServiceImpl());
+
+  //this service is for the send package
+  locator.registerLazySingleton<SendPackageService>(
+      () => SendPackageServiceImpl());
 }

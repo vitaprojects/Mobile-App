@@ -6,10 +6,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:newpostman1/features/loading/presentation/LoadingPage.dart';
 import 'package:newpostman1/features/send_package/data/PackageModel.dart';
 import 'package:newpostman1/features/send_package/data/UserModelInPackage.dart';
 import 'package:newpostman1/features/send_package/domain/bloc/SendPackageBloc.dart';
 import 'package:newpostman1/features/send_package/domain/events/SendPackageEvent.dart';
+import 'package:newpostman1/features/send_package/domain/services/send_package_service.dart';
 import 'package:newpostman1/features/send_package/presentation/SendPackageForm2.dart';
 import 'package:newpostman1/features/send_package/presentation/SendPackageSecondPage.dart';
 import 'package:newpostman1/features/send_package/presentation/SendPackageThirdPage.dart';
@@ -23,6 +25,7 @@ class SendPackageViewModel extends ChangeNotifier {
   final picker = ImagePicker();
 
   final SnackBarService snackBarService = locator<SnackBarService>();
+  final SendPackageService sendPackageService = locator<SendPackageService>();
 
   Future getImage(int type) async {
     //this function is used to  upload pictures
@@ -405,7 +408,10 @@ class SendPackageViewModel extends ChangeNotifier {
       packageModel.sDetails = senderuserModelInPackage;
       packageModel.note = noteController.text;
 
-      print(packageImages.length);
+      // print(packageImages.length);
+      Get.to(LoadingPage(
+          text: "Please wait while the package details are uploded"));
+      sendPackageService.uploadImagesOfthePackage(packageImages, packageModel);
     }
   }
 
