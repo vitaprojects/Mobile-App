@@ -86,10 +86,14 @@ class AvailablePostmanCard extends StatelessWidget {
                           ),
                         ),
                         Expanded(
-                          child: Container(
-                            // color: Colors.orange,
-                            alignment: Alignment.centerLeft,
-                            child: Text("London"),
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Container(
+                              // color: Colors.orange,
+                              alignment: Alignment.centerLeft,
+                              child: Text(itenaryModel
+                                  .details?.departureLocation?.address),
+                            ),
                           ),
                         )
                       ],
@@ -114,10 +118,14 @@ class AvailablePostmanCard extends StatelessWidget {
                           ),
                         ),
                         Expanded(
-                          child: Container(
-                            // color: Colors.orange,
-                            alignment: Alignment.centerLeft,
-                            child: Text("London"),
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Container(
+                              // color: Colors.orange,
+                              alignment: Alignment.centerLeft,
+                              child: Text(itenaryModel
+                                  .details?.destinationLocation?.address),
+                            ),
                           ),
                         )
                       ],
