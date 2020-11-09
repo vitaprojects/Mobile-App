@@ -9,15 +9,19 @@ class UserModel {
   String email;
   List<String> deviceIds;
   double totalEarnings;
-
-  UserModel({
-    this.email,
-    this.fname,
-    this.lname,
-    this.phone,
-    this.deviceIds,
-    this.totalEarnings,
-  });
+  int completedJobs;
+  int activeJobs;
+  int rejectedJobs;
+  UserModel(
+      {this.email,
+      this.fname,
+      this.lname,
+      this.phone,
+      this.deviceIds,
+      this.totalEarnings,
+      this.activeJobs,
+      this.completedJobs,
+      this.rejectedJobs});
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);

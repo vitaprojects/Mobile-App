@@ -46,13 +46,15 @@ class SignUpViewModel extends ChangeNotifier {
                   hasSpecialCharacters) {
                 print("user input is valid");
                 UserModel userModel = UserModel(
-                  email: emailtextEditingController.text,
-                  fname: fnametextEditingController.text,
-                  lname: lnametextEditingController.text,
-                  phone: phonetextEditingController.text,
-                  deviceIds: [],
-                  totalEarnings: 0,
-                );
+                    email: emailtextEditingController.text,
+                    fname: fnametextEditingController.text,
+                    lname: lnametextEditingController.text,
+                    phone: phonetextEditingController.text,
+                    deviceIds: [],
+                    totalEarnings: 0,
+                    activeJobs: 0,
+                    completedJobs: 0,
+                    rejectedJobs: 0);
                 Get.to(
                   LoadingPage(
                     text: "Please wait while we are creating your account",
