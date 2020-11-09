@@ -1,17 +1,12 @@
 import 'dart:io';
 
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
 import 'package:newpostman1/customWidgets/CustomInputField.dart';
 import 'package:newpostman1/customWidgets/FormButton.dart';
 import 'package:newpostman1/features/send_package/data/PackageModel.dart';
 import 'package:newpostman1/features/send_package/domain/bloc/SendPackageBloc.dart';
 import 'package:newpostman1/features/send_package/presentation/SendPackageViewModel.dart';
-import 'package:newpostman1/ui/AvailablePostman.dart';
-import 'package:newpostman1/ui/PaymentPage.dart';
-import 'package:newpostman1/ui/ThankYouWidget.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../useful/globals.dart';

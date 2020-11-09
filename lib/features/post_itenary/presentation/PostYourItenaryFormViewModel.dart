@@ -245,6 +245,7 @@ class PostYourItenaryFormViewModel extends ChangeNotifier {
                 );
 
                 ItenaryDetailsModel itenaryDetailsModel = ItenaryDetailsModel(
+                  email: Hive.box('user').get('email'),
                   flightDetailsModel: null,
                   vehicleDetailsModel: vehicleDetailsModel,
                   canPickup: false,
@@ -303,6 +304,7 @@ class PostYourItenaryFormViewModel extends ChangeNotifier {
               );
 
               ItenaryDetailsModel itenaryDetailsModel = ItenaryDetailsModel(
+                  email: Hive.box('user').get('email'),
                   vehicleDetailsModel: null,
                   canPickup: false,
                   canDeliver: false,
@@ -352,6 +354,7 @@ class PostYourItenaryFormViewModel extends ChangeNotifier {
               );
 
               ItenaryDetailsModel itenaryDetailsModel = ItenaryDetailsModel(
+                email: Hive.box('user').get('email'),
                 flightDetailsModel: null,
                 vehicleDetailsModel: vehicleDetailsModel,
                 canPickup: (_canPickUp != null) ? _canPickUp : false,

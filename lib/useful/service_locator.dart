@@ -5,6 +5,8 @@ import 'package:newpostman1/features/MyTrips/domain/trip_service.dart';
 import 'package:newpostman1/features/MyTrips/domain/trip_service_impl.dart';
 import 'package:newpostman1/features/authentication/domain/auth_service.dart';
 import 'package:newpostman1/features/authentication/domain/auth_service_impl.dart';
+import 'package:newpostman1/features/find_postman/domain/find_available_postman_service.dart';
+import 'package:newpostman1/features/find_postman/domain/find_available_postman_service_impl.dart';
 import 'package:newpostman1/features/post_errand/domain/ErrandService.dart';
 import 'package:newpostman1/features/post_errand/domain/ErrandServiceImpl.dart';
 import 'package:newpostman1/features/post_itenary/domain/ItenaryService.dart';
@@ -55,4 +57,9 @@ setupServiceLocator() {
 
   locator.registerLazySingleton<PostedPackagesService>(
       () => PostedPackagesServiceImpl());
+
+  //this service is to get the avaialble postmans for the pacakge of the user
+
+  locator.registerLazySingleton<FindAvailablePostmanService>(
+      () => FindAvailablePostmanServiceImpl());
 }

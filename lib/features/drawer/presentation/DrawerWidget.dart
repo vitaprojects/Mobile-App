@@ -7,7 +7,7 @@ import 'package:newpostman1/features/authentication/presentation/LoginPageView.d
 import 'package:newpostman1/features/drawer/presentation/ItemWidgetInDrawer.dart';
 import 'package:newpostman1/features/drawer/presentation/TitleWidgetInDrawer.dart';
 import 'package:newpostman1/ui/AboutUsPage.dart';
-import 'package:newpostman1/ui/AvailablePostman.dart';
+import 'package:newpostman1/features/find_postman/presentation/AvailablePostmanView.dart';
 import 'package:newpostman1/ui/FindLocalErrands.dart';
 import 'package:newpostman1/features/MyTrips/presentation/MyTripsView.dart';
 import 'package:newpostman1/ui/OngoingErrands.dart';
@@ -17,6 +17,7 @@ import 'package:newpostman1/features/send_package/presentation/SendPackage.dart'
 import 'package:newpostman1/ui/SupportWidget.dart';
 import 'package:newpostman1/features/TotalEarnings/presentation/TotalEarningsWidget.dart';
 import 'package:newpostman1/features/MyPackages/presentation/TrackPackage.dart';
+import 'package:newpostman1/ui/ThankYouWidget.dart';
 import 'package:newpostman1/useful/service_locator.dart';
 
 import '../../../useful/globals.dart';
@@ -168,7 +169,8 @@ class DrawerWidget extends StatelessWidget {
                     ),
                     margin: margin,
                     ontapFunc: () {
-                      Get.to(MyTripsView());
+                      // Get.to(MyTripsView());
+                      Get.to(ThankYouWidget());
                       closeDrawer();
                     },
                     title: "My Offers",
@@ -261,7 +263,7 @@ class DrawerWidget extends StatelessWidget {
                     margin: margin,
                     ontapFunc: () {
                       closeDrawer();
-                      Get.to(AvailablePostman());
+                      Get.to(AvailablePostmanView());
                     },
                   ),
                   Divider(

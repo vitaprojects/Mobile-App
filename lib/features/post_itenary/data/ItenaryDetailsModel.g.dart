@@ -26,6 +26,7 @@ ItenaryDetailsModel _$ItenaryDetailsModelFromJson(Map<String, dynamic> json) {
         ? null
         : FlightDetailsModel.fromJson(
             json['flightDetailsModel'] as Map<String, dynamic>),
+    email: json['email'] as String,
   );
 }
 
@@ -38,4 +39,5 @@ Map<String, dynamic> _$ItenaryDetailsModelToJson(
       'canDeliver': instance.canDeliver,
       'departureLocation': instance.departureLocation.toJson(),
       'destinationLocation': instance.destinationLocation.toJson(),
+      'email': instance.email,
     };

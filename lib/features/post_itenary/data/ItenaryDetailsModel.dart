@@ -23,6 +23,8 @@ class ItenaryDetailsModel {
   bool canDeliver;
   LocationModel departureLocation;
   LocationModel destinationLocation;
+  String email;
+
   ItenaryDetailsModel({
     @required this.vehicleDetailsModel,
     @required this.canPickup,
@@ -30,6 +32,7 @@ class ItenaryDetailsModel {
     @required this.departureLocation,
     @required this.destinationLocation,
     @required this.flightDetailsModel,
+    @required this.email,
   });
 
   factory ItenaryDetailsModel.fromJson(Map<String, dynamic> json) =>
