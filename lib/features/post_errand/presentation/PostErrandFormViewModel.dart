@@ -5,6 +5,8 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:newpostman1/features/post_errand/data/PostErrandModel.dart';
+import 'package:newpostman1/features/post_errand/domain/ErrandService.dart';
 import 'package:newpostman1/models/LocationModel.dart';
 import 'package:newpostman1/services/snackbar_service.dart';
 import 'package:newpostman1/useful/globals.dart';
@@ -17,6 +19,7 @@ class PostErrandFormViewModel extends ChangeNotifier {
   double margin = Globals.blockWidth * 5;
   final picker = ImagePicker();
   final SnackBarService snackBarService = locator<SnackBarService>();
+  final ErrandService errandService = locator<ErrandService>();
 
   List<TextEditingController> controllers = [
     TextEditingController(),
@@ -184,6 +187,23 @@ class PostErrandFormViewModel extends ChangeNotifier {
   submitValuesInForm() {
     if (validateValuesInForm()) {
       print("all are valid");
+
+      PostErrandModel postErrandModel = PostErrandModel(
+        type: 1,
+        pickUpFrom: getpickUpStore.text,
+        pickUpType: getGroceryType.text,
+        pAddress: pickUplocationModel,
+        phone: getpickUpPhone.text,
+        orderNo: getOrderNo.text,
+        dAddress: dropOfflocationModel,
+        instructions: getInstructions.text,
+        payment: double.parse(getMyAmount.text),
+        tip: (getMyTip.text.isEmpty)
+            ? double.parse("0")
+            : double.parse(getMyTip.text),
+      );
+
+      errandService.uploadImagesOftheErrand(imagesOfTheErrand, postErrandModel);
     }
   }
 }
