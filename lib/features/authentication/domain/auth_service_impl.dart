@@ -10,6 +10,7 @@ import 'package:newpostman1/models/user/UserModel.dart';
 import 'package:newpostman1/services/push_notification_service.dart';
 import 'package:newpostman1/services/snackbar_service.dart';
 import 'package:newpostman1/features/home/presentation/HomePage.dart';
+import 'package:newpostman1/useful/rootPage.dart';
 import 'package:newpostman1/useful/service_locator.dart';
 
 class AuthenticationServiceImplementation extends AuthenticationService {
@@ -71,14 +72,12 @@ class AuthenticationServiceImplementation extends AuthenticationService {
               Hive.box("user")
                   .put("email", user.email.toLowerCase().trim())
                   .catchError((onError) {
-                    print(onError);
-                  })
-                  .then((value) {})
-                  .whenComplete(() {
-                    Get.offAll(HomePage());
-                    snackBarService.showSnackBar(
-                        "Success", "You have successfully logged in", false);
-                  });
+                print(onError);
+              }).then((value) {
+                Get.offAll(HomePage());
+                snackBarService.showSnackBar(
+                    "Success", "You have successfully logged in", false);
+              });
             } else {
               snackBarService.goBackAfterTimePeriod(
                   "Error occured", "Please try again", true);
@@ -159,7 +158,7 @@ class AuthenticationServiceImplementation extends AuthenticationService {
 
       // setupServiceLocator();
 
-      // Get.offAll(RootPage());
+      Get.offAll(RootPage());
       // runApp(MyApp());
       // Phoenix.rebirth(context);
     } catch (e) {

@@ -2,19 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newpostman1/customWidgets/CustomInputField.dart';
 import 'package:newpostman1/customWidgets/FormButton.dart';
+import 'package:newpostman1/features/MyPackages/presentation/PostedPackagesViewModel.dart';
+import 'package:newpostman1/features/post_errand/presentation/PostErrandFormViewModel.dart';
 import 'package:newpostman1/features/send_package/presentation/UploadedImagesOfPackage.dart';
 import 'package:newpostman1/ui/ThankYouWidget.dart';
+import 'package:stacked/stacked.dart';
 
 import '../../../useful/globals.dart';
 
-class PostYourErrandForm1 extends StatelessWidget {
-  PostYourErrandForm1({Key key}) : super(key: key);
+class PostYourErrandFormView extends ViewModelWidget<PostErrandFormViewModel> {
+  PostYourErrandFormView({Key key}) : super(key: key);
   final double blockHeight = Globals.blockHeight;
   final double blockWidth = Globals.blockWidth;
   double margin;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, PostErrandFormViewModel model) {
     margin = blockWidth * 5;
     return Column(
       children: [

@@ -2,6 +2,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:newpostman1/features/authentication/domain/auth_service.dart';
+import 'package:newpostman1/features/authentication/presentation/LoginPageView.dart';
 import 'package:newpostman1/features/drawer/presentation/ItemWidgetInDrawer.dart';
 import 'package:newpostman1/features/drawer/presentation/TitleWidgetInDrawer.dart';
 import 'package:newpostman1/ui/AboutUsPage.dart';
@@ -15,6 +17,7 @@ import 'package:newpostman1/features/send_package/presentation/SendPackage.dart'
 import 'package:newpostman1/ui/SupportWidget.dart';
 import 'package:newpostman1/features/TotalEarnings/presentation/TotalEarningsWidget.dart';
 import 'package:newpostman1/features/MyPackages/presentation/TrackPackage.dart';
+import 'package:newpostman1/useful/service_locator.dart';
 
 import '../../../useful/globals.dart';
 
@@ -26,6 +29,8 @@ class DrawerWidget extends StatelessWidget {
   final double blockHeight = Globals.blockHeight;
   final double blockWidth = Globals.blockWidth;
   final VoidCallback closeDrawer;
+  final AuthenticationService authenticationService =
+      locator<AuthenticationService>();
 
   @override
   Widget build(BuildContext context) {
@@ -472,6 +477,8 @@ class DrawerWidget extends StatelessWidget {
                     margin: margin,
                     ontapFunc: () {
                       closeDrawer();
+                      // Get.to(LoginPageView());
+                      authenticationService.signOut();
                     },
                   ),
                 ],

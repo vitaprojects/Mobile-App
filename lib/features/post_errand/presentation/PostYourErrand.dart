@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:newpostman1/features/post_errand/presentation/PostErrandForm1.dart';
+import 'package:newpostman1/features/post_errand/presentation/PostErrandFormView.dart';
+import 'package:newpostman1/features/post_errand/presentation/PostErrandFormViewModel.dart';
+import 'package:stacked/stacked.dart';
 
 import '../../../useful/globals.dart';
 
@@ -16,46 +18,50 @@ class _PostYourErrandState extends State<PostYourErrand> {
     final double blockHeight = Globals.blockHeight;
     final double blockWidth = Globals.blockWidth;
 
-    return SafeArea(
-      child: Scaffold(
-          backgroundColor: Colors.white,
-          body: CustomScrollView(
-            physics: BouncingScrollPhysics(),
-            slivers: [
-              SliverAppBar(
-                stretchTriggerOffset: 100,
+    return ViewModelBuilder.nonReactive(
+        builder: (context, model, child) {
+          return SafeArea(
+            child: Scaffold(
                 backgroundColor: Colors.white,
-                stretch: true,
-                expandedHeight: blockHeight * 20,
-                flexibleSpace: FlexibleSpaceBar(
-                  title: Text(
-                    "Errand Details",
-                    style: TextStyle(
-                      // fontSize: 2,
-                      color: Colors.black,
-                      fontSize: 25,
+                body: CustomScrollView(
+                  physics: BouncingScrollPhysics(),
+                  slivers: [
+                    SliverAppBar(
+                      stretchTriggerOffset: 100,
+                      backgroundColor: Colors.white,
+                      stretch: true,
+                      expandedHeight: blockHeight * 20,
+                      flexibleSpace: FlexibleSpaceBar(
+                        title: Text(
+                          "Errand Details",
+                          style: TextStyle(
+                            // fontSize: 2,
+                            color: Colors.black,
+                            fontSize: 25,
+                          ),
+                        ),
+                        centerTitle: true,
+                        stretchModes: [
+                          StretchMode.zoomBackground,
+                          StretchMode.fadeTitle,
+                          StretchMode.blurBackground,
+                        ],
+                        // background: Image.asset(
+                        //   "assets/images/travel.png",
+                        //   height: blockHeight * 32,
+                        //   width: blockWidth * 70,
+                        //   fit: BoxFit.contain,
+                        // ),
+                      ),
                     ),
-                  ),
-                  centerTitle: true,
-                  stretchModes: [
-                    StretchMode.zoomBackground,
-                    StretchMode.fadeTitle,
-                    StretchMode.blurBackground,
+                    SliverList(
+                        delegate: SliverChildListDelegate([
+                      PostYourErrandFormView(),
+                    ]))
                   ],
-                  // background: Image.asset(
-                  //   "assets/images/travel.png",
-                  //   height: blockHeight * 32,
-                  //   width: blockWidth * 70,
-                  //   fit: BoxFit.contain,
-                  // ),
-                ),
-              ),
-              SliverList(
-                  delegate: SliverChildListDelegate([
-                PostYourErrandForm1(),
-              ]))
-            ],
-          )),
-    );
+                )),
+          );
+        },
+        viewModelBuilder: () => PostErrandFormViewModel());
   }
 }
