@@ -78,14 +78,21 @@ class LoginPageView extends StatelessWidget {
                                   ),
                                   // color: Colors.green,
                                   alignment: Alignment.centerRight,
-                                  child: Container(
-                                    height: blockHeight * 3,
-                                    // color: Colors.redAccent,
-                                    alignment: Alignment.centerRight,
-                                    child: AutoSizeText(
-                                      "forgot password ?",
-                                      style: TextStyle(
-                                        fontSize: 16,
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      model
+                                          .showForgotPasswordDialogBox(context);
+                                    },
+                                    child: Container(
+                                      height: blockHeight * 3,
+                                      // color: Colors.redAccent,
+                                      width: blockWidth * 50,
+                                      alignment: Alignment.centerRight,
+                                      child: AutoSizeText(
+                                        "forgot password ?",
+                                        style: TextStyle(
+                                          fontSize: 16,
+                                        ),
                                       ),
                                     ),
                                   ),
