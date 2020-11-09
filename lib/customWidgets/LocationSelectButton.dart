@@ -43,8 +43,8 @@ class LocationSelectButton extends StatelessWidget {
         alignment: Alignment.center,
         child: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
-            if (locationModel.latitude == null &&
-                locationModel.longitude == null) {
+            if (locationModel?.latitude == null &&
+                locationModel?.longitude == null) {
               return Container(
                 height: blockHeight * 6,
                 child: RaisedButton(

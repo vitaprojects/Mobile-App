@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newpostman1/customWidgets/CustomInputField.dart';
 import 'package:newpostman1/customWidgets/FormButton.dart';
+import 'package:newpostman1/customWidgets/LocationSelectButton.dart';
 import 'package:newpostman1/features/MyPackages/presentation/PostedPackagesViewModel.dart';
 import 'package:newpostman1/features/post_errand/presentation/PostErrandFormViewModel.dart';
-import 'package:newpostman1/features/send_package/presentation/UploadedImagesOfPackage.dart';
+import 'package:newpostman1/features/post_errand/presentation/UploadedImagesOfPackage.dart';
+import 'package:newpostman1/models/LocationModel.dart';
 import 'package:newpostman1/ui/ThankYouWidget.dart';
 import 'package:stacked/stacked.dart';
 
@@ -14,11 +16,11 @@ class PostYourErrandFormView extends ViewModelWidget<PostErrandFormViewModel> {
   PostYourErrandFormView({Key key}) : super(key: key);
   final double blockHeight = Globals.blockHeight;
   final double blockWidth = Globals.blockWidth;
-  double margin;
+  // double margin;
 
   @override
   Widget build(BuildContext context, PostErrandFormViewModel model) {
-    margin = blockWidth * 5;
+    // margin = blockWidth * 5;
     return Column(
       children: [
         Container(
@@ -32,7 +34,7 @@ class PostYourErrandFormView extends ViewModelWidget<PostErrandFormViewModel> {
           )),
           elevation: 20,
           margin: EdgeInsets.symmetric(
-            horizontal: margin,
+            horizontal: model.margin,
           ),
           child: Container(
             // color: Colors.yellow,
@@ -40,6 +42,7 @@ class PostYourErrandFormView extends ViewModelWidget<PostErrandFormViewModel> {
             child: Column(
               children: [
                 CustomInputField(
+                  textEditingController: model.getpickUpStore,
                   attribute: "pickupPlace",
                   isInternalField: true,
                   labelText: "Pickup from e.g Walmart",
@@ -49,6 +52,7 @@ class PostYourErrandFormView extends ViewModelWidget<PostErrandFormViewModel> {
                   thickness: blockHeight / 4,
                 ),
                 CustomInputField(
+                  textEditingController: model.getGroceryType,
                   attribute: "pickupType",
                   isInternalField: true,
                   labelText: "Pickup type e.g Grocery",
@@ -57,16 +61,29 @@ class PostYourErrandFormView extends ViewModelWidget<PostErrandFormViewModel> {
                   height: blockHeight / 2,
                   thickness: blockHeight / 4,
                 ),
-                CustomInputField(
-                  attribute: "pickupLocation",
-                  isInternalField: true,
-                  labelText: "Pickup address",
+                LocationSelectButton(
+                  labelText: "Pickup Address ?",
+                  removeLocation: () {
+                    model.clearPickUpLocation();
+                  },
+                  attribute: "departurePoint",
+                  locationModel: model.pickUplocationModel,
+                  onLocationSelected: (LocationModel locationModel) {
+                    model.setValuesForPickUpLocation(locationModel.latitude,
+                        locationModel.longitude, locationModel.address);
+                  },
                 ),
+                // CustomInputField(
+                //   attribute: "pickupLocation",
+                //   isInternalField: true,
+                //   labelText: "Pickup address",
+                // ),
                 Divider(
                   height: blockHeight / 2,
                   thickness: blockHeight / 4,
                 ),
                 CustomInputField(
+                  textEditingController: model.getpickUpPhone,
                   attribute: "pickupPhone",
                   isInternalField: true,
                   isPhone: true,
@@ -77,6 +94,7 @@ class PostYourErrandFormView extends ViewModelWidget<PostErrandFormViewModel> {
                   thickness: blockHeight / 4,
                 ),
                 CustomInputField(
+                  textEditingController: model.getOrderNo,
                   attribute: "orderID",
                   isInternalField: true,
                   labelText: "Order Number (optional)",
@@ -85,16 +103,24 @@ class PostYourErrandFormView extends ViewModelWidget<PostErrandFormViewModel> {
                   height: blockHeight / 2,
                   thickness: blockHeight / 4,
                 ),
-                CustomInputField(
-                  attribute: "dropAddress",
-                  isInternalField: true,
-                  labelText: "Drop off address",
+                LocationSelectButton(
+                  labelText: "Drop off Address ?",
+                  removeLocation: () {
+                    model.clearDropOffLocation();
+                  },
+                  attribute: "destinationPoint",
+                  locationModel: model.dropOfflocationModel,
+                  onLocationSelected: (LocationModel locationModel) {
+                    model.setValuesForDropOffLocation(locationModel.latitude,
+                        locationModel.longitude, locationModel.address);
+                  },
                 ),
                 Divider(
                   height: blockHeight / 2,
                   thickness: blockHeight / 4,
                 ),
                 CustomInputField(
+                  textEditingController: model.getInstructions,
                   attribute: "pickup",
                   isInternalField: true,
                   isDescription: true,
@@ -105,6 +131,7 @@ class PostYourErrandFormView extends ViewModelWidget<PostErrandFormViewModel> {
                   thickness: blockHeight / 4,
                 ),
                 CustomInputField(
+                  textEditingController: model.getMyAmount,
                   attribute: "myoffer",
                   isInternalField: true,
                   isPhone: true,
@@ -115,6 +142,7 @@ class PostYourErrandFormView extends ViewModelWidget<PostErrandFormViewModel> {
                   thickness: blockHeight / 4,
                 ),
                 CustomInputField(
+                  textEditingController: model.getMyTip,
                   attribute: "mytip",
                   isInternalField: true,
                   isPhone: true,
@@ -124,12 +152,13 @@ class PostYourErrandFormView extends ViewModelWidget<PostErrandFormViewModel> {
                   height: blockHeight / 2,
                   thickness: blockHeight / 4,
                 ),
-                CustomInputField(
-                  attribute: "myoffer",
-                  isInternalField: true,
-                  isPhone: true,
-                  labelText: "My total offer (\$13.24)",
-                ),
+                // CustomInputField(
+                //   textEditingController: model.getMyTotalOffer,
+                //   attribute: "myoffer",
+                //   isInternalField: true,
+                //   isPhone: true,
+                //   labelText: "My total offer (\$13.24)",
+                // ),
               ],
             ),
           ),
@@ -144,9 +173,10 @@ class PostYourErrandFormView extends ViewModelWidget<PostErrandFormViewModel> {
         FormButton(
           buttonText: "post your errand",
           ontapFun: () {
-            Get.off(ThankYouWidget(
-              typeOfThankYou: 2,
-            ));
+            // Get.off(ThankYouWidget(
+            //   typeOfThankYou: 2,
+            // ));
+            model.submitValuesInForm();
           },
         ),
         SizedBox(

@@ -9,7 +9,7 @@ import 'package:newpostman1/ui/ThankYouWidget.dart';
 import '../../../useful/globals.dart';
 import 'FinalPackageDetailsWidget.dart';
 import 'SenderReceiverInformationWidget.dart';
-import 'UploadedImagesOfPackage.dart';
+import '../../post_errand/presentation/UploadedImagesOfPackage.dart';
 
 class SendPackageConfirmationPage extends StatelessWidget {
   const SendPackageConfirmationPage({Key key}) : super(key: key);

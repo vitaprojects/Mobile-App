@@ -111,8 +111,9 @@ class AuthenticationServiceImplementation extends AuthenticationService {
             // _firebaseAuth.signOut();
           }).then((value) {
             print("verification email sent successfully");
-            Get.back();
           });
+
+          Get.back();
 
           _firebaseAuth.signOut();
 
