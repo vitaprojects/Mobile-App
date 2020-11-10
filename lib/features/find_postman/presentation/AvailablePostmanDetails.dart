@@ -37,33 +37,110 @@ class AvailablePostmanDetails extends StatelessWidget {
                 ),
               ),
             ),
-            PostmanInfoCard(
-              fieldName: "Postman email",
-              fieldValue: itenaryModel.details.email,
-            ),
-            PostmanInfoCard(
-              fieldName: "Postman email",
-              fieldValue: itenaryModel.details.email,
-            ),
-            PostmanInfoCard(
-              fieldName: "Departure location",
-              fieldValue:
-                  itenaryModel?.details?.departureLocation?.address != null
-                      ? itenaryModel.details.departureLocation.address
-                      : "",
-            ),
-            PostmanInfoCard(
-              fieldName: "Destination location",
-              fieldValue:
-                  itenaryModel?.details?.destinationLocation?.address != null
-                      ? itenaryModel.details.destinationLocation.address
-                      : "",
-            ),
-            PostmanInfoCard(
-              fieldName: "Travel Type",
-              isVehicleType: true,
-              fieldValue: itenaryModel.travelType.toString(),
-            ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    PostmanInfoCard(
+                      fieldName: "Postman email",
+                      fieldValue: itenaryModel.details.email,
+                    ),
+                    PostmanInfoCard(
+                      fieldName: "Postman email",
+                      fieldValue: itenaryModel.details.email,
+                    ),
+                    PostmanInfoCard(
+                      fieldName: "Departure location",
+                      fieldValue:
+                          itenaryModel?.details?.departureLocation?.address !=
+                                  null
+                              ? itenaryModel.details.departureLocation.address
+                              : "",
+                    ),
+                    PostmanInfoCard(
+                      fieldName: "Destination location",
+                      fieldValue:
+                          itenaryModel?.details?.destinationLocation?.address !=
+                                  null
+                              ? itenaryModel.details.destinationLocation.address
+                              : "",
+                    ),
+                    PostmanInfoCard(
+                      fieldName: "Travel Type",
+                      isVehicleType: true,
+                      fieldValue: itenaryModel.travelType.toString(),
+                    ),
+                    PostmanInfoCard(
+                      fieldName: "Can deliver",
+                      // isVehicleType: true,
+                      fieldValue: (itenaryModel.details.canDeliver == true)
+                          ? "Yes"
+                          : "No",
+                    ),
+                    PostmanInfoCard(
+                      fieldName: "Can pickup",
+                      // isVehicleType: true,
+                      fieldValue: (itenaryModel.details.canPickup == true)
+                          ? "Yes"
+                          : "No",
+                    ),
+                    Container(
+                      // color: Colors.redAccent,
+                      height: blockHeight * 5,
+                    ),
+                    Container(
+                      margin: EdgeInsets.symmetric(
+                        horizontal: blockWidth * 5,
+                      ),
+                      height: blockHeight * 10,
+                      // color: Colors.yellowAccent,
+                      alignment: Alignment.center,
+                      child: Container(
+                        height: blockHeight * 7,
+                        // color: Colors.redAccent,
+                        alignment: Alignment.center,
+                        child: Container(
+                          width: blockWidth * 70,
+                          child: RaisedButton(
+                            color: Globals.mainColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                15,
+                              ),
+                            ),
+                            padding: EdgeInsets.all(
+                              0,
+                            ),
+                            onPressed: () {},
+                            child: Container(
+                              width: blockWidth * 60,
+                              // color: Colors.greenAccent,
+                              alignment: Alignment.center,
+                              child: Container(
+                                height: blockHeight * 4,
+                                // color: Colors.redAccent,
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "Select Postman".toUpperCase(),
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      // color: Colors.redAccent,
+                      height: blockHeight * 5,
+                    ),
+                  ],
+                ),
+              ),
+            )
           ],
         ),
       ),
