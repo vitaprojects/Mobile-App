@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firestore_helpers/firestore_helpers.dart';
+import 'package:hive/hive.dart';
 import 'package:newpostman1/features/MyPackages/domain/posted_packages_service.dart';
 import 'package:newpostman1/features/post_itenary/data/ItenaryModel.dart';
 import 'package:newpostman1/features/send_package/data/FullPackageModel.dart';
@@ -45,7 +46,7 @@ class FindAvailablePostmanServiceImpl extends FindAvailablePostmanService {
         collection: firebaseFirestore.collection('itineraries'),
         constraints: [
           QueryConstraint(
-              field: 'departureDate', isGreaterThanOrEqualTo: DateTime.now())
+              field: 'departureDate', isGreaterThanOrEqualTo: DateTime.now()),
         ],
       );
       return getDataFromQuery(
@@ -60,7 +61,11 @@ class FindAvailablePostmanServiceImpl extends FindAvailablePostmanService {
                     packageLocation,
                     LatLng(itenary.details.departureLocation.latitude,
                         itenary.details.departureLocation.longitude)) <
-                5000
+                5000,
+            (ItenaryModel itenary) =>
+                itenary.details.email !=
+                Hive.box('user').get(
+                    'email'), //we have to remove the current user's itenaries
           ] // only future events
           // orderComparer: (event1, event2) => event1.name.compareTo(event2.name)
           );
