@@ -9,10 +9,12 @@ import 'package:stacked/stacked.dart';
 class AvailablePostmanDetails extends StatelessWidget {
   AvailablePostmanDetails({
     @required this.itenaryModel,
+    @required this.callback,
   });
   final ItenaryModel itenaryModel;
   final double blockHeight = Globals.blockHeight;
   final double blockWidth = Globals.blockWidth;
+  final VoidCallback callback;
 
   @override
   Widget build(BuildContext context) {
@@ -45,10 +47,10 @@ class AvailablePostmanDetails extends StatelessWidget {
                       fieldName: "Postman email",
                       fieldValue: itenaryModel.details.email,
                     ),
-                    PostmanInfoCard(
-                      fieldName: "Postman email",
-                      fieldValue: itenaryModel.details.email,
-                    ),
+                    // PostmanInfoCard(
+                    //   fieldName: "Postman email",
+                    //   fieldValue: itenaryModel.details.email,
+                    // ),
                     PostmanInfoCard(
                       fieldName: "Departure location",
                       fieldValue:
@@ -111,7 +113,9 @@ class AvailablePostmanDetails extends StatelessWidget {
                             padding: EdgeInsets.all(
                               0,
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              callback();
+                            },
                             child: Container(
                               width: blockWidth * 60,
                               // color: Colors.greenAccent,

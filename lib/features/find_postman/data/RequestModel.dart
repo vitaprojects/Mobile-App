@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-// part 'RequestModel.g.dart';
+part 'RequestModel.g.dart';
 
 @JsonSerializable()
 class RequestModel {
@@ -26,8 +26,8 @@ class RequestModel {
     this.hasSeenbyUser,
   });
 
-  // factory RequestModel.fromJson(Map<String, dynamic> json) =>
-  //     _$RequestModelFromJson(json);
+  factory RequestModel.fromJson(Map<String, dynamic> json) =>
+      _$RequestModelFromJson(json);
 
-  // Map<String, dynamic> toJson() => _$RequestModelToJson(this);
+  Map<String, dynamic> toJson() => _$RequestModelToJson(this);
 }

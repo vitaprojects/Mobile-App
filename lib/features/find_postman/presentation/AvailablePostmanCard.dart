@@ -22,6 +22,12 @@ class AvailablePostmanCard extends ViewModelWidget<AvailablePostmanViewModel> {
         print(model.latestPackage.docId);
         Get.to(AvailablePostmanDetails(
           itenaryModel: itenaryModel,
+          callback: () {
+            model.showDialogToSendRequest(
+              context,
+              itenaryModel.details.email,
+            );
+          },
         ));
       },
       child: Card(

@@ -62,4 +62,8 @@ setupServiceLocator() {
 
   locator.registerLazySingleton<FindAvailablePostmanService>(
       () => FindAvailablePostmanServiceImpl());
+
+  //this service is from the stacked services to show dialog
+
+  locator.registerLazySingleton(() => DialogService());
 }
