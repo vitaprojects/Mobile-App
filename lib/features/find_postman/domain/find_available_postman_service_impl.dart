@@ -2,10 +2,13 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firestore_helpers/firestore_helpers.dart';
+import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:newpostman1/features/MyPackages/domain/posted_packages_service.dart';
+import 'package:newpostman1/features/find_postman/data/RequestModel.dart';
 import 'package:newpostman1/features/post_itenary/data/ItenaryModel.dart';
 import 'package:newpostman1/features/send_package/data/FullPackageModel.dart';
+import 'package:newpostman1/services/snackbar_service.dart';
 import 'package:newpostman1/useful/service_locator.dart';
 import 'package:geodesy/geodesy.dart';
 
@@ -16,6 +19,7 @@ class FindAvailablePostmanServiceImpl extends FindAvailablePostmanService {
       locator<PostedPackagesService>();
 
   final FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+  final SnackBarService snackBarService = locator<SnackBarService>();
   @override
   Future<FullPackageModel> getInfoAboutLatestPackage() async {
     //before getting the postmans first we have to get the information about the last package of the user
@@ -79,5 +83,27 @@ class FindAvailablePostmanServiceImpl extends FindAvailablePostmanService {
   Future<void> sendRequestForPostman(
       FullPackageModel packageModel, String emailOfPostman) async {
     print("send request");
+
+    RequestModel requestModel = RequestModel(
+      date: DateTime.now(),
+      hasSeenbyPostman: false,
+      hasSeenbyUser: false,
+      postman: emailOfPostman,
+      requestId: packageModel.docId,
+      status: 0,
+      type: 0, //
+      user: Hive.box('user').get('email'),
+    );
+
+    await firebaseFirestore
+        .collection('requests')
+        .add(requestModel.toJson())
+        .then((value) {
+      Get.back();
+      Future.delayed(Duration(milliseconds: 500)).whenComplete(() {
+        snackBarService.showSnackBar(
+            "Success", "Your request sent for the postman successfully", false);
+      });
+    });
   }
 }

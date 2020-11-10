@@ -50,7 +50,7 @@ class AvailablePostmanCard extends ViewModelWidget<AvailablePostmanViewModel> {
             children: [
               Container(
                 width: blockHeight * 15,
-                color: Globals.mainColor,
+                // color: Globals.mainColor,
                 padding: EdgeInsets.all(
                   blockHeight * 2,
                 ),
@@ -64,8 +64,8 @@ class AvailablePostmanCard extends ViewModelWidget<AvailablePostmanViewModel> {
                 ),
               ),
               Container(
-                color: Colors.greenAccent,
-                width: blockWidth * 2,
+                color: Colors.grey,
+                width: blockWidth * 1,
               ),
               Expanded(
                   child: Container(
@@ -77,7 +77,14 @@ class AvailablePostmanCard extends ViewModelWidget<AvailablePostmanViewModel> {
                       scrollDirection: Axis.horizontal,
                       child: Container(
                         height: blockHeight * 4,
-                        color: Colors.greenAccent,
+                        decoration: BoxDecoration(
+                          color: Colors.greenAccent,
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(
+                              10,
+                            ),
+                          ),
+                        ),
                         alignment: Alignment.centerLeft,
                         child: Text(
                           itenaryModel.details.email,
@@ -90,7 +97,7 @@ class AvailablePostmanCard extends ViewModelWidget<AvailablePostmanViewModel> {
                     ),
                     Container(
                       height: blockHeight * 5.5,
-                      color: Colors.grey,
+                      color: Colors.grey.shade300,
                       alignment: Alignment.centerLeft,
                       child: Column(
                         children: [
@@ -122,7 +129,12 @@ class AvailablePostmanCard extends ViewModelWidget<AvailablePostmanViewModel> {
                     ),
                     Container(
                       height: blockHeight * 5.5,
-                      color: Colors.grey.shade400,
+                      decoration: BoxDecoration(
+                          color: Colors.grey.shade400,
+                          borderRadius: BorderRadius.only(
+                              bottomRight: Radius.circular(
+                            10,
+                          ))),
                       alignment: Alignment.centerLeft,
                       child: Column(
                         children: [
