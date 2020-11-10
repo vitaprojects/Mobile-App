@@ -6,11 +6,17 @@ part 'FullPackageModel.g.dart';
 class FullPackageModel {
   DateTime datePosted;
   String postedBy;
+  String docId;
   PackageModel packageModel;
   int status;
 
-  FullPackageModel(
-      {this.postedBy, this.datePosted, this.packageModel, this.status});
+  FullPackageModel({
+    this.postedBy,
+    this.datePosted,
+    this.packageModel,
+    this.status,
+    this.docId,
+  });
 
   factory FullPackageModel.fromJson(Map<String, dynamic> json) =>
       _$FullPackageModelFromJson(json);

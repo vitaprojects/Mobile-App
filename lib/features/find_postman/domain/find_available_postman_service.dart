@@ -6,4 +6,7 @@ abstract class FindAvailablePostmanService {
   Future<FullPackageModel> getInfoAboutLatestPackage();
 
   Stream<List<ItenaryModel>> getAvailablePostman(FullPackageModel packageModel);
+
+  Future<void> sendRequestForPostman(
+      FullPackageModel packageModel, String emailOfPostman);
 }

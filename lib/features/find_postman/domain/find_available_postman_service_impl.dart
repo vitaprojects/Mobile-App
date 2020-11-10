@@ -74,4 +74,11 @@ class FindAvailablePostmanServiceImpl extends FindAvailablePostmanService {
     }
     return null;
   }
+
+  @override
+  Future<void> sendRequestForPostman(
+      FullPackageModel packageModel, String emailOfPostman) {
+    // TODO: implement sendRequestForPostman
+    throw UnimplementedError();
+  }
 }

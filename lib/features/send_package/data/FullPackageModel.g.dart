@@ -9,6 +9,7 @@ part of 'FullPackageModel.dart';
 FullPackageModel _$FullPackageModelFromJson(Map<String, dynamic> json) {
   return FullPackageModel(
     postedBy: json['postedBy'] as String,
+    docId: json['docId'] as String,
     datePosted: json['datePosted'] == null
         ? null
         : DateTime.parse(json['datePosted'] as String),
@@ -25,4 +26,5 @@ Map<String, dynamic> _$FullPackageModelToJson(FullPackageModel instance) =>
       'postedBy': instance.postedBy,
       'packageModel': instance.packageModel.toJson(),
       'status': instance.status,
+      'docId': instance.docId,
     };
