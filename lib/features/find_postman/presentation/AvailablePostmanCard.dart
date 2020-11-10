@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:newpostman1/features/find_postman/presentation/AvailablePostmanDetails.dart';
+import 'package:newpostman1/features/find_postman/presentation/AvailablePostmanViewModel.dart';
 import 'package:newpostman1/features/post_itenary/data/ItenaryModel.dart';
 import 'package:newpostman1/useful/globals.dart';
+import 'package:stacked/stacked.dart';
 
-class AvailablePostmanCard extends StatelessWidget {
+class AvailablePostmanCard extends ViewModelWidget<AvailablePostmanViewModel> {
   AvailablePostmanCard({@required this.itenaryModel});
 
   final double blockHeight = Globals.blockHeight;
@@ -11,10 +15,14 @@ class AvailablePostmanCard extends StatelessWidget {
   final ItenaryModel itenaryModel;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, AvailablePostmanViewModel model) {
     return GestureDetector(
       onTap: () {
         print("send this person a request");
+        print(model.latestPackage.docId);
+        Get.to(AvailablePostmanDetails(
+          itenaryModel: itenaryModel,
+        ));
       },
       child: Card(
         shape: RoundedRectangleBorder(
