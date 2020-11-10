@@ -9,7 +9,6 @@ part of 'PackageModel.dart';
 PackageModel _$PackageModelFromJson(Map<String, dynamic> json) {
   return PackageModel(
     name: json['name'] as String,
-    docId: json['docId'] as String,
     value: (json['value'] as num)?.toDouble(),
     isInsurancePro: json['isInsurancePro'] as bool,
     description: json['description'] as String,
@@ -52,5 +51,4 @@ Map<String, dynamic> _$PackageModelToJson(PackageModel instance) =>
       'fLocation': instance.fLocation.toJson(),
       'note': instance.note,
       'images': instance.images,
-      'docId': instance.docId,
     };

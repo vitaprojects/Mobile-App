@@ -7,7 +7,6 @@ part 'PackageModel.g.dart';
 @JsonSerializable()
 class PackageModel {
   String name;
-  String docId;
   double value; //the value of the item
   bool isInsurancePro; //is the item insurance protected
   String description;
@@ -24,7 +23,6 @@ class PackageModel {
   List<String> images; //network image urls
   PackageModel({
     this.name,
-    this.docId,
     this.value,
     this.isInsurancePro,
     this.description,

@@ -29,7 +29,7 @@ class PostedPackagesServiceImpl extends PostedPackagesService {
         query: query,
         mapper: (packageDoc) {
           var package = FullPackageModel.fromJson(packageDoc.data());
-          // event.id = eventDoc.documentID;
+          package.docId = packageDoc.id;
           // print(package);
           return package;
         },
