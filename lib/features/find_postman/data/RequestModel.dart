@@ -6,6 +6,7 @@ class RequestModel {
   DateTime date;
   int type; // package or errand
   String requestId;
+  String packageDocID;
   int status; //the status of the request
 
   String postman; //the email of the postman
@@ -24,6 +25,7 @@ class RequestModel {
     this.user,
     this.hasSeenbyPostman,
     this.hasSeenbyUser,
+    this.packageDocID,
   });
 
   factory RequestModel.fromJson(Map<String, dynamic> json) =>

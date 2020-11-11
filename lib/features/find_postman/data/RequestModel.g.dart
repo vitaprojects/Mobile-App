@@ -11,6 +11,7 @@ RequestModel _$RequestModelFromJson(Map<String, dynamic> json) {
     date: json['date'] == null ? null : DateTime.parse(json['date'] as String),
     type: json['type'] as int,
     requestId: json['requestId'] as String,
+    packageDocID: json['packageDocID'] as String,
     status: json['status'] as int,
     postman: json['postman'] as String,
     user: json['user'] as String,
@@ -29,4 +30,5 @@ Map<String, dynamic> _$RequestModelToJson(RequestModel instance) =>
       'user': instance.user,
       'hasSeenbyPostman': instance.hasSeenbyPostman,
       'hasSeenbyUser': instance.hasSeenbyUser,
+      'packageDocID': instance.packageDocID,
     };

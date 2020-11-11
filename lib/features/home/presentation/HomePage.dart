@@ -4,9 +4,11 @@ import 'package:flutter_inner_drawer/inner_drawer.dart';
 import 'package:get/get.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 import 'package:newpostman1/features/drawer/presentation/DrawerWidget.dart';
+import 'package:newpostman1/features/home/domain/listen_to_events_service.dart';
 import 'package:newpostman1/features/home/presentation/ModeSelectionView.dart';
 import 'package:newpostman1/useful/globals.dart';
 import 'package:newpostman1/features/post_itenary/presentation/PostYourItenary.dart';
+import 'package:newpostman1/useful/service_locator.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key}) : super(key: key);
@@ -16,12 +18,21 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final ListenToEventsService listenToEventsService =
+      locator<ListenToEventsService>();
   goToSendPackage() {
     print("go to send package");
   }
 
   goToPostItenary() {
     print("post itenary");
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    listenToEventsService.displayAlertForNewRequest();
   }
 
   final pages = [

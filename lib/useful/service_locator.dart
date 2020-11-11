@@ -7,6 +7,8 @@ import 'package:newpostman1/features/authentication/domain/auth_service.dart';
 import 'package:newpostman1/features/authentication/domain/auth_service_impl.dart';
 import 'package:newpostman1/features/find_postman/domain/find_available_postman_service.dart';
 import 'package:newpostman1/features/find_postman/domain/find_available_postman_service_impl.dart';
+import 'package:newpostman1/features/home/domain/listen_to_events_service.dart';
+import 'package:newpostman1/features/home/domain/listen_to_events_service_impl.dart';
 import 'package:newpostman1/features/post_errand/domain/ErrandService.dart';
 import 'package:newpostman1/features/post_errand/domain/ErrandServiceImpl.dart';
 import 'package:newpostman1/features/post_itenary/domain/ItenaryService.dart';
@@ -66,4 +68,9 @@ setupServiceLocator() {
   //this service is from the stacked services to show dialog
 
   locator.registerLazySingleton(() => DialogService());
+
+  //this service will listen to the changes in the home page
+
+  locator.registerLazySingleton<ListenToEventsService>(
+      () => ListenToEventsServiceImpl());
 }

@@ -89,7 +89,8 @@ class FindAvailablePostmanServiceImpl extends FindAvailablePostmanService {
       hasSeenbyPostman: false,
       hasSeenbyUser: false,
       postman: emailOfPostman,
-      requestId: packageModel.docId,
+      // requestId: packageModel.docId,
+      packageDocID: packageModel.docId,
       status: 0,
       type: 0, //
       user: Hive.box('user').get('email'),
