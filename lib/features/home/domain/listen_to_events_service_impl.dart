@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firestore_helpers/firestore_helpers.dart';
 import 'package:hive/hive.dart';
 import 'package:newpostman1/features/find_postman/data/RequestModel.dart';
-import 'package:newpostman1/features/find_postman/presentation/AvailablePostmanViewModel.dart';
+import 'package:newpostman1/features/home/domain/respond_to_events_service.dart';
 import 'package:newpostman1/useful/service_locator.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -11,6 +11,8 @@ import 'listen_to_events_service.dart';
 class ListenToEventsServiceImpl extends ListenToEventsService {
   final FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
   final DialogService dialogService = locator<DialogService>();
+  final RespondToEventsService respondToEventsService =
+      locator<RespondToEventsService>();
   @override
   Stream<List<RequestModel>> listenToNewRequestsForthePostman() {
     try {
@@ -24,6 +26,10 @@ class ListenToEventsServiceImpl extends ListenToEventsService {
             QueryConstraint(
               field: 'hasSeenbyPostman',
               isEqualTo: false,
+            ),
+            QueryConstraint(
+              field: 'status',
+              isEqualTo: 0,
             ),
           ],
           orderBy: [
@@ -62,12 +68,16 @@ class ListenToEventsServiceImpl extends ListenToEventsService {
           title: 'You received a new request',
           description: 'You received a new request from ${requestModel.user}',
           // mainButtonTitle: 'Confirm',
+          confirmationTitle: "view".toUpperCase(),
+          cancelTitle: "cancel".toUpperCase(),
         )
             .then((value) {
           if (value.confirmed) {
             print("user accepted");
           } else {
             print("user rejected");
+
+            respondToEventsService.cancelRequest(requestModel.requestId);
           }
         });
       }
