@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:newpostman1/features/home/domain/respond_to_events_service.dart';
+import 'package:newpostman1/features/send_package/data/PackageModel.dart';
 import 'package:newpostman1/services/snackbar_service.dart';
 import 'package:newpostman1/useful/service_locator.dart';
 
@@ -33,5 +34,18 @@ class RespondToEventsServiceImpl extends RespondToEventsService {
       snackBarService.showSnackBar(
           "Error occured", "Error occured while cancelling the request", true);
     }
+  }
+
+  @override
+  Future<PackageModel> getPackageDetails(String docId) async {
+    PackageModel packageModel;
+
+    DocumentSnapshot documentSnapshot =
+        await firebaseFirestore.collection("packages").doc(docId).get();
+
+    packageModel =
+        PackageModel.fromJson(documentSnapshot.data()['packageModel']);
+
+    return packageModel;
   }
 }

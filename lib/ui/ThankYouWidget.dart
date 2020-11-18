@@ -5,7 +5,7 @@ import 'package:newpostman1/features/home/presentation/HomePage.dart';
 import 'package:newpostman1/features/MyTrips/presentation/MyTripsView.dart';
 import 'package:newpostman1/ui/PaymentPage.dart';
 import 'package:newpostman1/features/MyPackages/presentation/TrackPackage.dart';
-import 'package:newpostman1/ui/ViewCustomerRequest.dart';
+import 'package:newpostman1/features/home/presentation/ViewCustomerRequestForPackage/CustomerRequestForPackageView.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 import '../useful/globals.dart';
@@ -116,7 +116,7 @@ class ThankYouWidget extends StatelessWidget {
                       ),
                       onPressed: () {
                         Navigator.pop(context);
-                        Get.to(ViewCustomerRequest());
+                        Get.to(CustomerRequestForPackageView());
                       },
                       width: 120,
                     ),

@@ -1,8 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firestore_helpers/firestore_helpers.dart';
+import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:newpostman1/features/find_postman/data/RequestModel.dart';
 import 'package:newpostman1/features/home/domain/respond_to_events_service.dart';
+import 'package:newpostman1/features/home/presentation/ViewCustomerRequestForErrand/CustomerRequestForErrandView.dart';
+import 'package:newpostman1/features/home/presentation/ViewCustomerRequestForPackage/CustomerRequestForPackageView.dart';
 import 'package:newpostman1/useful/service_locator.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -72,8 +75,21 @@ class ListenToEventsServiceImpl extends ListenToEventsService {
           cancelTitle: "cancel".toUpperCase(),
         )
             .then((value) {
-          if (value.confirmed) {
+          if (value != null && value.confirmed) {
             print("user accepted");
+
+            //now we have to load the ui depending on the type of the package
+            //if the request is for a package we have to load the viewcustomerRequest for package
+            //othwerwise we have to load the viewcustomerReuqest For errand
+
+            if (requestModel.type == 0) {
+              //this is a package request
+              Get.to(CustomerRequestForPackageView(
+                requestModel: requestModel,
+              ));
+            } else {
+              Get.to(CustomerRequestForErrandView());
+            }
           } else {
             print("user rejected");
 

@@ -7,6 +7,19 @@
 
 <key>NSLocationAlwaysUsageDescription</key>
 <string>Postman wants to access your location to provide it's services</string>
+<key>LSApplicationQueriesSchemes</key>
+<array>
+    <string>comgooglemaps</string>
+    <string>baidumap</string>
+    <string>iosamap</string>
+    <string>waze</string>
+    <string>yandexmaps</string>
+    <string>yandexnavi</string>
+    <string>citymapper</string>
+    <string>mapswithme</string>
+    <string>osmandmaps</string>
+    <string>dgis</string>
+</array>
 
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
