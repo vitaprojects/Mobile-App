@@ -99,4 +99,10 @@ class ListenToEventsServiceImpl extends ListenToEventsService {
       }
     });
   }
+
+  @override
+  Stream<List<RequestModel>> listenToNewResponsesFromthePostman() {
+    // TODO: implement listenToNewResponsesFromthePostman
+    throw UnimplementedError();
+  }
 }

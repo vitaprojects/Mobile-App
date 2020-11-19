@@ -5,4 +5,6 @@ abstract class ListenToEventsService {
   Stream<List<RequestModel>> listenToNewRequestsForthePostman();
 
   void displayAlertForNewRequest();
+
+  Stream<List<RequestModel>> listenToNewResponsesFromthePostman();
 }
