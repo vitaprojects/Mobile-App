@@ -9,4 +9,7 @@ abstract class RespondToEventsService {
 
 //this will fetch the details about the package
   Future<PackageModel> getPackageDetails(String docId);
+
+  Future<void> sendOfferForThePackageToTheClient(
+      String requestId, double offerAmount);
 }

@@ -5,6 +5,7 @@ import 'package:newpostman1/features/home/domain/respond_to_events_service.dart'
 import 'package:newpostman1/features/send_package/data/PackageModel.dart';
 import 'package:newpostman1/services/snackbar_service.dart';
 import 'package:newpostman1/useful/service_locator.dart';
+import 'package:string_validator/string_validator.dart';
 
 class CustomerRequestForPackageViewModel extends ChangeNotifier {
   final RespondToEventsService respondToEventsService =
@@ -64,6 +65,23 @@ class CustomerRequestForPackageViewModel extends ChangeNotifier {
         snackBarService.showSnackBar(
             "Error occured", "Error occured while launching maps", true);
       }
+    }
+  }
+
+  TextEditingController offerTsextEditingController =
+      TextEditingController(); //this is added to get the offer amount the user added
+
+  void sendOffer() {
+    if (offerTsextEditingController.text.isNotEmpty &&
+        isFloat(offerTsextEditingController.text)) {
+      if (requestModel.requestId != null) {
+        respondToEventsService.sendOfferForThePackageToTheClient(
+            requestModel.requestId,
+            double.parse(offerTsextEditingController.text));
+      }
+    } else {
+      snackBarService.showSnackBar("Input error",
+          "Please enter a valid value as the offer amount", true);
     }
   }
 }

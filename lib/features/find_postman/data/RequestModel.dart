@@ -15,6 +15,7 @@ class RequestModel {
 
   bool hasSeenbyPostman; //whether the postman or the user has seen the request
   bool hasSeenbyUser;
+  double postmanOffer;
 
   RequestModel({
     this.date,
@@ -26,6 +27,7 @@ class RequestModel {
     this.hasSeenbyPostman,
     this.hasSeenbyUser,
     this.packageDocID,
+    this.postmanOffer,
   });
 
   factory RequestModel.fromJson(Map<String, dynamic> json) =>

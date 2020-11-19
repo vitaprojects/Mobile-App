@@ -48,4 +48,23 @@ class RespondToEventsServiceImpl extends RespondToEventsService {
 
     return packageModel;
   }
+
+  @override
+  Future<void> sendOfferForThePackageToTheClient(
+      String requestId, double offerAmount) async {
+    try {
+      await firebaseFirestore.collection('requests').doc(requestId).update({
+        'hasSeenbyPostman': true,
+        'postmanOffer': offerAmount,
+        'status': 1,
+      }).then((value) {
+        snackBarService.showSnackBar(
+            "Success", "Your offer sent successfully to the client", false);
+      });
+    } on PlatformException catch (e) {
+      snackBarService.showSnackBar("Error occured", e.message, true);
+    } catch (e) {
+      snackBarService.showSnackBar("Error occured", e.toString(), true);
+    }
+  }
 }

@@ -17,6 +17,7 @@ RequestModel _$RequestModelFromJson(Map<String, dynamic> json) {
     user: json['user'] as String,
     hasSeenbyPostman: json['hasSeenbyPostman'] as bool,
     hasSeenbyUser: json['hasSeenbyUser'] as bool,
+    postmanOffer: json['postmanOffer'] as double,
   );
 }
 
@@ -31,4 +32,5 @@ Map<String, dynamic> _$RequestModelToJson(RequestModel instance) =>
       'hasSeenbyPostman': instance.hasSeenbyPostman,
       'hasSeenbyUser': instance.hasSeenbyUser,
       'packageDocID': instance.packageDocID,
+      'postmanOffer': instance.postmanOffer,
     };

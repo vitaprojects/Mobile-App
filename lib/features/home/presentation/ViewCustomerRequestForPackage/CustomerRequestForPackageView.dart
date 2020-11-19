@@ -217,6 +217,9 @@ class CustomerRequestForPackageView extends StatelessWidget {
                                       ),
                                       alignment: Alignment.center,
                                       child: FormBuilderTextField(
+                                        keyboardType: TextInputType.number,
+                                        controller:
+                                            model.offerTsextEditingController,
                                         attribute: "offer",
                                         decoration: InputDecoration(
                                             labelText: "Offer amount",
@@ -231,13 +234,15 @@ class CustomerRequestForPackageView extends StatelessWidget {
                                     FormButton(
                                       buttonText: "Send offer",
                                       ontapFun: () {
-                                        Get.back();
+                                        /* Get.back();
                                         Future.delayed(Duration(seconds: 2))
                                             .then((value) {
                                           // Get.back();
                                           Get.snackbar("Offer sent",
                                               "Your offer sent successfully");
-                                        });
+                                        }); */
+                                        print("send offer to the customer");
+                                        model.sendOffer();
                                       },
                                     ),
                                     SizedBox(
