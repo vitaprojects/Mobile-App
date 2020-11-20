@@ -33,6 +33,7 @@ class _HomePageState extends State<HomePage> {
     // TODO: implement initState
     super.initState();
     listenToEventsService.displayAlertForNewRequest();
+    listenToEventsService.displayAlertForNewResponseFromPostman();
   }
 
   final pages = [

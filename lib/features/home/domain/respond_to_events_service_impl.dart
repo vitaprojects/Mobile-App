@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:newpostman1/features/home/domain/respond_to_events_service.dart';
 import 'package:newpostman1/features/send_package/data/PackageModel.dart';
 import 'package:newpostman1/services/snackbar_service.dart';
@@ -58,8 +59,11 @@ class RespondToEventsServiceImpl extends RespondToEventsService {
         'postmanOffer': offerAmount,
         'status': 1,
       }).then((value) {
-        snackBarService.showSnackBar(
-            "Success", "Your offer sent successfully to the client", false);
+        Get.back();
+        Future.delayed(Duration(milliseconds: 500)).then((value) {
+          snackBarService.showSnackBar(
+              "Success", "Your offer sent successfully to the client", false);
+        });
       });
     } on PlatformException catch (e) {
       snackBarService.showSnackBar("Error occured", e.message, true);

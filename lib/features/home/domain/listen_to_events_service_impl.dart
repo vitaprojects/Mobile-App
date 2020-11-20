@@ -102,7 +102,78 @@ class ListenToEventsServiceImpl extends ListenToEventsService {
 
   @override
   Stream<List<RequestModel>> listenToNewResponsesFromthePostman() {
-    // TODO: implement listenToNewResponsesFromthePostman
-    throw UnimplementedError();
+    try {
+      Query query = buildQuery(
+          collection: firebaseFirestore.collection('requests'),
+          constraints: [
+            QueryConstraint(
+              field: 'user',
+              isEqualTo: Hive.box('user').get('email'), //the users email
+            ),
+            QueryConstraint(
+              field: 'hasSeenbyPostman', //postman should see the request
+              isEqualTo: true,
+            ),
+            QueryConstraint(
+              field:
+                  'hasSeenbyUser', //user should nt see the request because this is a new request
+              isEqualTo: false,
+            ),
+            QueryConstraint(
+              field: 'status', //status should be 1 when the postman accepts it
+              isEqualTo: 1,
+            ),
+          ],
+          orderBy: [
+            OrderConstraint(
+              'date',
+              true,
+            )
+          ]);
+      return getDataFromQuery(
+        query: query,
+        mapper: (requestDoc) {
+          var request = RequestModel.fromJson(requestDoc.data());
+          request.requestId = requestDoc.id;
+          return request;
+        },
+        // clientSidefilters: (event) =>
+        //     event.startTime > DateTime.now() // only future events
+        // orderComparer: (event1, event2) => event1.name.compareTo(event2.name)
+      );
+    } on Exception catch (ex) {
+      print(ex);
+    }
+    return null;
+  }
+
+  @override
+  void displayAlertForNewResponseFromPostman() async {
+    print("display alert for postman");
+    listenToNewResponsesFromthePostman().listen((event) {
+      if (event.length != 0) {
+        RequestModel requestModel = event.first;
+        dialogService
+            .showConfirmationDialog(
+          // variant: DialogType.form,
+          title: 'You received a new offer',
+          description:
+              'You received a new offer from ${requestModel.postman} with an offer of ${requestModel.postmanOffer}',
+
+          // mainButtonTitle: 'Confirm',
+          confirmationTitle: "accept".toUpperCase(),
+          cancelTitle: "reject".toUpperCase(),
+        )
+            .then((value) {
+          if (value != null && value.confirmed) {
+            print("user accepted the offer");
+          } else {
+            print("user rejected");
+          }
+        });
+      } else {
+        print("no new requests");
+      }
+    });
   }
 }
