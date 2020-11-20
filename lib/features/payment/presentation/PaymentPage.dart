@@ -5,12 +5,16 @@ import 'package:get/get.dart';
 import 'package:newpostman1/customWidgets/CustomInputField.dart';
 import 'package:newpostman1/customWidgets/FormButton.dart';
 import 'package:newpostman1/customWidgets/PaymentSelectionButton.dart';
+import 'package:newpostman1/features/find_postman/data/RequestModel.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
-import '../useful/globals.dart';
+import '../../../useful/globals.dart';
 
 class PaymentPage extends StatefulWidget {
-  PaymentPage({Key key}) : super(key: key);
+  PaymentPage({
+    this.requestModel,
+  });
+  final RequestModel requestModel;
 
   @override
   _PaymentPageState createState() => _PaymentPageState();

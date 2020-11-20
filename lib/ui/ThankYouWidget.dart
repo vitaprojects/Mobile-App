@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newpostman1/features/home/presentation/HomePage.dart';
 import 'package:newpostman1/features/MyTrips/presentation/MyTripsView.dart';
-import 'package:newpostman1/ui/PaymentPage.dart';
+import 'package:newpostman1/features/payment/presentation/PaymentPage.dart';
 import 'package:newpostman1/features/MyPackages/presentation/TrackPackage.dart';
 import 'package:newpostman1/features/home/presentation/ViewCustomerRequestForPackage/CustomerRequestForPackageView.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';

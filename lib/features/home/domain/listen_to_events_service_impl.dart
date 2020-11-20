@@ -6,6 +6,7 @@ import 'package:newpostman1/features/find_postman/data/RequestModel.dart';
 import 'package:newpostman1/features/home/domain/respond_to_events_service.dart';
 import 'package:newpostman1/features/home/presentation/ViewCustomerRequestForErrand/CustomerRequestForErrandView.dart';
 import 'package:newpostman1/features/home/presentation/ViewCustomerRequestForPackage/CustomerRequestForPackageView.dart';
+import 'package:newpostman1/features/payment/presentation/PaymentPage.dart';
 import 'package:newpostman1/useful/service_locator.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -167,6 +168,9 @@ class ListenToEventsServiceImpl extends ListenToEventsService {
             .then((value) {
           if (value != null && value.confirmed) {
             print("user accepted the offer");
+            // respondToEventsService.respondTotheOfferOfPostman(
+            //     true, requestModel);
+            Get.to(PaymentPage());
           } else {
             print("user rejected");
             respondToEventsService.respondTotheOfferOfPostman(
