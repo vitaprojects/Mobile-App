@@ -1,3 +1,4 @@
+import 'package:newpostman1/features/find_postman/data/RequestModel.dart';
 import 'package:newpostman1/features/send_package/data/PackageModel.dart';
 
 abstract class RespondToEventsService {
@@ -12,4 +13,7 @@ abstract class RespondToEventsService {
 
   Future<void> sendOfferForThePackageToTheClient(
       String requestId, double offerAmount);
+
+  Future<void> respondTotheOfferOfPostman(
+      bool acceptOffer, RequestModel requestModel);
 }

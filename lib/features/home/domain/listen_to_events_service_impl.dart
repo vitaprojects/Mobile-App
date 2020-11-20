@@ -169,6 +169,8 @@ class ListenToEventsServiceImpl extends ListenToEventsService {
             print("user accepted the offer");
           } else {
             print("user rejected");
+            respondToEventsService.respondTotheOfferOfPostman(
+                false, requestModel);
           }
         });
       } else {

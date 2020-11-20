@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:newpostman1/features/find_postman/data/RequestModel.dart';
 import 'package:newpostman1/features/home/domain/respond_to_events_service.dart';
 import 'package:newpostman1/features/send_package/data/PackageModel.dart';
 import 'package:newpostman1/services/snackbar_service.dart';
@@ -70,5 +71,25 @@ class RespondToEventsServiceImpl extends RespondToEventsService {
     } catch (e) {
       snackBarService.showSnackBar("Error occured", e.toString(), true);
     }
+  }
+
+  @override
+  Future<void> respondTotheOfferOfPostman(
+      bool acceptOffer, RequestModel requestModel) async {
+    //if the user is going to reject the order
+    //we have to change the status of the request to -2 and we have to set hasseenbyuser to true
+
+    if (acceptOffer == false) {
+      await firebaseFirestore
+          .collection('requests')
+          .doc(requestModel.requestId)
+          .update({
+        'status': -2,
+        'hasSeenbyUser': true,
+      }).then((value) {
+        snackBarService.showSnackBar(
+            "Success", "Offer rejected successfully", false);
+      });
+    } else {}
   }
 }
