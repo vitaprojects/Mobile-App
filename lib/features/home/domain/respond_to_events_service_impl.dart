@@ -1,9 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:newpostman1/features/find_postman/data/RequestModel.dart';
+import 'package:newpostman1/features/find_postman_for_package/data/RequestModel.dart';
 import 'package:newpostman1/features/home/data/OrderModel.dart';
 import 'package:newpostman1/features/home/domain/respond_to_events_service.dart';
+import 'package:newpostman1/features/post_errand/data/PostErrandModel.dart';
 import 'package:newpostman1/features/send_package/data/PackageModel.dart';
 import 'package:newpostman1/services/snackbar_service.dart';
 import 'package:newpostman1/useful/service_locator.dart';
@@ -109,10 +110,22 @@ class RespondToEventsServiceImpl extends RespondToEventsService {
 
       await firebaseFirestore
           .collection('packages')
-          .doc(requestModel.packageDocID)
+          .doc(requestModel.packageDocID) //TODO complete this ordrmodel
           .update({'status': 1});
 
       OrderModel orderModel = OrderModel();
     }
+  }
+
+  @override
+  Future<PostErrandModel> getErrandDetails(String docid) async {
+    PostErrandModel postErrandModel;
+
+    DocumentSnapshot documentSnapshot =
+        await firebaseFirestore.collection("errands").doc(docid).get();
+
+    postErrandModel = PostErrandModel.fromJson(documentSnapshot.data());
+
+    return postErrandModel;
   }
 }

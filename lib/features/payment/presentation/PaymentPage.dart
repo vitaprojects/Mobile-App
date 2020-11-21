@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:newpostman1/customWidgets/CustomInputField.dart';
 import 'package:newpostman1/customWidgets/FormButton.dart';
 import 'package:newpostman1/customWidgets/PaymentSelectionButton.dart';
-import 'package:newpostman1/features/find_postman/data/RequestModel.dart';
+import 'package:newpostman1/features/find_postman_for_package/data/RequestModel.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 import '../../../useful/globals.dart';

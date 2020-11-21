@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:newpostman1/features/find_postman/presentation/VehicleTypeDisplayWidget.dart';
+import 'package:newpostman1/features/find_postman_for_package/presentation/VehicleTypeDisplayWidget.dart';
 import 'package:newpostman1/useful/globals.dart';
 
 class PostmanInfoCard extends StatelessWidget {

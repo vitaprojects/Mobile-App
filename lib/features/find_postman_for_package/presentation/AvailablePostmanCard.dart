@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:newpostman1/features/find_postman/presentation/AvailablePostmanDetails.dart';
-import 'package:newpostman1/features/find_postman/presentation/AvailablePostmanViewModel.dart';
+import 'package:newpostman1/features/find_postman_for_package/presentation/AvailablePostmanDetails.dart';
+import 'package:newpostman1/features/find_postman_for_package/presentation/AvailablePostmanViewModel.dart';
 import 'package:newpostman1/features/post_itenary/data/ItenaryModel.dart';
 import 'package:newpostman1/useful/globals.dart';
 import 'package:stacked/stacked.dart';

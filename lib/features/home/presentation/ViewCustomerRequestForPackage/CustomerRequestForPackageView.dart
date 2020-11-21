@@ -5,7 +5,7 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:get/get.dart';
 import 'package:newpostman1/customWidgets/FormButton.dart';
-import 'package:newpostman1/features/find_postman/data/RequestModel.dart';
+import 'package:newpostman1/features/find_postman_for_package/data/RequestModel.dart';
 import 'package:newpostman1/features/home/presentation/CustomButtonToShowLocation.dart';
 import 'package:newpostman1/features/home/presentation/ViewCustomerRequestForPackage/CustomerRequestForPackageViewModel.dart';
 import 'package:newpostman1/features/home/presentation/ViewCustomerRequestForPackage/PackageRequestListTile.dart';

@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:newpostman1/features/find_postman/domain/find_available_postman_service.dart';
+import 'package:newpostman1/features/find_postman_for_package/domain/find_available_postman_for_package_service.dart';
 import 'package:newpostman1/features/send_package/data/FullPackageModel.dart';
 import 'package:newpostman1/useful/service_locator.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -11,8 +11,8 @@ enum DialogType { base, form }
 
 class AvailablePostmanViewModel extends ChangeNotifier {
   FullPackageModel latestPackage;
-  final FindAvailablePostmanService findAvailablePostmanService =
-      locator<FindAvailablePostmanService>();
+  final FindAvailablePostmanForPackageService findAvailablePostmanService =
+      locator<FindAvailablePostmanForPackageService>();
 
   final DialogService dialogService = locator<DialogService>();
 

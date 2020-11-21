@@ -1,19 +1,19 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:newpostman1/features/find_postman/domain/find_available_postman_service.dart';
-import 'package:newpostman1/features/find_postman/presentation/AvailablePostmanCard.dart';
-import 'package:newpostman1/features/find_postman/presentation/AvailablePostmanViewModel.dart';
+import 'package:newpostman1/features/find_postman_for_package/domain/find_available_postman_for_package_service.dart';
+import 'package:newpostman1/features/find_postman_for_package/presentation/AvailablePostmanCard.dart';
 import 'package:newpostman1/features/post_itenary/data/ItenaryModel.dart';
 import 'package:newpostman1/useful/service_locator.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../useful/globals.dart';
+import 'AvailablePostmanViewModel.dart';
 
 class AvailablePostmanView extends StatelessWidget {
   AvailablePostmanView();
   final double blockHeight = Globals.blockHeight;
-  final FindAvailablePostmanService findAvailablePostmanService =
-      locator<FindAvailablePostmanService>();
+  final FindAvailablePostmanForPackageService findAvailablePostmanService =
+      locator<FindAvailablePostmanForPackageService>();
 
   final double blockWidth = Globals.blockWidth;
 
@@ -29,7 +29,7 @@ class AvailablePostmanView extends StatelessWidget {
             child: Scaffold(
               appBar: AppBar(
                 backgroundColor: Globals.mainColor,
-                title: Text("Available Postmans"),
+                title: Text("Available Postman for package"),
               ),
               body: Column(
                 children: [

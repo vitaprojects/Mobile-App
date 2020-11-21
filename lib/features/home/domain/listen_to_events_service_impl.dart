@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firestore_helpers/firestore_helpers.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:newpostman1/features/find_postman/data/RequestModel.dart';
+import 'package:newpostman1/features/find_postman_for_package/data/RequestModel.dart';
 import 'package:newpostman1/features/home/domain/respond_to_events_service.dart';
 import 'package:newpostman1/features/home/presentation/ViewCustomerRequestForErrand/CustomerRequestForErrandView.dart';
 import 'package:newpostman1/features/home/presentation/ViewCustomerRequestForPackage/CustomerRequestForPackageView.dart';
@@ -89,7 +89,9 @@ class ListenToEventsServiceImpl extends ListenToEventsService {
                 requestModel: requestModel,
               ));
             } else {
-              Get.to(CustomerRequestForErrandView());
+              Get.to(CustomerRequestForErrandView(
+                requestModel: requestModel,
+              ));
             }
           } else {
             print("user rejected");
@@ -178,7 +180,7 @@ class ListenToEventsServiceImpl extends ListenToEventsService {
           }
         });
       } else {
-        print("no new requests");
+        print("no new requests from postman");
       }
     });
   }

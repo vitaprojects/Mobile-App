@@ -15,19 +15,22 @@ class PostErrandModel {
   double tip;
   List<String> images;
   int type;
+  String userEmaill;
 
-  PostErrandModel(
-      {this.pickUpFrom,
-      this.pickUpType,
-      this.pAddress,
-      this.dAddress,
-      this.phone,
-      this.orderNo,
-      this.instructions,
-      this.payment,
-      this.tip,
-      this.images,
-      this.type});
+  PostErrandModel({
+    this.pickUpFrom,
+    this.pickUpType,
+    this.pAddress,
+    this.dAddress,
+    this.phone,
+    this.orderNo,
+    this.instructions,
+    this.payment,
+    this.tip,
+    this.images,
+    this.type,
+    this.userEmaill,
+  });
 
   factory PostErrandModel.fromJson(Map<String, dynamic> json) =>
       _$PostErrandModelFromJson(json);

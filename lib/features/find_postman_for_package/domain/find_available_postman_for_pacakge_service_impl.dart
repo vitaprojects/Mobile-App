@@ -5,16 +5,17 @@ import 'package:firestore_helpers/firestore_helpers.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:newpostman1/features/MyPackages/domain/posted_packages_service.dart';
-import 'package:newpostman1/features/find_postman/data/RequestModel.dart';
+import 'package:newpostman1/features/find_postman_for_package/data/RequestModel.dart';
 import 'package:newpostman1/features/post_itenary/data/ItenaryModel.dart';
 import 'package:newpostman1/features/send_package/data/FullPackageModel.dart';
 import 'package:newpostman1/services/snackbar_service.dart';
 import 'package:newpostman1/useful/service_locator.dart';
 import 'package:geodesy/geodesy.dart';
 
-import 'find_available_postman_service.dart';
+import 'find_available_postman_for_package_service.dart';
 
-class FindAvailablePostmanServiceImpl extends FindAvailablePostmanService {
+class FindAvailablePostmanForPackageServiceImpl
+    extends FindAvailablePostmanForPackageService {
   final PostedPackagesService postedPackagesService =
       locator<PostedPackagesService>();
 

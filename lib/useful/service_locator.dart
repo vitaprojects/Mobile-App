@@ -5,8 +5,8 @@ import 'package:newpostman1/features/MyTrips/domain/trip_service.dart';
 import 'package:newpostman1/features/MyTrips/domain/trip_service_impl.dart';
 import 'package:newpostman1/features/authentication/domain/auth_service.dart';
 import 'package:newpostman1/features/authentication/domain/auth_service_impl.dart';
-import 'package:newpostman1/features/find_postman/domain/find_available_postman_service.dart';
-import 'package:newpostman1/features/find_postman/domain/find_available_postman_service_impl.dart';
+import 'package:newpostman1/features/find_postman_for_package/domain/find_available_postman_for_package_service.dart';
+import 'package:newpostman1/features/find_postman_for_package/domain/find_available_postman_for_pacakge_service_impl.dart';
 import 'package:newpostman1/features/home/domain/listen_to_events_service.dart';
 import 'package:newpostman1/features/home/domain/listen_to_events_service_impl.dart';
 import 'package:newpostman1/features/home/domain/respond_to_events_service.dart';
@@ -64,8 +64,8 @@ setupServiceLocator() {
 
   //this service is to get the avaialble postmans for the pacakge of the user
 
-  locator.registerLazySingleton<FindAvailablePostmanService>(
-      () => FindAvailablePostmanServiceImpl());
+  locator.registerLazySingleton<FindAvailablePostmanForPackageService>(
+      () => FindAvailablePostmanForPackageServiceImpl());
 
   //this service is from the stacked services to show dialog
 

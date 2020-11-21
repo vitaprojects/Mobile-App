@@ -2,12 +2,14 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
 import 'package:newpostman1/features/authentication/domain/auth_service.dart';
 import 'package:newpostman1/features/authentication/presentation/LoginPageView.dart';
 import 'package:newpostman1/features/drawer/presentation/ItemWidgetInDrawer.dart';
 import 'package:newpostman1/features/drawer/presentation/TitleWidgetInDrawer.dart';
+import 'package:newpostman1/features/find_postman_for_errand/presentation/AvailablePostmanForErrandView.dart';
+import 'package:newpostman1/features/find_postman_for_package/presentation/AvailablePostmanView.dart';
 import 'package:newpostman1/ui/AboutUsPage.dart';
-import 'package:newpostman1/features/find_postman/presentation/AvailablePostmanView.dart';
 import 'package:newpostman1/ui/FindLocalErrands.dart';
 import 'package:newpostman1/features/MyTrips/presentation/MyTripsView.dart';
 import 'package:newpostman1/ui/OngoingErrands.dart';
@@ -70,13 +72,16 @@ class DrawerWidget extends StatelessWidget {
                       // color: Colors.orangeAccent,
                       alignment: Alignment.center,
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
                             height: blockHeight * 3,
                             // color: Colors.redAccent,
                             alignment: Alignment.centerLeft,
                             child: AutoSizeText(
-                              "Danu",
+                              Hive.box('user').get('uname') != null
+                                  ? Hive.box('user').get('uname')
+                                  : "Username",
                               style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.w600,
@@ -89,24 +94,26 @@ class DrawerWidget extends StatelessWidget {
                             // color: Colors.yellowAccent,
                             alignment: Alignment.centerLeft,
                             child: Text(
-                              "dulajmichael@gmail.com",
+                              Hive.box('user').get('email') != null
+                                  ? Hive.box('user').get('email')
+                                  : "Email",
                               style: TextStyle(
                                 fontWeight: FontWeight.w500,
                               ),
                             ),
                           ),
-                          Container(
-                            height: blockHeight * 3,
-                            // color: Colors.yellowAccent,
-                            alignment: Alignment.centerLeft,
-                            child: Text(
-                              "123456",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                color: Globals.mainColor,
-                              ),
-                            ),
-                          ),
+                          // Container(
+                          //   height: blockHeight * 3,
+                          //   // color: Colors.yellowAccent,
+                          //   alignment: Alignment.centerLeft,
+                          //   child: Text(
+                          //     "123456",
+                          //     style: TextStyle(
+                          //       fontWeight: FontWeight.w500,
+                          //       color: Globals.mainColor,
+                          //     ),
+                          //   ),
+                          // ),
                         ],
                       ),
                     ))
@@ -333,6 +340,23 @@ class DrawerWidget extends StatelessWidget {
               alignment: Alignment.center,
               child: Column(
                 children: [
+                  ItemWidgetInDrawer(
+                    icon: Icon(
+                      FontAwesomeIcons.search,
+                    ),
+                    title: "Find Postman",
+                    margin: margin,
+                    ontapFunc: () {
+                      closeDrawer();
+
+                      print("ongoing errands");
+                      Get.to(AvailablePostmanForErrandView());
+                    },
+                  ),
+                  Divider(
+                    height: blockHeight / 2,
+                    thickness: blockHeight / 4,
+                  ),
                   ItemWidgetInDrawer(
                     icon: Icon(
                       FontAwesomeIcons.walking,

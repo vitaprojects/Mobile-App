@@ -23,6 +23,7 @@ PostErrandModel _$PostErrandModelFromJson(Map<String, dynamic> json) {
     tip: (json['tip'] as num)?.toDouble(),
     images: (json['images'] as List)?.map((e) => e as String)?.toList(),
     type: json['type'] as int,
+    userEmaill: json['userEmaill'] as String,
   );
 }
 
@@ -30,8 +31,8 @@ Map<String, dynamic> _$PostErrandModelToJson(PostErrandModel instance) =>
     <String, dynamic>{
       'pickUpFrom': instance.pickUpFrom,
       'pickUpType': instance.pickUpType,
-      'pAddress': instance.pAddress.toJson(),
-      'dAddress': instance.dAddress.toJson(),
+      'pAddress': instance.pAddress,
+      'dAddress': instance.dAddress,
       'phone': instance.phone,
       'orderNo': instance.orderNo,
       'instructions': instance.instructions,
@@ -39,4 +40,5 @@ Map<String, dynamic> _$PostErrandModelToJson(PostErrandModel instance) =>
       'tip': instance.tip,
       'images': instance.images,
       'type': instance.type,
+      'userEmaill': instance.userEmaill,
     };

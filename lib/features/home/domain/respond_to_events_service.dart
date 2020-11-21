@@ -1,4 +1,5 @@
-import 'package:newpostman1/features/find_postman/data/RequestModel.dart';
+import 'package:newpostman1/features/find_postman_for_package/data/RequestModel.dart';
+import 'package:newpostman1/features/post_errand/data/PostErrandModel.dart';
 import 'package:newpostman1/features/send_package/data/PackageModel.dart';
 
 abstract class RespondToEventsService {
@@ -10,6 +11,8 @@ abstract class RespondToEventsService {
 
 //this will fetch the details about the package
   Future<PackageModel> getPackageDetails(String docId);
+
+  Future<PostErrandModel> getErrandDetails(String docid);
 
   Future<void> sendOfferForThePackageToTheClient(
       String requestId, double offerAmount);
