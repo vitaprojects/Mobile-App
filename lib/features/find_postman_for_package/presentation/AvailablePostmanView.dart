@@ -75,14 +75,19 @@ class AvailablePostmanView extends StatelessWidget {
                                   } else {
                                     return Container(
                                       height: blockHeight * 10,
-                                      // color: Colors.redAccent,
+                                      //  color: Colors.greenAccent,
+                                      margin: EdgeInsets.symmetric(
+                                        horizontal: blockWidth * 10,
+                                      ),
                                       alignment: Alignment.center,
-                                      child: Text(
+                                      child: AutoSizeText(
                                         "Sorry we cannot find any matching postman",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                          fontSize: 20,
+                                          fontSize: 25,
+                                          fontWeight: FontWeight.w600,
                                         ),
+                                        minFontSize: 18,
                                       ),
                                     );
                                   }

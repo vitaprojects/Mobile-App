@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:geocoder/geocoder.dart';
 import 'package:newpostman1/features/find_postman_for_errand/domain/find_available_postman_for_errand_service.dart';
 import 'package:newpostman1/features/post_errand/data/PostErrandModel.dart';
 import 'package:newpostman1/useful/service_locator.dart';
@@ -38,5 +39,16 @@ class AvailablePostmanForErrandViewModel extends ChangeNotifier {
       findAvailablePostmanService.sendRequestForPostman(
           postErrandModel, postmanEmail);
     }
+  }
+
+  Future<String> getAddressFromCoordinates(
+      double latitude, double longitude) async {
+    String addressName;
+    List<Address> addresses = await Geocoder.local
+        .findAddressesFromCoordinates(Coordinates(latitude, longitude));
+
+    addressName = addresses.first.addressLine;
+
+    return addressName;
   }
 }

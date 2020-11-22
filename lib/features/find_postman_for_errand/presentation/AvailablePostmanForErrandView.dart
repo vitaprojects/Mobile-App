@@ -1,7 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:newpostman1/features/find_postman_for_errand/presentation/AvailablePostmanCardForErrand.dart';
 import 'package:newpostman1/features/find_postman_for_errand/presentation/AvailablePostmanForErrandViewModel.dart';
 import 'package:newpostman1/features/find_postman_for_package/presentation/AvailablePostmanCard.dart';
+import 'package:newpostman1/features/post_errand/data/RunErrandModel.dart';
 import 'package:newpostman1/features/post_itenary/data/ItenaryModel.dart';
 import 'package:newpostman1/useful/globals.dart';
 import 'package:stacked/stacked.dart';
@@ -29,7 +31,7 @@ class AvailablePostmanForErrandView extends StatelessWidget {
                 children: [
                   Container(
                     height: blockHeight * 2,
-                    color: Colors.red,
+                    // color: Colors.red,
                   ),
                   Expanded(
                     child: Container(
@@ -49,7 +51,7 @@ class AvailablePostmanForErrandView extends StatelessWidget {
                                   AsyncSnapshot snapshot) {
                                 if (snapshot.connectionState ==
                                     ConnectionState.active) {
-                                  List<ItenaryModel> list = snapshot.data;
+                                  List<RunErrandModel> list = snapshot.data;
                                   if (list != null && list.length != 0) {
                                     return Container(
                                       // color: Colors.yellow,
@@ -61,8 +63,8 @@ class AvailablePostmanForErrandView extends StatelessWidget {
                                         itemCount: list.length,
                                         itemBuilder:
                                             (BuildContext context, int index) {
-                                          return AvailablePostmanCard(
-                                            itenaryModel: list[index],
+                                          return AvailablePostmanCardForErrand(
+                                            runErrandModel: list[index],
                                           );
                                         },
                                       ),
@@ -70,14 +72,19 @@ class AvailablePostmanForErrandView extends StatelessWidget {
                                   } else {
                                     return Container(
                                       height: blockHeight * 10,
-                                      // color: Colors.redAccent,
+                                      //  color: Colors.greenAccent,
+                                      margin: EdgeInsets.symmetric(
+                                        horizontal: blockWidth * 10,
+                                      ),
                                       alignment: Alignment.center,
-                                      child: Text(
+                                      child: AutoSizeText(
                                         "Sorry we cannot find any matching postman",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                          fontSize: 20,
+                                          fontSize: 25,
+                                          fontWeight: FontWeight.w600,
                                         ),
+                                        minFontSize: 18,
                                       ),
                                     );
                                   }

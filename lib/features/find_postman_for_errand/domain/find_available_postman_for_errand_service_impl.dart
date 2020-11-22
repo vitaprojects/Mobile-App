@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:newpostman1/features/My%20errands/domain/posted_errands_service.dart';
 import 'package:newpostman1/features/find_postman_for_package/data/RequestModel.dart';
+import 'package:newpostman1/features/post_errand/data/RunErrandModel.dart';
 import 'package:newpostman1/features/post_itenary/data/ItenaryModel.dart';
 
 import 'package:newpostman1/features/post_errand/data/PostErrandModel.dart';
@@ -21,7 +22,7 @@ class FindAvailablePostmanForErrandServiceImpl
   final SnackBarService snackBarService = locator<SnackBarService>();
 
   @override
-  Stream<List<ItenaryModel>> getAvailablePostman(
+  Stream<List<RunErrandModel>> getAvailablePostman(
       PostErrandModel postErrandModel) {
     try {
       Geodesy geodesy = Geodesy();
@@ -30,27 +31,32 @@ class FindAvailablePostmanForErrandServiceImpl
           postErrandModel.pAddress.longitude);
 
       Query query = buildQuery(
-        collection: firebaseFirestore.collection('itineraries'),
+        collection: firebaseFirestore.collection('errands'),
         constraints: [
           QueryConstraint(
-              field: 'departureDate', isGreaterThanOrEqualTo: DateTime.now()),
+            field: 'type',
+            isEqualTo: 0,
+          ),
+          // QueryConstraint(
+          //   field: 'dateTime',
+          //   isGreaterThan: DateTime.now(),
+          // ),
+          //TODO try to add more filters
         ],
       );
       return getDataFromQuery(
           query: query,
           mapper: (eventDoc) {
-            var itenaryModel = ItenaryModel.fromJson(eventDoc.data()['data']);
-            return itenaryModel;
+            var runErrandModel = RunErrandModel.fromJson(eventDoc.data());
+            return runErrandModel;
           },
           clientSidefilters: [
-            (ItenaryModel itenary) =>
-                geodesy.distanceBetweenTwoGeoPoints(
-                    errandLocation,
-                    LatLng(itenary.details.departureLocation.latitude,
-                        itenary.details.departureLocation.longitude)) <
+            (RunErrandModel errandModel) =>
+                geodesy.distanceBetweenTwoGeoPoints(errandLocation,
+                    LatLng(errandModel.latitude, errandModel.longitude)) <
                 5000,
-            (ItenaryModel itenary) =>
-                itenary.details.email !=
+            (RunErrandModel errandModel) =>
+                errandModel.postmanEmail !=
                 Hive.box('user').get(
                     'email'), //we have to remove the current user's itenaries
           ] // only future events

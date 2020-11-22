@@ -39,6 +39,7 @@ dependencies:
   flutter_spinkit: ^4.1.2+1
   flutter_swiper: ^1.1.6
   font_awesome_flutter: ^8.8.1
+  geocoder: ^0.2.1
   geodesy: ^0.3.2
   get: ^3.10.2
   get_it: ^5.0.1
