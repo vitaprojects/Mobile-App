@@ -32,7 +32,10 @@ class FindAvailablePostmanForPackageServiceImpl
     List<FullPackageModel> pacakges =
         await postedPackagesService.getAllPostedPackages().first;
 
-    FullPackageModel latestPackage = pacakges.first;
+    FullPackageModel latestPackage;
+    if (pacakges.length != 0) {
+      latestPackage = pacakges.first;
+    }
 
     return latestPackage;
   }

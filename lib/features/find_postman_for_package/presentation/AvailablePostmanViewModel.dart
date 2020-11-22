@@ -19,7 +19,7 @@ class AvailablePostmanViewModel extends ChangeNotifier {
   initialize() async {
     latestPackage =
         await findAvailablePostmanService.getInfoAboutLatestPackage();
-    print(latestPackage.datePosted);
+    //print(latestPackage.datePosted);
     notifyListeners();
   }
 

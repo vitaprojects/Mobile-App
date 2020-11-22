@@ -67,7 +67,10 @@ class FindAvailablePostmanForErrandServiceImpl
     List<PostErrandModel> errands =
         await postedErrandsService.getAllPostedErrands().first;
 
-    PostErrandModel latestErrand = errands.first;
+    PostErrandModel latestErrand;
+    if (errands.length != 0) {
+      latestErrand = errands.first;
+    }
 
     return latestErrand;
   }

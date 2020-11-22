@@ -94,7 +94,23 @@ class AvailablePostmanView extends StatelessWidget {
                               },
                             )
                           : Center(
-                              child: CircularProgressIndicator(),
+                              child: Container(
+                                height: blockHeight * 10,
+                                //  color: Colors.greenAccent,
+                                margin: EdgeInsets.symmetric(
+                                  horizontal: blockWidth * 10,
+                                ),
+                                alignment: Alignment.center,
+                                child: AutoSizeText(
+                                  "You haven't posted any packages",
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                  minFontSize: 18,
+                                ),
+                              ),
                             ),
                     ),
                   ),
