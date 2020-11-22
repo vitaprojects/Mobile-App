@@ -26,7 +26,8 @@ class AvailablePostmanForErrandViewModel extends ChangeNotifier {
 
     var response = await dialogService.showConfirmationDialog(
       title: "Select postman",
-      description: "Are you sure you want to select this postman",
+      description:
+          "Are you sure you want to select this postman for your errand",
       cancelTitle: "NO",
       confirmationTitle: "YES",
       dialogPlatform:
@@ -36,8 +37,8 @@ class AvailablePostmanForErrandViewModel extends ChangeNotifier {
     if (response.confirmed) {
       // Do some confirmation action here.
       print("send request for this postman");
-      findAvailablePostmanService.sendRequestForPostman(
-          postErrandModel, postmanEmail);
+      // findAvailablePostmanService.sendRequestForPostman(
+      //     postErrandModel, postmanEmail);
     }
   }
 

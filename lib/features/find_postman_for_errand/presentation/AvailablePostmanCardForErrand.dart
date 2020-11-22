@@ -33,6 +33,7 @@ class AvailablePostmanCardForErrand
         //     );
         //   },
         // ));
+        model.showDialogToSendRequest(context, runErrandModel.postmanEmail);
       },
       child: Card(
         shape: RoundedRectangleBorder(
