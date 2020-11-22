@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive/hive.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:newpostman1/features/post_errand/data/PostErrandModel.dart';
@@ -201,6 +202,8 @@ class PostErrandFormViewModel extends ChangeNotifier {
         tip: (getMyTip.text.isEmpty)
             ? double.parse("0")
             : double.parse(getMyTip.text),
+        userEmaill: Hive.box('user').get('email'),
+        datePosted: DateTime.now(),
       );
 
       errandService.uploadImagesOftheErrand(imagesOfTheErrand, postErrandModel);

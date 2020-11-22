@@ -1,4 +1,6 @@
 import 'package:get_it/get_it.dart';
+import 'package:newpostman1/features/My%20errands/domain/posted_errands_service.dart';
+import 'package:newpostman1/features/My%20errands/domain/posted_errands_service_impl.dart';
 import 'package:newpostman1/features/MyPackages/domain/posted_packages_service.dart';
 import 'package:newpostman1/features/MyPackages/domain/posted_packages_service_impl.dart';
 import 'package:newpostman1/features/MyTrips/domain/trip_service.dart';
@@ -61,6 +63,11 @@ setupServiceLocator() {
 
   locator.registerLazySingleton<PostedPackagesService>(
       () => PostedPackagesServiceImpl());
+
+  //this service is to get information about the posted errnds of the user
+
+  locator.registerLazySingleton<PostedErrandsService>(
+      () => PostedErrandsServiceImpl());
 
   //this service is to get the avaialble postmans for the pacakge of the user
 

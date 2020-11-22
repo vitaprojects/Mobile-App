@@ -16,6 +16,8 @@ class PostErrandModel {
   List<String> images;
   int type;
   String userEmaill;
+  DateTime datePosted;
+  String docId;
 
   PostErrandModel({
     this.pickUpFrom,
@@ -30,6 +32,8 @@ class PostErrandModel {
     this.images,
     this.type,
     this.userEmaill,
+    this.datePosted,
+    this.docId,
   });
 
   factory PostErrandModel.fromJson(Map<String, dynamic> json) =>
