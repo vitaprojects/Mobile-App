@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
+import 'package:newpostman1/features/Chat/presentation/ChatScreenView.dart';
 import 'package:newpostman1/features/authentication/domain/auth_service.dart';
 import 'package:newpostman1/features/authentication/presentation/LoginPageView.dart';
 import 'package:newpostman1/features/drawer/presentation/ItemWidgetInDrawer.dart';
@@ -223,7 +224,7 @@ class DrawerWidget extends StatelessWidget {
                     margin: margin,
                     ontapFunc: () {
                       closeDrawer();
-                      // Get.to(MyTripsWidget());
+                      Get.to(ChatScreenView());
                     },
                     title: "Chats",
                   ),
