@@ -9,6 +9,7 @@ class PostedPackagesServiceImpl extends PostedPackagesService {
 
   @override
   Stream<List<FullPackageModel>> getAllPostedPackages() {
+    //TODO when getting all the posted packages of the user we have to fitlter only the available ones which means the status is 0
     try {
       // print(Hive.box('user').get('email'));
       Query query = buildQuery(

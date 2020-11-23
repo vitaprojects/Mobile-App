@@ -139,7 +139,7 @@ class RespondToEventsServiceImpl extends RespondToEventsService {
         .doc(requestModel.requestId)
         .update({
       'status': 1,
-      'hasSeenbyUser': true,
+      'hasSeenbyPostman': true,
     }).then((value) {
       snackBarService.showSnackBar(
           "Success", "Offer accepted successfully", false);

@@ -156,29 +156,56 @@ class ListenToEventsServiceImpl extends ListenToEventsService {
     listenToNewResponsesFromthePostman().listen((event) {
       if (event.length != 0) {
         RequestModel requestModel = event.first;
-        dialogService
-            .showConfirmationDialog(
-          // variant: DialogType.form,
-          title: 'You received a new offer',
-          description:
-              'You received a new offer from ${requestModel.postman} with an offer of ${requestModel.postmanOffer}',
+        if (requestModel.type == 0) {
+          //this is a response to a pacakge request from the client
+          dialogService
+              .showConfirmationDialog(
+            // variant: DialogType.form,
+            title: 'You received a new offer',
+            description:
+                'You received a new offer from ${requestModel.postman} with an offer of ${requestModel.postmanOffer}',
 
-          // mainButtonTitle: 'Confirm',
-          confirmationTitle: "accept".toUpperCase(),
-          cancelTitle: "reject".toUpperCase(),
-        )
-            .then((value) {
-          if (value != null && value.confirmed) {
-            print("user accepted the offer");
-            // respondToEventsService.respondTotheOfferOfPostman(
-            //     true, requestModel);
-            Get.to(PaymentPage());
-          } else {
-            print("user rejected");
-            respondToEventsService.respondTotheOfferOfPostman(
-                false, requestModel);
-          }
-        });
+            // mainButtonTitle: 'Confirm',
+            confirmationTitle: "accept".toUpperCase(),
+            cancelTitle: "reject".toUpperCase(),
+          )
+              .then((value) {
+            if (value != null && value.confirmed) {
+              print("user accepted the offer");
+              // respondToEventsService.respondTotheOfferOfPostman(
+              //     true, requestModel);
+              Get.to(PaymentPage());
+            } else {
+              print("user rejected");
+              respondToEventsService.respondTotheOfferOfPostman(
+                  false, requestModel);
+            }
+          });
+        } else {
+          //this is a repsonse to a errand request from the client
+          dialogService
+              .showConfirmationDialog(
+            // variant: DialogType.form,
+            title: 'Your errand request accepeted',
+            description:
+                'You errand request accepeted by ${requestModel.postman}',
+
+            // mainButtonTitle: 'Confirm',
+            confirmationTitle: "ok".toUpperCase(),
+            // cancelTitle: "reject".toUpperCase(),
+          )
+              .then((value) {
+            if (value != null && value.confirmed) {
+              print("user accepted the offer");
+              // respondToEventsService.respondTotheOfferOfPostman(
+              //     true, requestModel);
+              Get.to(PaymentPage());
+              //TODO ask from clinet how the user is paying for the
+            } else {
+              //the user cannot cancel this
+            }
+          });
+        }
       } else {
         print("no new requests from postman");
       }
