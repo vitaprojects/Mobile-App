@@ -128,4 +128,29 @@ class RespondToEventsServiceImpl extends RespondToEventsService {
 
     return postErrandModel;
   }
+
+  @override
+  Future<void> respondToErrandOfferOfTheClient(
+      RequestModel requestModel) async {
+    //this is used to accept the errand request of the client
+
+    await firebaseFirestore
+        .collection('requests')
+        .doc(requestModel.requestId)
+        .update({
+      'status': 1,
+      'hasSeenbyUser': true,
+    }).then((value) {
+      snackBarService.showSnackBar(
+          "Success", "Offer accepted successfully", false);
+    });
+
+    //TODO notfy the user about this
+
+    //we have to change the status of the errand to make it unavailable
+    await firebaseFirestore
+        .collection('errands')
+        .doc(requestModel.packageDocID) //TODO complete this ordrmodel
+        .update({'status': 1});
+  }
 }

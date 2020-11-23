@@ -18,6 +18,7 @@ class PostErrandModel {
   String userEmaill;
   DateTime datePosted;
   String docId;
+  int status; // this is used to keep the status of the errand if it is completed this is 1 otherwise it is 0
 
   PostErrandModel({
     this.pickUpFrom,
@@ -34,6 +35,7 @@ class PostErrandModel {
     this.userEmaill,
     this.datePosted,
     this.docId,
+    this.status,
   });
 
   factory PostErrandModel.fromJson(Map<String, dynamic> json) =>

@@ -19,4 +19,6 @@ abstract class RespondToEventsService {
 
   Future<void> respondTotheOfferOfPostman(
       bool acceptOffer, RequestModel requestModel);
+
+  Future<void> respondToErrandOfferOfTheClient(RequestModel requestModel);
 }

@@ -28,6 +28,7 @@ PostErrandModel _$PostErrandModelFromJson(Map<String, dynamic> json) {
         ? null
         : DateTime.parse(json['datePosted'] as String),
     docId: json['docId'] as String,
+    status: json['status'] as int,
   );
 }
 
@@ -35,8 +36,8 @@ Map<String, dynamic> _$PostErrandModelToJson(PostErrandModel instance) =>
     <String, dynamic>{
       'pickUpFrom': instance.pickUpFrom,
       'pickUpType': instance.pickUpType,
-      'pAddress': instance.pAddress.toJson(),
-      'dAddress': instance.dAddress.toJson(),
+      'pAddress': instance.pAddress,
+      'dAddress': instance.dAddress,
       'phone': instance.phone,
       'orderNo': instance.orderNo,
       'instructions': instance.instructions,
@@ -47,4 +48,5 @@ Map<String, dynamic> _$PostErrandModelToJson(PostErrandModel instance) =>
       'userEmaill': instance.userEmaill,
       'datePosted': instance.datePosted?.toIso8601String(),
       'docId': instance.docId,
+      'status': instance.status,
     };
