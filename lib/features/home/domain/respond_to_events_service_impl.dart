@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
 import 'package:newpostman1/features/find_postman_for_package/data/RequestModel.dart';
 import 'package:newpostman1/features/home/data/OrderModel.dart';
 import 'package:newpostman1/features/home/domain/respond_to_events_service.dart';
@@ -93,27 +94,45 @@ class RespondToEventsServiceImpl extends RespondToEventsService {
             "Success", "Offer rejected successfully", false);
       });
     } else {
-      await firebaseFirestore
-          .collection('requests')
-          .doc(requestModel.requestId)
-          .update({
-        'status': 2,
-        'hasSeenbyUser': true,
-      }).then((value) {
+      try {
+        await firebaseFirestore
+            .collection('requests')
+            .doc(requestModel.requestId)
+            .update({
+          'status': 2,
+          'hasSeenbyUser': true,
+        }).then((value) {
+          snackBarService.showSnackBar(
+              "Success", "Offer accepted successfully", false);
+        });
+
+        //now we have to create a order also
+
+        //we have to make the package unavaiable by changing its status
+
+        await firebaseFirestore
+            .collection('packages')
+            .doc(requestModel
+                .packageDocID) //we have to make the pacakge unavailbe
+            .update({'status': 1});
+
+        //TODO fix notifying the postman about the new order
+
+        OrderModel orderModel = OrderModel(
+          feeAmount: requestModel.postmanOffer,
+          pacakgeDocId: requestModel.packageDocID,
+          postmanEmail: requestModel.postman,
+          statusOftheOrder: 0, //in the beggining of te order the status is 0
+          tipAmount: 0, //in the begniing we are not paying the tip
+          type: 0, //because this is a order of a pacakge
+          userEmail: Hive.box('user').get('email').toLowercase(),
+        );
+
+        await firebaseFirestore.collection('orders').add(orderModel.toJson());
+      } catch (e) {
         snackBarService.showSnackBar(
-            "Success", "Offer accepted successfully", false);
-      });
-
-      //now we have to create a order also
-
-      //we have to make the package unavaiable by changing its status
-
-      await firebaseFirestore
-          .collection('packages')
-          .doc(requestModel.packageDocID) //TODO complete this ordrmodel
-          .update({'status': 1});
-
-      OrderModel orderModel = OrderModel();
+            "Error occured", "Error occured while accepting order", true);
+      }
     }
   }
 

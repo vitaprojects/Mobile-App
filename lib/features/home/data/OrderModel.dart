@@ -13,6 +13,7 @@ class OrderModel {
   double feeAmount;
   double tipAmount;
   double totalAmount;
+  String orderID;
 
   OrderModel({
     this.feeAmount,
@@ -23,6 +24,7 @@ class OrderModel {
     this.totalAmount,
     this.type,
     this.userEmail,
+    this.orderID,
   });
   factory OrderModel.fromJson(Map<String, dynamic> json) =>
       _$OrderModelFromJson(json);

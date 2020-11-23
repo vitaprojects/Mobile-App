@@ -3,6 +3,7 @@ import 'package:firestore_helpers/firestore_helpers.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:newpostman1/features/find_postman_for_package/data/RequestModel.dart';
+import 'package:newpostman1/features/home/data/OrderModel.dart';
 import 'package:newpostman1/features/home/domain/respond_to_events_service.dart';
 import 'package:newpostman1/features/home/presentation/ViewCustomerRequestForErrand/CustomerRequestForErrandView.dart';
 import 'package:newpostman1/features/home/presentation/ViewCustomerRequestForPackage/CustomerRequestForPackageView.dart';
@@ -201,6 +202,23 @@ class ListenToEventsServiceImpl extends ListenToEventsService {
               //     true, requestModel);
               Get.to(PaymentPage());
               //TODO ask from clinet how the user is paying for the
+              //we will start the order here
+
+              //TODO add this order creation to the right place
+
+              OrderModel orderModel = OrderModel(
+                feeAmount:
+                    null, //we dont any info about these they are in the errand document
+                pacakgeDocId: requestModel.packageDocID,
+                postmanEmail: requestModel.postman,
+                statusOftheOrder:
+                    0, //in the beggining of te order the status is 0
+                tipAmount: 0, //in the begniing we are not paying the tip
+                type: 1, //because this is a order of a errand
+                userEmail: Hive.box('user').get('email').toLowercase(),
+              );
+
+              firebaseFirestore.collection('orders').add(orderModel.toJson());
             } else {
               //the user cannot cancel this
             }

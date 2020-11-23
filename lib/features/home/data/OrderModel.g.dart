@@ -16,6 +16,7 @@ OrderModel _$OrderModelFromJson(Map<String, dynamic> json) {
     totalAmount: (json['totalAmount'] as num)?.toDouble(),
     type: json['type'] as int,
     userEmail: json['userEmail'] as String,
+    orderID: json['orderID'] as String,
   );
 }
 
@@ -29,4 +30,5 @@ Map<String, dynamic> _$OrderModelToJson(OrderModel instance) =>
       'feeAmount': instance.feeAmount,
       'tipAmount': instance.tipAmount,
       'totalAmount': instance.totalAmount,
+      'orderID': instance.orderID,
     };
