@@ -86,13 +86,12 @@ class FindAvailablePostmanForErrandServiceImpl
       PostErrandModel postErrandModel, String emailOfPostman) async {
     print("send request for the errand");
 
-    print("send request");
-
     RequestModel requestModel = RequestModel(
       date: DateTime.now(),
       hasSeenbyPostman: false,
       hasSeenbyUser: false,
       postman: emailOfPostman,
+
       // requestId: packageModel.docId,
       packageDocID: postErrandModel.docId,
       status: 0,

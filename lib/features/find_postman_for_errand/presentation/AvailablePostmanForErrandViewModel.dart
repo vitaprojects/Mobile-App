@@ -37,8 +37,8 @@ class AvailablePostmanForErrandViewModel extends ChangeNotifier {
     if (response.confirmed) {
       // Do some confirmation action here.
       print("send request for this postman");
-      // findAvailablePostmanService.sendRequestForPostman(
-      //     postErrandModel, postmanEmail);
+      findAvailablePostmanService.sendRequestForPostman(
+          postErrandModel, postmanEmail);
     }
   }
 
