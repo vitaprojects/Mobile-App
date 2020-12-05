@@ -171,7 +171,7 @@ class _PaymentPageState extends State<PaymentPage> {
                           height: blockHeight * 3,
                           // color: Colors.redAccent,
                           child: AutoSizeText(
-                            "payment methods".toUpperCase(),
+                            "Chekout using".toUpperCase(),
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -210,77 +210,74 @@ class _PaymentPageState extends State<PaymentPage> {
                       SizedBox(
                         height: blockHeight * 2,
                       ),
-                      Container(
-                        height: blockHeight * 5,
-                        // color: Colors.greenAccent,
-                        alignment: Alignment.centerLeft,
-                        child: Container(
-                          alignment: Alignment.centerLeft,
-                          height: blockHeight * 3,
-                          // color: Colors.redAccent,
-                          child: AutoSizeText(
-                            "payment details".toUpperCase(),
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            minFontSize: 14,
-                          ),
-                        ),
-                      ),
-                      FormBuilderTextField(
-                        attribute: "name",
-                        decoration: InputDecoration(
-                            labelText: "Cardholder Name",
-                            prefixIcon: Icon(
-                              Icons.person,
-                            )),
-                      ),
-                      SizedBox(
-                        height: blockHeight * 2,
-                      ),
-                      FormBuilderTextField(
-                        attribute: "number",
-                        decoration: InputDecoration(
-                            labelText: "Card Number",
-                            prefixIcon: Icon(
-                              Icons.credit_card,
-                            )),
-                      ),
-                      SizedBox(
-                        height: blockHeight * 2,
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: FormBuilderDateTimePicker(
-                              attribute: "date",
-                              decoration: InputDecoration(
-                                  labelText: "Date",
-                                  prefixIcon: Icon(
-                                    Icons.date_range,
-                                  )),
-                            ),
-                          ),
-                          SizedBox(
-                            width: blockWidth * 5,
-                          ),
-                          Expanded(
-                            child: FormBuilderTextField(
-                              attribute: "cvv",
-                              decoration: InputDecoration(
-                                labelText: "CVV",
-                                // prefixIcon: Icon(
-                                //   Icons.se,
-                                // ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Container(
-                        height: blockHeight * 5,
-                      )
+                      // Container(
+                      //   height: blockHeight * 5,
+                      //   // color: Colors.greenAccent,
+                      //   alignment: Alignment.centerLeft,
+                      //   child: Container(
+                      //     alignment: Alignment.centerLeft,
+                      //     height: blockHeight * 3,
+                      //     // color: Colors.redAccent,
+                      //     child: AutoSizeText(
+                      //       "payment details".toUpperCase(),
+                      //       style: TextStyle(
+                      //         fontSize: 18,
+                      //         fontWeight: FontWeight.bold,
+                      //       ),
+                      //       minFontSize: 14,
+                      //     ),
+                      //   ),
+                      // ),
+                      // FormBuilderTextField(
+                      //   attribute: "name",
+                      //   decoration: InputDecoration(
+                      //       labelText: "Cardholder Name",
+                      //       prefixIcon: Icon(
+                      //         Icons.person,
+                      //       )),
+                      // ),
+                      // SizedBox(
+                      //   height: blockHeight * 2,
+                      // ),
+                      // FormBuilderTextField(
+                      //   attribute: "number",
+                      //   decoration: InputDecoration(
+                      //       labelText: "Card Number",
+                      //       prefixIcon: Icon(
+                      //         Icons.credit_card,
+                      //       )),
+                      // ),
+                      // SizedBox(
+                      //   height: blockHeight * 2,
+                      // ),
+                      // Row(
+                      //   children: [
+                      //     Expanded(
+                      //       child: FormBuilderDateTimePicker(
+                      //         attribute: "date",
+                      //         decoration: InputDecoration(
+                      //             labelText: "Date",
+                      //             prefixIcon: Icon(
+                      //               Icons.date_range,
+                      //             )),
+                      //       ),
+                      //     ),
+                      //     SizedBox(
+                      //       width: blockWidth * 5,
+                      //     ),
+                      //     Expanded(
+                      //       child: FormBuilderTextField(
+                      //         attribute: "cvv",
+                      //         decoration: InputDecoration(
+                      //           labelText: "CVV",
+                      //           // prefixIcon: Icon(
+                      //           //   Icons.se,
+                      //           // ),
+                      //         ),
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
                     ],
                   ),
                 ),

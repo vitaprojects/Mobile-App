@@ -120,7 +120,8 @@ class AvailablePostmanCard extends ViewModelWidget<AvailablePostmanViewModel> {
                                 // color: Colors.orange,
                                 alignment: Alignment.centerLeft,
                                 child: Text(itenaryModel
-                                    .details?.departureLocation?.address),
+                                    .details?.departureLocation?.address
+                                    .toString()),
                               ),
                             ),
                           )
@@ -157,7 +158,8 @@ class AvailablePostmanCard extends ViewModelWidget<AvailablePostmanViewModel> {
                                 // color: Colors.orange,
                                 alignment: Alignment.centerLeft,
                                 child: Text(itenaryModel
-                                    .details?.destinationLocation?.address),
+                                    .details?.destinationLocation?.address
+                                    .toString()),
                               ),
                             ),
                           )
