@@ -208,12 +208,21 @@ class _PaymentPageViewState extends State<PaymentPageView> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     PaymentSelectionButton(
+                                      callback: () {
+                                        model.payUsingPaypal();
+                                      },
                                       assetUrl: "assets/images/paypal.png",
                                     ),
                                     PaymentSelectionButton(
+                                      callback: () {
+                                        model.payUsingPayStack(context);
+                                      },
                                       assetUrl: "assets/images/paystack.png",
                                     ),
                                     PaymentSelectionButton(
+                                      callback: () {
+                                        model.payUsingStripe();
+                                      },
                                       assetUrl: "assets/images/stripe.jpg",
                                     )
                                   ],

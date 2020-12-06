@@ -3,9 +3,11 @@ import 'package:newpostman1/useful/globals.dart';
 
 class PaymentSelectionButton extends StatelessWidget {
   PaymentSelectionButton({
-    this.assetUrl,
+    @required this.assetUrl,
+    @required this.callback,
   });
   final String assetUrl;
+  final VoidCallback callback;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,9 @@ class PaymentSelectionButton extends StatelessWidget {
       padding: EdgeInsets.all(
         0,
       ),
-      onPressed: () {},
+      onPressed: () {
+        callback();
+      },
       elevation: 15,
       // margin: EdgeInsets.all(0),
       child: Container(

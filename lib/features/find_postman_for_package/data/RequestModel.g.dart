@@ -17,7 +17,8 @@ RequestModel _$RequestModelFromJson(Map<String, dynamic> json) {
     user: json['user'] as String,
     hasSeenbyPostman: json['hasSeenbyPostman'] as bool,
     hasSeenbyUser: json['hasSeenbyUser'] as bool,
-    postmanOffer: json['postmanOffer'] as double,
+    postmanOffer: json['postmanOffer'].toDouble()
+        as double, //TODO check this conversion about when the offer is a int it will throw a erro
   );
 }
 

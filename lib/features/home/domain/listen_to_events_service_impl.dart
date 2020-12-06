@@ -216,7 +216,7 @@ class ListenToEventsServiceImpl extends ListenToEventsService {
                     0, //in the beggining of te order the status is 0
                 tipAmount: 0, //in the begniing we are not paying the tip
                 type: 1, //because this is a order of a errand
-                userEmail: Hive.box('user').get('email').toLowercase(),
+                userEmail: Hive.box('user').get('email').toLowerCase(),
               );
 
               firebaseFirestore.collection('orders').add(orderModel.toJson());
