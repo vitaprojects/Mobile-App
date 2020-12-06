@@ -37,6 +37,7 @@ dependencies:
   flutter_bloc: ^6.1.0
   flutter_form_builder: ^3.14.1
   flutter_inner_drawer: ^0.5.7+2
+  flutter_paystack: ^1.0.4+1
   flutter_spinkit: ^4.1.2+1
   flutter_swiper: ^1.1.6
   font_awesome_flutter: ^8.8.1

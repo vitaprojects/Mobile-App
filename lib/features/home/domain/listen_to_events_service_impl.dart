@@ -7,7 +7,7 @@ import 'package:newpostman1/features/home/data/OrderModel.dart';
 import 'package:newpostman1/features/home/domain/respond_to_events_service.dart';
 import 'package:newpostman1/features/home/presentation/ViewCustomerRequestForErrand/CustomerRequestForErrandView.dart';
 import 'package:newpostman1/features/home/presentation/ViewCustomerRequestForPackage/CustomerRequestForPackageView.dart';
-import 'package:newpostman1/features/payment/presentation/PaymentPage.dart';
+import 'package:newpostman1/features/payment/presentation/PaymentPageView.dart';
 import 'package:newpostman1/useful/service_locator.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -64,42 +64,41 @@ class ListenToEventsServiceImpl extends ListenToEventsService {
   void displayAlertForNewRequest() async {
     print('display alert');
 
-    listenToNewRequestsForthePostman().listen((event) {
+    listenToNewRequestsForthePostman().listen((event) async {
       if (event.length != 0) {
         RequestModel requestModel = event.first;
-        dialogService
-            .showConfirmationDialog(
+        var response = await dialogService.showConfirmationDialog(
+          //TODO get all responses for dialogs like this
           // variant: DialogType.form,
           title: 'You received a new request',
           description: 'You received a new request from ${requestModel.user}',
           // mainButtonTitle: 'Confirm',
           confirmationTitle: "view".toUpperCase(),
           cancelTitle: "cancel".toUpperCase(),
-        )
-            .then((value) {
-          if (value != null && value.confirmed) {
-            print("user accepted");
+        );
 
-            //now we have to load the ui depending on the type of the package
-            //if the request is for a package we have to load the viewcustomerRequest for package
-            //othwerwise we have to load the viewcustomerReuqest For errand
+        if (response.confirmed) {
+          print("user accepted");
 
-            if (requestModel.type == 0) {
-              //this is a package request
-              Get.to(CustomerRequestForPackageView(
-                requestModel: requestModel,
-              ));
-            } else {
-              Get.to(CustomerRequestForErrandView(
-                requestModel: requestModel,
-              ));
-            }
+          //now we have to load the ui depending on the type of the package
+          //if the request is for a package we have to load the viewcustomerRequest for package
+          //othwerwise we have to load the viewcustomerReuqest For errand
+
+          if (requestModel.type == 0) {
+            //this is a package request
+            Get.to(CustomerRequestForPackageView(
+              requestModel: requestModel,
+            ));
           } else {
-            print("user rejected");
-
-            respondToEventsService.cancelRequest(requestModel.requestId);
+            Get.to(CustomerRequestForErrandView(
+              requestModel: requestModel,
+            ));
           }
-        });
+        } else {
+          print("user rejected");
+
+          respondToEventsService.cancelRequest(requestModel.requestId);
+        }
       }
     });
   }
@@ -175,7 +174,9 @@ class ListenToEventsServiceImpl extends ListenToEventsService {
               print("user accepted the offer");
               // respondToEventsService.respondTotheOfferOfPostman(
               //     true, requestModel);
-              Get.to(PaymentPage());
+              Get.to(PaymentPageView(
+                requestModel: requestModel,
+              ));
             } else {
               print("user rejected");
               respondToEventsService.respondTotheOfferOfPostman(
@@ -200,7 +201,7 @@ class ListenToEventsServiceImpl extends ListenToEventsService {
               print("user accepted the offer");
               // respondToEventsService.respondTotheOfferOfPostman(
               //     true, requestModel);
-              Get.to(PaymentPage());
+              Get.to(PaymentPageView());
               //TODO ask from clinet how the user is paying for the
               //we will start the order here
 

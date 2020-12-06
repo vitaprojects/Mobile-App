@@ -144,10 +144,10 @@ class _CustomInputFieldState extends State<CustomInputField> {
                 textInputAction: TextInputAction.next,
 
                 // textAlign: TextAlign.center,
-                initialValue: (widget.initalText == null)
-                    ? null
-                    : widget
-                        .initalText, //TODO when passing the intial value pass it via the controller
+                // initialValue: (widget.initalText == null)
+                //     ? widget.textEditingController.text
+                //     : widget
+                //         .initalText, //TODO when passing the intial value pass it via the controller
                 readOnly: widget.readOnly == true,
                 controller: widget.textEditingController,
                 attribute: widget.attribute,
