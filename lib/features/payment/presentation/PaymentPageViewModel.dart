@@ -60,8 +60,11 @@ class PaymentPageViewModel extends ChangeNotifier {
       //  ..reference = _getReference()
       ..accessCode = await _fetchAccessCodeFrmServer(_getReference())
       ..email = 'customer@email.com';
-    // CheckoutResponse response =
-    //     await PaystackPlugin.checkout(context, charge: charge,);
+    CheckoutResponse response = await PaystackPlugin.checkout(
+      context,
+      charge: charge,
+    );
+    print(response);
   }
 
   void payUsingPaypal() {}
@@ -89,10 +92,13 @@ class PaymentPageViewModel extends ChangeNotifier {
 
       if (response.statusCode == 200) {
         print(response.body);
+        final jsonResponse = jsonDecode(response.body);
+        // print(jsonResponse['data']);
+        accessCode = jsonResponse['data']['access_code'];
+        print(accessCode);
       }
       // http.Response response = await http.get(url);
       // accessCode = response.body;
-      print('Response for access code = $accessCode');
     } catch (e) {
       // setState(() => _inProgress = false);
       // _updateStatus(
