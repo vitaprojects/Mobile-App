@@ -55,6 +55,8 @@ class PaymentPageViewModel extends ChangeNotifier {
   }
 
   void payUsingPayStack(BuildContext context) async {
+    //TODO to change the payment to live
+    //change the keys of paystack
     Charge charge = Charge()
       ..amount = double.parse(totalamountTextController.text).toInt()
       //  ..reference = _getReference()
@@ -79,8 +81,8 @@ class PaymentPageViewModel extends ChangeNotifier {
       final response = await http.post(
         url,
         headers: {
-          "Authorization":
-              "Bearer " + "sk_test_984a58e2a697c0530763720c0a527ff3c7c67026",
+          "Authorization": "Bearer " +
+              "sk_test_984a58e2a697c0530763720c0a527ff3c7c67026", //TODO this secret key should'nt be exposed . Store it in the server and request it when required
           "Content-Type": "application/json"
         },
         body: jsonEncode(<String, String>{
