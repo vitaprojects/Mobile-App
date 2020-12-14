@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
+import 'package:newpostman1/features/Check%20Internet%20connection/ConnectionStatusSingleton.dart';
 import 'package:newpostman1/features/loading/presentation/LoadingPage.dart';
 import 'package:newpostman1/features/send_package/domain/bloc/SendPackageObserver.dart';
 import 'package:newpostman1/features/welcome/presentation/WelcomeScreen.dart';
@@ -26,6 +27,10 @@ void main() async {
   Hive.init(appDocumentDir.path);
 
   setupServiceLocator();
+  ConnectionStatusSingleton connectionStatusSingleton =
+      locator<ConnectionStatusSingleton>();
+  connectionStatusSingleton.initialize();
+  // connectionStatusSingleton.
   runApp(MyApp());
 }
 

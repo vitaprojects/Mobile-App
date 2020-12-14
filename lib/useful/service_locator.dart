@@ -1,4 +1,6 @@
 import 'package:get_it/get_it.dart';
+import 'package:newpostman1/features/Check%20Internet%20connection/ConnectionStatusSingleton.dart';
+import 'package:newpostman1/features/Check%20Internet%20connection/ConnectionStatusSingletonImpl.dart';
 import 'package:newpostman1/features/My%20errands/domain/posted_errands_service.dart';
 import 'package:newpostman1/features/My%20errands/domain/posted_errands_service_impl.dart';
 import 'package:newpostman1/features/MyPackages/domain/posted_packages_service.dart';
@@ -93,4 +95,7 @@ setupServiceLocator() {
   //this service is used to response to the events the user , postman face
   locator.registerLazySingleton<RespondToEventsService>(
       () => RespondToEventsServiceImpl());
+
+  locator.registerLazySingleton<ConnectionStatusSingleton>(
+      () => ConnectionStatusSingletonImpl());
 }
