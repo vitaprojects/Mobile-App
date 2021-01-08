@@ -1,4 +1,6 @@
 import 'package:get_it/get_it.dart';
+import 'package:newpostman1/features/Chat/data/chat_service.dart';
+import 'package:newpostman1/features/Chat/data/chat_service_impl.dart';
 import 'package:newpostman1/features/Check%20Internet%20connection/ConnectionStatusSingleton.dart';
 import 'package:newpostman1/features/Check%20Internet%20connection/ConnectionStatusSingletonImpl.dart';
 import 'package:newpostman1/features/My%20errands/domain/posted_errands_service.dart';
@@ -98,4 +100,6 @@ setupServiceLocator() {
 
   locator.registerLazySingleton<ConnectionStatusSingleton>(
       () => ConnectionStatusSingletonImpl());
+
+  locator.registerLazySingleton<ChatService>(() => ChatServiceImpl());
 }

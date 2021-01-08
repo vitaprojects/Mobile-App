@@ -7,7 +7,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:newpostman1/features/Chat/presentation/ChatRoomView/ChatRoomViewModel.dart';
-import 'package:newpostman1/features/Chat/presentation/ChatRoomView/newChatRoomView.dart';
+// import 'package:newpostman1/features/Chat/presentation/ChatRoomView/newChatRoomView.dart';
 import 'package:newpostman1/useful/globals.dart';
 import 'package:stacked/stacked.dart';
 
@@ -22,7 +22,7 @@ class ChatRoomView extends StatelessWidget {
         builder: (context, model, child) {
           return SafeArea(
             child: Scaffold(
-             appBar: AppBarCustom(),
+            //  appBar: AppBarCustom(),
               body: StreamBuilder(
                   stream: Firestore.instance.collection('messages').snapshots(),
                   builder: (context, snapshot) {
