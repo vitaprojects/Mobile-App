@@ -27,7 +27,7 @@ class SendPackageForm1 extends StatelessWidget {
                 height: blockHeight * 5,
                 // color: Colors.green,
               ),
-              UploadPhotosForSendPackage(), //TODO add a fucntion which returns the images added from this widget a callback function
+              UploadPhotosForSendPackage(),
               SizedBox(
                 height: blockHeight * 2,
               ),
