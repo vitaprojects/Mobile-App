@@ -1,17 +1,22 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:newpostman1/features/Chat/presentation/ChatRoomView/chatMessageBuilderView.dart';
 import 'package:newpostman1/features/Chat/presentation/ChatRoomView/newChatRommViewModel.dart';
 import 'package:newpostman1/models/user/UserModel.dart';
 import 'package:newpostman1/useful/globals.dart';
 import 'package:stacked/stacked.dart';
 
 class ChatMessageWidget extends StatelessWidget {
+  final ScrollController scrollController;
   final UserModel userModel;
-  const ChatMessageWidget({
+  ChatMessageWidget({
     Key key,
-    this.userModel,
+    @required this.userModel,
+    @required this.scrollController,
+    this.globalKey,
   }) : super(key: key);
+  final GlobalKey<State<ChatmessagesBuilderView>> globalKey;
 
   @override
   Widget build(BuildContext context) {
@@ -46,16 +51,26 @@ class ChatMessageWidget extends StatelessWidget {
                       keyboardType: TextInputType.multiline,
                       onTap: () {
                         print('tapped');
+
+                        ///*This scrolls to last postion of the message when tapped
+                        if (scrollController != null &&
+                            scrollController.position.maxScrollExtent != 0.0 &&
+                            scrollController.offset <
+                                scrollController.position.maxScrollExtent) {
+                          scrollController.jumpTo(
+                              scrollController.position.maxScrollExtent + 150);
+                        }
                       },
+                      // autofocus: true,
                       decoration: InputDecoration(
                           suffixIcon: InkWell(
                               onTap: () async {
                                 // Get.snackbar('afs`', 'bye');
                                 await model.getImage(0, userModel);
-                                
-                                print('tappdddded');
                               },
-                              onDoubleTap: () async{
+
+                              ///*`[onDoubleTap]` this callback is used to load open the gallery
+                              onDoubleTap: () async {
                                 await model.getImage(1, userModel);
                               },
                               child: Icon(Icons.camera)),
@@ -72,16 +87,11 @@ class ChatMessageWidget extends StatelessWidget {
                     color: Globals.mainColor.withOpacity(1.0),
                   ),
                   onPressed: () async {
-                    // print(query.;
-                    // await  chatService.sendMessage(model.messageController.text.trim(),
-                    //       'mh724476@gmail.com');
                     if (model.messageController.text.trim().isNotEmpty) {
-                      await model.sendMessagwe(userModel);
-                      // print('not empty');
+                      await model.sendMessagwe(userModel, scrollController);
                     }
-                    // printInfo(info: model.title);
                   },
-                )
+                ),
               ],
             ),
           );

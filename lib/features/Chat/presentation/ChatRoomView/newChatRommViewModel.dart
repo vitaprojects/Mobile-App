@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
@@ -7,7 +8,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:newpostman1/features/Chat/data/chat_service.dart';
 import 'package:newpostman1/models/user/UserModel.dart';
 import 'package:newpostman1/useful/service_locator.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 
 class NewChatRoomViewModel extends ChangeNotifier {
   String hellow = 'afsal';
@@ -19,14 +19,23 @@ class NewChatRoomViewModel extends ChangeNotifier {
 
   String get title => messageController.text.toString();
 
-  Future sendMessagwe(UserModel userModel) async {
-    chatService.sendMessage(
-        messageController.text.trim(), userModel.email, false);
+  Future sendMessagwe(
+      UserModel userModel, ScrollController scrollController) async {
+    chatService
+        .sendMessage(messageController.text.trim(), userModel.email, false)
+        .whenComplete(() {
+      if (scrollController != null &&
+          scrollController.position.maxScrollExtent != 0.0)
+        scrollController
+            .jumpTo(scrollController.position.maxScrollExtent + 150);
+    });
+
+    ///* Even before we send the message make sure we clear this
     print(messageController.text.toString());
     messageController.clear();
   }
 
-  Future getImage(int type,UserModel userModel) async {
+  Future getImage(int type, UserModel userModel) async {
     //this function is used to  upload pictures
     PickedFile pickedFile;
     File croppedFile;
@@ -60,22 +69,19 @@ class NewChatRoomViewModel extends ChangeNotifier {
 
     if (croppedFile != null) {
       // imagesOfThePackage.add(croppedFile);
-      _uploadToStorageTask(userModel,croppedFile);
+      _uploadToStorageTask(userModel, croppedFile);
       // notifyListeners();
     }
   }
 
-  _uploadToStorageTask(UserModel userModel,File file) async {
+  _uploadToStorageTask(UserModel userModel, File file) async {
     print('*****************************Stratedd uploading stask');
     StorageReference reference = FirebaseStorage.instance
         .ref()
         .child('Chats/')
         .child(DateTime.now().microsecondsSinceEpoch.toString());
 
-    await reference
-        .putFile(file)
-        .onComplete
-        .then((value) async {
+    await reference.putFile(file).onComplete.then((value) async {
       String url = await value.ref.getDownloadURL();
       print('*****************************Stratedd dowloading url');
       chatService.sendMessage(url, userModel.email, true);

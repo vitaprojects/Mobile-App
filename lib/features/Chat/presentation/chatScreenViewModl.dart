@@ -8,9 +8,9 @@ import 'package:stacked/stacked.dart';
 
 class ChatScreenViewModel extends StreamViewModel<List<ChatModel>> {
   final ChatService chatService = locator<ChatService>();
+
+  ///[`userChats`] returns the users whom the current user has chatted with
   List<ChatModel> get userChats => data;
   @override
   Stream<List<ChatModel>> get stream => chatService.getChats;
-
-  
 }

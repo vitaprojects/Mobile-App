@@ -1,19 +1,43 @@
-import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:newpostman1/features/Chat/data/chatModel.dart';
-import 'package:newpostman1/features/Chat/data/chat_service.dart';
-import 'package:newpostman1/features/Chat/presentation/ChatRoomView/chatMessageBuilderView.dart';
-import 'package:newpostman1/models/user/UserModel.dart';
-import 'package:newpostman1/useful/service_locator.dart';
 
+import '../../../../models/user/UserModel.dart';
+import '../../../../useful/service_locator.dart';
+import '../../data/chat_service.dart';
+import 'chatMessageBuilderView.dart';
 import 'chatMessageWidget.dart';
 
-class NewChatRoomView extends StatelessWidget {
+class NewChatRoomView extends StatefulWidget {
   final UserModel userModel;
-  final ChatService chatService = locator<ChatService>();
 
   NewChatRoomView({Key key, @required this.userModel}) : super(key: key);
+
+  @override
+  _NewChatRoomViewState createState() => _NewChatRoomViewState();
+}
+
+class _NewChatRoomViewState extends State<NewChatRoomView> {
+  ScrollController scrollController;
+  final ChatService chatService = locator<ChatService>();
+  scrolllistner() {
+    if (scrollController.offset >= scrollController.position.maxScrollExtent &&
+        !scrollController.position.outOfRange) {
+      print(
+          '*****************Reached the bottom ********************************************');
+    }
+
+    if (scrollController.offset <= scrollController.position.minScrollExtent &&
+        !scrollController.position.outOfRange) {
+      print(
+          '*************************reached top*******************************************************');
+    }
+  }
+
+  @override
+  void initState() {
+    scrollController = ScrollController();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,25 +47,21 @@ class NewChatRoomView extends StatelessWidget {
         extendBody: true,
         resizeToAvoidBottomPadding: true,
         resizeToAvoidBottomInset: true,
-        // extendBodyBehindAppBar: true,
-        // bottomSheet: ChatMessageWidget(
-        //   userModel: userModel,
-        // ),
+
         appBar: AppBarCustom(
-          userModel: userModel,
+          userModel: widget.userModel,
         ),
         body: Column(
           children: [
             Expanded(
               child: ChatmessagesBuilderView(
-                userModel: userModel,
+                userModel: widget.userModel,
+                scrollController: scrollController,
               ),
             ),
-            SizedBox(
-              height: 4,
-            ),
             ChatMessageWidget(
-              userModel: userModel,
+              scrollController: scrollController,
+              userModel: widget.userModel,
             )
           ],
         ),

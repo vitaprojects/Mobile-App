@@ -27,24 +27,10 @@ class ChatServiceImpl extends ChatService {
             isImage: isImage ?? false,
             receiveremail: receiveremail)
         .toMapMessage());
-    // await FirebaseFirestore.instance
-    //     .collection('users')
-    //     .doc(user.email)
-    //     .collection('chats')
-    //     .doc(receiveremail)
-    //     .collection('messages')
-    //     .doc(messageId)
-    //     .set(ChatModel(messageid: messageId).toMap());
 
-    // await FirebaseFirestore.instance
-    //     .collection('users')
-    //     .doc(receiveremail)
-    //     .collection('chats')
-    //     .doc(user.email)
-    //     .collection('messages')
-    //     .doc(messageId)
-    //     .set(ChatModel(messageid: messageId).toMap());
-
+    ///* [`Transaction`] is used first to determine if there is a record already exists
+    ///[`dont`] change the postion of getters and setters in transcation
+    ///[`getters`] should be called first
     await FirebaseFirestore.instance.runTransaction((transaction) async {
       DocumentSnapshot documentSnapshot = await transaction.get(
           FirebaseFirestore.instance
