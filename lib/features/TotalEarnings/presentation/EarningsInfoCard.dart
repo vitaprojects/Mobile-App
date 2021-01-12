@@ -4,12 +4,14 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../useful/globals.dart';
 
 class EarningsInfoCard extends StatelessWidget {
-  EarningsInfoCard({
-    this.cardType,
-  });
   final double blockHeight = Globals.blockHeight;
   final double blockWidth = Globals.blockWidth;
   final int cardType;
+  final int text;
+
+  EarningsInfoCard({Key key, @required this.cardType, this.text = 0})
+      : assert(cardType != null, 'Card type cannot be null'),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +69,7 @@ class EarningsInfoCard extends StatelessWidget {
                 // color: Colors.greenAccent,
                 alignment: Alignment.center,
                 child: Text(
-                  "0",
+                  text.toString() ?? "0",
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w500,

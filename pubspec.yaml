@@ -61,7 +61,8 @@ dependencies:
   map_launcher: ^0.12.2
   path_provider: ^1.6.22
   rflutter_alert: ^1.1.0
-  stacked: ^1.7.6
+  # stacked: ^1.7.6
+  stacked: ^1.7.7
   stacked_services: ^0.5.4+4
   string_validator: ^0.1.4
   uuid: ^2.2.2
