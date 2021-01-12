@@ -91,13 +91,14 @@ class DrawerWidget extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            height: blockHeight * 3,
+                            height: blockHeight * 4,
                             // color: Colors.yellowAccent,
                             alignment: Alignment.centerLeft,
                             child: Text(
                               Hive.box('user').get('email') != null
                                   ? Hive.box('user').get('email')
                                   : "Email",
+                                  maxLines: 2,
                               style: TextStyle(
                                 fontWeight: FontWeight.w500,
                               ),
