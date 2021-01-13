@@ -94,19 +94,19 @@ class ChatServiceImpl extends ChatService {
       .snapshots()
       .map(_listOfusers);
 
-  List<UserModel> _listOfusers(QuerySnapshot querySnapshot) =>
-      querySnapshot.docs
-          .map((doc) => UserModel(
-              activeJobs: doc.data()['activeJobs'],
-              completedJobs: doc.data()['completedJobs'],
-              // deviceIds: doc.data()['deviceIds'] as List<String>,
-              email: doc.data()['email'],
-              fname: doc.data()['fname'],
-              lname: doc.data()['lname'],
-              phone: doc.data()['phone'],
-              rejectedJobs: doc.data()['rejectedJobs'],
-              totalEarnings: doc.data()['totalEarnings']))
-          .toList();
+  List<UserModel> _listOfusers(QuerySnapshot querySnapshot) => querySnapshot
+      .docs
+      .map((doc) => UserModel(
+          activeJobs: doc.data()['activeJobs'],
+          completedJobs: doc.data()['completedJobs'],
+          // deviceIds: doc.data()['deviceIds'] as List<String>,
+          email: doc.data()['email'],
+          fname: doc.data()['fname'],
+          lname: doc.data()['lname'],
+          phone: doc.data()['phone'],
+          rejectedJobs: doc.data()['rejectedJobs'],
+          totalEarnings: double.parse(doc.data()['totalEarnings'].toString())))
+      .toList();
 
   @override
   Stream<List<ChatModel>> get getChats => FirebaseFirestore.instance

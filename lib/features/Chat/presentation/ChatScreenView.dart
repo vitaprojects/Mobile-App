@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:newpostman1/features/Chat/data/chat_service.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../models/user/UserModel.dart';
@@ -25,7 +26,14 @@ class ChatScreenView extends StatelessWidget {
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Get.to(AddNewChatView());
+            // Get.to(AddNewChatView());
+            final locatorservice = locator<ChatService>();
+            Stream<List<UserModel>> lst = locatorservice.getUsers;
+            lst.forEach((element) {
+              element.forEach((element) {
+                print(element.email);
+              });
+            });
           },
           tooltip: 'New Message',
           elevation: 0.0,
@@ -100,6 +108,7 @@ class ChatScreenView extends StatelessWidget {
     );
   }
 }
+
 ///*list tile to show the users
 class ChatTileBuilder extends StatelessWidget {
   final ChatModel chatModel;

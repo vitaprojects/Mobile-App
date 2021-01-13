@@ -98,7 +98,7 @@ class DrawerWidget extends StatelessWidget {
                               Hive.box('user').get('email') != null
                                   ? Hive.box('user').get('email')
                                   : "Email",
-                                  maxLines: 2,
+                              maxLines: 2,
                               style: TextStyle(
                                 fontWeight: FontWeight.w500,
                               ),
