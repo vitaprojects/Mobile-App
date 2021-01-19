@@ -36,8 +36,8 @@ Map<String, dynamic> _$PostErrandModelToJson(PostErrandModel instance) =>
     <String, dynamic>{
       'pickUpFrom': instance.pickUpFrom,
       'pickUpType': instance.pickUpType,
-      'pAddress': instance.pAddress,
-      'dAddress': instance.dAddress,
+      'pAddress': instance.pAddress.toJson(),
+      'dAddress': instance.dAddress.toJson(),
       'phone': instance.phone,
       'orderNo': instance.orderNo,
       'instructions': instance.instructions,

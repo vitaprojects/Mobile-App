@@ -26,14 +26,14 @@ class ChatScreenView extends StatelessWidget {
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            // Get.to(AddNewChatView());
-            final locatorservice = locator<ChatService>();
-            Stream<List<UserModel>> lst = locatorservice.getUsers;
-            lst.forEach((element) {
-              element.forEach((element) {
-                print(element.email);
-              });
-            });
+            Get.to(AddNewChatView());
+            // final locatorservice = locator<ChatService>();
+            // Stream<List<UserModel>> lst = locatorservice.getUsers;
+            // lst.forEach((element) {
+            //   element.forEach((element) {
+            //     print(element.email);
+            //   });
+            // });
           },
           tooltip: 'New Message',
           elevation: 0.0,

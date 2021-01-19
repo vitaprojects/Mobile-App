@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:hive/hive.dart';
 import 'package:newpostman1/features/Chat/data/chatModel.dart';
 import 'package:newpostman1/features/Chat/data/chat_service.dart';
 import 'package:newpostman1/features/authentication/domain/auth_service.dart';
@@ -91,22 +92,26 @@ class ChatServiceImpl extends ChatService {
   @override
   Stream<List<UserModel>> get getUsers => FirebaseFirestore.instance
       .collection('users')
+      .doc(Hive.box('user').get('email'))
+      .collection('chats')
       .snapshots()
       .map(_listOfusers);
 
-  List<UserModel> _listOfusers(QuerySnapshot querySnapshot) => querySnapshot
-      .docs
-      .map((doc) => UserModel(
-          activeJobs: doc.data()['activeJobs'],
-          completedJobs: doc.data()['completedJobs'],
-          // deviceIds: doc.data()['deviceIds'] as List<String>,
-          email: doc.data()['email'],
-          fname: doc.data()['fname'],
-          lname: doc.data()['lname'],
-          phone: doc.data()['phone'],
-          rejectedJobs: doc.data()['rejectedJobs'],
-          totalEarnings: double.parse(doc.data()['totalEarnings'].toString())))
-      .toList();
+  List<UserModel> _listOfusers(QuerySnapshot querySnapshot) =>
+      querySnapshot.docs.map((doc) => UserModel.fromJson(doc.data())).toList();
+  // .docs
+  // .map((doc) => UserModel(
+  //     activeJobs: doc.data()['activeJobs'],
+  //     completedJobs: doc.data()['completedJobs'],
+  //     // deviceIds: doc.data()['deviceIds'] as List<String>,
+  //     email: doc.data()['email'],
+  //     fname: doc.data()['fname'],
+  //     lname: doc.data()['lname'],
+  //     phone: doc.data()['phone'],
+  //     rejectedJobs: doc.data()['rejectedJobs'],
+  //     totalEarnings: double.parse(doc.data()['totalEarnings'].toString()))
+  //     )
+  // .toList();
 
   @override
   Stream<List<ChatModel>> get getChats => FirebaseFirestore.instance
