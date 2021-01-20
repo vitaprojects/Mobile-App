@@ -19,19 +19,19 @@ class NewChatRoomView extends StatefulWidget {
 class _NewChatRoomViewState extends State<NewChatRoomView> {
   ScrollController scrollController;
   final ChatService chatService = locator<ChatService>();
-  scrolllistner() {
-    if (scrollController.offset >= scrollController.position.maxScrollExtent &&
-        !scrollController.position.outOfRange) {
-      print(
-          '*****************Reached the bottom ********************************************');
-    }
+  // scrolllistner() {
+  //   if (scrollController.offset >= scrollController.position.maxScrollExtent &&
+  //       !scrollController.position.outOfRange) {
+  //     print(
+  //         '*****************Reached the bottom ********************************************');
+  //   }
 
-    if (scrollController.offset <= scrollController.position.minScrollExtent &&
-        !scrollController.position.outOfRange) {
-      print(
-          '*************************reached top*******************************************************');
-    }
-  }
+  //   if (scrollController.offset <= scrollController.position.minScrollExtent &&
+  //       !scrollController.position.outOfRange) {
+  //     print(
+  //         '*************************reached top*******************************************************');
+  //   }
+  // }
 
   @override
   void initState() {
@@ -73,7 +73,7 @@ class _NewChatRoomViewState extends State<NewChatRoomView> {
 class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
   final UserModel userModel;
 
-  const AppBarCustom({Key key, @required this.userModel}) : super(key: key);
+  const AppBarCustom({Key key, @required this.userModel}) :assert(userModel!=null,'User model cannot be null'),super(key: key);
 
   @override
   Widget build(BuildContext context) {
