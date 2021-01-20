@@ -82,6 +82,7 @@ class AvailablePostmanCard extends ViewModelWidget<AvailablePostmanViewModel> {
                             onPressed: () {
                               print("send a message");
                               print(itenaryModel.details.email);
+                              //TODO when this button is pressend load a chat screen so the user can chat wth the postman
                             },
                           ),
                         ),
