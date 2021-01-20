@@ -32,30 +32,54 @@ class AddNewChatView extends StatelessWidget {
         body: ViewModelBuilder<AddNewChatViewmodel>.reactive(
             builder: (context, model, widget) {
               print(model.userList == null ? '*** empty' : '*** not empty');
-              return ListView.builder(
-                physics: BouncingScrollPhysics(),
-                itemCount:
-                    model.userList != null ? model.userList.length ?? 0 : 0,
-                itemBuilder: (BuildContext context, int index) {
-                  return model.userList[index].email !=
-                          FirebaseAuth.instance.currentUser.email
-                      ? ListTile(
-                          onTap: () {
-                            // model.isOk();
-                            Get.off(NewChatRoomView(
-                              userModel: model.userList[index],
-                            ));
-                          },
-                          title: Text(model.userList[index].fname),
-                          subtitle: Text(model.userList[index].lname),
-                          leading: CircleAvatar(
-                            backgroundColor: Globals.bgColor,
-                            child: Icon(Icons.supervised_user_circle),
-                          ),
-                        )
-                      : Offstage();
-                },
-              );
+              if (model.userList == null) {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (model.userList.isEmpty) {
+                return Center(
+                  child: Container(
+                    height: 60,
+                    // color: Colors.red,
+                    margin: EdgeInsets.symmetric(
+                      horizontal: 30,
+                    ),
+                    alignment: Alignment.center,
+                    child: Text(
+                      "You don't have any contacts",
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                );
+              } else {
+                return ListView.builder(
+                  physics: BouncingScrollPhysics(),
+                  itemCount:
+                      model.userList != null ? model.userList.length ?? 0 : 0,
+                  itemBuilder: (BuildContext context, int index) {
+                    return model.userList[index].email !=
+                            FirebaseAuth.instance.currentUser.email
+                        ? ListTile(
+                            onTap: () {
+                              // model.isOk();
+                              Get.off(NewChatRoomView(
+                                userModel: model.userList[index],
+                              ));
+                            },
+                            title: Text(model.userList[index].fname),
+                            subtitle: Text(model.userList[index].lname),
+                            leading: CircleAvatar(
+                              backgroundColor: Globals.bgColor,
+                              child: Icon(Icons.supervised_user_circle),
+                            ),
+                          )
+                        : Offstage();
+                  },
+                );
+              }
             },
             viewModelBuilder: () => AddNewChatViewmodel()));
   }

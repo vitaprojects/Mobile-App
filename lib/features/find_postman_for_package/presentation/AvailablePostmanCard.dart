@@ -49,20 +49,44 @@ class AvailablePostmanCard extends ViewModelWidget<AvailablePostmanViewModel> {
           child: Row(
             children: [
               Container(
-                width: blockHeight * 15,
-                // color: Globals.mainColor,
-                padding: EdgeInsets.all(
-                  blockHeight * 2,
-                ),
-                alignment: Alignment.center,
-                child: CircleAvatar(
-                  backgroundColor: Colors.white,
-                  backgroundImage: AssetImage(
-                    "assets/images/user.png",
+                  width: blockHeight * 15,
+                  // color: Globals.mainColor,
+                  padding: EdgeInsets.all(
+                    blockHeight * 2,
                   ),
-                  radius: blockHeight * 7,
-                ),
-              ),
+                  alignment: Alignment.center,
+                  child: Stack(
+                    children: [
+                      Container(
+                        // color: Colors.yellow,
+                        height: blockHeight * 14,
+                      ),
+                      CircleAvatar(
+                        backgroundColor: Colors.white,
+                        backgroundImage: AssetImage(
+                          "assets/images/user.png",
+                        ),
+                        radius: blockHeight * 7,
+                      ),
+                      Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Container(
+                          height: blockHeight * 3,
+                          // color: Colors.redAccent,
+                          width: blockWidth * 10,
+                          alignment: Alignment.center,
+                          child: IconButton(
+                            color: Globals.mainColor,
+                            padding: EdgeInsets.all(0),
+                            icon: Icon(Icons.message),
+                            onPressed: () {
+                              print("send a message");
+                            },
+                          ),
+                        ),
+                      )
+                    ],
+                  )),
               Container(
                 color: Colors.grey,
                 width: blockWidth * 1,
