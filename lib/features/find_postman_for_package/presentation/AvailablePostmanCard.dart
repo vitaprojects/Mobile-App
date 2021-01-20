@@ -81,6 +81,7 @@ class AvailablePostmanCard extends ViewModelWidget<AvailablePostmanViewModel> {
                             icon: Icon(Icons.message),
                             onPressed: () {
                               print("send a message");
+                              print(itenaryModel.details.email);
                             },
                           ),
                         ),
