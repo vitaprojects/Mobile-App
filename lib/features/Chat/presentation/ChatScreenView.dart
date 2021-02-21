@@ -24,22 +24,22 @@ class ChatScreenView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Get.to(AddNewChatView());
-            // final locatorservice = locator<ChatService>();
-            // Stream<List<UserModel>> lst = locatorservice.getUsers;
-            // lst.forEach((element) {
-            //   element.forEach((element) {
-            //     print(element.email);
-            //   });
-            // });
-          },
-          tooltip: 'New Message',
-          elevation: 0.0,
-          backgroundColor: Globals.mainColor,
-          child: Icon(Icons.message),
-        ),
+        // floatingActionButton: FloatingActionButton(
+        //   onPressed: () {
+        //     Get.to(AddNewChatView());
+        //     // final locatorservice = locator<ChatService>();
+        //     // Stream<List<UserModel>> lst = locatorservice.getUsers;
+        //     // lst.forEach((element) {
+        //     //   element.forEach((element) {
+        //     //     print(element.email);
+        //     //   });
+        //     // });
+        //   },
+        //   tooltip: 'New Message',
+        //   elevation: 0.0,
+        //   backgroundColor: Globals.mainColor,
+        //   child: Icon(Icons.message),
+        // ),
         backgroundColor: Colors.white,
         appBar: AppBar(
           automaticallyImplyLeading: false,
@@ -165,7 +165,12 @@ class ChatTileBuilder extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(15)),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
-                                child: Image.asset("assets/images/user.png"),
+                                child:
+                                    // Image.network(
+                                    //   'https://i.pinimg.com/originals/ae/ec/c2/aeecc22a67dac7987a80ac0724658493.jpg',
+                                    //   fit: BoxFit.cover,
+                                    // ),
+                                    Image.asset('assets/images/user.png'),
                               ),
                             ),
                             SizedBox(
@@ -176,7 +181,8 @@ class ChatTileBuilder extends StatelessWidget {
                               children: [
                                 Text(
                                   userModel != null
-                                      ? userModel.fname ?? 'Mike Edward'
+                                      ? userModel.fname ??
+                                          'Seems like u dont have a name'
                                       : 'Seems like u dont have a name',
                                   style: TextStyle(
                                       fontSize: 14,
@@ -187,7 +193,9 @@ class ChatTileBuilder extends StatelessWidget {
                                   height: 5,
                                 ),
                                 Text(
-                                  'Post Man',
+                                  userModel != null
+                                      ? userModel.email ?? 'No users identified'
+                                      : 'No users identified',
                                   style: TextStyle(
                                     fontSize: 13,
                                     color: Colors.grey[600],
