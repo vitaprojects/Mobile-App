@@ -1,0 +1,35 @@
+import 'package:newpostman1/features/TotalEarnings/data/total_earnings_service.dart';
+import 'package:newpostman1/models/earningsModel.dart';
+import 'package:newpostman1/useful/service_locator.dart';
+import 'package:stacked/stacked.dart';
+
+class TotalEarningsWidgetViewModel extends StreamViewModel<EarningsModel> {
+  final earningslocatior = locator<TotalEarningsService>();
+
+  ///* this is the drop down selection view
+  ///[`0`] its initial value and its stands for getting all the earnings which is in the users collection
+  ///[`1`] getting the current months earning
+  ///[`2`] getting the current days earnings
+  int _overView = 0;
+  EarningsModel get getData => data;
+
+  int get indexVal => _overView;
+
+  ///* this method is to change the drop down index value as well as to change the  streams too
+  updateOverView(int val) async {
+    _overView = val;
+    notifySourceChanged();
+  }
+
+  @override
+  Stream<EarningsModel> get stream => _overView == 0
+      ? earningslocatior.getAllEarnings
+      : _overView == 1
+          ? earningslocatior.getMonthEarnings
+          : earningslocatior.getDayEarnings;
+
+  @override
+  void initialise() {
+    super.initialise();
+  }
+}

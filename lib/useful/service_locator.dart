@@ -1,4 +1,6 @@
 import 'package:get_it/get_it.dart';
+import 'package:newpostman1/features/Chat/data/chat_service.dart';
+import 'package:newpostman1/features/Chat/data/chat_service_impl.dart';
 import 'package:newpostman1/features/Check%20Internet%20connection/ConnectionStatusSingleton.dart';
 import 'package:newpostman1/features/Check%20Internet%20connection/ConnectionStatusSingletonImpl.dart';
 import 'package:newpostman1/features/My%20errands/domain/posted_errands_service.dart';
@@ -7,6 +9,8 @@ import 'package:newpostman1/features/MyPackages/domain/posted_packages_service.d
 import 'package:newpostman1/features/MyPackages/domain/posted_packages_service_impl.dart';
 import 'package:newpostman1/features/MyTrips/domain/trip_service.dart';
 import 'package:newpostman1/features/MyTrips/domain/trip_service_impl.dart';
+import 'package:newpostman1/features/TotalEarnings/data/total_earnings_service.dart';
+import 'package:newpostman1/features/TotalEarnings/data/total_earnings_service_impl.dart';
 import 'package:newpostman1/features/authentication/domain/auth_service.dart';
 import 'package:newpostman1/features/authentication/domain/auth_service_impl.dart';
 import 'package:newpostman1/features/find_postman_for_errand/domain/find_available_postman_for_errand_service.dart';
@@ -98,4 +102,11 @@ setupServiceLocator() {
 
   locator.registerLazySingleton<ConnectionStatusSingleton>(
       () => ConnectionStatusSingletonImpl());
+
+  ///Chat messages service
+  locator.registerLazySingleton<ChatService>(() => ChatServiceImpl());
+
+  ///total earnings service
+  locator.registerLazySingleton<TotalEarningsService>(
+      () => TotalEarningsServiceImpl());
 }

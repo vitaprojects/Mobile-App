@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import '../../../useful/globals.dart';
 
 class TotalEarningsAppBar extends StatelessWidget {
-  TotalEarningsAppBar({Key key}) : super(key: key);
+  TotalEarningsAppBar({Key key, @required this.text}) : super(key: key);
   final double blockHeight = Globals.blockHeight;
   final double blockWidth = Globals.blockWidth;
-  double margin;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
-    margin = blockWidth * 5;
+    double margin = blockWidth * 5;
     return Container(
       height: blockHeight * 20,
       color: Globals.mainColor,
@@ -45,19 +45,18 @@ class TotalEarningsAppBar extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  height: blockHeight * 5,
-                  // color: Colors.yellow,
-                  alignment: Alignment.center,
-                  child: AutoSizeText(
-                    "\$0.00",
-                    style: TextStyle(
-                      fontSize: 28,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500,
-                    ),
-                    minFontSize: 18,
-                  ),
-                ),
+                    height: blockHeight * 5,
+                    // color: Colors.yellow,
+                    alignment: Alignment.center,
+                    child: AutoSizeText(
+                      "\$$text",
+                      style: TextStyle(
+                        fontSize: 28,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w500,
+                      ),
+                      minFontSize: 18,
+                    )),
                 Container(
                   height: blockHeight * 5,
                   // color: Colors.yellow,

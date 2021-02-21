@@ -39,6 +39,8 @@ dependencies:
   flutter_form_builder: ^3.14.1
   flutter_inner_drawer: ^0.5.7+2
   flutter_paystack: ^1.0.4+1
+  # timeago: ^2.0.29
+  bubble: ^1.1.9+1
   flutter_spinkit: ^4.1.2+1
   flutter_swiper: ^1.1.6
   font_awesome_flutter: ^8.8.1
@@ -59,7 +61,8 @@ dependencies:
   map_launcher: ^0.12.2
   path_provider: ^1.6.22
   rflutter_alert: ^1.1.0
-  stacked: ^1.7.6
+  # stacked: ^1.7.6
+  stacked: ^1.7.7
   stacked_services: ^0.5.4+4
   string_validator: ^0.1.4
   uuid: ^2.2.2
@@ -69,6 +72,12 @@ dev_dependencies:
     sdk: flutter
   build_runner: null
   json_serializable: null
+  flutter_launcher_icons: "^0.8.0"
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/appIcon.jpg"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

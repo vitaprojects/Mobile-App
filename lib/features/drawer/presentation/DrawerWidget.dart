@@ -91,13 +91,14 @@ class DrawerWidget extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            height: blockHeight * 3,
+                            height: blockHeight * 4,
                             // color: Colors.yellowAccent,
                             alignment: Alignment.centerLeft,
                             child: Text(
                               Hive.box('user').get('email') != null
                                   ? Hive.box('user').get('email')
                                   : "Email",
+                              maxLines: 2,
                               style: TextStyle(
                                 fontWeight: FontWeight.w500,
                               ),
@@ -155,22 +156,22 @@ class DrawerWidget extends StatelessWidget {
                     height: blockHeight / 2,
                     thickness: blockHeight / 4,
                   ),
-                  ItemWidgetInDrawer(
-                    icon: Icon(
-                      FontAwesomeIcons.search,
-                    ),
-                    title: "Available Shipments",
-                    margin: margin,
-                    ontapFunc: () {
-                      closeDrawer();
+                  // ItemWidgetInDrawer(
+                  //   icon: Icon(
+                  //     FontAwesomeIcons.search,
+                  //   ),
+                  //   title: "Available Shipments",
+                  //   margin: margin,
+                  //   ontapFunc: () {
+                  //     closeDrawer();
 
-                      print("go to find package");
-                    },
-                  ),
-                  Divider(
-                    height: blockHeight / 2,
-                    thickness: blockHeight / 4,
-                  ),
+                  //     print("go to find package");
+                  //   },
+                  // ),
+                  // Divider(
+                  //   height: blockHeight / 2,
+                  //   thickness: blockHeight / 4,
+                  // ),
                   ItemWidgetInDrawer(
                     icon: Icon(
                       FontAwesomeIcons.stumbleupon,

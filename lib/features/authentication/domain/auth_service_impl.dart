@@ -176,8 +176,7 @@ class AuthenticationServiceImplementation extends AuthenticationService {
     try {
       UserCredential result =
           await _firebaseAuth.createUserWithEmailAndPassword(
-              email: userModel.email.trim().toLowerCase(),
-              password: password.trim());
+              email: userModel.email.trim().toLowerCase(), password: password);
       if (result.user != null) {
         await firestoreDb
             .collection("users")

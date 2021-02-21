@@ -24,11 +24,11 @@ class LoginPageViewModel extends ChangeNotifier {
 
   validateUserInput() {
     if (isEmail(_emailtextEditingController.text.trim()) == true) {
-      if (_passtextEditingController.text.trim().isNotEmpty) {
+      if (_passtextEditingController.text.isNotEmpty) {
         print("user input is valid");
         Get.to(LoadingPage(text: "Please wait"));
         authenticationService.signIn(_emailtextEditingController.text.trim(),
-            _passtextEditingController.text.trim());
+            _passtextEditingController.text);
         _emailtextEditingController.text = _passtextEditingController.text = "";
       } else {
         snackBarService.showSnackBar(
@@ -105,8 +105,13 @@ class LoginPageViewModel extends ChangeNotifier {
   }
 
   resetPassword() {
-    authenticationService
-        .sendResetMail(forgetPasstextEditingController.text.trim());
-    forgetPasstextEditingController.text = '';
+    if (forgetPasstextEditingController.text.trim().isNotEmpty) {
+      authenticationService
+          .sendResetMail(forgetPasstextEditingController.text.trim());
+      forgetPasstextEditingController.text = '';
+    } else {
+      snackBarService.showSnackBar(
+          "Input Error", "Please enter a valid email", true);
+    }
   }
 }

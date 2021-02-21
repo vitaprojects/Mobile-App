@@ -1,11 +1,17 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
+import 'package:newpostman1/features/TotalEarnings/presentation/totalEarningsWidgetViewModel.dart';
+import 'package:stacked/stacked.dart';
 
 import '../../../useful/globals.dart';
 
 class TotalEarningsOverviewSelectionWidget extends StatefulWidget {
-  TotalEarningsOverviewSelectionWidget({Key key}) : super(key: key);
-
+  TotalEarningsOverviewSelectionWidget(
+      {Key key, this.indexValue = 0, @required this.onChanged})
+      : super(key: key);
+  final int indexValue;
+  final ValueChanged<int> onChanged;
   @override
   _TotalEarningsOverviewSelectionWidgetState createState() =>
       _TotalEarningsOverviewSelectionWidgetState();
@@ -17,6 +23,7 @@ class _TotalEarningsOverviewSelectionWidgetState
   final double blockWidth = Globals.blockWidth;
 
   double margin;
+
   @override
   Widget build(BuildContext context) {
     margin = blockWidth * 5;
@@ -72,25 +79,51 @@ class _TotalEarningsOverviewSelectionWidgetState
                       ),
                     ),
                     Container(
-                      width: blockWidth * 30,
-                      // color: Colors.green,
-                      alignment: Alignment.center,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            "All",
-                            style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.white,
-                            ),
-                          ),
-                          Icon(
-                            Icons.arrow_drop_down,
-                          )
-                        ],
-                      ),
-                    ),
+                        width: blockWidth * 30,
+                        // color: Colors.green,
+                        alignment: Alignment.center,
+                        // child: Row(
+                        //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        //   children: [
+                        //     Text(
+                        //       "All",
+                        // style: TextStyle(
+                        //   fontSize: 18,
+                        //   color: Colors.white,
+                        // ),
+                        //     ),
+                        // Icon(
+                        //   Icons.arrow_drop_down,
+                        // )
+                        //   ],
+                        // ),
+                        child: DropdownButton(
+                          // icon: Icon(
+                          //   Icons.arrow_drop_down,
+                          // ),
+
+                          items: <int>[0, 1, 2]
+                              .map((e) => DropdownMenuItem(
+                                  value: e,
+                                  child: Text(
+                                    e == 0
+                                        ? 'All'
+                                        : e == 1
+                                            ? 'Month'
+                                            : 'Day',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      color: Colors.white,
+                                    ),
+                                  )))
+                              .toList(),
+                          isExpanded: true,
+                          dropdownColor: Globals.mainColor,
+                          iconSize: 30,
+                          underline: Offstage(),
+                          onChanged: widget.onChanged,
+                          value: widget.indexValue,
+                        )),
                   ],
                 ),
               ),

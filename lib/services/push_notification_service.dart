@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:get/get.dart';
+import 'package:newpostman1/features/Chat/presentation/ChatRoomView/ChatRoomView.dart';
+import 'package:newpostman1/features/Chat/presentation/ChatScreenView.dart';
 // import 'package:peckme/views/NoficationsView.dart';
 
 class PushNotificationService {
@@ -28,7 +30,7 @@ class PushNotificationService {
       //app is in the backgounnd and we open the app using the push notification
       onResume: (Map<String, dynamic> message) async {
         _serialiseAndNavigate(message);
-
+      
         print("onResume: $message");
       },
     );
@@ -57,6 +59,12 @@ class PushNotificationService {
 
         // Get.offAll(roo)
         //here we dont have to direct the user to anywhere else we because the post in in the home page of the app
+      }
+      ///! TODO : Totally opposit
+      else if (view == 'message_noti') {
+        printInfo(info: 'message notifiacation *****************');
+        printInfo(info: 'hottthshfd/*****56699');
+        Get.to(ChatScreenView());
       }
       // If there's no view it'll just open the app on the first view
     }

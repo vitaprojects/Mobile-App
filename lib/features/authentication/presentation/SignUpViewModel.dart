@@ -46,7 +46,7 @@ class SignUpViewModel extends ChangeNotifier {
                   hasSpecialCharacters) {
                 print("user input is valid");
                 UserModel userModel = UserModel(
-                    email: emailtextEditingController.text,
+                    email: emailtextEditingController.text.trim(),
                     fname: fnametextEditingController.text,
                     lname: lnametextEditingController.text,
                     phone: phonetextEditingController.text,

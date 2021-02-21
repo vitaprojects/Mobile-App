@@ -141,13 +141,14 @@ class PostErrandFormViewModel extends ChangeNotifier {
                 if (getMyAmount.text.isNotEmpty && isFloat(getMyAmount.text)) {
                   if (getMyTip.text.isEmpty ||
                       (getMyTip.text.isNotEmpty && isFloat(getMyTip.text))) {
-                    if (imagesOfTheErrand.length != 0) {
+                    if (imagesOfTheErrand.length != 0 ||
+                        imagesOfTheErrand.isEmpty) {
                       isValid = true;
                     } else {
-                      snackBarService.showSnackBar(
-                          "Images of the errand missing",
-                          "Please add images of the errand",
-                          true);
+                      // snackBarService.showSnackBar(
+                      //     "Images of the errand missing",
+                      //     "Please add images of the errand",
+                      //     true);
                     }
                   } else {
                     snackBarService.showSnackBar("Invalid tip amount",
