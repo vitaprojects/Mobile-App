@@ -73,7 +73,9 @@ class _NewChatRoomViewState extends State<NewChatRoomView> {
 class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
   final UserModel userModel;
 
-  const AppBarCustom({Key key, @required this.userModel}) :assert(userModel!=null,'User model cannot be null'),super(key: key);
+  const AppBarCustom({Key key, @required this.userModel})
+      : assert(userModel != null, 'User model cannot be null'),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -90,8 +92,8 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: Image.network(
-                'https://i.pinimg.com/originals/ae/ec/c2/aeecc22a67dac7987a80ac0724658493.jpg',
+              child: Image.asset(
+                "assets/images/user.png",
                 fit: BoxFit.cover,
               ),
             ),

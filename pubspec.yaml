@@ -72,6 +72,12 @@ dev_dependencies:
     sdk: flutter
   build_runner: null
   json_serializable: null
+  flutter_launcher_icons: "^0.8.0"
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/appIcon.jpg"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

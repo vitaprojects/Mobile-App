@@ -69,8 +69,8 @@ class AddNewChatView extends StatelessWidget {
                                 userModel: model.userList[index],
                               ));
                             },
-                            title: Text(model.userList[index].fname),
-                            subtitle: Text(model.userList[index].lname),
+                            title: Text(model.userList[index].email),
+                            subtitle: Text(model.userList[index].email),
                             leading: CircleAvatar(
                               backgroundColor: Globals.bgColor,
                               child: Icon(Icons.supervised_user_circle),

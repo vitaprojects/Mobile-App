@@ -165,10 +165,7 @@ class ChatTileBuilder extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(15)),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(10),
-                                child: Image.network(
-                                  'https://i.pinimg.com/originals/ae/ec/c2/aeecc22a67dac7987a80ac0724658493.jpg',
-                                  fit: BoxFit.cover,
-                                ),
+                                child: Image.asset("assets/images/user.png"),
                               ),
                             ),
                             SizedBox(

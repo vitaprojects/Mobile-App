@@ -88,15 +88,16 @@ class ChatServiceImpl extends ChatService {
             senderEmail: e.data()['senderEmail']))
         .toList();
   }
-  ///* make sure you dont change this because this just returns all the users which are in  the app and later use it 
-  ///for querying ! 
+
+  ///* make sure you dont change this because this just returns all the users which are in  the app and later use it
+  ///for querying !
   ///! using the list to query is faster than using the firestore querying
 
   @override
   Stream<List<UserModel>> get getUsers => FirebaseFirestore.instance
       .collection('users')
-      // .doc(Hive.box('user').get('email'))
-      // .collection('chats')
+      .doc(Hive.box('user').get('email'))
+      .collection('chats')
       .snapshots()
       .map(_listOfusers);
 
