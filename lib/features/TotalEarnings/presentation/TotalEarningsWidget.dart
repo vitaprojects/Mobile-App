@@ -1,12 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:newpostman1/customWidgets/FormButton.dart';
 import 'package:newpostman1/features/TotalEarnings/data/total_earnings_service.dart';
 import 'package:newpostman1/features/TotalEarnings/presentation/EarningSectionWidget.dart';
 import 'package:newpostman1/features/TotalEarnings/presentation/EarningsInfoCard.dart';
 import 'package:newpostman1/features/TotalEarnings/presentation/TotalEarningsAppBar.dart';
 import 'package:newpostman1/features/TotalEarnings/presentation/TotalEarningsOverviewSelectionWidget.dart';
 import 'package:newpostman1/features/TotalEarnings/presentation/totalEarningsWidgetViewModel.dart';
+import 'package:newpostman1/features/withdraw/presentation/pages/withdarwView.dart';
 
 import 'package:stacked/stacked.dart';
 
@@ -132,7 +135,16 @@ class TotalEarningsWidget extends StatelessWidget {
                                 ],
                               ),
                             ),
-                          )
+                          ),
+                          SizedBox(
+                            height: blockHeight * 15 / 3,
+                          ),
+                          FormButton(
+                            buttonText: 'Withdraw',
+                            ontapFun: () {
+                              Get.to(WithdrawView());
+                            },
+                          ),
                         ],
                       )),
                   TotalEarningsOverviewSelectionWidget(
