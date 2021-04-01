@@ -10,20 +10,24 @@ class OrderModel {
   String postmanEmail;
   String userEmail;
   int statusOftheOrder;
-  double feeAmount;
-  double tipAmount;
+  double subtotal;
   double totalAmount;
+  double gst;
+  double postmanFee;
+  double tipAmount;
   String orderID;
 
   OrderModel({
-    this.feeAmount,
+    this.type,
     this.pacakgeDocId,
     this.postmanEmail,
-    this.statusOftheOrder,
-    this.tipAmount,
-    this.totalAmount,
-    this.type,
     this.userEmail,
+    this.statusOftheOrder,
+    this.subtotal,
+    this.totalAmount,
+    this.gst,
+    this.postmanFee,
+    this.tipAmount,
     this.orderID,
   });
   factory OrderModel.fromJson(Map<String, dynamic> json) =>

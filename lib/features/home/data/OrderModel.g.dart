@@ -8,7 +8,9 @@ part of 'OrderModel.dart';
 
 OrderModel _$OrderModelFromJson(Map<String, dynamic> json) {
   return OrderModel(
-    feeAmount: (json['feeAmount'] as num)?.toDouble(),
+    gst: (json['gst'] as num)?.toDouble(),
+    subtotal: (json['subtotal'] as num)?.toDouble(),
+    postmanFee: (json['postmanFee'] as num)?.toDouble(),
     pacakgeDocId: json['pacakgeDocId'] as String,
     postmanEmail: json['postmanEmail'] as String,
     statusOftheOrder: json['statusOftheOrder'] as int,
@@ -27,8 +29,10 @@ Map<String, dynamic> _$OrderModelToJson(OrderModel instance) =>
       'postmanEmail': instance.postmanEmail,
       'userEmail': instance.userEmail,
       'statusOftheOrder': instance.statusOftheOrder,
-      'feeAmount': instance.feeAmount,
       'tipAmount': instance.tipAmount,
       'totalAmount': instance.totalAmount,
       'orderID': instance.orderID,
+      'gst': instance.gst,
+      'subtotal': instance.subtotal,
+      'postmanFee': instance.postmanFee
     };

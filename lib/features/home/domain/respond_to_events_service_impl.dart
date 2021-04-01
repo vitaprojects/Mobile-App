@@ -119,7 +119,7 @@ class RespondToEventsServiceImpl extends RespondToEventsService {
         //TODO fix notifying the postman about the new order
 
         OrderModel orderModel = OrderModel(
-          feeAmount: requestModel.postmanOffer,
+          postmanFee: requestModel.postmanOffer,
           pacakgeDocId: requestModel.packageDocID,
           postmanEmail: requestModel.postman,
           statusOftheOrder: 0, //in the beggining of te order the status is 0

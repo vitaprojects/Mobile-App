@@ -208,7 +208,7 @@ class ListenToEventsServiceImpl extends ListenToEventsService {
               //TODO add this order creation to the right place
 
               OrderModel orderModel = OrderModel(
-                feeAmount:
+                postmanFee:
                     null, //we dont any info about these they are in the errand document
                 pacakgeDocId: requestModel.packageDocID,
                 postmanEmail: requestModel.postman,
