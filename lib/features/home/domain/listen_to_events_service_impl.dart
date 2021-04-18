@@ -21,39 +21,50 @@ class ListenToEventsServiceImpl extends ListenToEventsService {
   @override
   Stream<List<RequestModel>> listenToNewRequestsForthePostman() {
     try {
-      Query query = buildQuery(
-          collection: firebaseFirestore.collection('requests'),
-          constraints: [
-            QueryConstraint(
-              field: 'postman',
-              isEqualTo: Hive.box('user').get('email'),
-            ),
-            QueryConstraint(
-              field: 'hasSeenbyPostman',
-              isEqualTo: false,
-            ),
-            QueryConstraint(
-              field: 'status',
-              isEqualTo: 0,
-            ),
-          ],
-          orderBy: [
-            OrderConstraint(
-              'date',
-              true,
-            )
-          ]);
-      return getDataFromQuery(
-        query: query,
-        mapper: (requestDoc) {
-          var request = RequestModel.fromJson(requestDoc.data());
-          request.requestId = requestDoc.id;
-          return request;
-        },
-        // clientSidefilters: (event) =>
-        //     event.startTime > DateTime.now() // only future events
-        // orderComparer: (event1, event2) => event1.name.compareTo(event2.name)
-      );
+      // Query query = buildQuery(
+      //     collection: firebaseFirestore.collection('requests'),
+      //     constraints: [
+      //       QueryConstraint(
+      //         field: 'postman',
+      //         isEqualTo: Hive.box('user').get('email'),
+      //       ),
+      //       QueryConstraint(
+      //         field: 'hasSeenbyPostman',
+      //         isEqualTo: false,
+      //       ),
+      //       QueryConstraint(
+      //         field: 'status',
+      //         isEqualTo: 0,
+      //       ),
+      //     ],
+      //     orderBy: [
+      //       OrderConstraint(
+      //         'date',
+      //         true,
+      //       )
+      //     ]);
+      // return getDataFromQuery(
+      //   query: query,
+      //   mapper: (requestDoc) {
+      //     var request = RequestModel.fromJson(requestDoc.data());
+      //     request.requestId = requestDoc.id;
+      //     return request;
+      //   },
+      //   // clientSidefilters: (event) =>
+      //   //     event.startTime > DateTime.now() // only future events
+      //   // orderComparer: (event1, event2) => event1.name.compareTo(event2.name)
+      // );
+      //
+      return firebaseFirestore
+          .collection("requests")
+          .where("postman", isEqualTo: Hive.box('user').get('email'))
+          .where("hasSeenbyPostman", isEqualTo: false)
+          .where("status", isEqualTo: 0)
+          .orderBy('date', descending: true)
+          .snapshots()
+          .map((event) {
+        return event.docs.map((e) => RequestModel.fromJson(e.data())).toList();
+      });
     } on Exception catch (ex) {
       print(ex);
     }
@@ -106,44 +117,55 @@ class ListenToEventsServiceImpl extends ListenToEventsService {
   @override
   Stream<List<RequestModel>> listenToNewResponsesFromthePostman() {
     try {
-      Query query = buildQuery(
-          collection: firebaseFirestore.collection('requests'),
-          constraints: [
-            QueryConstraint(
-              field: 'user',
-              isEqualTo: Hive.box('user').get('email'), //the users email
-            ),
-            QueryConstraint(
-              field: 'hasSeenbyPostman', //postman should see the request
-              isEqualTo: true,
-            ),
-            QueryConstraint(
-              field:
-                  'hasSeenbyUser', //user should nt see the request because this is a new request
-              isEqualTo: false,
-            ),
-            QueryConstraint(
-              field: 'status', //status should be 1 when the postman accepts it
-              isEqualTo: 1,
-            ),
-          ],
-          orderBy: [
-            OrderConstraint(
-              'date',
-              true,
-            )
-          ]);
-      return getDataFromQuery(
-        query: query,
-        mapper: (requestDoc) {
-          var request = RequestModel.fromJson(requestDoc.data());
-          request.requestId = requestDoc.id;
-          return request;
-        },
-        // clientSidefilters: (event) =>
-        //     event.startTime > DateTime.now() // only future events
-        // orderComparer: (event1, event2) => event1.name.compareTo(event2.name)
-      );
+      // Query query = buildQuery(
+      //     collection: firebaseFirestore.collection('requests'),
+      //     constraints: [
+      //       QueryConstraint(
+      //         field: 'user',
+      //         isEqualTo: Hive.box('user').get('email'), //the users email
+      //       ),
+      //       QueryConstraint(
+      //         field: 'hasSeenbyPostman', //postman should see the request
+      //         isEqualTo: true,
+      //       ),
+      //       QueryConstraint(
+      //         field:
+      //             'hasSeenbyUser', //user should nt see the request because this is a new request
+      //         isEqualTo: false,
+      //       ),
+      //       QueryConstraint(
+      //         field: 'status', //status should be 1 when the postman accepts it
+      //         isEqualTo: 1,
+      //       ),
+      //     ],
+      //     orderBy: [
+      //       OrderConstraint(
+      //         'date',
+      //         true,
+      //       )
+      //     ]);
+      // return getDataFromQuery(
+      //   query: query,
+      //   mapper: (requestDoc) {
+      //     var request = RequestModel.fromJson(requestDoc.data());
+      //     request.requestId = requestDoc.id;
+      //     return request;
+      //   },
+      //   // clientSidefilters: (event) =>
+      //   //     event.startTime > DateTime.now() // only future events
+      //   // orderComparer: (event1, event2) => event1.name.compareTo(event2.name)
+      // );
+      return firebaseFirestore
+          .collection("requests")
+          .where("user", isEqualTo: Hive.box('user').get('email'))
+          .where("hasSeenbyPostman", isEqualTo: true)
+          .where("hasSeenbyUser", isEqualTo: false)
+          .where("status", isEqualTo: 1)
+          .orderBy('date', descending: true)
+          .snapshots()
+          .map((event) {
+        return event.docs.map((e) => RequestModel.fromJson(e.data())).toList();
+      });
     } on Exception catch (ex) {
       print(ex);
     }

@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:newpostman1/features/MyPackages/domain/posted_packages_service.dart';
 import 'package:newpostman1/features/find_postman_for_package/data/RequestModel.dart';
-import 'package:newpostman1/features/post_itenary/data/ItenaryModel.dart';
+import 'package:newpostman1/features/post_itinerary/data/Itinerary_model.dart';
 import 'package:newpostman1/features/send_package/data/FullPackageModel.dart';
 import 'package:newpostman1/services/snackbar_service.dart';
 import 'package:newpostman1/useful/service_locator.dart';
@@ -41,7 +41,7 @@ class FindAvailablePostmanForPackageServiceImpl
   }
 
   @override
-  Stream<List<ItenaryModel>> getAvailablePostman(
+  Stream<List<ItineraryModel>> getAvailablePostman(
       FullPackageModel packageModel) {
     try {
       Geodesy geodesy = Geodesy();
@@ -60,17 +60,17 @@ class FindAvailablePostmanForPackageServiceImpl
       return getDataFromQuery(
           query: query,
           mapper: (eventDoc) {
-            var itenaryModel = ItenaryModel.fromJson(eventDoc.data()['data']);
+            var itenaryModel = ItineraryModel.fromJson(eventDoc.data()['data']);
             return itenaryModel;
           },
           clientSidefilters: [
-            (ItenaryModel itenary) =>
+            (ItineraryModel itenary) =>
                 geodesy.distanceBetweenTwoGeoPoints(
                     packageLocation,
                     LatLng(itenary.details.departureLocation.latitude,
                         itenary.details.departureLocation.longitude)) <
                 5000,
-            (ItenaryModel itenary) =>
+            (ItineraryModel itenary) =>
                 itenary.details.email !=
                 Hive.box('user').get(
                     'email'), //we have to remove the current user's itenaries
@@ -88,21 +88,29 @@ class FindAvailablePostmanForPackageServiceImpl
       FullPackageModel packageModel, String emailOfPostman) async {
     print("send request");
 
+    //create a document reference first
+    DocumentReference requestDocumentReference =
+        FirebaseFirestore.instance.collection('users').doc();
+
     RequestModel requestModel = RequestModel(
       date: DateTime.now(),
       hasSeenbyPostman: false,
       hasSeenbyUser: false,
       postman: emailOfPostman,
-      // requestId: packageModel.docId,
+      requestId: requestDocumentReference.id,
       packageDocID: packageModel.docId,
       status: 0,
       type: 0, //
       user: Hive.box('user').get('email'),
+
+      ///When the customer is sending the request there is no offer so we set the value to 0
+      postmanOffer: 0,
     );
 
     await firebaseFirestore
         .collection('requests')
-        .add(requestModel.toJson())
+        .doc(requestDocumentReference.id)
+        .set(requestModel.toJson())
         .then((value) {
       Get.back();
       Future.delayed(Duration(milliseconds: 500)).whenComplete(() {

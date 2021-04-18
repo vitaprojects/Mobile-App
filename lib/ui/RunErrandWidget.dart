@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:newpostman1/customWidgets/FormButton.dart';
-import 'package:newpostman1/features/home/presentation/HomePage.dart';
+import 'package:newpostman1/features/home/presentation/home_view.dart';
 
 import '../useful/globals.dart';
 

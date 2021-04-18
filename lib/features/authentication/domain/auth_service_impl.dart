@@ -9,7 +9,7 @@ import 'package:newpostman1/features/authentication/domain/auth_service.dart';
 import 'package:newpostman1/models/user/UserModel.dart';
 import 'package:newpostman1/services/push_notification_service.dart';
 import 'package:newpostman1/services/snackbar_service.dart';
-import 'package:newpostman1/features/home/presentation/HomePage.dart';
+import 'package:newpostman1/features/home/presentation/home_view.dart';
 import 'package:newpostman1/useful/rootPage.dart';
 import 'package:newpostman1/useful/service_locator.dart';
 

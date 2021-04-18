@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:newpostman1/customWidgets/VehicleTypeDisplay.dart';
-import 'package:newpostman1/features/post_itenary/data/ItenaryModel.dart';
+import 'package:newpostman1/features/post_itinerary/data/Itinerary_model.dart';
 import 'package:newpostman1/features/send_package/data/FullPackageModel.dart';
 import 'package:newpostman1/ui/RunErrandWidget.dart';
 import 'package:newpostman1/ui/TripDetailRowCard.dart';
@@ -21,7 +21,7 @@ class TripDetailsCard extends StatelessWidget {
       this.indexOftheCard});
   final bool isPackage;
   final bool isErrand;
-  final ItenaryModel itenaryModel;
+  final ItineraryModel itenaryModel;
   final bool isItenary;
   final int
       indexOftheCard; //this is passed when we want to show the number of the current card

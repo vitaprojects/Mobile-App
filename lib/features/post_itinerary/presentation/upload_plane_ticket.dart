@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:newpostman1/features/post_itenary/presentation/PlaneTicketPreviewWidget.dart';
-import 'package:newpostman1/features/post_itenary/presentation/PostYourItenaryFormViewModel.dart';
+import 'package:newpostman1/features/post_itinerary/presentation/plane_ticket_preview_widget.dart';
+import 'package:newpostman1/features/post_itinerary/presentation/post_your_itinerary_form_view_model.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../useful/globals.dart';
 
 class UploadPlaneTicketWidget
-    extends ViewModelWidget<PostYourItenaryFormViewModel> {
+    extends ViewModelWidget<PostYourItineraryFormViewModel> {
+  ///This widget is used to upload the [`plane ticket`]
+
   UploadPlaneTicketWidget({Key key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context, PostYourItenaryFormViewModel model) {
+  Widget build(BuildContext context, PostYourItineraryFormViewModel model) {
     final double blockHeight = Globals.blockHeight;
     final double blockWidth = Globals.blockWidth;
 
@@ -130,3 +132,5 @@ class UploadPlaneTicketWidget
     );
   }
 }
+
+class PostYourItenaryFormViewModel {}

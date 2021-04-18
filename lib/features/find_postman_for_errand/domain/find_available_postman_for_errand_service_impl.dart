@@ -6,7 +6,7 @@ import 'package:hive/hive.dart';
 import 'package:newpostman1/features/My%20errands/domain/posted_errands_service.dart';
 import 'package:newpostman1/features/find_postman_for_package/data/RequestModel.dart';
 import 'package:newpostman1/features/post_errand/data/RunErrandModel.dart';
-import 'package:newpostman1/features/post_itenary/data/ItenaryModel.dart';
+import 'package:newpostman1/features/post_itinerary/data/Itinerary_model.dart';
 
 import 'package:newpostman1/features/post_errand/data/PostErrandModel.dart';
 import 'package:newpostman1/services/snackbar_service.dart';

@@ -1,14 +1,13 @@
 import 'package:flutter/foundation.dart';
-import 'package:newpostman1/features/post_itenary/data/travelTypes/FlightDetailsModel.dart';
-import 'package:newpostman1/features/post_itenary/data/travelTypes/TravelType.dart';
-import 'package:newpostman1/models/LocationModel.dart';
-import 'package:newpostman1/features/post_itenary/data/VehicleDetailsModel.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:newpostman1/features/post_itinerary/data/VehicleDetailsModel.dart';
+import 'package:newpostman1/features/post_itinerary/data/travelTypes/FlightDetailsModel.dart';
+import 'package:newpostman1/models/LocationModel.dart';
 
-part 'ItenaryDetailsModel.g.dart';
+part 'itinerary_details_model.g.dart';
 
 @JsonSerializable()
-class ItenaryDetailsModel {
+class ItineraryDetailsModel {
   // TravelType
   //     travelType; //this value is set only for the bus and the plane becuase it has some separate details
   //for the remaming traveltypes we can leave this as null
@@ -25,7 +24,7 @@ class ItenaryDetailsModel {
   LocationModel destinationLocation;
   String email;
 
-  ItenaryDetailsModel({
+  ItineraryDetailsModel({
     @required this.vehicleDetailsModel,
     @required this.canPickup,
     @required this.canDeliver,
@@ -35,7 +34,7 @@ class ItenaryDetailsModel {
     @required this.email,
   });
 
-  factory ItenaryDetailsModel.fromJson(Map<String, dynamic> json) =>
+  factory ItineraryDetailsModel.fromJson(Map<String, dynamic> json) =>
       _$ItenaryDetailsModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$ItenaryDetailsModelToJson(this);

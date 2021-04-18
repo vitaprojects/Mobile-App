@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:newpostman1/features/post_itenary/presentation/PostYourItenaryFormViewModel.dart';
+import 'package:newpostman1/features/post_itinerary/presentation/post_your_itinerary_form_view_model.dart';
 import 'package:newpostman1/useful/globals.dart';
 import 'package:stacked/stacked.dart';
 
-class PlaneTicketPreview extends ViewModelWidget<PostYourItenaryFormViewModel> {
+class PlaneTicketPreview
+    extends ViewModelWidget<PostYourItineraryFormViewModel> {
   PlaneTicketPreview({Key key}) : super(key: key);
   final double blockHeight = Globals.blockHeight;
   final double blockWidth = Globals.blockWidth;
 
   @override
-  Widget build(BuildContext context, PostYourItenaryFormViewModel model) {
+  Widget build(BuildContext context, PostYourItineraryFormViewModel model) {
     return Container(
       height: blockHeight * 10,
       width: blockHeight * 8,

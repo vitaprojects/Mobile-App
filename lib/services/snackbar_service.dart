@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
+///This service is used to display [`SnackBars`]
 abstract class SnackBarService {
   showSnackBar(String title, String body, bool isDanger);
   goBackAfterTimePeriod(String title, String body, bool isDanger);

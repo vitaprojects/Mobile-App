@@ -1,11 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:newpostman1/features/Chat/presentation/ChatRoomView/newChatRoomView.dart';
 import 'package:newpostman1/features/Chat/presentation/addNewChat/addNewChatViewModel.dart';
 import 'package:newpostman1/features/find_postman_for_package/presentation/AvailablePostmanDetails.dart';
 import 'package:newpostman1/features/find_postman_for_package/presentation/AvailablePostmanViewModel.dart';
-import 'package:newpostman1/features/post_itenary/data/ItenaryModel.dart';
+import 'package:newpostman1/features/post_itinerary/data/Itinerary_model.dart';
 import 'package:newpostman1/models/user/UserModel.dart';
 import 'package:newpostman1/useful/globals.dart';
 import 'package:stacked/stacked.dart';
@@ -16,7 +15,7 @@ class AvailablePostmanCard extends ViewModelWidget<AvailablePostmanViewModel> {
   final double blockHeight = Globals.blockHeight;
   final double blockWidth = Globals.blockWidth;
   final margin = Globals.blockWidth * 5;
-  final ItenaryModel itenaryModel;
+  final ItineraryModel itenaryModel;
 
   @override
   Widget build(BuildContext context, AvailablePostmanViewModel model) {

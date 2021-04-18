@@ -1,21 +1,20 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:newpostman1/features/post_itenary/presentation/PostYourItenaryFormView.dart';
+import 'package:newpostman1/features/post_itinerary/presentation/post_your_itinerary_form_view.dart';
 
 import '../../../useful/globals.dart';
 
-class PostYourItenary extends StatefulWidget {
-  PostYourItenary({Key key}) : super(key: key);
+///This [`page`] is loaded when the user is posting a [`itinerary`]
+class PostYourItinerary extends StatefulWidget {
+  PostYourItinerary({Key key}) : super(key: key);
 
   @override
-  _PostYourItenaryState createState() => _PostYourItenaryState();
+  _PostYourItineraryState createState() => _PostYourItineraryState();
 }
 
-class _PostYourItenaryState extends State<PostYourItenary> {
+class _PostYourItineraryState extends State<PostYourItinerary> {
   @override
   Widget build(BuildContext context) {
     final double blockHeight = Globals.blockHeight;
-    final double blockWidth = Globals.blockWidth;
 
     return SafeArea(
       child: Scaffold(
@@ -54,7 +53,7 @@ class _PostYourItenaryState extends State<PostYourItenary> {
               ),
               SliverList(
                   delegate: SliverChildListDelegate([
-                PostYourItenaryFormView(),
+                PostYourItineraryFormView(),
               ]))
             ],
           )),

@@ -1,24 +1,24 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:newpostman1/features/post_itenary/presentation/AreYouADPC.dart';
+import 'package:newpostman1/features/post_itinerary/presentation/are_you_a_dpc.dart';
 import 'package:newpostman1/customWidgets/CustomInputField.dart';
-import 'package:newpostman1/features/post_itenary/presentation/DepartureWidget.dart';
-import 'package:newpostman1/features/post_itenary/presentation/DestinationWidget.dart';
-import 'package:newpostman1/features/post_itenary/presentation/PostYourItenaryFormViewModel.dart';
-import 'package:newpostman1/features/post_itenary/presentation/SelectTravelType.dart';
-import 'package:newpostman1/features/post_itenary/presentation/UploadPlaneTicket.dart';
+import 'package:newpostman1/features/post_itinerary/presentation/departure_details_widget.dart';
+import 'package:newpostman1/features/post_itinerary/presentation/post_your_itinerary_form_view_model.dart';
+import 'package:newpostman1/features/post_itinerary/presentation/select_travel_type.dart';
+import 'package:newpostman1/features/post_itinerary/presentation/upload_plane_ticket.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../useful/globals.dart';
+import 'destination_details_widget.dart';
 
-class PostYourItenaryFormView extends StatelessWidget {
-  PostYourItenaryFormView({Key key}) : super(key: key);
+class PostYourItineraryFormView extends StatelessWidget {
+  PostYourItineraryFormView({Key key}) : super(key: key);
   final double blockHeight = Globals.blockHeight;
   final double blockWidth = Globals.blockWidth;
 
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<PostYourItenaryFormViewModel>.reactive(
+    return ViewModelBuilder<PostYourItineraryFormViewModel>.reactive(
         builder: (context, model, child) {
           return Column(
             children: [
@@ -40,6 +40,7 @@ class PostYourItenaryFormView extends StatelessWidget {
               LayoutBuilder(
                 builder: (BuildContext context, BoxConstraints constraints) {
                   if (model.getTravelType == 0) {
+                    ///if the travel type is bus we display this widget
                     return AreYouADPC(
                       onChoiceSelected: (int val) {
                         // driverPassengerOrCon = val;
@@ -48,9 +49,10 @@ class PostYourItenaryFormView extends StatelessWidget {
                       },
                     );
                   } else if (model.getTravelType == 3) {
+                    ///if the travel type is plane we display this widget
                     return Column(
                       children: [
-                        UploadPlaneTicketWidget(), //TODO implemente a callback function to get the image file uploaded by the user
+                        UploadPlaneTicketWidget(),
                         SizedBox(
                           height: blockHeight * 2,
                         ),
@@ -63,6 +65,7 @@ class PostYourItenaryFormView extends StatelessWidget {
                           alignment: Alignment.center,
                           child: Column(
                             children: [
+                              ///This input field is added to get the flight number
                               CustomInputField(
                                 attribute: "flightNo",
                                 labelText: "enter flight number",
@@ -71,6 +74,9 @@ class PostYourItenaryFormView extends StatelessWidget {
                               SizedBox(
                                 height: blockHeight * 2,
                               ),
+
+                              ///This input field is added to get the airline number
+
                               CustomInputField(
                                 attribute: "airlineno",
                                 labelText: "enter airline number",
@@ -103,6 +109,8 @@ class PostYourItenaryFormView extends StatelessWidget {
                       ),
                       child: Column(
                         children: [
+                          ///This input field is added to get the vehicle number
+
                           CustomInputField(
                             textEditingController: model.vehicleIdentification,
                             attribute: "vehiNo",
@@ -111,6 +119,9 @@ class PostYourItenaryFormView extends StatelessWidget {
                           SizedBox(
                             height: blockHeight * 2,
                           ),
+
+                          ///This input field is added to get the transport company
+
                           CustomInputField(
                             textEditingController: model.transportCompany,
                             attribute: "transportComp",
@@ -119,6 +130,9 @@ class PostYourItenaryFormView extends StatelessWidget {
                           SizedBox(
                             height: blockHeight * 2,
                           ),
+
+                          ///This input field is added to get the license plate number
+
                           CustomInputField(
                             textEditingController: model.licencePlateNumber,
                             attribute: "licencePlate",
@@ -132,7 +146,7 @@ class PostYourItenaryFormView extends StatelessWidget {
                   }
                 },
               ),
-              DepartureWidget(
+              DepartureDetailsWidget(
                 travelType: model.getTravelType,
                 // onChoiceSelected: (bool val) {
                 //   // canPickUp = val;
@@ -196,6 +210,6 @@ class PostYourItenaryFormView extends StatelessWidget {
             ],
           );
         },
-        viewModelBuilder: () => PostYourItenaryFormViewModel());
+        viewModelBuilder: () => PostYourItineraryFormViewModel());
   }
 }

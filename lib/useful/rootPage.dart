@@ -4,7 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:newpostman1/features/authentication/domain/auth_service.dart';
-import 'package:newpostman1/features/home/presentation/HomePage.dart';
+import 'package:newpostman1/features/home/presentation/home_view.dart';
 import 'package:newpostman1/features/loading/presentation/LoadingPage.dart';
 import 'package:newpostman1/features/welcome/presentation/WelcomeScreen.dart';
 import 'package:newpostman1/services/push_notification_service.dart';

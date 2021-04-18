@@ -1,24 +1,25 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'ItenaryModel.dart';
+part of 'Itinerary_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-ItenaryModel _$ItenaryModelFromJson(Map<String, dynamic> json) {
-  return ItenaryModel(
+ItineraryModel _$ItenaryModelFromJson(Map<String, dynamic> json) {
+  return ItineraryModel(
     travelType: json['travelType'] as int,
     details: json['details'] == null
         ? null
-        : ItenaryDetailsModel.fromJson(json['details'] as Map<String, dynamic>),
+        : ItineraryDetailsModel.fromJson(
+            json['details'] as Map<String, dynamic>),
     dateAdded: json['dateAdded'] == null
         ? null
         : DateTime.parse(json['dateAdded'] as String),
   );
 }
 
-Map<String, dynamic> _$ItenaryModelToJson(ItenaryModel instance) =>
+Map<String, dynamic> _$ItenaryModelToJson(ItineraryModel instance) =>
     <String, dynamic>{
       'travelType': instance.travelType,
       'details': instance.details.toJson(),

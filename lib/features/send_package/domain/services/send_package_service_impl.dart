@@ -3,7 +3,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:newpostman1/features/home/presentation/HomePage.dart';
+import 'package:newpostman1/features/home/presentation/home_view.dart';
 import 'package:newpostman1/features/send_package/data/FullPackageModel.dart';
 import 'package:newpostman1/features/send_package/data/PackageModel.dart';
 import 'dart:io';

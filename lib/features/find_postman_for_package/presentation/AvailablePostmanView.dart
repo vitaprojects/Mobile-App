@@ -2,7 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:newpostman1/features/find_postman_for_package/domain/find_available_postman_for_package_service.dart';
 import 'package:newpostman1/features/find_postman_for_package/presentation/AvailablePostmanCard.dart';
-import 'package:newpostman1/features/post_itenary/data/ItenaryModel.dart';
+import 'package:newpostman1/features/post_itinerary/data/Itinerary_model.dart';
 import 'package:newpostman1/useful/service_locator.dart';
 import 'package:stacked/stacked.dart';
 
@@ -54,7 +54,7 @@ class AvailablePostmanView extends StatelessWidget {
                                   AsyncSnapshot snapshot) {
                                 if (snapshot.connectionState ==
                                     ConnectionState.active) {
-                                  List<ItenaryModel> list = snapshot.data;
+                                  List<ItineraryModel> list = snapshot.data;
                                   if (list != null && list.length != 0) {
                                     return Container(
                                       // color: Colors.yellow,

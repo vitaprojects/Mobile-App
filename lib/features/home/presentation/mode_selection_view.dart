@@ -1,7 +1,7 @@
 //this widget is created when the user wants to select whether post iternary or send a package
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:newpostman1/features/home/presentation/ModelSelectionViewModel.dart';
+import 'package:newpostman1/features/home/presentation/mode_selection_view_model.dart';
 import 'package:newpostman1/useful/globals.dart';
 import 'package:stacked/stacked.dart';
 // import '';

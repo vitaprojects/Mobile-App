@@ -4,22 +4,20 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:newpostman1/features/Chat/presentation/ChatScreenView.dart';
+import 'package:newpostman1/features/MyPackages/presentation/TrackPackage.dart';
+import 'package:newpostman1/features/MyTrips/presentation/MyTripsView.dart';
+import 'package:newpostman1/features/TotalEarnings/presentation/TotalEarningsWidget.dart';
 import 'package:newpostman1/features/authentication/domain/auth_service.dart';
-import 'package:newpostman1/features/authentication/presentation/LoginPageView.dart';
 import 'package:newpostman1/features/drawer/presentation/ItemWidgetInDrawer.dart';
 import 'package:newpostman1/features/drawer/presentation/TitleWidgetInDrawer.dart';
 import 'package:newpostman1/features/find_postman_for_errand/presentation/AvailablePostmanForErrandView.dart';
 import 'package:newpostman1/features/find_postman_for_package/presentation/AvailablePostmanView.dart';
-import 'package:newpostman1/ui/AboutUsPage.dart';
-import 'package:newpostman1/ui/FindLocalErrands.dart';
-import 'package:newpostman1/features/MyTrips/presentation/MyTripsView.dart';
-import 'package:newpostman1/ui/OngoingErrands.dart';
 import 'package:newpostman1/features/post_errand/presentation/PostYourErrand.dart';
-import 'package:newpostman1/features/post_itenary/presentation/PostYourItenary.dart';
+import 'package:newpostman1/features/post_itinerary/presentation/post_your_Itinerary.dart';
 import 'package:newpostman1/features/send_package/presentation/SendPackage.dart';
+import 'package:newpostman1/ui/FindLocalErrands.dart';
+import 'package:newpostman1/ui/OngoingErrands.dart';
 import 'package:newpostman1/ui/SupportWidget.dart';
-import 'package:newpostman1/features/TotalEarnings/presentation/TotalEarningsWidget.dart';
-import 'package:newpostman1/features/MyPackages/presentation/TrackPackage.dart';
 import 'package:newpostman1/ui/ThankYouWidget.dart';
 import 'package:newpostman1/useful/service_locator.dart';
 
@@ -149,7 +147,7 @@ class DrawerWidget extends StatelessWidget {
                     margin: margin,
                     ontapFunc: () {
                       closeDrawer();
-                      Get.to(PostYourItenary());
+                      Get.to(PostYourItinerary());
                     },
                   ),
                   Divider(

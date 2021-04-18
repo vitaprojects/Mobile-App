@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../useful/globals.dart';
 
+///This widget is used to select the [`travel type`] for the user
 class SelectTravelType extends StatefulWidget {
   SelectTravelType({@required this.onChoiceSelected});
   final Function(int) onChoiceSelected;

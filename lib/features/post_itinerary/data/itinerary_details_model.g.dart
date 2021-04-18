@@ -1,13 +1,13 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'ItenaryDetailsModel.dart';
+part of 'itinerary_details_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-ItenaryDetailsModel _$ItenaryDetailsModelFromJson(Map<String, dynamic> json) {
-  return ItenaryDetailsModel(
+ItineraryDetailsModel _$ItenaryDetailsModelFromJson(Map<String, dynamic> json) {
+  return ItineraryDetailsModel(
     vehicleDetailsModel: json['vehicleDetailsModel'] == null
         ? null
         : VehicleDetailsModel.fromJson(
@@ -31,7 +31,7 @@ ItenaryDetailsModel _$ItenaryDetailsModelFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$ItenaryDetailsModelToJson(
-        ItenaryDetailsModel instance) =>
+        ItineraryDetailsModel instance) =>
     <String, dynamic>{
       'vehicleDetailsModel': instance.vehicleDetailsModel?.toJson(),
       'flightDetailsModel': instance.flightDetailsModel?.toJson(),

@@ -11,6 +11,7 @@ class Globals {
     0xffaffde4,
   );
 
+  ///This was created to add the [`blockHeight`] and [`blockWidth`]
   static addBlockHeightAndWidth(double height, double width) {
     blockHeight = height;
     blockWidth = width;

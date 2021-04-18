@@ -5,20 +5,22 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:newpostman1/features/post_itenary/data/ItenaryModel.dart';
+import 'package:newpostman1/features/post_itinerary/data/Itinerary_model.dart';
 import 'package:newpostman1/services/snackbar_service.dart';
 import 'package:newpostman1/ui/ThankYouWidget.dart';
 import 'package:newpostman1/useful/service_locator.dart';
 import 'package:uuid/uuid.dart';
 
-import 'ItenaryService.dart';
+import 'itinerary_service.dart';
 
 class ItenaryServiceImpl extends ItenaryService {
   final FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
   final SnackBarService snackBarService = locator<SnackBarService>();
   @override
-  Future<void> postItenary(ItenaryModel itenaryModel) async {
+  Future<void> postItinerary(ItineraryModel itenaryModel) async {
     try {
+      ///We add the [`departureDate`] ,[`email`] , [`dateAdded`] fields
+      ///to simplify the querying of [`itineraries`]
       await firebaseFirestore.collection("itineraries").add({
         'data': itenaryModel.toJson(),
         'dateAdded': FieldValue.serverTimestamp(),
@@ -39,17 +41,20 @@ class ItenaryServiceImpl extends ItenaryService {
   }
 
   @override
-  Future<void> postFlightItenary(
-      ItenaryModel itenaryModel, File ticketFile) async {
+  Future<void> postFlightItinerary(
+      ItineraryModel itenaryModel, File ticketFile) async {
     print("first upload the flight ticket");
 
     try {
+      ///This is the id of the image
       final String uuid = Uuid().v1();
 
+      ///We create a firebase storage reference
       StorageReference storageReference = FirebaseStorage.instance
           .ref()
           .child('${Hive.box('user').get('email')}/tickets/$uuid');
 
+      ///[`Task`] of uploading the image
       StorageUploadTask uploadTask = storageReference.putFile(
         ticketFile,
         StorageMetadata(
@@ -59,12 +64,18 @@ class ItenaryServiceImpl extends ItenaryService {
       );
       await uploadTask.onComplete;
       print('Flight ticket  Uploaded');
+
+      ///We store the image url here
       String url = await storageReference.getDownloadURL();
       if (itenaryModel.details.flightDetailsModel != null) {
+        ///If the [`flight details`] are there we add the [`ticketUrl`]
         itenaryModel.details.flightDetailsModel.ticketUrl = url;
-        postItenary(itenaryModel);
+        postItinerary(itenaryModel);
       } else {
-        //TODO implement the case for here
+        ///If the [`flight details`] are there null we stop the process
+        snackBarService.goBackAfterTimePeriod(
+            "Error occured", "Please try again", true);
+        return;
       }
     } on PlatformException catch (e) {
       snackBarService.goBackAfterTimePeriod("Error occured", e.message, true);

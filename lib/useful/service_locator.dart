@@ -23,8 +23,8 @@ import 'package:newpostman1/features/home/domain/respond_to_events_service.dart'
 import 'package:newpostman1/features/home/domain/respond_to_events_service_impl.dart';
 import 'package:newpostman1/features/post_errand/domain/ErrandService.dart';
 import 'package:newpostman1/features/post_errand/domain/ErrandServiceImpl.dart';
-import 'package:newpostman1/features/post_itenary/domain/ItenaryService.dart';
-import 'package:newpostman1/features/post_itenary/domain/ItenaryServiceImpl.dart';
+import 'package:newpostman1/features/post_itinerary/domain/itinerary_service.dart';
+import 'package:newpostman1/features/post_itinerary/domain/itinerary_service_impl.dart';
 import 'package:newpostman1/features/send_package/domain/services/send_package_service.dart';
 import 'package:newpostman1/features/send_package/domain/services/send_package_service_impl.dart';
 import 'package:newpostman1/services/LocationService.dart';

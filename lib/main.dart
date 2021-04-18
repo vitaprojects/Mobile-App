@@ -39,12 +39,16 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  ///separeate futures are created for firebase initialization and opening hive box
   final Future<FirebaseApp> _initialization = Firebase.initializeApp();
-  FutureGroup futureGroup = FutureGroup();
   Future openBox = Hive.openBox('user');
+
+  /// This is created to combine the above futures
+  FutureGroup futureGroup = FutureGroup();
 
   @override
   void initState() {
+    ///Adding the futures to the [`futureGroup`]
     futureGroup.add(_initialization);
     futureGroup.add(openBox);
     futureGroup.close();
@@ -66,8 +70,8 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      //TODO add a futureGroup to combine 2 fututres
       home: FutureBuilder(
+        ///in the [`FutureBuilder`] the future from the future group is used
         future: futureGroup.future,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasError) {
@@ -83,6 +87,8 @@ class _MyAppState extends State<MyApp> {
           if (snapshot.connectionState == ConnectionState.done) {
             print("box opened");
             print("firebase project initialized");
+
+            ///if the future is done we redirect the users to the root page
             return RootPage();
           } else {
             return RootWidget(

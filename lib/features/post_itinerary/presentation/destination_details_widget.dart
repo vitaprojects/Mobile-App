@@ -4,26 +4,29 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:intl/intl.dart';
 import 'package:newpostman1/customWidgets/CustomInputField.dart';
 import 'package:newpostman1/customWidgets/LocationSelectButton.dart';
+import 'package:newpostman1/features/post_itinerary/presentation/post_your_itinerary_form_view_model.dart';
 import 'package:newpostman1/models/LocationModel.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../useful/globals.dart';
-import 'ICanPickUpWidget.dart';
-import 'PostYourItenaryFormViewModel.dart';
+import 'i_can_pick_up_widget.dart';
 
-class DepartureWidget extends ViewModelWidget<PostYourItenaryFormViewModel> {
-  DepartureWidget({
+class DestinationWidget
+    extends ViewModelWidget<PostYourItineraryFormViewModel> {
+  ///This widget was created to get the [`destination details`] of the [`itinerary`]
+
+  DestinationWidget({
     this.travelType,
-    // this.onChoiceSelected,
+    this.onChoiceSelected,
   });
   final int travelType;
-  // final Function(bool) onChoiceSelected;
+  final Function(bool) onChoiceSelected;
 
   final double blockHeight = Globals.blockHeight;
   final double blockWidth = Globals.blockWidth;
 
   @override
-  Widget build(BuildContext context, PostYourItenaryFormViewModel model) {
+  Widget build(BuildContext context, PostYourItineraryFormViewModel model) {
     return Container(
       // height: blockHeight * 50,
       // color: Colors.red,
@@ -47,7 +50,7 @@ class DepartureWidget extends ViewModelWidget<PostYourItenaryFormViewModel> {
               height: blockHeight * 2.5,
               // color: Colors.blueAccent,
               child: AutoSizeText(
-                "Departure".toUpperCase(),
+                "destination".toUpperCase(),
                 style: TextStyle(
                   fontSize: 16,
                   color: Globals.mainColor,
@@ -59,12 +62,12 @@ class DepartureWidget extends ViewModelWidget<PostYourItenaryFormViewModel> {
           (travelType == 0 || travelType == 3)
               ? Container()
               : ICanPickUpWidget(
-                  pickUp: true,
+                  pickUp: false,
                   onChoiceSelected: (bool val) {
                     // canPickUp = val;
                     // print(canPickUp);
                     // onChoiceSelected(val);
-                    model.setCanPickUp(val);
+                    model.setCanDeliver(val);
                   },
                 ),
           SizedBox(
@@ -87,12 +90,11 @@ class DepartureWidget extends ViewModelWidget<PostYourItenaryFormViewModel> {
               ),
               alignment: Alignment.center,
               child: FormBuilderDateTimePicker(
-                controller: model.getDepartureDateAndTime,
+                controller: model.getDestinationDateAndTime,
                 fieldHintText: "date and time",
-                // inputType: InputType.date,
+                attribute: "departureDate",
                 format: DateFormat("yyyy-MM-dd HH:mm:ss"),
 
-                attribute: "departureDate",
                 decoration: InputDecoration(
                     //     contentPadding: EdgeInsets.only(
                     //   top: 0,
@@ -112,22 +114,17 @@ class DepartureWidget extends ViewModelWidget<PostYourItenaryFormViewModel> {
             height: blockHeight * 2,
           ),
           LocationSelectButton(
-            labelText: "Departing from ?",
+            labelText: "Destination ?",
             removeLocation: () {
-              model.clearDepartingLocation();
+              model.clearDestinationLocation();
             },
-            attribute: "departurePoint",
-            locationModel: model.departurelocationModel,
+            attribute: "destinationPoint",
+            locationModel: model.destinationlocationModel,
             onLocationSelected: (LocationModel locationModel) {
-              model.setValuesForDepartingLocation(locationModel.latitude,
+              model.setValuesForDestinationLocation(locationModel.latitude,
                   locationModel.longitude, locationModel.address);
             },
           ),
-          // CustomInputField(
-          //   textEditingController: model.getDepartingLocation,
-          //   attribute: "departurePoint",
-          //   labelText: "Departing from ?",
-          // ),
           SizedBox(
             height: blockHeight * 2,
           ),
@@ -137,17 +134,17 @@ class DepartureWidget extends ViewModelWidget<PostYourItenaryFormViewModel> {
                 return Column(
                   children: [
                     CustomInputField(
-                      textEditingController: model.getDepartureTerminal,
-                      attribute: "departureTerminal",
-                      labelText: "enter departure terminal".toUpperCase(),
+                      textEditingController: model.getDestinationTerminal,
+                      attribute: "arrivalTerminal",
+                      labelText: "enter arrival terminal".toUpperCase(),
                     ),
                     SizedBox(
                       height: blockHeight * 2,
                     ),
                     CustomInputField(
-                      textEditingController: model.getDepartingAirport,
-                      attribute: "departureAirport",
-                      labelText: "enter departure airport".toUpperCase(),
+                      textEditingController: model.getDestinationAirport,
+                      attribute: "arrivalAirport",
+                      labelText: "enter arrival airport".toUpperCase(),
                     )
                   ],
                 );

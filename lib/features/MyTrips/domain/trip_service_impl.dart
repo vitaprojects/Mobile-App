@@ -3,12 +3,12 @@ import 'package:firestore_helpers/firestore_helpers.dart';
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
 import 'package:newpostman1/features/MyTrips/domain/trip_service.dart';
-import 'package:newpostman1/features/post_itenary/data/ItenaryModel.dart';
+import 'package:newpostman1/features/post_itinerary/data/Itinerary_model.dart';
 
 class TripServiceImpl extends TripService {
   final FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
   @override
-  Stream<List<ItenaryModel>> getAllTrips(int type) {
+  Stream<List<ItineraryModel>> getAllTrips(int type) {
     // try {
     //   if (type == 0) {
     //     print("get all pending trips");
@@ -48,13 +48,13 @@ class TripServiceImpl extends TripService {
       return getDataFromQuery(
           query: query,
           mapper: (itenaryDoc) {
-            var itenary = ItenaryModel.fromJson(itenaryDoc.data()['data']);
+            var itenary = ItineraryModel.fromJson(itenaryDoc.data()['data']);
             // event.id = eventDoc.documentID;
             // print(itenary.travelType);
             return itenary;
           },
           clientSidefilters: [
-            (ItenaryModel itenary) => (type == 0)
+            (ItineraryModel itenary) => (type == 0)
                 ? now.isBefore(itenary.details.departureLocation.dateTime)
                 : now.isAfter(itenary.details.departureLocation.dateTime)
           ] // only future events

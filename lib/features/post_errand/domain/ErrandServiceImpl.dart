@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:location/location.dart';
-import 'package:newpostman1/features/home/presentation/HomePage.dart';
+import 'package:newpostman1/features/home/presentation/home_view.dart';
 import 'package:newpostman1/features/post_errand/data/PostErrandModel.dart';
 import 'package:newpostman1/features/post_errand/data/RunErrandModel.dart';
 import 'package:newpostman1/features/post_errand/domain/ErrandService.dart';

@@ -15,6 +15,8 @@ class RequestModel {
 
   bool hasSeenbyPostman; //whether the postman or the user has seen the request
   bool hasSeenbyUser;
+
+  ///if the postman haven't added a [`offer`] yet the value will be [`-1`]
   double postmanOffer;
 
   RequestModel({
@@ -27,7 +29,7 @@ class RequestModel {
     this.hasSeenbyPostman,
     this.hasSeenbyUser,
     this.packageDocID,
-    this.postmanOffer,
+    this.postmanOffer = -1,
   });
 
   factory RequestModel.fromJson(Map<String, dynamic> json) =>

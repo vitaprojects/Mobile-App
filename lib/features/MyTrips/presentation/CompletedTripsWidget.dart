@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:newpostman1/customWidgets/TripDetailsCard.dart';
-import 'package:newpostman1/features/post_itenary/data/ItenaryModel.dart';
+import 'package:newpostman1/features/post_itinerary/data/Itinerary_model.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../useful/globals.dart';
@@ -30,7 +30,7 @@ class CompletedTripsWidget extends ViewModelWidget<MyTripsViewModel> {
                   // QuerySnapshot querySnapshot = snapshot.data;
                   print(snapshot.data?.length.toString() + "length of data");
                   // return Text("hiii");
-                  List<ItenaryModel> trips = snapshot.data;
+                  List<ItineraryModel> trips = snapshot.data;
                   if (trips.length != 0) {
                     return ListView.builder(
                       itemCount: trips.length,

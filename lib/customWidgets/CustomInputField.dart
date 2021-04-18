@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import '../useful/globals.dart';
 
 class CustomInputField extends StatefulWidget {
+  ///This widget is created to get the [`input`] from the users
   CustomInputField({
     this.attribute,
     this.labelText,

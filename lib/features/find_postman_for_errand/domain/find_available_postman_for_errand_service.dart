@@ -1,6 +1,6 @@
 import 'package:newpostman1/features/post_errand/data/PostErrandModel.dart';
 import 'package:newpostman1/features/post_errand/data/RunErrandModel.dart';
-import 'package:newpostman1/features/post_itenary/data/ItenaryModel.dart';
+import 'package:newpostman1/features/post_itinerary/data/Itinerary_model.dart';
 
 abstract class FindAvailablePostmanForErrandService {
   Future<PostErrandModel> getInfoAboutLatestErrand();

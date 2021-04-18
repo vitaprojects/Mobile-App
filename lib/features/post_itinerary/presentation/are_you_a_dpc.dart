@@ -1,9 +1,10 @@
-//this widget is to ask from the user are you a driver conductor passenger
 import 'package:flutter/material.dart';
 
 import '../../../useful/globals.dart';
 
 class AreYouADPC extends StatefulWidget {
+  ///this widget is used to ask from the user are you a [`driver`], [`conductor`] or a  [`passenger`]
+
   AreYouADPC({this.onChoiceSelected});
   final Function(int) onChoiceSelected;
 
