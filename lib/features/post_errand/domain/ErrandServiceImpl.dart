@@ -32,7 +32,7 @@ class ErrandServiceImpl extends ErrandService {
         latitude: locationData.latitude,
         longitude: locationData.longitude,
         postmanEmail: Hive.box('user').get('email'),
-        type: 0,
+        type: 0, //Type equals to 0 means this is availability for errand
       );
       await firebaseFireStore
           .collection("errands")

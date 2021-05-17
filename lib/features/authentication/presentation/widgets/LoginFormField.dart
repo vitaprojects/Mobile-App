@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
-import '../../../useful/globals.dart';
+import '../../../../useful/globals.dart';
 
+///This is the [`custom`] text field
 class LoginFormField extends StatefulWidget {
   const LoginFormField({
     this.icon,
@@ -11,10 +12,18 @@ class LoginFormField extends StatefulWidget {
     this.attribute,
     this.controller,
   });
+
+  ///[`Prefix icon`] of the text field
   final IconData icon;
+
+  ///[`Hint text`] of the text field
   final String hintText;
+
+  ///To check if this is a [`password`] field or not
   final bool isPassword;
   final String attribute;
+
+  ///The controller which is used to get the [`input`]
   final TextEditingController controller;
 
   @override

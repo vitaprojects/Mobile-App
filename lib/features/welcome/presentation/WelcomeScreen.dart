@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:newpostman1/features/welcome/presentation/WelcomeScreenButtons.dart';
@@ -8,7 +7,7 @@ import 'package:newpostman1/useful/globals.dart';
 class WelcomeScreen extends StatelessWidget {
   WelcomeScreen({Key key}) : super(key: key);
 
-  List<Widget> welcomeScreenImages = [
+  final List<Widget> welcomeScreenImages = [
     WelcomeScreenImage(
       bodyText: "Become a member today and start your hustle here",
       imageAssetName: "assets/images/img1.png",

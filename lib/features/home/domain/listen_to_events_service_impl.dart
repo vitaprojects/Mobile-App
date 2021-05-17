@@ -8,6 +8,7 @@ import 'package:newpostman1/features/home/domain/respond_to_events_service.dart'
 import 'package:newpostman1/features/home/presentation/ViewCustomerRequestForErrand/CustomerRequestForErrandView.dart';
 import 'package:newpostman1/features/home/presentation/ViewCustomerRequestForPackage/CustomerRequestForPackageView.dart';
 import 'package:newpostman1/features/payment/presentation/PaymentPageView.dart';
+import 'package:newpostman1/models/user/UserModel.dart';
 import 'package:newpostman1/useful/service_locator.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -251,5 +252,42 @@ class ListenToEventsServiceImpl extends ListenToEventsService {
         print("no new requests from postman");
       }
     });
+  }
+
+  @override
+  Stream<List<OrderModel>> listentoAllErrandsOfthePostman() {}
+
+  @override
+  Stream<List<OrderModel>> listentoAllErrandsOftheUser() {}
+
+  @override
+  Stream<List<OrderModel>> listentoAllOrdersOfthePostman() {
+    return firebaseFirestore
+        .collection("orders")
+        .where("postmanEmail", isEqualTo: Hive.box('user').get('email'))
+        .snapshots()
+        .map((event) => event.docs.isEmpty
+            ? []
+            : event.docs.map((e) => OrderModel.fromJson(e.data())).toList());
+  }
+
+  @override
+  Stream<List<OrderModel>> listentoAllOrdersOftheUser() {
+    return firebaseFirestore
+        .collection("orders")
+        .where("userEmail", isEqualTo: Hive.box('user').get('email'))
+        .snapshots()
+        .map((event) => event.docs.isEmpty
+            ? []
+            : event.docs.map((e) => OrderModel.fromJson(e.data())).toList());
+  }
+
+  @override
+  Stream<UserModel> getUserModelAsAStream() {
+    return firebaseFirestore
+        .collection("users")
+        .doc(Hive.box('user').get('email'))
+        .snapshots()
+        .map((event) => UserModel.fromJson(event.data()));
   }
 }

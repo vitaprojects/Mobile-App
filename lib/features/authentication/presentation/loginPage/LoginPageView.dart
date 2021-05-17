@@ -1,13 +1,13 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:newpostman1/features/authentication/presentation/LoginFormField.dart';
-import 'package:newpostman1/features/authentication/presentation/LoginPageViewModel.dart';
+import 'package:newpostman1/features/authentication/presentation/widgets/LoginFormField.dart';
 import 'package:newpostman1/features/welcome/presentation/WelcomeMessageCard.dart';
-import 'package:newpostman1/features/authentication/presentation/SignUpView.dart';
+import 'package:newpostman1/features/authentication/presentation/signUpPage/SignUpView.dart';
 import 'package:stacked/stacked.dart';
 
-import '../../../useful/globals.dart';
+import '../../../../useful/globals.dart';
+import 'LoginPageViewModel.dart';
 
 class LoginPageView extends StatelessWidget {
   LoginPageView({Key key}) : super(key: key);

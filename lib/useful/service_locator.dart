@@ -27,6 +27,7 @@ import 'package:newpostman1/features/post_itinerary/domain/itinerary_service.dar
 import 'package:newpostman1/features/post_itinerary/domain/itinerary_service_impl.dart';
 import 'package:newpostman1/features/send_package/domain/services/send_package_service.dart';
 import 'package:newpostman1/features/send_package/domain/services/send_package_service_impl.dart';
+import 'package:newpostman1/observables/user_data_observable.dart';
 import 'package:newpostman1/services/LocationService.dart';
 import 'package:newpostman1/services/LocationServiceImpl.dart';
 import 'package:newpostman1/services/push_notification_service.dart';
@@ -109,4 +110,7 @@ setupServiceLocator() {
   ///total earnings service
   locator.registerLazySingleton<TotalEarningsService>(
       () => TotalEarningsServiceImpl());
+
+  //!All observables
+  locator.registerLazySingleton(() => UserData());
 }

@@ -805,6 +805,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
+  logger:
+    dependency: "direct main"
+    description:
+      name: logger
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.9.4"
   logging:
     dependency: transitive
     description:
@@ -862,7 +869,7 @@ packages:
     source: hosted
     version: "1.1.1"
   observable_ish:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: observable_ish
       url: "https://pub.dartlang.org"

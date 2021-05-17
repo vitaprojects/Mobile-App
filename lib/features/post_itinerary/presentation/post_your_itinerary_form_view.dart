@@ -148,11 +148,6 @@ class PostYourItineraryFormView extends StatelessWidget {
               ),
               DepartureDetailsWidget(
                 travelType: model.getTravelType,
-                // onChoiceSelected: (bool val) {
-                //   // canPickUp = val;
-                //   // print(canPickUp);
-                //   // model.setCanPickUp(val);
-                // },
               ),
               SizedBox(
                 height: blockHeight * 2,

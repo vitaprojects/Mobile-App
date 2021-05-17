@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:newpostman1/features/Chat/data/chat_service.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../models/user/UserModel.dart';
@@ -9,7 +8,6 @@ import '../../../useful/service_locator.dart';
 import '../../authentication/domain/auth_service.dart';
 import '../data/chatModel.dart';
 import 'ChatRoomView/newChatRoomView.dart';
-import 'addNewChat/addNewChatView.dart';
 import 'addNewChat/addNewChatViewModel.dart';
 import 'chatScreenViewModl.dart';
 

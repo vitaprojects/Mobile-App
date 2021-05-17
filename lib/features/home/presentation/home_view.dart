@@ -2,7 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inner_drawer/inner_drawer.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
-import 'package:newpostman1/features/drawer/presentation/DrawerWidget.dart';
+import 'package:newpostman1/features/drawer/presentation/pages/DrawerWidget.dart';
 import 'package:newpostman1/features/home/domain/listen_to_events_service.dart';
 import 'package:newpostman1/features/home/presentation/mode_selection_view.dart';
 import 'package:newpostman1/features/home/presentation/home_view_model.dart';
@@ -11,6 +11,7 @@ import 'package:newpostman1/useful/service_locator.dart';
 import 'package:stacked/stacked.dart';
 
 class HomePage extends StatefulWidget {
+  ///This is the [`home page`] of the app
   HomePage({Key key}) : super(key: key);
 
   @override

@@ -27,6 +27,7 @@ class SignUpViewModel extends ChangeNotifier {
   final AuthenticationService authenticationService =
       locator<AuthenticationService>();
 
+  ///Validate the [`input`] added by [`user`]
   void validateUserInput() {
     if (fnametextEditingController.text.isNotEmpty) {
       if (lnametextEditingController.text.isNotEmpty) {

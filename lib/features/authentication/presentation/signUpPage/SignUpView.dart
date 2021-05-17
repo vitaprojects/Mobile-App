@@ -2,15 +2,11 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:get/get.dart';
-import 'package:newpostman1/features/authentication/presentation/LoginFormField.dart';
-import 'package:newpostman1/features/authentication/presentation/SignUpViewModel.dart';
+import 'package:newpostman1/features/authentication/presentation/signUpPage/SignUpViewModel.dart';
 import 'package:newpostman1/features/welcome/presentation/WelcomeMessageCard.dart';
-import 'package:newpostman1/features/welcome/presentation/WelcomeScreenButtons.dart';
-import 'package:newpostman1/features/home/presentation/home_view.dart';
 import 'package:stacked/stacked.dart';
 
-import '../../../useful/globals.dart';
+import '../../../../useful/globals.dart';
 
 class SignUpView extends StatelessWidget {
   final double blockHeight = Globals.blockHeight;

@@ -11,16 +11,26 @@ import 'package:newpostman1/useful/service_locator.dart';
 import 'package:string_validator/string_validator.dart';
 
 class LoginPageViewModel extends ChangeNotifier {
+  ///This is used to get the [`email`] input
   TextEditingController _emailtextEditingController = TextEditingController();
+
+  ///This is used to get the [`password`] input
+
   TextEditingController _passtextEditingController = TextEditingController();
 
+  ///Return the email [`controller`]
+
   TextEditingController get emailController => _emailtextEditingController;
+
+  ///Return the password [`controller`]
   TextEditingController get passwordController => _passtextEditingController;
 
   final SnackBarService snackBarService = locator<SnackBarService>();
   // final SnackbarService snackbarService = locator<SnackbarService>();
   final AuthenticationService authenticationService =
       locator<AuthenticationService>();
+
+  ///validate the [`input`] added by the user
 
   validateUserInput() {
     if (isEmail(_emailtextEditingController.text.trim()) == true) {
@@ -42,6 +52,8 @@ class LoginPageViewModel extends ChangeNotifier {
 
   TextEditingController forgetPasstextEditingController =
       TextEditingController();
+
+  ///Show forgot password [`dialog`] box
 
   showForgotPasswordDialogBox(context) {
     print("show forgot password dialog");
@@ -104,8 +116,10 @@ class LoginPageViewModel extends ChangeNotifier {
     }
   }
 
+  ///validate forget password [`text field`]
   resetPassword() {
-    if (forgetPasstextEditingController.text.trim().isNotEmpty) {
+    if (forgetPasstextEditingController.text.trim().isNotEmpty &&
+        isEmail(forgetPasstextEditingController.text.trim())) {
       authenticationService
           .sendResetMail(forgetPasstextEditingController.text.trim());
       forgetPasstextEditingController.text = '';

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:newpostman1/features/find_postman_for_package/presentation/PostmanInfoCard.dart';
 import 'package:newpostman1/features/post_itinerary/data/Itinerary_model.dart';
 import 'package:newpostman1/useful/globals.dart';
-import 'package:stacked/stacked.dart';
 
 class AvailablePostmanDetails extends StatelessWidget {
   AvailablePostmanDetails({

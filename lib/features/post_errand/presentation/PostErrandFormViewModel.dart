@@ -191,7 +191,7 @@ class PostErrandFormViewModel extends ChangeNotifier {
       print("all are valid");
 
       PostErrandModel postErrandModel = PostErrandModel(
-        type: 1,
+        type: 1, // type equals to 1 means this is posting a errand
         pickUpFrom: getpickUpStore.text,
         pickUpType: getGroceryType.text,
         pAddress: pickUplocationModel,

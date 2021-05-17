@@ -1,9 +1,8 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:map_launcher/map_launcher.dart';
 import 'package:newpostman1/customWidgets/FormButton.dart';
 import 'package:newpostman1/errands/ErrandFieldCard.dart';
 import 'package:newpostman1/useful/globals.dart';
-import 'package:map_launcher/map_launcher.dart';
 
 class OngoingErrandsFullPage extends StatelessWidget {
   OngoingErrandsFullPage({Key key}) : super(key: key);
@@ -12,7 +11,6 @@ class OngoingErrandsFullPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double margin = blockWidth * 5;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
