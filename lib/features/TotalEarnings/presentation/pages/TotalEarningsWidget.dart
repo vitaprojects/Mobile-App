@@ -1,16 +1,12 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:newpostman1/features/TotalEarnings/data/total_earnings_service.dart';
 import 'package:newpostman1/features/TotalEarnings/presentation/EarningSectionWidget.dart';
 import 'package:newpostman1/features/TotalEarnings/presentation/EarningsInfoCard.dart';
 import 'package:newpostman1/features/TotalEarnings/presentation/TotalEarningsAppBar.dart';
 import 'package:newpostman1/features/TotalEarnings/presentation/TotalEarningsOverviewSelectionWidget.dart';
-import 'package:newpostman1/features/TotalEarnings/presentation/totalEarningsWidgetViewModel.dart';
-
+import 'package:newpostman1/features/TotalEarnings/presentation/pages/totalEarningsWidgetViewModel.dart';
 import 'package:stacked/stacked.dart';
 
-import '../../../useful/globals.dart';
+import '../../../../useful/globals.dart';
 
 class TotalEarningsWidget extends StatelessWidget {
   TotalEarningsWidget({Key key}) : super(key: key);
@@ -24,6 +20,9 @@ class TotalEarningsWidget extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: ViewModelBuilder<TotalEarningsWidgetViewModel>.reactive(
+            onModelReady: (model) {
+              model.listenToChangesInUserModel();
+            },
             builder: (context, model, widget) {
               return Stack(
                 children: [
@@ -94,8 +93,7 @@ class TotalEarningsWidget extends StatelessWidget {
                               child: Column(
                                 children: [
                                   EarningSectionWidget(
-                                    earning:
-                                        "\$${model.getData != null ? model.getData.totalEarnings ?? 0.0 : 0}",
+                                    earning: "\$${model.totalEarnings}",
                                     title: "Total earnings",
                                   ),
                                   Divider(

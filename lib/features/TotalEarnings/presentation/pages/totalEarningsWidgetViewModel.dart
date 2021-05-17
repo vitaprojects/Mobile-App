@@ -1,5 +1,6 @@
 import 'package:newpostman1/features/TotalEarnings/data/total_earnings_service.dart';
 import 'package:newpostman1/models/earningsModel.dart';
+import 'package:newpostman1/observables/user_data_observable.dart';
 import 'package:newpostman1/useful/service_locator.dart';
 import 'package:stacked/stacked.dart';
 
@@ -10,6 +11,20 @@ class TotalEarningsWidgetViewModel extends StreamViewModel<EarningsModel> {
   ///[`0`] its initial value and its stands for getting all the earnings which is in the users collection
   ///[`1`] getting the current months earning
   ///[`2`] getting the current days earnings
+
+  final UserData userData = locator<UserData>();
+  double totalEarnings = 0;
+  listenToChangesInUserModel() {
+    userData.userModel.listen((v) {
+      if (v != null) {
+        if (v.totalEarnings != 0) {
+          totalEarnings = v.totalEarnings;
+          notifyListeners();
+        }
+      }
+    });
+  }
+
   int _overView = 0;
   EarningsModel get getData => data;
 

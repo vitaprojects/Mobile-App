@@ -6,7 +6,7 @@ import 'package:hive/hive.dart';
 import 'package:newpostman1/features/Chat/presentation/ChatScreenView.dart';
 import 'package:newpostman1/features/MyPackages/presentation/TrackPackage.dart';
 import 'package:newpostman1/features/MyTrips/presentation/MyTripsView.dart';
-import 'package:newpostman1/features/TotalEarnings/presentation/TotalEarningsWidget.dart';
+import 'package:newpostman1/features/TotalEarnings/presentation/pages/TotalEarningsWidget.dart';
 import 'package:newpostman1/features/authentication/domain/auth_service.dart';
 import 'package:newpostman1/features/drawer/presentation/ItemWidgetInDrawer.dart';
 import 'package:newpostman1/features/drawer/presentation/TitleWidgetInDrawer.dart';

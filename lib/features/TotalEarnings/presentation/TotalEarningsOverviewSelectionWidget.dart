@@ -1,7 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
-import 'package:newpostman1/features/TotalEarnings/presentation/totalEarningsWidgetViewModel.dart';
+import 'package:newpostman1/features/TotalEarnings/presentation/pages/totalEarningsWidgetViewModel.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../useful/globals.dart';

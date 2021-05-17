@@ -1,16 +1,19 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:newpostman1/features/TotalEarnings/presentation/pages/totalEarningsWidgetViewModel.dart';
+import 'package:stacked/stacked.dart';
 
 import '../../../useful/globals.dart';
 
-class TotalEarningsAppBar extends StatelessWidget {
+class TotalEarningsAppBar
+    extends ViewModelWidget<TotalEarningsWidgetViewModel> {
   TotalEarningsAppBar({Key key, @required this.text}) : super(key: key);
   final double blockHeight = Globals.blockHeight;
   final double blockWidth = Globals.blockWidth;
   final String text;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, TotalEarningsWidgetViewModel model) {
     double margin = blockWidth * 5;
     return Container(
       height: blockHeight * 20,
@@ -49,7 +52,7 @@ class TotalEarningsAppBar extends StatelessWidget {
                     // color: Colors.yellow,
                     alignment: Alignment.center,
                     child: AutoSizeText(
-                      "\$$text",
+                      "\$${model.totalEarnings}",
                       style: TextStyle(
                         fontSize: 28,
                         color: Colors.white,
