@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:newpostman1/features/Chat/data/chat_service.dart';
 import 'package:newpostman1/features/Chat/data/chat_service_impl.dart';
@@ -21,6 +23,7 @@ import 'package:newpostman1/features/home/domain/listen_to_events_service.dart';
 import 'package:newpostman1/features/home/domain/listen_to_events_service_impl.dart';
 import 'package:newpostman1/features/home/domain/respond_to_events_service.dart';
 import 'package:newpostman1/features/home/domain/respond_to_events_service_impl.dart';
+import 'package:newpostman1/features/payment/data/datasources/paymentDataSource.dart';
 import 'package:newpostman1/features/post_errand/domain/ErrandService.dart';
 import 'package:newpostman1/features/post_errand/domain/ErrandServiceImpl.dart';
 import 'package:newpostman1/features/post_itinerary/domain/itinerary_service.dart';
@@ -33,6 +36,7 @@ import 'package:newpostman1/services/LocationServiceImpl.dart';
 import 'package:newpostman1/services/push_notification_service.dart';
 import 'package:newpostman1/services/snackbar_service.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:uuid/uuid.dart';
 
 GetIt locator = GetIt.instance;
 
@@ -110,7 +114,15 @@ setupServiceLocator() {
   ///total earnings service
   locator.registerLazySingleton<TotalEarningsService>(
       () => TotalEarningsServiceImpl());
-
+  locator.registerLazySingleton(() => FirebaseFirestore.instance);
+  locator.registerLazySingleton(() => FirebaseAuth.instance);
+  locator.registerLazySingleton(() => Uuid());
   //!All observables
   locator.registerLazySingleton(() => UserData());
+
+  locator.registerLazySingleton<PaymentDataSource>(() => PaymentDataSourceImpl(
+      firebaseAuth: locator(),
+      uuid: locator(),
+      firebaseFirestore: locator(),
+      snackbarService: locator()));
 }
