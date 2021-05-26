@@ -4,7 +4,7 @@ import 'package:newpostman1/models/user/UserModel.dart';
 
 ///This class is used to listen to the events such as [`new requests`] from users and [`new responses`] from postman
 abstract class ListenToEventsService {
-  //this class is for the lsitening to messages and requests the  user receive
+  //this function  is for the lsitening to messages and requests the  user receive
   Stream<List<RequestModel>> listenToNewRequestsForthePostman();
 
   void displayAlertForNewRequest();

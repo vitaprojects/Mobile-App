@@ -18,4 +18,9 @@ class UserData with ReactiveServiceMixin {
     userModel.value = userModelV;
     Logger().i("Data saved in userdata observable");
   }
+
+  void clearData() {
+    userModel.value = null;
+    Logger().wtf("Data is the userdata observable cleared");
+  }
 }

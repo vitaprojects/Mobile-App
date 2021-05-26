@@ -512,6 +512,7 @@ class DrawerWidget extends StatelessWidget {
                             closeDrawer();
                             // Get.to(LoginPageView());
                             authenticationService.signOut();
+                            model.userData.clearData();
                           },
                         ),
                       ],

@@ -1,11 +1,12 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
 import 'package:newpostman1/customWidgets/CustomInputField.dart';
 import 'package:newpostman1/customWidgets/FormButton.dart';
 import 'package:newpostman1/customWidgets/PaymentSelectionButton.dart';
 import 'package:newpostman1/features/find_postman_for_package/data/RequestModel.dart';
+import 'package:newpostman1/features/home/data/OrderModel.dart';
 import 'package:newpostman1/features/payment/presentation/PaymentPageViewModel.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:stacked/stacked.dart';
@@ -42,6 +43,20 @@ class _PaymentPageViewState extends State<PaymentPageView> {
           onPressed: () {
             Navigator.pop(context);
             Get.back();
+
+            OrderModel orderModel = OrderModel(
+              postmanFee: widget.requestModel
+                  .postmanOffer, //we dont any info about these they are in the errand document
+              pacakgeDocId: widget.requestModel.packageDocID,
+              postmanEmail: widget.requestModel.postman,
+              statusOftheOrder:
+                  0, //in the beggining of te order the status is 0
+              tipAmount: 0, //in the begniing we are not paying the tip
+              type: 1, //because this is a order of a package
+              userEmail: Hive.box('user').get('email').toLowerCase(),
+            );
+
+            //    firebaseFirestore.collection('orders').add(orderModel.toJson());
 
             Future.delayed(Duration(seconds: 1)).then((value) {
               Get.snackbar("Payment successful", "Your payment was successfuly",
@@ -207,18 +222,18 @@ class _PaymentPageViewState extends State<PaymentPageView> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    PaymentSelectionButton(
-                                      callback: () {
-                                        model.payUsingPaypal();
-                                      },
-                                      assetUrl: "assets/images/paypal.png",
-                                    ),
-                                    PaymentSelectionButton(
-                                      callback: () {
-                                        model.payUsingPayStack(context);
-                                      },
-                                      assetUrl: "assets/images/paystack.png",
-                                    ),
+                                    // PaymentSelectionButton(
+                                    //   callback: () {
+                                    //     model.payUsingPaypal();
+                                    //   },
+                                    //   assetUrl: "assets/images/paypal.png",
+                                    // ),
+                                    // PaymentSelectionButton(
+                                    //   callback: () {
+                                    //     model.payUsingPayStack(context);
+                                    //   },
+                                    //   assetUrl: "assets/images/paystack.png",
+                                    // ),
                                     PaymentSelectionButton(
                                       callback: () {
                                         model.payUsingStripe();
