@@ -157,7 +157,7 @@ class PaymentPageViewModel extends BaseViewModel {
           requestModel,
           creditCardModel,
           tipTextController.text != null && tipTextController.text.isNotEmpty
-              ? double.parse(tipTextController.text.toString())
+              ? double.parse(tipTextController.text.trim())
               : 0.0);
 
       setBusy(false);
@@ -168,11 +168,21 @@ class PaymentPageViewModel extends BaseViewModel {
   }
 
   void confirmPaymentAlert(RequestModel requestModel) {
+    double tipValue =
+        tipTextController.text != null && tipTextController.text.isNotEmpty
+            ? double.parse(tipTextController.text.trim())
+            : 0.0;
+
+    double subTotal = requestModel.postmanOffer + tipValue;
+
+    double gst = (subTotal / 100) * 7;
+
+    double totalValue = subTotal + gst;
     Alert(
       context: Get.context,
       type: AlertType.info,
       title: "CONFIRM PAYMENT",
-      desc: "Please confirm the payment of \$22",
+      desc: "Please confirm the payment of \$$totalValue",
       buttons: [
         DialogButton(
           child: Text(

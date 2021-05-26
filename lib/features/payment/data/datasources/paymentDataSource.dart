@@ -11,6 +11,7 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
 import 'package:newpostman1/features/home/data/OrderModel.dart';
+import 'package:newpostman1/features/home/presentation/home_view.dart';
 import 'package:newpostman1/services/snackbar_service.dart';
 import 'package:newpostman1/useful/app_constants.dart';
 import 'package:uuid/uuid.dart';
@@ -77,12 +78,21 @@ class PaymentDataSourceImpl extends PaymentDataSource {
           transaction.set(firebaseFirestore.collection('orders').doc(uId),
               orderModel.toJson());
         });
+
+        await firebaseFirestore
+            .collection("requests")
+            .doc(requestModel.requestId)
+            .update(
+          {
+            "status": 2
+          }, //when the user has paid for the order we update the status as 2 .
+        );
         //  'Thanks for your payment. Your order id=> $uId';
         snackbarService.showSnackBar('Payment Success',
             'Thanks for your payment. Your order id=> $uId', false);
 
         Future.delayed(Duration(seconds: 3), () {
-          Get.close(1);
+          Get.offAll(HomePage());
         });
       } else {
         throw Exception('An Error Occured while making the payment $rsp');

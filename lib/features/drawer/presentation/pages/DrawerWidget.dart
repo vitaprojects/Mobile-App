@@ -13,13 +13,13 @@ import 'package:newpostman1/features/drawer/presentation/TitleWidgetInDrawer.dar
 import 'package:newpostman1/features/drawer/presentation/pages/drawer_widget_viewmodel.dart';
 import 'package:newpostman1/features/find_postman_for_errand/presentation/AvailablePostmanForErrandView.dart';
 import 'package:newpostman1/features/find_postman_for_package/presentation/AvailablePostmanView.dart';
+import 'package:newpostman1/features/ongoing-orders/presentation/ongoing_orders_view.dart';
 import 'package:newpostman1/features/post_errand/presentation/PostYourErrand.dart';
 import 'package:newpostman1/features/post_itinerary/presentation/post_your_Itinerary.dart';
 import 'package:newpostman1/features/send_package/presentation/SendPackage.dart';
 import 'package:newpostman1/ui/FindLocalErrands.dart';
 import 'package:newpostman1/ui/OngoingErrands.dart';
 import 'package:newpostman1/ui/SupportWidget.dart';
-import 'package:newpostman1/ui/ThankYouWidget.dart';
 import 'package:newpostman1/useful/service_locator.dart';
 import 'package:stacked/stacked.dart';
 
@@ -218,6 +218,21 @@ class DrawerWidget extends StatelessWidget {
                             Get.to(TotalEarningsWidget());
                           },
                           title: "Earnings",
+                        ),
+                        Divider(
+                          height: blockHeight / 2,
+                          thickness: blockHeight / 4,
+                        ),
+                        ItemWidgetInDrawer(
+                          icon: Icon(
+                            FontAwesomeIcons.businessTime,
+                          ),
+                          margin: margin,
+                          ontapFunc: () {
+                            closeDrawer();
+                            Get.to(OngoingOrdersView());
+                          },
+                          title: "Ongoing orders",
                         ),
                         Divider(
                           height: blockHeight / 2,

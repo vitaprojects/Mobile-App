@@ -1,17 +1,11 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
-import 'package:get/get.dart';
-import 'package:hive/hive.dart';
-import 'package:logger/logger.dart';
 import 'package:newpostman1/customWidgets/CustomInputField.dart';
 import 'package:newpostman1/customWidgets/FormButton.dart';
 import 'package:newpostman1/customWidgets/PaymentSelectionButton.dart';
 import 'package:newpostman1/features/find_postman_for_package/data/RequestModel.dart';
-import 'package:newpostman1/features/home/data/OrderModel.dart';
 import 'package:newpostman1/features/payment/presentation/pages/PaymentPageViewModel.dart';
-import 'package:newpostman1/features/payment/presentation/pages/stripePaymentVIew.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../../useful/globals.dart';
@@ -119,8 +113,8 @@ class _PaymentPageViewState extends State<PaymentPageView> {
                             readOnly: true,
                             textEditingController:
                                 model.totalamountTextController,
-                            attribute: "total",
-                            labelText: "Total",
+                            attribute: "subtotal",
+                            labelText: "Sub Total",
                           ),
                         ],
                       ),
@@ -186,11 +180,27 @@ class _PaymentPageViewState extends State<PaymentPageView> {
                                     //   },
                                     //   assetUrl: "assets/images/paystack.png",
                                     // ),
-                                    PaymentSelectionButton(
-                                      callback: () {
-                                        model.payUsingStripe();
-                                      },
-                                      assetUrl: "assets/images/stripe.jpg",
+                                    // PaymentSelectionButton(
+                                    //   callback: null,
+                                    //   assetUrl: "assets/images/stripe.jpg",
+                                    // ),
+                                    Container(
+                                      width: blockWidth * 25,
+                                      // color: Colors.greenAccent,
+                                      alignment: Alignment.center,
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: blockWidth * 2,
+                                          vertical: blockHeight),
+                                      child: SizedBox.expand(
+                                        child: Container(
+                                          // color: Colors.orange,
+                                          alignment: Alignment.center,
+                                          child: Image.asset(
+                                            "assets/images/stripe.jpg",
+                                            fit: BoxFit.contain,
+                                          ),
+                                        ),
+                                      ),
                                     )
                                   ],
                                 ),
