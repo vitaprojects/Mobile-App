@@ -7,7 +7,7 @@ import 'package:newpostman1/features/home/data/OrderModel.dart';
 import 'package:newpostman1/features/home/domain/respond_to_events_service.dart';
 import 'package:newpostman1/features/home/presentation/ViewCustomerRequestForErrand/CustomerRequestForErrandView.dart';
 import 'package:newpostman1/features/home/presentation/ViewCustomerRequestForPackage/CustomerRequestForPackageView.dart';
-import 'package:newpostman1/features/payment/presentation/PaymentPageView.dart';
+import 'package:newpostman1/features/payment/presentation/pages/PaymentPageView.dart';
 import 'package:newpostman1/models/user/UserModel.dart';
 import 'package:newpostman1/useful/service_locator.dart';
 import 'package:stacked_services/stacked_services.dart';

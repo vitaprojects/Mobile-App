@@ -1,17 +1,20 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_credit_card/flutter_credit_card.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
+import 'package:logger/logger.dart';
 import 'package:newpostman1/customWidgets/CustomInputField.dart';
 import 'package:newpostman1/customWidgets/FormButton.dart';
 import 'package:newpostman1/customWidgets/PaymentSelectionButton.dart';
 import 'package:newpostman1/features/find_postman_for_package/data/RequestModel.dart';
 import 'package:newpostman1/features/home/data/OrderModel.dart';
-import 'package:newpostman1/features/payment/presentation/PaymentPageViewModel.dart';
+import 'package:newpostman1/features/payment/presentation/pages/PaymentPageViewModel.dart';
+import 'package:newpostman1/features/payment/presentation/pages/stripePaymentVIew.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:stacked/stacked.dart';
 
-import '../../../useful/globals.dart';
+import '../../../../useful/globals.dart';
 
 class PaymentPageView extends StatefulWidget {
   PaymentPageView({
@@ -27,58 +30,6 @@ class _PaymentPageViewState extends State<PaymentPageView> {
   final double blockHeight = Globals.blockHeight;
   final double blockWidth = Globals.blockWidth;
   double margin;
-
-  confirmPaymentAlert() {
-    Alert(
-      context: context,
-      type: AlertType.info,
-      title: "CONFIRM PAYMENT",
-      desc: "Please confirm the payment of \$22",
-      buttons: [
-        DialogButton(
-          child: Text(
-            "confirm".toUpperCase(),
-            style: TextStyle(color: Colors.white, fontSize: 20),
-          ),
-          onPressed: () {
-            Navigator.pop(context);
-            Get.back();
-
-            OrderModel orderModel = OrderModel(
-              postmanFee: widget.requestModel
-                  .postmanOffer, //we dont any info about these they are in the errand document
-              pacakgeDocId: widget.requestModel.packageDocID,
-              postmanEmail: widget.requestModel.postman,
-              statusOftheOrder:
-                  0, //in the beggining of te order the status is 0
-              tipAmount: 0, //in the begniing we are not paying the tip
-              type: 1, //because this is a order of a package
-              userEmail: Hive.box('user').get('email').toLowerCase(),
-            );
-
-            //    firebaseFirestore.collection('orders').add(orderModel.toJson());
-
-            Future.delayed(Duration(seconds: 1)).then((value) {
-              Get.snackbar("Payment successful", "Your payment was successfuly",
-                  icon: Icon(
-                    Icons.done,
-                    color: Colors.green,
-                  ));
-            });
-          },
-          color: Globals.mainColor,
-        ),
-        DialogButton(
-          child: Text(
-            "cancel".toUpperCase(),
-            style: TextStyle(color: Colors.white, fontSize: 20),
-          ),
-          onPressed: () => Navigator.pop(context),
-          color: Colors.red,
-        )
-      ],
-    ).show();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -135,6 +86,7 @@ class _PaymentPageViewState extends State<PaymentPageView> {
                             minFontSize: 14,
                           )),
                     ),
+
                     Container(
                       // color: Colors.red,
                       // height: blockHeight * 16,
@@ -319,6 +271,21 @@ class _PaymentPageViewState extends State<PaymentPageView> {
                         ),
                       ),
                     ),
+                    CreditCardWidget(
+                      cardNumber: model.cardNumber,
+                      expiryDate: model.expiryDate,
+                      cardHolderName: model.cardHolderName,
+                      cvvCode: '',
+                      showBackView:
+                          false, //true when you want to show cvv(back) view
+                    ),
+                    CreditCardForm(
+                      formKey: model.formKey,
+                      // key: model.formKey,
+                      onCreditCardModelChange: (data) {
+                        model.updateCardChangeInfo(data);
+                      },
+                    ),
                     SizedBox(
                       height: blockHeight * 2,
                     ),
@@ -326,11 +293,17 @@ class _PaymentPageViewState extends State<PaymentPageView> {
                       height: blockHeight * 10,
                       // color: Colors.green,
                       alignment: Alignment.center,
+
                       child: FormButton(
                         buttonText: "pay",
+                        isBusy: model.isBusy,
                         ontapFun: () {
-                          // Get.to(PackageListedMessage());
-                          confirmPaymentAlert();
+                          // Get.to(StripePaymentView(
+                          //   requestModel: widget.requestModel,
+                          // ));
+                          // confirmPaymentAlert();
+                          model.confirmPaymentAlert(widget.requestModel);
+                          // Logger().w(model.tipTextController.text);
                         },
                       ),
                     )

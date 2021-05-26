@@ -36,3 +36,9 @@ export const sendNotification = functions.firestore.document('Chats/{messageId}'
 
 
 });
+export const getClientSecret = functions.https.onCall((data, context) => {
+    return {
+        secretKey: 'sk_test_QlK20L7smKFDri5myFa66pDM00IPlTVzqS',
+
+    };
+});

@@ -7,11 +7,13 @@ class FormButton extends StatelessWidget {
   FormButton({
     this.ontapFun,
     this.buttonText,
+    this.isBusy = false,
   });
   final double blockHeight = Globals.blockHeight;
   final double blockWidth = Globals.blockWidth;
   final VoidCallback ontapFun;
   final String buttonText;
+  final bool isBusy;
 
   @override
   Widget build(BuildContext context) {
@@ -39,14 +41,16 @@ class FormButton extends StatelessWidget {
             height: blockHeight * 3,
             // color: Colors.yellow,
             alignment: Alignment.center,
-            child: AutoSizeText(
-              buttonText.toUpperCase(),
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.white,
-              ),
-              minFontSize: 14,
-            ),
+            child: isBusy
+                ? FittedBox(child: CircularProgressIndicator())
+                : AutoSizeText(
+                    buttonText.toUpperCase(),
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                    ),
+                    minFontSize: 14,
+                  ),
           ),
         ),
       ),
