@@ -46,4 +46,17 @@ class PostedPackagesServiceImpl extends PostedPackagesService {
       return null;
     }
   }
+
+  @override
+  Stream<List<FullPackageModel>> getAllAvailbePackages() {
+    return firebaseFirestore
+        .collection("packages")
+        .where('postedBy', isEqualTo: Hive.box('user').get('email'))
+        .where("status", isEqualTo: 0)
+        .orderBy("datePosted", descending: true)
+        .snapshots()
+        .map((event) => event.docs
+            .map((e) => FullPackageModel.fromJson(e.data()))
+            .toList());
+  }
 }

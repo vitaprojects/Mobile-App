@@ -25,10 +25,14 @@ class SendPackageServiceImpl extends SendPackageService {
       status: 0,
     );
 
+    DocumentReference documentReference =
+        firebaseFirestore.collection('packages').doc();
+    fullPackageModel.docId = documentReference.id;
     try {
       await firebaseFirestore
           .collection('packages')
-          .add(fullPackageModel.toJson())
+          .doc(documentReference.id)
+          .set(fullPackageModel.toJson())
           .then((value) {
         Get.offAll(HomePage());
 

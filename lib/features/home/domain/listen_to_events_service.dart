@@ -30,4 +30,9 @@ abstract class ListenToEventsService {
   Stream<List<OrderModel>> listentoAllErrandsOftheUser();
 
   Stream<UserModel> getUserModelAsAStream();
+
+  ///This function is used to listen to all confirmed requests for the postman
+  Stream<List<RequestModel>> listenToNewConfirmationsForthePostman();
+
+  Future<void> changeRequestStatusWhenOrderStarted(RequestModel requestModel);
 }

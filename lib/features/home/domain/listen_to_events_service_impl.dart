@@ -89,7 +89,7 @@ class ListenToEventsServiceImpl extends ListenToEventsService {
           cancelTitle: "cancel".toUpperCase(),
         );
 
-        if (response.confirmed) {
+        if (response != null && response.confirmed) {
           print("user accepted");
 
           //now we have to load the ui depending on the type of the package
@@ -176,13 +176,12 @@ class ListenToEventsServiceImpl extends ListenToEventsService {
   @override
   void displayAlertForNewResponseFromPostman() async {
     print("display alert for postman");
-    listenToNewResponsesFromthePostman().listen((event) {
+    listenToNewResponsesFromthePostman().listen((event) async {
       if (event.length != 0) {
         RequestModel requestModel = event.first;
         if (requestModel.type == 0) {
           //this is a response to a pacakge request from the client
-          dialogService
-              .showConfirmationDialog(
+          DialogResponse response = await dialogService.showConfirmationDialog(
             // variant: DialogType.form,
             title: 'You received a new offer',
             description:
@@ -191,21 +190,19 @@ class ListenToEventsServiceImpl extends ListenToEventsService {
             // mainButtonTitle: 'Confirm',
             confirmationTitle: "accept".toUpperCase(),
             cancelTitle: "reject".toUpperCase(),
-          )
-              .then((value) {
-            if (value != null && value.confirmed) {
-              print("user accepted the offer");
-              // respondToEventsService.respondTotheOfferOfPostman(
-              //     true, requestModel);
-              Get.to(PaymentPageView(
-                requestModel: requestModel,
-              ));
-            } else {
-              print("user rejected");
-              respondToEventsService.respondTotheOfferOfPostman(
-                  false, requestModel);
-            }
-          });
+          );
+          if (response != null && response.confirmed) {
+            print("user accepted the offer");
+            // respondToEventsService.respondTotheOfferOfPostman(
+            //     true, requestModel);
+            Get.to(PaymentPageView(
+              requestModel: requestModel,
+            ));
+          } else {
+            print("user rejected");
+            respondToEventsService.respondTotheOfferOfPostman(
+                false, requestModel);
+          }
         } else {
           //this is a repsonse to a errand request from the client
           dialogService
@@ -289,5 +286,32 @@ class ListenToEventsServiceImpl extends ListenToEventsService {
         .doc(Hive.box('user').get('email'))
         .snapshots()
         .map((event) => UserModel.fromJson(event.data()));
+  }
+
+  @override
+  Stream<List<RequestModel>> listenToNewConfirmationsForthePostman() {
+    return firebaseFirestore
+        .collection("requests")
+        .where("postman", isEqualTo: Hive.box('user').get('email'))
+        .where("hasSeenbyPostman", isEqualTo: false)
+        .where("hasSeenbyUser", isEqualTo: true)
+        .where("status", isEqualTo: 2)
+        .orderBy('date', descending: true)
+        .snapshots()
+        .map((event) {
+      return event.docs.map((e) => RequestModel.fromJson(e.data())).toList();
+    });
+  }
+
+  @override
+  Future<void> changeRequestStatusWhenOrderStarted(
+      RequestModel requestModel) async {
+    await firebaseFirestore
+        .collection("requests")
+        .doc(requestModel.requestId)
+        .update({
+      "status": 3,
+      "hasSeenbyPostman": true,
+    });
   }
 }

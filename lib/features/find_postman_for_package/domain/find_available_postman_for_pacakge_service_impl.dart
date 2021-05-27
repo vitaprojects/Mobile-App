@@ -29,8 +29,10 @@ class FindAvailablePostmanForPackageServiceImpl
     // StreamController<List<FullPackageModel>> controller =
     //     StreamController<List<FullPackageModel>>();
 
+    // firebaseFirestore.clearPersistence();
+
     List<FullPackageModel> pacakges =
-        await postedPackagesService.getAllPostedPackages().first;
+        await postedPackagesService.getAllAvailbePackages().first;
 
     FullPackageModel latestPackage;
     if (pacakges.length != 0) {

@@ -103,6 +103,18 @@ class OngoingOrdersView extends StatelessWidget {
                                                     ),
                                                     Text(
                                                         "Your Fee : ${model.data[index].postmanFee}"),
+                                                    Expanded(
+                                                        child: Container(
+                                                      // color: Colors.red,
+                                                      alignment:
+                                                          Alignment.center,
+                                                      child: Text(model
+                                                                  .data[index]
+                                                                  .type ==
+                                                              1
+                                                          ? "Package"
+                                                          : "Errand"),
+                                                    ))
                                                   ],
                                                 ),
                                               ),

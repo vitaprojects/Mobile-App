@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:logger/logger.dart';
 import 'package:newpostman1/features/find_postman_for_package/domain/find_available_postman_for_package_service.dart';
 import 'package:newpostman1/features/send_package/data/FullPackageModel.dart';
 import 'package:newpostman1/useful/service_locator.dart';
@@ -35,11 +36,12 @@ class AvailablePostmanViewModel extends ChangeNotifier {
           (Platform.isIOS) ? DialogPlatform.Cupertino : DialogPlatform.Material,
     );
 
-    if (response.confirmed) {
+    if (response != null && response.confirmed) {
       // Do some confirmation action here.
       print("send request for this postman");
       findAvailablePostmanService.sendRequestForPostman(
           latestPackage, postmanEmail);
+      Logger().i(latestPackage.docId);
     }
   }
 }

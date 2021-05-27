@@ -107,7 +107,7 @@ class AvailablePostmanView extends StatelessWidget {
                                 ),
                                 alignment: Alignment.center,
                                 child: AutoSizeText(
-                                  "You haven't posted any packages",
+                                  "You don't have any available packages",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontSize: 25,

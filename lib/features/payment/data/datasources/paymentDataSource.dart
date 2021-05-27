@@ -84,9 +84,18 @@ class PaymentDataSourceImpl extends PaymentDataSource {
             .doc(requestModel.requestId)
             .update(
           {
-            "status": 2
+            "status": 2,
+            "hasSeenbyUser": true,
+            "hasSeenbyPostman":
+                false, //we have to change this to false because the postman havent seen the confirmed message
           }, //when the user has paid for the order we update the status as 2 .
         );
+
+        ///we have to change the status of the package to make it as unavailable
+        await firebaseFirestore
+            .collection("packages")
+            .doc(requestModel.packageDocID)
+            .update({"status": 1});
         //  'Thanks for your payment. Your order id=> $uId';
         snackbarService.showSnackBar('Payment Success',
             'Thanks for your payment. Your order id=> $uId', false);

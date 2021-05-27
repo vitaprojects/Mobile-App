@@ -34,7 +34,7 @@ class _TrackPackageState extends State<TrackPackage> {
                       Tab(
                         // icon: Icon(Font),
                         child: Text(
-                          "Posted(6)".toUpperCase(),
+                          "Posted".toUpperCase(),
                         ),
                       ),
                       // Tab(
