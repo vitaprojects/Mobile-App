@@ -71,7 +71,7 @@ class ListenToEventsServiceImpl extends ListenToEventsService {
         return event.docs
             .map((e) => RequestModel.fromJson(e.data()))
             .toList()
-            .where((element) => element.user == Hive.box('user').get('email'))
+            .where((element) => element.user != Hive.box('user').get('email'))
             .toList();
       });
     } on Exception catch (ex) {
