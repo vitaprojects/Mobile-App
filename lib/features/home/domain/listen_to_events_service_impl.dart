@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firestore_helpers/firestore_helpers.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
+import 'package:logger/logger.dart';
 import 'package:newpostman1/features/find_postman_for_package/data/RequestModel.dart';
 import 'package:newpostman1/features/home/data/OrderModel.dart';
 import 'package:newpostman1/features/home/domain/respond_to_events_service.dart';
@@ -56,6 +57,9 @@ class ListenToEventsServiceImpl extends ListenToEventsService {
       //   // orderComparer: (event1, event2) => event1.name.compareTo(event2.name)
       // );
       //
+
+      Logger().i(
+          "The email in listen to new requests for the postman:${Hive.box('user').get('email')} ");
       return firebaseFirestore
           .collection("requests")
           .where("postman", isEqualTo: Hive.box('user').get('email'))
@@ -64,7 +68,11 @@ class ListenToEventsServiceImpl extends ListenToEventsService {
           .orderBy('date', descending: true)
           .snapshots()
           .map((event) {
-        return event.docs.map((e) => RequestModel.fromJson(e.data())).toList();
+        return event.docs
+            .map((e) => RequestModel.fromJson(e.data()))
+            .toList()
+            .where((element) => element.user == Hive.box('user').get('email'))
+            .toList();
       });
     } on Exception catch (ex) {
       print(ex);
