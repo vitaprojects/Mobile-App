@@ -42,7 +42,7 @@ class DrawerWidget extends StatelessWidget {
 
     return ViewModelBuilder<DrawerWidgetViewModel>.reactive(
         onModelReady: (model) {
-          model.listenToChangesInUserModel();
+          // model.listenToChangesInUserModel();
         },
         builder: (_, model, child) {
           return Material(
@@ -114,7 +114,7 @@ class DrawerWidget extends StatelessWidget {
                                   // color: Colors.yellowAccent,
                                   alignment: Alignment.centerLeft,
                                   child: Text(
-                                    "${model.totalEarnings} \$",
+                                    "${model.totalEarning} \$",
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Colors.black,

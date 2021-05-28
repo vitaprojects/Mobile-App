@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
+import 'package:logger/logger.dart';
 import 'package:newpostman1/features/authentication/domain/auth_service.dart';
 import 'package:newpostman1/models/user/UserModel.dart';
 import 'package:newpostman1/services/push_notification_service.dart';
@@ -151,7 +152,7 @@ class AuthenticationServiceImplementation extends AuthenticationService {
           Hive.box("user").get('email'), Hive.box('user').get('deviceID'));
 
       await Hive.box("user").clear().catchError((value) {}).then((value) {
-        print("data inside box cleared");
+        Logger().wtf("data inside box cleared");
       });
       await _firebaseAuth.signOut();
 
