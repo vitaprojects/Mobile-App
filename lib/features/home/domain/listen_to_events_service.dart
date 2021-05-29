@@ -15,7 +15,7 @@ abstract class ListenToEventsService {
 
   ///This function is used to listen to [`all orders`] of the [`current postman`]
 
-  Stream<List<OrderModel>> listentoAllOrdersOfthePostman();
+  Stream<List<OrderModel>> listentoAllOngoingOrdersOfthePostman();
 
   ///This function is used to listen to [`all orders`] of the [`current user`]
 

@@ -155,12 +155,22 @@ class OngoingOrderView extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         OrderCompleteRejectButton(
-                            btnText: "Complete Order", btnType: 0),
+                          btnText: "Complete Order",
+                          btnType: 0,
+                          callback: () {
+                            model.completeOrRejectTheOrder(0);
+                          },
+                        ),
                         SizedBox(
                           width: blockWidth * 10,
                         ),
                         OrderCompleteRejectButton(
-                            btnText: "Reject Order", btnType: 1),
+                          btnText: "Reject Order",
+                          btnType: 1,
+                          callback: () {
+                            model.completeOrRejectTheOrder(1);
+                          },
+                        ),
                       ],
                     ),
                   )

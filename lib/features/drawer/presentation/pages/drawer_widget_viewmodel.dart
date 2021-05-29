@@ -17,9 +17,9 @@ class DrawerWidgetViewModel extends ReactiveViewModel {
   //   });
   // }
 
-  double get totalEarning => (userData.userModel?.value != null)
-      ? userData.userModel.value.totalEarnings
-      : 0;
+  String get totalEarning => (userData.userModel?.value != null)
+      ? userData.userModel.value.totalEarnings.toStringAsFixed(2)
+      : "0";
 
   @override
   List<ReactiveServiceMixin> get reactiveServices => [userData];

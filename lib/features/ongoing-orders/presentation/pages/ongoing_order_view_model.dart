@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:map_launcher/map_launcher.dart';
 import 'package:newpostman1/features/home/data/OrderModel.dart';
@@ -6,13 +8,15 @@ import 'package:newpostman1/features/post_errand/data/PostErrandModel.dart';
 import 'package:newpostman1/features/send_package/data/FullPackageModel.dart';
 import 'package:newpostman1/models/LocationModel.dart';
 import 'package:newpostman1/useful/service_locator.dart';
-import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
 
 class OngoingOrderViewModel extends ChangeNotifier {
   OrderModel currentOrderModel;
   double currentIncomeFromTheORder = 0;
   LoadPackageOrErrandData loadPackageOrErrandData =
       locator<LoadPackageOrErrandData>();
+
+  final DialogService dialogService = locator<DialogService>();
 
   ///If the order type is a package type we assign a value to this
   FullPackageModel fullPackageModel;
@@ -72,5 +76,26 @@ class OngoingOrderViewModel extends ChangeNotifier {
     MapLauncher.showDirections(
         mapType: MapType.google,
         destination: Coords(locationModel.latitude, locationModel.longitude));
+  }
+
+  ///This function is used to accept or reject the order
+  ///
+  ///if responseType is equal to [`0`] it means complete the order
+  ///if it is equal to [`1`] it means reject the order
+  completeOrRejectTheOrder(int responseType) async {
+    var response = await dialogService.showConfirmationDialog(
+      title: responseType == 0 ? "Complete the order" : "Reject the order",
+      description:
+          "Are you sure you want to ${responseType == 0 ? 'Complete' : 'Reject'} this order",
+      cancelTitle: "NO",
+      confirmationTitle: "YES",
+      dialogPlatform:
+          (Platform.isIOS) ? DialogPlatform.Cupertino : DialogPlatform.Material,
+    );
+
+    if (response != null && (response.confirmed == true)) {
+      loadPackageOrErrandData.completeOrRejectTheOrder(
+          currentOrderModel, responseType, currentIncomeFromTheORder);
+    }
   }
 }

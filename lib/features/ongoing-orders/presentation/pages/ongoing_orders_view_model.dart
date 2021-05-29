@@ -8,7 +8,7 @@ class OngoingOrdersViewModel extends StreamViewModel<List<OrderModel>> {
       locator<ListenToEventsService>();
   @override
   Stream<List<OrderModel>> get stream =>
-      listenToEventsService.listentoAllOrdersOfthePostman();
+      listenToEventsService.listentoAllOngoingOrdersOfthePostman();
 
   @override
   void onData(data) {

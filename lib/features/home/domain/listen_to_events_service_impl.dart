@@ -266,10 +266,11 @@ class ListenToEventsServiceImpl extends ListenToEventsService {
   Stream<List<OrderModel>> listentoAllErrandsOftheUser() {}
 
   @override
-  Stream<List<OrderModel>> listentoAllOrdersOfthePostman() {
+  Stream<List<OrderModel>> listentoAllOngoingOrdersOfthePostman() {
     return firebaseFirestore
         .collection("orders")
         .where("postmanEmail", isEqualTo: Hive.box('user').get('email'))
+        .where("statusOftheOrder", isEqualTo: 0)
         .snapshots()
         .map((event) => event.docs.isEmpty
             ? []
