@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:newpostman1/customWidgets/CustomInputField.dart';
 import 'package:newpostman1/customWidgets/FormButton.dart';
 import 'package:newpostman1/customWidgets/LocationSelectButton.dart';
-import 'package:newpostman1/features/MyPackages/presentation/PostedPackagesViewModel.dart';
+import 'package:newpostman1/features/MyPackages/presentation/posted-packages/PostedPackagesViewModel.dart';
 import 'package:newpostman1/features/post_errand/presentation/PostErrandFormViewModel.dart';
 import 'package:newpostman1/features/post_errand/presentation/UploadedImagesOfPackage.dart';
 import 'package:newpostman1/models/LocationModel.dart';

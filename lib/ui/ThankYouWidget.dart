@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:newpostman1/features/home/presentation/home_view.dart';
 import 'package:newpostman1/features/MyTrips/presentation/MyTripsView.dart';
 import 'package:newpostman1/features/home/presentation/ViewCustomerRequestForErrand/CustomerRequestForErrandView.dart';
-import 'package:newpostman1/features/MyPackages/presentation/TrackPackage.dart';
+import 'package:newpostman1/features/MyPackages/presentation/track-package/TrackPackage.dart';
 import 'package:newpostman1/features/home/presentation/ViewCustomerRequestForPackage/CustomerRequestForPackageView.dart';
 import 'package:newpostman1/features/payment/presentation/pages/PaymentPageView.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';

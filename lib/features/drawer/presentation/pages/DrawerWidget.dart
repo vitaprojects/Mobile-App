@@ -4,7 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:newpostman1/features/Chat/presentation/ChatScreenView.dart';
-import 'package:newpostman1/features/MyPackages/presentation/TrackPackage.dart';
+import 'package:newpostman1/features/MyPackages/presentation/track-package/TrackPackage.dart';
 import 'package:newpostman1/features/MyTrips/presentation/MyTripsView.dart';
 import 'package:newpostman1/features/TotalEarnings/presentation/pages/TotalEarningsWidget.dart';
 import 'package:newpostman1/features/authentication/domain/auth_service.dart';
@@ -238,17 +238,17 @@ class DrawerWidget extends StatelessWidget {
                           height: blockHeight / 2,
                           thickness: blockHeight / 4,
                         ),
-                        ItemWidgetInDrawer(
-                          icon: Icon(
-                            FontAwesomeIcons.facebookMessenger,
-                          ),
-                          margin: margin,
-                          ontapFunc: () {
-                            closeDrawer();
-                            Get.to(ChatScreenView());
-                          },
-                          title: "Chats",
-                        ),
+                        // ItemWidgetInDrawer(
+                        //   icon: Icon(
+                        //     FontAwesomeIcons.facebookMessenger,
+                        //   ),
+                        //   margin: margin,
+                        //   ontapFunc: () {
+                        //     closeDrawer();
+                        //     Get.to(ChatScreenView());
+                        //   },
+                        //   title: "Chats",
+                        // ),
                       ],
                     ),
                   ),
@@ -316,21 +316,21 @@ class DrawerWidget extends StatelessWidget {
                           height: blockHeight / 2,
                           thickness: blockHeight / 4,
                         ),
-                        ItemWidgetInDrawer(
-                          icon: Icon(
-                            FontAwesomeIcons.moneyBillAlt,
-                          ),
-                          margin: margin,
-                          ontapFunc: () {
-                            closeDrawer();
-                            // Get.to(MyTripsWidget());
-                          },
-                          title: "Payment Requests",
-                        ),
-                        Divider(
-                          height: blockHeight / 2,
-                          thickness: blockHeight / 4,
-                        ),
+                        // ItemWidgetInDrawer(
+                        //   icon: Icon(
+                        //     FontAwesomeIcons.moneyBillAlt,
+                        //   ),
+                        //   margin: margin,
+                        //   ontapFunc: () {
+                        //     closeDrawer();
+                        //     // Get.to(MyTripsWidget());
+                        //   },
+                        //   title: "Payment Requests",
+                        // ),
+                        // Divider(
+                        //   height: blockHeight / 2,
+                        //   thickness: blockHeight / 4,
+                        // ),
                         ItemWidgetInDrawer(
                           icon: Icon(
                             FontAwesomeIcons.locationArrow,

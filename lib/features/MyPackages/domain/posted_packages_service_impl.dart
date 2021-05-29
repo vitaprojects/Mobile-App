@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firestore_helpers/firestore_helpers.dart';
 import 'package:hive/hive.dart';
 import 'package:newpostman1/features/MyPackages/domain/posted_packages_service.dart';
+import 'package:newpostman1/features/home/data/OrderModel.dart';
 import 'package:newpostman1/features/send_package/data/FullPackageModel.dart';
 
 class PostedPackagesServiceImpl extends PostedPackagesService {
@@ -58,5 +59,16 @@ class PostedPackagesServiceImpl extends PostedPackagesService {
         .map((event) => event.docs
             .map((e) => FullPackageModel.fromJson(e.data()))
             .toList());
+  }
+
+  @override
+  Stream<List<OrderModel>> getAllOngoingOrders() {
+    return firebaseFirestore
+        .collection("orders")
+        .where("userEmail", isEqualTo: Hive.box("user").get("email"))
+        .where("statusOftheOrder", isEqualTo: 0)
+        .snapshots()
+        .map((event) =>
+            event.docs.map((e) => OrderModel.fromJson(e.data())).toList());
   }
 }

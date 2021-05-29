@@ -1,11 +1,11 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:newpostman1/customWidgets/TripDetailsCard.dart';
-import 'package:newpostman1/features/MyPackages/presentation/PostedPackagesViewModel.dart';
+import 'package:newpostman1/features/MyPackages/presentation/posted-packages/PostedPackagesViewModel.dart';
 import 'package:newpostman1/features/send_package/data/FullPackageModel.dart';
 import 'package:stacked/stacked.dart';
 
-import '../../../useful/globals.dart';
+import '../../../../useful/globals.dart';
 
 class PostedPackagesWidget extends ViewModelWidget<PostedPackagesViewModel> {
   PostedPackagesWidget({Key key}) : super(key: key);
