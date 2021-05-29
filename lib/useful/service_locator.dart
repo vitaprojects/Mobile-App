@@ -23,6 +23,8 @@ import 'package:newpostman1/features/home/domain/listen_to_events_service.dart';
 import 'package:newpostman1/features/home/domain/listen_to_events_service_impl.dart';
 import 'package:newpostman1/features/home/domain/respond_to_events_service.dart';
 import 'package:newpostman1/features/home/domain/respond_to_events_service_impl.dart';
+import 'package:newpostman1/features/ongoing-orders/domain/load_package_or_errand_data.dart';
+import 'package:newpostman1/features/ongoing-orders/domain/load_package_or_errand_data_impl.dart';
 import 'package:newpostman1/features/payment/data/datasources/paymentDataSource.dart';
 import 'package:newpostman1/features/post_errand/domain/ErrandService.dart';
 import 'package:newpostman1/features/post_errand/domain/ErrandServiceImpl.dart';
@@ -125,4 +127,7 @@ setupServiceLocator() {
       uuid: locator(),
       firebaseFirestore: locator(),
       snackbarService: locator()));
+
+  locator.registerLazySingleton<LoadPackageOrErrandData>(
+      () => LoadPackageOrErrandDataImpl());
 }
