@@ -73,14 +73,19 @@ class OngoingOrderView extends StatelessWidget {
                             children: [
                               ViewItemLocationButton(
                                 buttonTitle: "View Item departure location",
-                                locationModel: model.departureLocationModel,
+                                callback: () {
+                                  model.launchMap(model.departureLocationModel);
+                                },
                               ),
                               SizedBox(
                                 width: blockWidth * 5,
                               ),
                               ViewItemLocationButton(
                                 buttonTitle: "View Item destination location",
-                                locationModel: model.destinationLocationModel,
+                                callback: () {
+                                  model.launchMap(
+                                      model.destinationLocationModel);
+                                },
                               ),
                             ],
                           ),

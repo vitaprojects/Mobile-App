@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:map_launcher/map_launcher.dart';
 import 'package:newpostman1/features/home/data/OrderModel.dart';
 import 'package:newpostman1/features/ongoing-orders/domain/load_package_or_errand_data.dart';
 import 'package:newpostman1/features/post_errand/data/PostErrandModel.dart';
@@ -64,5 +65,12 @@ class OngoingOrderViewModel extends ChangeNotifier {
       isDataLoaded = false;
       notifyListeners();
     }
+  }
+
+  ///This function is used to load google map when the coordinates are given
+  launchMap(LocationModel locationModel) {
+    MapLauncher.showDirections(
+        mapType: MapType.google,
+        destination: Coords(locationModel.latitude, locationModel.longitude));
   }
 }

@@ -3,10 +3,7 @@ import 'package:newpostman1/models/LocationModel.dart';
 import 'package:newpostman1/useful/globals.dart';
 
 class ViewItemLocationButton extends StatelessWidget {
-  ViewItemLocationButton({
-    @required this.buttonTitle,
-    @required this.locationModel,
-  });
+  ViewItemLocationButton({@required this.buttonTitle, @required this.callback});
   final double blockHeight = Globals.blockHeight;
 
   final double blockWidth = Globals.blockWidth;
@@ -14,15 +11,16 @@ class ViewItemLocationButton extends StatelessWidget {
   final double margin = Globals.blockWidth * 5;
   final String buttonTitle;
 
-  /// We pass this location model so we can load the map easily
-  final LocationModel locationModel;
+  final VoidCallback callback;
 
   @override
   Widget build(BuildContext context) {
     return RaisedButton(
       color: Globals.mainColor,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      onPressed: () {},
+      onPressed: () {
+        callback();
+      },
       padding: EdgeInsets.all(0),
       child: Container(
         height: blockHeight * 10,

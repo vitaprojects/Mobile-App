@@ -5,6 +5,7 @@ class OrderCompleteRejectButton extends StatelessWidget {
   OrderCompleteRejectButton({
     @required this.btnText,
     @required this.btnType,
+    @required this.callback,
   });
   final double blockHeight = Globals.blockHeight;
 
@@ -13,6 +14,7 @@ class OrderCompleteRejectButton extends StatelessWidget {
   final double margin = Globals.blockWidth * 5;
   final String btnText;
   final int btnType;
+  final VoidCallback callback;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,9 @@ class OrderCompleteRejectButton extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       padding: EdgeInsets.all(0),
       color: btnType == 0 ? Colors.blue : Colors.redAccent,
-      onPressed: () {},
+      onPressed: () {
+        callback();
+      },
       child: Container(
         width: blockWidth * 40,
         height: blockHeight * 10,
