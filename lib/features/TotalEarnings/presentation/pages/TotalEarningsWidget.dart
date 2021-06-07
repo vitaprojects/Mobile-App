@@ -120,6 +120,34 @@ class TotalEarningsWidget extends StatelessWidget {
                                     height: blockHeight / 2,
                                     thickness: blockHeight / 4,
                                   ),
+                                  Container(
+                                    height: blockHeight * 40,
+                                    margin: EdgeInsets.symmetric(
+                                        horizontal: blockWidth * 10),
+                                    // color: Colors.red,
+                                    alignment: Alignment.center,
+                                    child: Container(
+                                      height: blockHeight * 10,
+                                      // color: Colors.green,
+                                      alignment: Alignment.center,
+                                      child: RaisedButton(
+                                        color: Globals.mainColor,
+                                        padding: EdgeInsets.all(0),
+                                        onPressed: () {},
+                                        child: Container(
+                                          height: blockHeight * 6,
+                                          alignment: Alignment.center,
+                                          child: Text(
+                                            "Withdraw money".toUpperCase(),
+                                            style: TextStyle(
+                                              fontSize: 19,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  )
                                 ],
                               ),
                             ),
