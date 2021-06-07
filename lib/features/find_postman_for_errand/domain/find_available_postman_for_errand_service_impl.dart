@@ -84,13 +84,16 @@ class FindAvailablePostmanForErrandServiceImpl
       PostErrandModel postErrandModel, String emailOfPostman) async {
     print("send request for the errand");
 
+    DocumentReference documentReference =
+        firebaseFirestore.collection("requests").doc();
+
     RequestModel requestModel = RequestModel(
       date: DateTime.now(),
       hasSeenbyPostman: false,
       hasSeenbyUser: false,
       postman: emailOfPostman,
 
-      // requestId: packageModel.docId,
+      requestId: documentReference.id,
       packageDocID: postErrandModel.docId,
       status: 0,
       type: 1, //because this is a errand
@@ -99,7 +102,8 @@ class FindAvailablePostmanForErrandServiceImpl
 
     await firebaseFirestore
         .collection('requests')
-        .add(requestModel.toJson())
+        .doc(documentReference.id)
+        .set(requestModel.toJson())
         .then((value) {
       Get.back();
       Future.delayed(Duration(milliseconds: 500)).whenComplete(() {

@@ -92,7 +92,7 @@ class FindAvailablePostmanForPackageServiceImpl
 
     //create a document reference first
     DocumentReference requestDocumentReference =
-        FirebaseFirestore.instance.collection('users').doc();
+        FirebaseFirestore.instance.collection('requests').doc();
 
     RequestModel requestModel = RequestModel(
       date: DateTime.now(),

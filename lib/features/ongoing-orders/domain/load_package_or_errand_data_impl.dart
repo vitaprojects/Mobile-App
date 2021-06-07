@@ -54,6 +54,7 @@ class LoadPackageOrErrandDataImpl extends LoadPackageOrErrandData {
           .update({
         "totalEarnings": FieldValue.increment(amountEarned),
         "completedJobs": FieldValue.increment(1),
+        "activeJobs": FieldValue.increment(-1),
       });
 
       Get.offAll(HomePage());
@@ -73,6 +74,7 @@ class LoadPackageOrErrandDataImpl extends LoadPackageOrErrandData {
           .doc(orderModel.postmanEmail)
           .update({
         "rejectedJobs": FieldValue.increment(1),
+        "activeJobs": FieldValue.increment(-1),
       });
 
       Get.offAll(HomePage());

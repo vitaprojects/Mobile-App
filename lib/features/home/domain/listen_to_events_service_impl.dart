@@ -322,5 +322,12 @@ class ListenToEventsServiceImpl extends ListenToEventsService {
       "status": 3,
       "hasSeenbyPostman": true,
     });
+
+    await firebaseFirestore
+        .collection("users")
+        .doc(requestModel.postman)
+        .update({
+      'activeJobs': FieldValue.increment(1),
+    });
   }
 }

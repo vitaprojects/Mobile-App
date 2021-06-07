@@ -170,6 +170,8 @@ class RespondToEventsServiceImpl extends RespondToEventsService {
     await firebaseFirestore
         .collection('errands')
         .doc(requestModel.packageDocID) //TODO complete this ordrmodel
-        .update({'status': 1});
+        .update(
+      {'status': 1},
+    );
   }
 }

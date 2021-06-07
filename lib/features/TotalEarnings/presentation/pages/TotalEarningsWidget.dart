@@ -12,16 +12,15 @@ class TotalEarningsWidget extends StatelessWidget {
   TotalEarningsWidget({Key key}) : super(key: key);
   final double blockHeight = Globals.blockHeight;
   final double blockWidth = Globals.blockWidth;
-  double margin;
 
   @override
   Widget build(BuildContext context) {
-    margin = blockWidth * 5;
+    double margin = blockWidth * 5;
     return SafeArea(
       child: Scaffold(
         body: ViewModelBuilder<TotalEarningsWidgetViewModel>.reactive(
             onModelReady: (model) {
-              model.listenToChangesInUserModel();
+              //model.listenToChangesInUserModel();
             },
             builder: (context, model, widget) {
               return Stack(
@@ -48,27 +47,21 @@ class TotalEarningsWidget extends StatelessWidget {
                               children: [
                                 EarningsInfoCard(
                                   cardType: 0,
-                                  text: model.getData != null
-                                      ? model.getData.commpletedJobs
-                                      : 0,
+                                  text: 0,
                                 ),
                                 SizedBox(
                                   width: blockWidth * 2,
                                 ),
                                 EarningsInfoCard(
                                   cardType: 1,
-                                  text: model.getData != null
-                                      ? model.getData.cancelledJobs
-                                      : 0,
+                                  text: 0,
                                 ),
                                 SizedBox(
                                   width: blockWidth * 2,
                                 ),
                                 EarningsInfoCard(
                                   cardType: 2,
-                                  text: model.getData != null
-                                      ? model.getData.pendingJobs ?? 0
-                                      : 0,
+                                  text: 0,
                                 ),
                               ],
                             ),
@@ -92,37 +85,37 @@ class TotalEarningsWidget extends StatelessWidget {
                               alignment: Alignment.center,
                               child: Column(
                                 children: [
-                                  EarningSectionWidget(
-                                    earning: "\$${model.totalEarnings}",
-                                    title: "Total earnings",
-                                  ),
+                                  // EarningSectionWidget(
+                                  //   earning: "\$${model.totalEarning}",
+                                  //   title: "Total earnings",
+                                  // ),
                                   Divider(
                                     height: blockHeight / 2,
                                     thickness: blockHeight / 4,
                                   ),
-                                  EarningSectionWidget(
-                                    earning:
-                                        "${model.getData != null ? model.getData.commpletedJobs ?? 0.0 : 0}",
-                                    title: "Completed Jobs",
-                                  ),
+                                  // EarningSectionWidget(
+                                  //   earning:
+                                  //       "${model.getData != null ? model.getData.commpletedJobs ?? 0.0 : 0}",
+                                  //   title: "Completed Jobs",
+                                  // ),
                                   Divider(
                                     height: blockHeight / 2,
                                     thickness: blockHeight / 4,
                                   ),
-                                  EarningSectionWidget(
-                                    earning:
-                                        "${model.getData != null ? model.getData.ongoingJobs ?? 0.0 : 0}",
-                                    title: "Active jobs",
-                                  ),
+                                  // EarningSectionWidget(
+                                  //   earning:
+                                  //       "${model.getData != null ? model.getData.ongoingJobs ?? 0.0 : 0}",
+                                  //   title: "Active jobs",
+                                  // ),
                                   Divider(
                                     height: blockHeight / 2,
                                     thickness: blockHeight / 4,
                                   ),
-                                  EarningSectionWidget(
-                                    earning:
-                                        "${model.getData != null ? model.getData.cancelledJobs ?? 0.0 : 0}",
-                                    title: "Cancelled Jobs",
-                                  ),
+                                  // EarningSectionWidget(
+                                  //   earning:
+                                  //       "${model.getData != null ? model.getData.cancelledJobs ?? 0.0 : 0}",
+                                  //   title: "Cancelled Jobs",
+                                  // ),
                                   Divider(
                                     height: blockHeight / 2,
                                     thickness: blockHeight / 4,
@@ -135,15 +128,11 @@ class TotalEarningsWidget extends StatelessWidget {
                       )),
                   TotalEarningsOverviewSelectionWidget(
                     onChanged: (value) {
-                      model.updateOverView(value);
+                      //model.updateOverView(value);
                     },
                     indexValue: model.indexVal,
                   ), //add a value returning function here
-                  TotalEarningsAppBar(
-                    text: model.getData != null
-                        ? model.getData.totalEarnings.toString()
-                        : 0.toString() ?? 0.toString().toString(),
-                  ),
+                  TotalEarningsAppBar(),
                 ],
               );
             },

@@ -94,6 +94,13 @@ class CustomerRequestForPackageView extends StatelessWidget {
                                     SizedBox(
                                       height: blockHeight * 2,
                                     ),
+                                    PackageRequestListTile(
+                                        labelText: "Item value",
+                                        value: model.packageModel?.value
+                                            .toString()),
+                                    SizedBox(
+                                      height: blockHeight * 2,
+                                    ),
                                     LayoutBuilder(
                                       builder: (BuildContext context,
                                           BoxConstraints constraints) {

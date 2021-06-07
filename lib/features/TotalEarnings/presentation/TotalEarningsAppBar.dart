@@ -7,10 +7,9 @@ import '../../../useful/globals.dart';
 
 class TotalEarningsAppBar
     extends ViewModelWidget<TotalEarningsWidgetViewModel> {
-  TotalEarningsAppBar({Key key, @required this.text}) : super(key: key);
+  TotalEarningsAppBar();
   final double blockHeight = Globals.blockHeight;
   final double blockWidth = Globals.blockWidth;
-  final String text;
 
   @override
   Widget build(BuildContext context, TotalEarningsWidgetViewModel model) {
@@ -52,7 +51,7 @@ class TotalEarningsAppBar
                     // color: Colors.yellow,
                     alignment: Alignment.center,
                     child: AutoSizeText(
-                      "\$${model.totalEarnings}",
+                      "\$${model.totalEarning}",
                       style: TextStyle(
                         fontSize: 28,
                         color: Colors.white,
