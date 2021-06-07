@@ -20,6 +20,18 @@ class TotalEarningsWidgetViewModel extends ReactiveViewModel {
   String get totalEarning => (userData.userModel?.value != null)
       ? userData.userModel.value.totalEarnings.toStringAsFixed(2)
       : "0";
+
+  String get completedJobs => (userData.userModel?.value != null)
+      ? userData.userModel.value.completedJobs.toString()
+      : "0";
+  String get cancelledJobs => (userData.userModel?.value != null)
+      ? userData.userModel.value.rejectedJobs.toString()
+      : "0";
+
+  String get ongoingJobs => (userData.userModel?.value != null)
+      ? userData.userModel.value.activeJobs.toString()
+      : "0";
+
   // listenToChangesInUserModel() {
   //   userData.userModel.listen((v) {
   //     if (v != null) {

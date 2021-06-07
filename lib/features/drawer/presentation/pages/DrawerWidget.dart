@@ -346,6 +346,7 @@ class DrawerWidget extends StatelessWidget {
                       ],
                     ),
                   ),
+                  /* //TODO this part was commented for now because we will add the errand feature later
                   SizedBox(
                     height: blockHeight * 2,
                   ),
@@ -443,6 +444,7 @@ class DrawerWidget extends StatelessWidget {
                       ],
                     ),
                   ),
+                  */
                   SizedBox(
                     height: blockHeight * 2,
                   ),

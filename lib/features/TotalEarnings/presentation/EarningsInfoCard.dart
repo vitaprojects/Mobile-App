@@ -7,9 +7,9 @@ class EarningsInfoCard extends StatelessWidget {
   final double blockHeight = Globals.blockHeight;
   final double blockWidth = Globals.blockWidth;
   final int cardType;
-  final int text;
+  final String text;
 
-  EarningsInfoCard({Key key, @required this.cardType, this.text = 0})
+  EarningsInfoCard({Key key, @required this.cardType, this.text = "0"})
       : assert(cardType != null, 'Card type cannot be null'),
         super(key: key);
 
@@ -69,7 +69,7 @@ class EarningsInfoCard extends StatelessWidget {
                 // color: Colors.greenAccent,
                 alignment: Alignment.center,
                 child: Text(
-                  text.toString() ?? "0",
+                  text,
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
@@ -105,7 +105,7 @@ class EarningsInfoCard extends StatelessWidget {
                       );
                     } else {
                       return Text(
-                        "Pending Jobs",
+                        "Active Jobs",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 16,

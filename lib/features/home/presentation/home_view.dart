@@ -51,17 +51,17 @@ class _HomePageState extends State<HomePage> {
         // },
       ),
     ),
-    Container(
-      child: ModeSelectionView(
-        assetName: "assets/images/errand2.png",
-        bodyText: "Pay postman to do your local chores fast",
-        buttonText: "run your errand",
-        pageNum: 2,
-        // methodInButton: () {
-        //   print("send");
-        // },
-      ),
-    ),
+    // Container(
+    //   child: ModeSelectionView(
+    //     assetName: "assets/images/errand2.png",
+    //     bodyText: "Pay postman to do your local chores fast",
+    //     buttonText: "run your errand",
+    //     pageNum: 2,
+    //     // methodInButton: () {
+    //     //   print("send");
+    //     // },
+    //   ),
+    // ),
   ];
 
   final GlobalKey<InnerDrawerState> _innerDrawerKey =

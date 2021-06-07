@@ -47,21 +47,21 @@ class TotalEarningsWidget extends StatelessWidget {
                               children: [
                                 EarningsInfoCard(
                                   cardType: 0,
-                                  text: 0,
+                                  text: model.completedJobs,
                                 ),
                                 SizedBox(
                                   width: blockWidth * 2,
                                 ),
                                 EarningsInfoCard(
                                   cardType: 1,
-                                  text: 0,
+                                  text: model.cancelledJobs,
                                 ),
                                 SizedBox(
                                   width: blockWidth * 2,
                                 ),
                                 EarningsInfoCard(
                                   cardType: 2,
-                                  text: 0,
+                                  text: model.ongoingJobs,
                                 ),
                               ],
                             ),
