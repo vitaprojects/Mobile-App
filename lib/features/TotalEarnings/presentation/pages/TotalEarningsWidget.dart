@@ -85,10 +85,10 @@ class TotalEarningsWidget extends StatelessWidget {
                               alignment: Alignment.center,
                               child: Column(
                                 children: [
-                                  // EarningSectionWidget(
-                                  //   earning: "\$${model.totalEarning}",
-                                  //   title: "Total earnings",
-                                  // ),
+                                  EarningSectionWidget(
+                                    earning: "\$${model.totalEarning}",
+                                    title: "Total earnings",
+                                  ),
                                   Divider(
                                     height: blockHeight / 2,
                                     thickness: blockHeight / 4,
