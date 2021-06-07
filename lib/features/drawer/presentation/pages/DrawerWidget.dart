@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:newpostman1/features/Chat/presentation/ChatScreenView.dart';
+import 'package:newpostman1/features/MyPackages/presentation/posted-packages/PostedPackagesView.dart';
 import 'package:newpostman1/features/MyPackages/presentation/track-package/TrackPackage.dart';
 import 'package:newpostman1/features/MyTrips/presentation/MyTripsView.dart';
 import 'package:newpostman1/features/TotalEarnings/presentation/pages/TotalEarningsWidget.dart';
@@ -309,7 +310,7 @@ class DrawerWidget extends StatelessWidget {
                             closeDrawer();
 
                             print("go to track package");
-                            Get.to(TrackPackage());
+                            Get.to(PostedPackagesView());
                           },
                         ),
                         Divider(
