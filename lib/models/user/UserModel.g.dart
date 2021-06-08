@@ -17,6 +17,8 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
     activeJobs: json['activeJobs'] as int,
     completedJobs: json['completedJobs'] as int,
     rejectedJobs: json['rejectedJobs'] as int,
+    stripeId: json['stripeId'] as String,
+    totalCleared: (json['totalEarnings'] as num)?.toDouble(),
   );
 }
 
@@ -30,4 +32,6 @@ Map<String, dynamic> _$UserModelToJson(UserModel instance) => <String, dynamic>{
       'completedJobs': instance.completedJobs,
       'activeJobs': instance.activeJobs,
       'rejectedJobs': instance.rejectedJobs,
+      'stripeId': instance.stripeId,
+      'totalCleared': instance.totalCleared,
     };

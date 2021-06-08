@@ -12,16 +12,21 @@ class UserModel {
   int completedJobs;
   int activeJobs;
   int rejectedJobs;
-  UserModel(
-      {this.email,
-      this.fname,
-      this.lname,
-      this.phone,
-      this.deviceIds,
-      this.totalEarnings,
-      this.activeJobs,
-      this.completedJobs,
-      this.rejectedJobs});
+  double totalCleared;
+  String stripeId;
+  UserModel({
+    this.email,
+    this.fname,
+    this.lname,
+    this.phone,
+    this.deviceIds,
+    this.totalEarnings,
+    this.activeJobs,
+    this.completedJobs,
+    this.rejectedJobs,
+    this.totalCleared = 0,
+    this.stripeId,
+  });
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);
