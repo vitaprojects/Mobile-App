@@ -18,7 +18,7 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
     completedJobs: json['completedJobs'] as int,
     rejectedJobs: json['rejectedJobs'] as int,
     stripeId: json['stripeId'] as String,
-    totalCleared: (json['totalEarnings'] as num)?.toDouble(),
+    totalCleared: (json['totalCleared'] as num)?.toDouble(),
   );
 }
 
