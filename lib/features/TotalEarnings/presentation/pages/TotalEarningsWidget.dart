@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:newpostman1/features/TotalEarnings/presentation/EarningSectionWidget.dart';
 import 'package:newpostman1/features/TotalEarnings/presentation/EarningsInfoCard.dart';
 import 'package:newpostman1/features/TotalEarnings/presentation/TotalEarningsAppBar.dart';
 import 'package:newpostman1/features/TotalEarnings/presentation/TotalEarningsOverviewSelectionWidget.dart';
 import 'package:newpostman1/features/TotalEarnings/presentation/pages/totalEarningsWidgetViewModel.dart';
+import 'package:newpostman1/features/withdraw/presentation/pages/withdrawView.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../../../useful/globals.dart';
@@ -133,7 +135,9 @@ class TotalEarningsWidget extends StatelessWidget {
                                       child: RaisedButton(
                                         color: Globals.mainColor,
                                         padding: EdgeInsets.all(0),
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          Get.to(WithdrawView());
+                                        },
                                         child: Container(
                                           height: blockHeight * 6,
                                           alignment: Alignment.center,

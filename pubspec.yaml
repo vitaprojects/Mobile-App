@@ -45,6 +45,7 @@ dependencies:
   flutter_inner_drawer: ^0.5.7+2
   flutter_paystack: ^1.0.4+1
   flutter_spinkit: ^4.1.2+1
+  url_launcher: ^5.7.10
   flutter_swiper: ^1.1.6
   font_awesome_flutter: ^8.8.1
   geocoder: ^0.2.1

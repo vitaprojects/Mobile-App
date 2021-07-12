@@ -32,6 +32,8 @@ import 'package:newpostman1/features/post_itinerary/domain/itinerary_service.dar
 import 'package:newpostman1/features/post_itinerary/domain/itinerary_service_impl.dart';
 import 'package:newpostman1/features/send_package/domain/services/send_package_service.dart';
 import 'package:newpostman1/features/send_package/domain/services/send_package_service_impl.dart';
+import 'package:newpostman1/features/withdraw/data/datasources/withdraw_data_source.dart';
+import 'package:newpostman1/features/withdraw/presentation/pages/withdraw_view_model.dart';
 import 'package:newpostman1/observables/user_data_observable.dart';
 import 'package:newpostman1/services/LocationService.dart';
 import 'package:newpostman1/services/LocationServiceImpl.dart';
@@ -130,4 +132,11 @@ setupServiceLocator() {
 
   locator.registerLazySingleton<LoadPackageOrErrandData>(
       () => LoadPackageOrErrandDataImpl());
+  locator.registerLazySingleton<WithdrawDataSource>(() => WithdataSourceImpl(
+      firebaseFirestore: locator(),
+      snackBarService: locator(),
+      // firebaseFunctions: locator(),
+      firebaseAuth: locator()));
+  locator.registerFactory(() =>
+      WithdrawViewModel(userData: locator(), withdrawDataSource: locator()));
 }

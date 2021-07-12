@@ -1,0 +1,31 @@
+{
+  "name": "functions",
+  "scripts": {
+    "clean": "rimraf lib/",
+    "prebuild": "npm run clean",
+    "build": "tsc",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "14"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "faker": "^5.5.3",
+    "firebase-admin": "^9.8.0",
+    "firebase-backend": "^0.2.2",
+    "firebase-functions": "^3.14.1",
+    "stripe": "^8.161.0"
+  },
+  "devDependencies": {
+    "@types/faker": "^5.5.7",
+    "firebase-functions-test": "^0.2.0",
+    "rimraf": "^3.0.2",
+    "typescript": "^3.8.0"
+  },
+  "private": true
+}

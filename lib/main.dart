@@ -1,5 +1,4 @@
 import 'package:async/async.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -11,8 +10,9 @@ import 'package:newpostman1/features/loading/presentation/LoadingPage.dart';
 import 'package:newpostman1/features/send_package/domain/bloc/SendPackageObserver.dart';
 import 'package:newpostman1/ui/RootWidget.dart';
 import 'package:newpostman1/useful/rootPage.dart';
-import 'useful/service_locator.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
+
+import 'useful/service_locator.dart';
 
 void main() async {
   // print(DateFormat.yMMMd().format(DateTime.now()));
