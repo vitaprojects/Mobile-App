@@ -9,12 +9,14 @@ import 'package:logger/logger.dart';
 
 import 'package:newpostman1/features/withdraw/data/models/withdrawModel.dart';
 import 'package:newpostman1/services/snackbar_service.dart';
+import 'package:newpostman1/useful/app_constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 abstract class WithdrawDataSource {
   Future<void> createStripeConnectedAccount();
   Future<WithdrawModel> getStripeAccountDetails(String stripeId);
   Future<void> createAccountLink(String accountId);
+  Future<void> withdraw(String accountId, double amout);
 }
 
 class WithdataSourceImpl implements WithdrawDataSource {
@@ -29,30 +31,25 @@ class WithdataSourceImpl implements WithdrawDataSource {
   @override
   Future<void> createStripeConnectedAccount() async {
     try {
-      final String secretKey = await getSecretKey();
+      // final String secretKey = await getSecretKey();
 
-      final res = await http.post('https://api.stripe.com/v1/accounts', body: {
-        "type": "express",
-        "email": firebaseAuth.currentUser.email,
-        "capabilities[transfers][requested]": 'true',
-        'settings[payouts][schedule][interval]': 'manual'
-      }, headers: {
-        'Authorization': 'Bearer $secretKey',
-        'Content-Type': 'application/x-www-form-urlencoded'
-      });
+      final res = await http.post(
+        '${AppConstants.Api_Path}/createaccount',
+        body: {
+          "email": firebaseAuth.currentUser.email,
+        },
+      );
+      if (res.statusCode == 200 || res.statusCode == 201) {
+        final data = jsonDecode(res.body);
+        String accountLink = data["data"]["account_link"];
+        Logger().d('account link is created ${data['data']['stripeId']}');
 
-      if (res.statusCode != 200) {
-        throw Exception(
-            'Cannot create and account ${res.statusCode.toString() + res.reasonPhrase.toString()}');
+        if (accountLink != null) {
+          await _launchUrl(accountLink);
+        }
+      } else {
+        throw Exception('Cannot create an account At the moment');
       }
-      final resp = jsonDecode(res.body);
-      await firebaseFirestore
-          .collection('users')
-          .doc(firebaseAuth.currentUser.email)
-          .update({
-        'stripeId': resp['id'].toString(),
-      });
-      await createAccountLink(resp['id'].toString());
     } on FirebaseException catch (e) {
       snackBarService.showSnackBar('Account Creation Failure', e.message, true);
     } on Exception catch (e) {
@@ -85,30 +82,16 @@ class WithdataSourceImpl implements WithdrawDataSource {
   @override
   Future<void> createAccountLink(String accountId) async {
     try {
-      final String secretKey = await getSecretKey();
-      final res =
-          await http.post('https://api.stripe.com/v1/account_links', headers: {
-        'Authorization': 'Bearer $secretKey',
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }, body: {
-        'account': accountId,
-        'refresh_url':
-            'https://newpostman1.page.link/?link=https://www.example.com/submitDetails?type%refresh&apn=com.exzitan.newpostman1',
-        'return_url':
-            'https://newpostman1.page.link/?link=https://www.example.com/submitDetails?type%3Dreturn&apn=com.exzitan.newpostman1',
-        'type': 'account_onboarding'
-      });
-      if (res.statusCode != 200) {
+      final res = await http.post('${AppConstants.Api_Path}/createaccountlink',
+          body: {"stripeId": accountId});
+      if (res.statusCode != 200 || res.statusCode != 201) {
         throw Exception(
             'Error occurred while creating the account link ${res.statusCode}');
       }
       final data = jsonDecode(res.body);
-      if (data['url'] != null) {
-        if (await canLaunch(data['url'])) {
-          await launch(data['url']);
-        } else {
-          throw Exception('Cannot launch url in the browser');
-        }
+      final accountLink = data['data']['account_link'];
+      if (accountLink != null) {
+        await _launchUrl(accountLink);
       } else {
         throw Exception('Cannot get url for the account link');
       }
@@ -118,20 +101,50 @@ class WithdataSourceImpl implements WithdrawDataSource {
     }
   }
 
-  @visibleForTesting
-  Future<String> getSecretKey() async {
-    Logger().wtf('called function');
-    try {
-      final HttpsCallable intent = FirebaseFunctions.instance.httpsCallable(
-        'getClientSecret',
-      );
-      return intent.call().then((value) {
-        return value.data['secretKey'];
-      });
-    } on FirebaseFunctionsException catch (e) {
-      throw Exception(e.message);
-    } on Exception catch (e) {
-      throw Exception(e.toString());
+  Future<void> _launchUrl(String url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw Exception('Cannot launch url in the browser');
     }
+  }
+
+  ///* make sure the amount is valid
+  @override
+  Future<void> withdraw(String accountId, double amount) async {
+    try {
+      final res = await http.post('${AppConstants.Api_Path}/withdraw', body: {
+        "stripeId": accountId,
+        "email": firebaseAuth.currentUser.email,
+        "userId": firebaseAuth.currentUser.uid,
+        "amount": amount * 100
+      });
+      if (res.statusCode != 200 || res.statusCode != 201) {
+        throw Exception(
+            'Error occurred while creating the account link ${res.statusCode}');
+      }
+      snackBarService.showSnackBar(
+          'Withdraw', 'Your payout was success', false);
+    } catch (e) {
+      snackBarService.showSnackBar(
+          'Account Link Creation Failure ', e.toString(), true);
+    }
+  }
+}
+
+@visibleForTesting
+Future<String> getSecretKey() async {
+  Logger().wtf('called function');
+  try {
+    final HttpsCallable intent = FirebaseFunctions.instance.httpsCallable(
+      'getClientSecret',
+    );
+    return intent.call().then((value) {
+      return value.data['secretKey'];
+    });
+  } on FirebaseFunctionsException catch (e) {
+    throw Exception(e.message);
+  } on Exception catch (e) {
+    throw Exception(e.toString());
   }
 }

@@ -4,4 +4,6 @@ class AppConstants {
   static double appProfitPercentage = 20;
   static const int STRIPE_CENTS = 100;
   static const CURRENCY = 'cad';
+  static const Api_Path =
+      "http://localhost:5001/new-postman-f7033/us-central1/stripe-api";
 }
